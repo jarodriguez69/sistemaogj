@@ -12,9 +12,11 @@ use App\Models\Operativa;
 use App\Models\Parte;
 use App\Models\User;
 use App\Models\Tarea;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
+
 
 class ProyectoController extends Controller
 {
@@ -26,9 +28,8 @@ class ProyectoController extends Controller
         $this->middleware('can:admin.proyectos.destroy')->only('destroy');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        
         // $proyectos = Proyecto::where('status',12)->get();
         $proyectos = Proyecto::all();
         //$proyectos = Proyecto::paginate();
@@ -54,6 +55,12 @@ class ProyectoController extends Controller
           } catch (ModelNotFoundException $e) {
             return response()->json(['msg' => 'Error al obtener datos']);
           }
+    }
+
+    public function setsession(Request $request)
+    {
+        session(['search' => $request->str]);
+        return response()->json([session('search')]);
     }
 
     public function create()
@@ -99,7 +106,7 @@ class ProyectoController extends Controller
         return redirect()->route('admin.proyectos.index', $proyecto)->with('info','El Proyecto se guardo con exito');        ;
     }
     
-    public function edit(Proyecto $proyecto)
+    public function edit(Proyecto $proyecto, request $request)
     {
         $grupos = Grupo::all();
         $estados = EstadoProyecto::where('enabled',true)->get();
@@ -159,12 +166,13 @@ class ProyectoController extends Controller
 
             
             $cantidadproceso = Proyecto::where('estadoproyecto_id',1)->get()->count();            
+            $cantidadprocesocontrol = Proyecto::where('estadoproyecto_id',10)->get()->count();            
             $cantidadterminados = Proyecto::where('estadoproyecto_id',2)->get()->count();
             $cantidadacumulados = Proyecto::where('estadoproyecto_id',3)->get()->count();            
             $cantidadsuspendidos = Proyecto::where('estadoproyecto_id',4)->get()->count();            
-            $cantidadnoiniciados = Proyecto::where('estadoproyecto_id',5)->get()->count();            
+            $actividadesposteriores = Proyecto::where('estadoproyecto_id',9)->get()->count();            
             $cantidadtotal = Proyecto::all()->count();
-            return response()->json(['procesos'  => $cantidadproceso, 'terminados' => $cantidadterminados, 'acumulados' => $cantidadacumulados, 'suspendidos' => $cantidadsuspendidos, 'noiniciados' => $cantidadnoiniciados,  'total' => $cantidadtotal]);
+            return response()->json(['procesos'  => $cantidadproceso, 'terminados' => $cantidadterminados, 'acumulados' => $cantidadacumulados, 'suspendidos' => $cantidadsuspendidos, 'procesoscontrol' => $cantidadprocesocontrol, 'actividadesposteriores' => $actividadesposteriores,  'total' => $cantidadtotal]);
          
     }
 

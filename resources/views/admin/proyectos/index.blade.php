@@ -16,7 +16,7 @@
     <strong>{{session('info')}}</strong>
 </div>
 @endif
-    
+
     <div class="card">
         <div class="card-body">
             <table class="table table-striped" id="proyectos"> 
@@ -42,12 +42,33 @@
 
 @section('js')
     <script>
-        
+        // var searchaux="";
+
+        // $(document).ready(function(){ 
+        //     searchaux = {{session('search')}};
+        //     $('input[type="search"]').keyup(function(){
+        //             $.ajax({ 
+        //                 url: "{{ route('proyectos.setsession') }}",
+        //                 data: {'str': $('input[type="search"]').val()},
+        //                 type: 'get',
+        //                 success: function(response){
+                            
+        //                 }
+        //             });
+        //         });
+                
+        // });
+
         $('#proyectos').DataTable( {
         "processing": true,
         "serverSide": true,
         "ajax": "{{route('admin.proyectos.getproject')}}",
         "dataType": 'json',
+        // "search": {
+        //     "search": searchaux,
+        //     "return": true
+            
+        // },
         "columns" : [
             {
                 data:'id',
@@ -127,5 +148,10 @@
         
         ]
     });
+
+    function actualizarvalor()
+    {
+        console.log("entro");
+    }
     </script>
 @stop

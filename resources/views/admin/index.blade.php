@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-sm-4">
-            <div class="card text-white bg-primary mb-3" style="height: 14rem; max-width: 18rem; background: linear-gradient(135deg, #66b7ef 0%,#6283e5 100%) !important;">
+            <div class="card text-white bg-primary mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg, #66b7ef 0%,#6283e5 100%) !important;">
                 <div class="card-header">Cantidad de Proyectos por Estados</div>
                 <div class="card-body">
                   {{-- <h5 class="card-title">Primary card title</h5> --}}
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="card text-white bg-info mb-3" style="height: 14rem; max-width: 18rem; background: linear-gradient(135deg, #a74be5 0%,#7035d6 100%) !important;">
+            <div class="card text-white bg-info mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg, #a74be5 0%,#7035d6 100%) !important;">
                 <div class="card-header">Cantidad de Tareas por Estados</div>
                 <div class="card-body">
                   {{-- <h5 class="card-title">Info card title</h5> --}}
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="card text-white bg-secondary mb-3" style="height: 14rem; max-width: 18rem; background: linear-gradient(135deg, #f61554 0%,#dd1390 100%) !important;">
+            <div class="card text-white bg-secondary mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg, #f61554 0%,#dd1390 100%) !important;">
                 <div class="card-header">Alertas de Esta Semana</div>
                 <div class="card-body">
                   {{-- <h5 class="card-title">Secondary card title</h5> --}}
@@ -236,18 +236,19 @@
 
 
                         $("#resumenproyectos").html("");
-                        $("#resumenproyectos").append( data.procesos +" En Proceso <br>" + 
-                        data.terminados +" Terminados <br>" + 
-                        data.acumulados +" Acumulados <br>" +
-                        data.suspendidos +" Suspendidos <br>" +
-                        data.noiniciados +" No Iniciados");
+                        $("#resumenproyectos").append("En Proceso (Fase Planificación): " + data.procesos + "<br>" + 
+                        "En proceso (Fase Control y Ejecución): " + data.procesoscontrol + "<br>" + 
+                        "Terminados (Fase Cierre): " + data.terminados + "<br>" + 
+                        "Acumulados: " + data.acumulados + "<br>" + 
+                        "Suspendidos: " + data.suspendidos + "<br>" + 
+                        "Actividades Posteriores Fin: " + data.actividadesposteriores);
                         
                         $("#proyectostotal").html("");
                         $("#proyectoscompletos").html("");
                         $("#proyectospendientes").html("");
                         $("#proyectostotal").append(data.total);
                         $("#proyectoscompletos").append(data.terminados);
-                        $("#proyectospendientes").append(data.procesos);
+                        $("#proyectospendientes").append(data.procesos + data.procesoscontrol);
 
                     },
                     error: function (data, textStatus, errorThrown) {
@@ -266,13 +267,12 @@
 
                         $("#resumentareas").html("");
                         $("#resumentareas").append(
-                        data.noiniciada +" No Iniciadas <br>" + 
-                        data.procesos +" En Proceso <br>" + 
-                        data.terminados +" Completadas <br>" +
-                        data.revisada +" Revisadas <br>" +
-                        data.verificada +" Verificadas <br>" +
-                        data.validada +" Validadas"
-                        );
+                        "No Iniciadas: " + data.noiniciada + "<br>" + 
+                        "En Proceso: " + data.procesos + "<br>" + 
+                        "Completadas: " + data.terminados + "<br>" + 
+                        "Revisadas: " + data.revisada + "<br>" + 
+                        "Verificadas: " + data.verificada + "<br>" + 
+                        "Validadas: " + data.validada);
                       
 
                         $("#tareastotal").html("");
