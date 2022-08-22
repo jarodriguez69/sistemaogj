@@ -27,7 +27,13 @@
                         <small id="descriptionId" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
-
+                <div class="form-group">
+                    <label for="tracing">Seguimiento</label>
+                    <textarea name="tracing" class="form-control" cols="30" rows="5" placeholder="Ingrese Seguimiento">{{old('tracing')}}</textarea>
+                    @error('tracing')
+                        <small id="tracingId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
                 <div class="form-group">
                     <label for="begin">Inicio</label>
                     <input type="date" class="form-control" id="begin" name="begin" aria-describedby="begin" placeholder="Fecha de Inicio" value="{{old('begin')}}">

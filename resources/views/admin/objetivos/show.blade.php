@@ -18,7 +18,10 @@
                     <label for="description">Descripci&oacute;n</label>
                     <textarea name="description" class="form-control" cols="30" rows="5" readonly>{{$objetivo->description}}</textarea>
                 </div>
-
+                <div class="form-group">
+                    <label for="tracing">Seguimiento</label>
+                    <textarea name="tracing" class="form-control" cols="30" rows="5" readonly>{{$objetivo->tracing}}</textarea>
+                </div>
                 <div class="form-group">
                     <label for="begin">Inicio</label>
                     <input type="text" class="form-control" id="begin" name="begin" aria-describedby="begin" value="{{$objetivo->begin != null ? date('Y-m-d', strtotime($objetivo->begin)):""}}" readonly>
