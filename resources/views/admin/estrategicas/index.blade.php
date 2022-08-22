@@ -40,21 +40,50 @@
                                 <td>{{$estrategica->name}}</td>
                                 <td>{{$estrategica->description}}</td>
                                 <td>{{$estrategica->enabled==true?"SI":"NO"}}</td>
-                                <td><a href="{{route('admin.estrategicas.show', $estrategica)}}" class="btn btn-sm btn-warning" title="Ver"><i class="fas fa-eye"></i></a> 
-                                    <a href="{{route('admin.estrategicas.edit', $estrategica->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="fas fa-edit"></i></a>  
-                                    <a href="{{route('admin.estrategicas.enabled', $estrategica->id)}}" class="btn btn-sm {{$estrategica->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-recycle"></i></a> 
-                                    <a href="{{route('admin.operativas.indexestrategica', $estrategica->id)}}" class="btn btn-sm btn-dark" title="Ver Planificaciones Operativas"><i class="far fa-fw fa-circle text-yellow"></i></a></td>
+                                <td><a href="{{route('admin.estrategicas.show', $estrategica)}}" class="btn btn-sm btn-warning" title="Ver"><i class="far fa-fw fa-eye"></i></a> 
+                                    <a href="{{route('admin.estrategicas.edit', $estrategica->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="far fa-fw fa-edit"></i></a>  
+                                    <a href="{{route('admin.estrategicas.enabled', $estrategica->id)}}" class="btn btn-sm {{$estrategica->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-fw fa-recycle"></i></a> 
+                                    <a href="{{route('admin.operativas.indexestrategica', $estrategica->id)}}" class="btn btn-sm btn-dark" title="Ver Planificaciones Operativas"><i class="far fa-fw fa-circle text-yellow"></i></a>
+                                    <a href="javascript:chart({{$estrategica->id}});" class="btn btn-sm btn-primary" title="Graficos"><i class="far fa-fw fa-chart-bar"></i></a>
+                                </td>
+                                    
+
+
+                                     
                             </tr>
                         @endforeach
                     </tbody>
             </table>   
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+            <div id="container"></div>        
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
 @endsection
 
 
 @section('js')
-    <script>
+<script src="{{asset('vendor/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script type="text/javascript"> 
+
+
+
         $('#estrategicas').DataTable( {
         language: {            // "lengthMenu": "Mostrando _MENU_ registros por página",
             "lengthMenu": "Mostrando "+'<select class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option> <option value="25">25</option> <option value="50">50</option> <option value="100">100</option> <option value="-1">Todos</option></select> '+" registros por página",
@@ -93,6 +122,74 @@
         
         ]
     });
+
+    function chart(id)
+    {
+        $("#container").html("");
+        $.ajax({
+            url: "{{route('admin.objetivos.searchObjetivesbyStrategy')}}",
+            datatype: 'json',
+            data: {
+                peid: id
+            },
+            success: function(data){
+
+                
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Objetivos<br>Estratégicos<br>por Estados<br>2022',
+                        align: 'center',
+                        verticalAlign: 'middle',
+                        y: 60
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    accessibility: {
+                        point: {
+                            valueSuffix: '%'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            dataLabels: {
+                                enabled: true,
+                                distance: -50,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: 'white'
+                                }
+                            },
+                            startAngle: -90,
+                            endAngle: 90,
+                            center: ['50%', '75%'],
+                            size: '110%'
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Porcentaje',
+                        innerSize: '50%',
+                        data: data
+                    }]
+                });
+
+                $('#exampleModalLong').modal('show'); // abrir
+                
+
+            }
+        });
+
+
+
+
+       
+    }
     </script>
 @stop
 

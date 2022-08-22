@@ -28,6 +28,7 @@
                             <th>Tipo</th>
                             <th>Avance</th>
                             <th>Meta</th>
+                            <th>Estado</th>
                             <th>Responsable</th>
                             <th></th>
                         </tr>
@@ -75,6 +76,10 @@
                         tValor = row.meta + (row.esporcentaje =='1' ? '%' : '');
                         return tValor; 
                 }
+            },
+            {
+                data:'estadoobjetivos.name',
+                name:'estadoobjetivos.name',
             },
             {
                 data:'user.name',

@@ -12,9 +12,11 @@ use App\Models\Tarea;
 use App\Models\Actividad;
 use App\Models\Desarrollo;
 use App\Models\EstadoActividad;
+use App\Models\Estrategica;
 use App\Models\TipoObjetivo;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -31,7 +33,7 @@ class ObjetivoController extends Controller
     public function index()
     {
         
-        // $objetivos = Objetivo::where('status',12)->get();
+        // $objetivos = Objetivo::where('status',12)->get(); ->operativas->get()->pluck("id");
         $objetivos = Objetivo::all();
         return view('admin.objetivos.index', compact("objetivos"));
     }
@@ -173,7 +175,7 @@ class ObjetivoController extends Controller
         if($request->ajax())
         {
             
-            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta', 'user_id', 'esporcentaje')->get();
+            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->get();
             return Datatables::of($objetivos)
                     ->addColumn('actions',function($objetivo){
                         return view('admin.objetivos.action', compact('objetivo'));
@@ -194,7 +196,7 @@ class ObjetivoController extends Controller
         if($request->ajax())
         {
 
-            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta', 'user_id', 'esporcentaje')->where('operativa_id', $request->operativa)->get();
+            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->where('operativa_id', $request->operativa)->get();
             return Datatables::of($objetivos)
                     ->addColumn('actions',function($objetivo){
                         return view('admin.objetivos.action', compact('objetivo'));
@@ -305,5 +307,22 @@ class ObjetivoController extends Controller
         return view("admin.objetivos.charts", compact('objetivo','pasoporestados', 'data', 'tareas', 'porcentajetareas','tareasvencidas', 'tareasvencidaschart'));
     }
 
+    public function searchObjetivesbyStrategy(Request $request)
+    {
+        $idbyestrategicas = new Collection();
+        $id = $request->get('peid');
+        $idbyestrategicas = Operativa::where("estrategica_id",$id)->get()->pluck("id");
+        $querysProceso = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', 1)->whereIn("operativa_id",$idbyestrategicas)->get()->count();
+        $querysTerminado = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', 2)->whereIn("operativa_id",$idbyestrategicas)->get()->count();
+        $total = $querysProceso + $querysTerminado;
+
+        $data = [
+            ['En Proceso', ($querysProceso / $total) * 100],
+            ['Terminados', ($querysTerminado / $total) * 100]
+        ];
+
+        
+        return $data;
+    }
 
 }
