@@ -97,6 +97,7 @@ Route::get('objetivo/getobjetive', [ObjetivoController::class, 'getobjetive'])->
 Route::get('objetivo/getprojectbygroup', [ObjetivoController::class, 'getprojectbygroup'])->name('admin.objetivos.getprojectbygroup');
 Route::get('objetivo/{objetivo}/charts', [ObjetivoController::class, 'charts'])->middleware('can:admin.objetivos.index')->name('admin.objetivos.charts');
 Route::get('objetivo/searchObjetivesbyStrategy', [ObjetivoController::class, 'searchObjetivesbyStrategy'])->name('admin.objetivos.searchObjetivesbyStrategy');
+Route::get('objetivo/searchObjetivesbyOperative', [ObjetivoController::class, 'searchObjetivesbyOperative'])->name('admin.objetivos.searchObjetivesbyOperative');
 
 Route::resource('actividades', ActividadController::class)->names('admin.actividades');
 Route::post('actividades/{file}/deleteFile', [ActividadController::class, 'deleteFile'])->middleware('can:admin.actividades.deleteFile')->name('admin.actividades.deleteFile');

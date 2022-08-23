@@ -325,4 +325,20 @@ class ObjetivoController extends Controller
         return $data;
     }
 
+    public function searchObjetivesbyOperative(Request $request)
+    {
+        $id = $request->get('peid');
+        $querysProceso = Objetivo::where('estadoobjetivo_id', 1)->where("operativa_id",$id)->get()->count();
+        $querysTerminado = Objetivo::where('estadoobjetivo_id', 2)->where("operativa_id",$id)->get()->count();
+        $total = $querysProceso + $querysTerminado;
+
+        $data = [
+            ['En Proceso', ($querysProceso / $total) * 100],
+            ['Terminados', ($querysTerminado / $total) * 100]
+        ];
+
+        
+        return $data;
+    }
+
 }

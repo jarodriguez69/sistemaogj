@@ -44,7 +44,7 @@
                                     <a href="{{route('admin.estrategicas.edit', $estrategica->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="far fa-fw fa-edit"></i></a>  
                                     <a href="{{route('admin.estrategicas.enabled', $estrategica->id)}}" class="btn btn-sm {{$estrategica->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-fw fa-recycle"></i></a> 
                                     <a href="{{route('admin.operativas.indexestrategica', $estrategica->id)}}" class="btn btn-sm btn-dark" title="Ver Planificaciones Operativas"><i class="far fa-fw fa-circle text-yellow"></i></a>
-                                    <a href="javascript:chart({{$estrategica->id}});" class="btn btn-sm btn-primary" title="Graficos"><i class="far fa-fw fa-chart-bar"></i></a>
+                                    <a href="javascript:chart({{$estrategica->id}},'{{$estrategica->name}}');" class="btn btn-sm btn-primary" title="Graficos"><i class="far fa-fw fa-chart-bar"></i></a>
                                 </td>
                                     
 
@@ -61,6 +61,12 @@
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
             <div id="container"></div>        
             </div>
@@ -123,9 +129,10 @@
         ]
     });
 
-    function chart(id)
+    function chart(id, name)
     {
         $("#container").html("");
+        $("#modalLabelTitle").html(name);
         $.ajax({
             url: "{{route('admin.objetivos.searchObjetivesbyStrategy')}}",
             datatype: 'json',
