@@ -45,24 +45,31 @@
     <div class="card">
         <h5 class="card-header d-flex">Visi&oacute;n General Proyectos <a href="{{route('admin.proyectos.index')}}" class="btn btn-primary btn-sm ml-auto">Ver Todos</a></h5>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style=" text-align: center; float: none; font-size: 2.1rem;" id="proyectostotal"></h5>
                     <p class="card-text" style="text-align: center;">Proyectos</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #5cd694; text-align: center; float: none; font-size: 2.1rem;" id="proyectoscompletos"></h5>
                     <p class="card-text" style="text-align: center;">Proyectos Completados</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #ff9100; text-align: center; float: none; font-size: 2.1rem;" id="proyectospendientes"></h5>
                     <p class="card-text" style="text-align: center;">Proyectos Pendientes</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #00aeff; text-align: center; float: none; font-size: 2.1rem;" id="proyectosmedicion"></h5>
+                    <p class="card-text" style="text-align: center;">Proyectos con Medici&oacute;n</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
@@ -246,10 +253,12 @@
                         $("#proyectostotal").html("");
                         $("#proyectoscompletos").html("");
                         $("#proyectospendientes").html("");
+                        $("#proyectosmedicion").html("");
+                        
                         $("#proyectostotal").append(data.total);
                         $("#proyectoscompletos").append(data.terminados);
                         $("#proyectospendientes").append(data.procesos + data.procesoscontrol);
-
+                        $("#proyectosmedicion").append(data.medicion);
                     },
                     error: function (data, textStatus, errorThrown) {
                         console.log(data);

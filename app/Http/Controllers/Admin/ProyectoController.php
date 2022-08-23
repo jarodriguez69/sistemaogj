@@ -170,9 +170,10 @@ class ProyectoController extends Controller
             $cantidadterminados = Proyecto::where('estadoproyecto_id',2)->get()->count();
             $cantidadacumulados = Proyecto::where('estadoproyecto_id',3)->get()->count();            
             $cantidadsuspendidos = Proyecto::where('estadoproyecto_id',4)->get()->count();            
-            $actividadesposteriores = Proyecto::where('estadoproyecto_id',9)->get()->count();            
+            $actividadesposteriores = Proyecto::where('estadoproyecto_id',9)->get()->count();     
+            $cantidadconmedicion = Proyecto::where('measuring',true)->get()->count();     
             $cantidadtotal = Proyecto::all()->count();
-            return response()->json(['procesos'  => $cantidadproceso, 'terminados' => $cantidadterminados, 'acumulados' => $cantidadacumulados, 'suspendidos' => $cantidadsuspendidos, 'procesoscontrol' => $cantidadprocesocontrol, 'actividadesposteriores' => $actividadesposteriores,  'total' => $cantidadtotal]);
+            return response()->json(['procesos'  => $cantidadproceso, 'terminados' => $cantidadterminados, 'acumulados' => $cantidadacumulados, 'suspendidos' => $cantidadsuspendidos, 'procesoscontrol' => $cantidadprocesocontrol, 'actividadesposteriores' => $actividadesposteriores,  'total' => $cantidadtotal, 'medicion' => $cantidadconmedicion]);
          
     }
 

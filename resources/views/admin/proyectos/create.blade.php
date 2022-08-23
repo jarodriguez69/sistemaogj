@@ -124,6 +124,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="measuring">¿Tiene Medici&oacute;n?</label>
+                    <select class="form-control" name="measuring" id="measuring">
+                        <option value="0">No</option>
+                        <option value="1">Si</option>
+                    </select> 
+                    @error('measuring')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="user_id">Lider del Proyecto</label>
                     <select class="form-control" name="user_id">
                       
