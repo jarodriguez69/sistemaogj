@@ -62,7 +62,8 @@
                 <div id="container"></div>        
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <a id="btnproceso" href="{{route('admin.objetivos.indexstatus', ['estrategicaid'=>0,'operativaid'=>3, 'estado' =>1])}}" class="btn btn-sm btn-dark">En Proceso</a>
+                    <a id="btnterminados" href="{{route('admin.objetivos.indexstatus', ['estrategicaid'=>0, 'operativaid'=>3, 'estado' =>2])}}" class="btn btn-sm btn-dark">Terminados</a>
                 </div>
             </div>
             </div>

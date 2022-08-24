@@ -45,6 +45,21 @@ class ObjetivoController extends Controller
         return view('admin.objetivos.indexoperativa', compact("operativa"));
     }
 
+    public function indexstatus(int $estrategicaid, int $operativaid, int $estado)
+    {
+        if($estrategicaid != 0)
+        {
+            $idbyestrategicas = new Collection();
+            $idbyestrategicas = Operativa::where("estrategica_id",$estrategicaid)->get()->pluck("id");
+            $objetivos = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', $estado)->whereIn("operativa_id",$idbyestrategicas)->get();
+        }
+        else
+        {
+            $objetivos = Objetivo::where('estadoobjetivo_id', $estado)->where("operativa_id",$operativaid)->get();
+        }
+
+        return view('admin.objetivos.indexstatus', compact("objetivos"));
+    }
 
     public function getprojectcount()
     {
@@ -172,6 +187,29 @@ class ObjetivoController extends Controller
 
     public function getobjetive(Request $request)
     {
+        if($request->ajax())
+        {
+            
+            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->get();
+            return Datatables::of($objetivos)
+                    ->addColumn('actions',function($objetivo){
+                        return view('admin.objetivos.action', compact('objetivo'));
+                    })
+                    ->addColumn('avance', function($objetivo) {
+                        
+                        $actividades = Actividad::where('objetivo_id', $objetivo->id)->where('estadoactividad_id', '!=', 3)->get();
+                        $avance = 0 + $actividades->sum('porcentaje');
+                        return  $avance . "%";
+                    })
+                    ->rawColumns(['actions'])
+                    ->make(true);
+        }
+    }
+    
+    // public function getobjetivebystatus(Request $request, int $estrategicaid, int $estado)
+    public function getobjetivebystatus(Request $request,int $estrategicaid, int $estado)
+    {
+
         if($request->ajax())
         {
             
