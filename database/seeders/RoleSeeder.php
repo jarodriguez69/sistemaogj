@@ -108,5 +108,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=> 'admin.actividades.store','description'=>'Guardar Actividades'])->syncRoles([$role1, $role2]);
         Permission::create(['name'=> 'admin.actividades.update','description'=>'Actualizar Actividades'])->syncRoles([$role1, $role2]);
         Permission::create(['name'=> 'admin.actividades.enabled','description'=>'Deshabilitar Actividades'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=> 'admin.agendas.index','description'=>'Ver Agenda'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=> 'admin.agendas.create','description'=>'Ver Vista Creación Agenda'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=> 'admin.agendas.edit','description'=>'Ver vista Edición Agenda'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=> 'admin.agendas.destroy','description'=>'Eliminar Agenda'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=> 'admin.agendas.store','description'=>'Guardar Agenda'])->syncRoles([$role1, $role2]);
+        Permission::create(['name'=> 'admin.agendas.update','description'=>'Actualizar Agenda'])->syncRoles([$role1, $role2]);
+        
     }
 }

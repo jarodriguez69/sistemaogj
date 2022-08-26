@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\EstrategicaController;
 use App\Http\Controllers\Admin\OperativaController;
 use App\Http\Controllers\Admin\ObjetivoController;
 use App\Http\Controllers\Admin\ActividadController;
+use App\Http\Controllers\Admin\AgendaController;
 
 //->middleware('can:admin.users') para una ruta en particular, por jejemplo el index del home
 Route::get('', [HomeController::class,'index']);
@@ -110,3 +111,6 @@ Route::get('actividad/gettaskbyproject', [ActividadController::class, 'gettaskby
 Route::get('actividad/searchProject', [ActividadController::class, 'searchProject'])->name('admin.actividades.searchProject');
 Route::get('actividad/searchObjetives', [ActividadController::class, 'searchObjetives'])->name('admin.actividades.searchObjetives');
 Route::post('actividades/getinfotareas', [ActividadController::class, 'getinfotareas'])->name('admin.actividades.getinfotareas');
+
+
+Route::resource('agendas', AgendaController::class)->names('admin.agendas');

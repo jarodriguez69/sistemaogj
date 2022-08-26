@@ -344,6 +344,13 @@ return [
             //'can'           => 'admin.tareas.index',
 		'active' => ['admin/calendar*']
         ],
+        [
+            'text'        => 'Agenda OGJ',
+            'url'         => 'admin/agendas',
+            'icon'        => 'fa fa-fw fa-address-book',
+            //'can'           => 'admin.tareas.index',
+		'active' => ['admin/agendas*']
+        ],
 
         // ['header' => 'account_settings'],
         // [

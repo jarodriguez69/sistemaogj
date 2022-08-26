@@ -46,37 +46,38 @@
                                     <a href="{{route('admin.operativas.indexestrategica', $estrategica->id)}}" class="btn btn-sm btn-dark" title="Ver Planificaciones Operativas"><i class="far fa-fw fa-circle text-yellow"></i></a>
                                     <a href="javascript:chart({{$estrategica->id}},'{{$estrategica->name}}');" class="btn btn-sm btn-primary" title="Graficos"><i class="far fa-fw fa-chart-bar"></i></a>
                                 </td>
-                                    
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal{{$estrategica->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"> {{$estrategica->name}} </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <div id="container{{$estrategica->id}}"></div>        
+                                        </div>
+                                        <div class="modal-footer"> 
+                                            <a id="btnproceso" href="{{ url('admin/objetivos/'.$estrategica->id . '/0/1/indexstatus') }}" class="btn btn-sm btn-dark">En Proceso</a>
+                                            <a id="btnterminados" href="{{ url('admin/objetivos/'.$estrategica->id . '/0/2/indexstatus') }}" class="btn btn-sm btn-dark">Terminados</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
 
-
-                                     
                             </tr>
+
+                              
                         @endforeach
                     </tbody>
             </table>   
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabelTitle"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            <div id="container"></div>        
-            </div>
-            <div class="modal-footer">
-                <a href="{{route('admin.objetivos.indexstatus', ['estrategicaid'=>2,'operativaid'=>0, 'estado' =>1])}}" class="btn btn-sm btn-dark">En Proceso</a>
-                <a href="{{route('admin.objetivos.indexstatus', ['estrategicaid'=>2, 'operativaid'=>0, 'estado' =>2])}}" class="btn btn-sm btn-dark">Terminados</a>
-            </div>
-        </div>
-        </div>
-    </div>
+  
 @endsection
 
 
@@ -132,8 +133,11 @@
 
     function chart(id, name)
     {
-        $("#container").html("");
-        $("#modalLabelTitle").html(name);
+       
+       
+       
+        
+        $("#container"+id).html("");
         $.ajax({
             url: "{{route('admin.objetivos.searchObjetivesbyStrategy')}}",
             datatype: 'json',
@@ -143,7 +147,7 @@
             success: function(data){
 
                 
-                Highcharts.chart('container', {
+                Highcharts.chart('container'+id, {
                     chart: {
                         plotBackgroundColor: null,
                         plotBorderWidth: 0,
@@ -187,7 +191,7 @@
                     }]
                 });
 
-                $('#exampleModalLong').modal('show'); // abrir
+                $('#modal'+id).modal('show'); // abrir
                 
 
             }
