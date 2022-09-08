@@ -26,10 +26,12 @@
           </tr>
         </thead>
         <tbody>
-
+          <label for="" style="display: none">{{$i=0}}</label>
+          
             @foreach ($registros as $registro)
                 <tr>
-                    <th scope="row">{{$registro->id}}</th>
+
+                    <th scope="row">{{$i = $i+1}}</th>
                     <td><a href="{{$registro->url}}" target="_blank">{{$registro->name}}</a></td>
                     <td>{{$registro->description}}</td>
                     

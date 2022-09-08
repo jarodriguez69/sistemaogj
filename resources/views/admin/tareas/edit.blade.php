@@ -92,7 +92,13 @@
                                 </div>
                         @endforeach
                 </div>
-
+                <div class="form-group">
+                    <label for="url">Adjuntar Enlace</label>
+                    <textarea name="url" class="form-control" cols="30" rows="5" placeholder="Ingrese Enlace">{{old('url', $tarea->url)}}</textarea>
+                    @error('url')
+                        <small id="urlId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="file">Adjuntar Archivos</label>

@@ -53,6 +53,27 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="url">Enlace</label>
+                    <textarea name="url" class="form-control" cols="30" rows="5" readonly>{{$tarea->url}}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="filelist">Archivos</label>
+                    <table class="table table-striped" id="filelist"> 
+
+                        <tbody>
+                            @foreach ($files as $file)
+                                <tr>
+                                    <td><a href="{{route('admin.tareas.descarga', $file->id)}}">{{$file->name}}</a></td>
+                                </tr>
+                            @endforeach 
+                        </tbody>
+
+                    </table>   
+                    
+                </div>
+
+                <div class="form-group">
                     <a href="{{route('admin.tareas.edit', $tarea)}}" class="btn btn-primary">Editar</a>
                     <a href="{{route('admin.tareas.index')}}" class="btn btn-danger">Volver</a>
                 </div>

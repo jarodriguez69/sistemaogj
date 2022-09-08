@@ -23,6 +23,7 @@ class CreateTareasTable extends Migration
             $table->unsignedBigInteger('estadotarea_id');
             // $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->text('url')->nullable();
 
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete("cascade");;
             $table->foreign('estadotarea_id')->references('id')->on('estado_tareas');

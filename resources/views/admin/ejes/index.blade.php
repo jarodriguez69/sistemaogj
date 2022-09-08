@@ -40,10 +40,10 @@
                                 <td>{{$eje->name}}</td>
                                 <td>{{$eje->description}}</td>
                                 <td>{{$eje->enabled==true?"SI":"NO"}}</td>
-                                <td><a href="{{route('admin.ejes.show', $eje)}}" class="btn btn-sm btn-warning" title="Ver"><i class="fas fa-eye"></i></a> 
-                                    <a href="{{route('admin.ejes.edit', $eje->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="fas fa-edit"></i></a>  
+                                <td><a href="{{route('admin.ejes.show', $eje)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                    <a href="{{route('admin.ejes.edit', $eje->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
                                     <a href="{{route('admin.ejes.enabled', $eje->id)}}" class="btn btn-sm {{$eje->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-recycle"></i></a> 
-                                    <a href="{{route('admin.grupos.indexeje', $eje->id)}}" class="btn btn-sm btn-dark" title="Ver Grupos de Proyectos"><i class="far fa-fw fa-object-group"></i></a></td>
+                                    <a href="{{route('admin.grupos.indexeje', $eje->id)}}" class="btn btn-sm btn-dark" title="Ver Grupos de Proyectos" target='_blank'><i class="far fa-fw fa-object-group"></i></a></td>
                             </tr>
                         @endforeach
                     </tbody>

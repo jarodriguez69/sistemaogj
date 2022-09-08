@@ -171,7 +171,8 @@ class TareaController extends Controller
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::all();
         $users = User::all();
-        return view('admin.tareas.show',compact("tarea","proyectos","estados","users"));
+        $files =  File::where('tarea_id',$tarea->id)->get();
+        return view('admin.tareas.show',compact("tarea","proyectos","estados","users","files"));
     }
 
     public function destroy(Tarea $tarea)

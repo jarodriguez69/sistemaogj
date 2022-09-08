@@ -30,10 +30,10 @@
           </tr>
         </thead>
         <tbody>
-
+          <label for="" style="display: none">{{$i=0}}</label>
             @foreach ($formularios as $formulario)
                 <tr>
-                    <th scope="row">{{$formulario->id}}</th>
+                  <th scope="row">{{$i = $i+1}}</th>
                     <td><a href="{{$formulario->url}}" target="_blank">{{$formulario->name}}</a></td>
                     <td>{{$formulario->description}}</td>
                     
