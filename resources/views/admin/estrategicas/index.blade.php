@@ -40,10 +40,10 @@
                                 <td>{{$estrategica->name}}</td>
                                 <td>{{$estrategica->description}}</td>
                                 <td>{{$estrategica->enabled==true?"SI":"NO"}}</td>
-                                <td><a href="{{route('admin.estrategicas.show', $estrategica)}}" class="btn btn-sm btn-warning" title="Ver"><i class="far fa-fw fa-eye"></i></a> 
-                                    <a href="{{route('admin.estrategicas.edit', $estrategica->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="far fa-fw fa-edit"></i></a>  
+                                <td><a href="{{route('admin.estrategicas.show', $estrategica)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="far fa-fw fa-eye"></i></a> 
+                                    <a href="{{route('admin.estrategicas.edit', $estrategica->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="far fa-fw fa-edit"></i></a>  
                                     <a href="{{route('admin.estrategicas.enabled', $estrategica->id)}}" class="btn btn-sm {{$estrategica->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-fw fa-recycle"></i></a> 
-                                    <a href="{{route('admin.operativas.indexestrategica', $estrategica->id)}}" class="btn btn-sm btn-dark" title="Ver Planificaciones Operativas"><i class="far fa-fw fa-circle text-yellow"></i></a>
+                                    <a href="{{route('admin.operativas.indexestrategica', $estrategica->id)}}" class="btn btn-sm btn-dark" title="Ver Planificaciones Operativas" target='_blank'><i class="far fa-fw fa-circle text-yellow"></i></a>
                                     <a href="javascript:chart({{$estrategica->id}},'{{$estrategica->name}}');" class="btn btn-sm btn-primary" title="Graficos"><i class="far fa-fw fa-chart-bar"></i></a>
                                 </td>
                                 
