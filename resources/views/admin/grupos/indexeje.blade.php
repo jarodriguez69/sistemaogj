@@ -36,10 +36,10 @@
                             <td>{{$grupo->name}}</td>
                             <td>{{$grupo->ejes->name}}</td>
                             <td>{{$grupo->enabled==true?"SI":"NO"}}</td>
-                            <td><a href="{{route('admin.grupos.show', $grupo)}}" class="btn btn-sm btn-warning" title="Ver"><i class="fas fa-eye"></i></a> 
-                                <a href="{{route('admin.grupos.edit', $grupo->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="fas fa-edit"></i></a>  
+                            <td><a href="{{route('admin.grupos.show', $grupo)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                <a href="{{route('admin.grupos.edit', $grupo->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
                                 <a href="{{route('admin.grupos.enabled', $grupo->id)}}" class="btn btn-sm {{$grupo->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-recycle"></i></a> 
-                                <a href="{{route('admin.proyectos.indexgrupo', $grupo->id)}}" class="btn btn-sm btn-dark" title="Ver Proyectos"><i class="fas fa-fw fa-cubes"></i></a></td>
+                                <a href="{{route('admin.proyectos.indexgrupo', $grupo->id)}}" class="btn btn-sm btn-dark" title="Ver Proyectos" target='_blank'><i class="fas fa-fw fa-cubes"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>
