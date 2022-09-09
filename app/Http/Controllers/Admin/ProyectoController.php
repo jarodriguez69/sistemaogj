@@ -30,21 +30,23 @@ class ProyectoController extends Controller
 
     public function index(Request $request)
     {
-        // $proyectos = Proyecto::where('status',12)->get();
-        $proyectos = Proyecto::all();
-        //$proyectos = Proyecto::paginate();
-        
-        return view('admin.proyectos.index', compact("proyectos"));
+        return view('admin.proyectos.index');
     }
-
-    
 
     public function indexgrupo(Grupo $grupo)
     {
-        $proyectos = Proyecto::where("grupo_id",$grupo->id)->get();
-        return view('admin.proyectos.indexgrupo', compact("proyectos","grupo"));
+        return view('admin.proyectos.indexgrupo', compact("grupo"));
     }
 
+    public function indexhistory(Request $request)
+    {
+        return view('admin.proyectos.indexhistory');
+    }
+
+    public function indexgrupohistory(Grupo $grupo)
+    {
+        return view('admin.proyectos.indexgrupohistory', compact("grupo"));
+    }
 
     public function getprojectcount()
     {
@@ -181,7 +183,26 @@ class ProyectoController extends Controller
     {
         if($request->ajax())
         {
-            $proyectos = Proyecto::with('grupos', 'objetivos2', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'objetivo_id','begin', 'end', 'estadoproyecto_id', 'user_id')->get();
+            $year = date("Y");
+            $proyectos = Proyecto::with('grupos', 'objetivos2', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'objetivo_id','begin', 'end', 'estadoproyecto_id', 'user_id')->where('year', $year)->get();
+            return Datatables::of($proyectos)
+                    ->addColumn('actions',function($proyecto){
+                        return view('admin.proyectos.action', compact('proyecto'));
+                    })
+                    ->addColumn('poa',function($proyecto){
+                        return $proyecto->objetivos2->operativas->name;
+                    })
+                    ->rawColumns(['actions'])
+                    ->make(true);
+        }
+    }
+
+    public function getprojecthistory(Request $request)
+    {
+        if($request->ajax())
+        {
+            $year = date("Y");
+            $proyectos = Proyecto::with('grupos', 'objetivos2', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'objetivo_id','begin', 'end', 'estadoproyecto_id', 'user_id')->where('year', '!=' , $year)->get();
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){
                         return view('admin.proyectos.action', compact('proyecto'));
@@ -198,7 +219,8 @@ class ProyectoController extends Controller
     {
         if($request->ajax())
         {
-            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('grupo_id', $request->grupo)->get();
+            $year = date("Y");
+            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('grupo_id', $request->grupo)->where('year', $year)->get();
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){
                         return view('admin.proyectos.action', compact('proyecto'));
@@ -211,6 +233,23 @@ class ProyectoController extends Controller
         }
     }
 
+    public function getprojectbygrouphistory(Request $request)
+    {
+        if($request->ajax())
+        {
+            $year = date("Y");
+            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('grupo_id', $request->grupo)->where('year', '!=' ,$year)->get();
+            return Datatables::of($proyectos)
+                    ->addColumn('actions',function($proyecto){
+                        return view('admin.proyectos.action', compact('proyecto'));
+                    })
+                    ->addColumn('poa',function($proyecto){
+                        return $proyecto->objetivos2->operativas->name;
+                    })
+                    ->rawColumns(['actions'])
+                    ->make(true);
+        }
+    }
     public function charts (Proyecto $proyecto)
     {
 

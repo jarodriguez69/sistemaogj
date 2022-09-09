@@ -1,16 +1,12 @@
 {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
 
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Proyectos')
+@section('title', 'Oficina de Gestión Judicial | Histórico de Proyectos')
 @section('plugins.Datatables', true)
 
 @section('content_header')
-<div class="form-group">
-    <a href="{{route('admin.proyectos.indexhistory')}}" class="btn btn-primary float-right">Hist&oacute;rico</a>    
     <a href="{{route('admin.proyectos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-</div>
-    
-    <h1>Proyectos</h1>
+    <h1>Hist&oacute;rico de Proyectos en el Grupo: {{$grupo->name}}</h1>
 @endsection
 
 @section('content')
@@ -20,25 +16,24 @@
     <strong>{{session('info')}}</strong>
 </div>
 @endif
-
+    
     <div class="card">
         <div class="card-body">
             <table class="table table-striped" id="proyectos"> 
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Grupo</th>
-                            <th>POA</th>
-                            <th>Fecha Inicio</th>
-                            <th>Fecha Fin</th>
-                            <th>Estado</th>
-                            <th>Responsable</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-            </table>   
-
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>POA</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th></th>
+                    </tr>
+                </thead>
+               
+        </table>   
         </div>
     </div>
 @endsection
@@ -46,33 +41,19 @@
 
 @section('js')
     <script>
-        // var searchaux="";
-
-        // $(document).ready(function(){ 
-        //     searchaux = {{session('search')}};
-        //     $('input[type="search"]').keyup(function(){
-        //             $.ajax({ 
-        //                 url: "{{ route('proyectos.setsession') }}",
-        //                 data: {'str': $('input[type="search"]').val()},
-        //                 type: 'get',
-        //                 success: function(response){
-                            
-        //                 }
-        //             });
-        //         });
-                
-        // });
-
+        
         $('#proyectos').DataTable( {
         "processing": true,
         "serverSide": true,
-        "ajax": "{{route('admin.proyectos.getproject')}}",
+        "ajax": {
+            "url": "{{route('admin.proyectos.getprojectbygrouphistory')}}",
+            "data": function ( d ) {
+                d.grupo = {{$grupo->id}};
+                // d.custom = $('#myInput').val();
+                // etc
+            }
+        },
         "dataType": 'json',
-        // "search": {
-        //     "search": searchaux,
-        //     "return": true
-            
-        // },
         "columns" : [
             {
                 data:'id',
@@ -81,10 +62,6 @@
             {
                 data:'name',
                 name:'name'
-            },
-            {
-                data:'grupos.name',
-                name:'grupos.name'
             },
             {
                 data: "poa",
@@ -152,10 +129,7 @@
         
         ]
     });
-
-    function actualizarvalor()
-    {
-        console.log("entro");
-    }
     </script>
 @stop
+
+

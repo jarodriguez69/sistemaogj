@@ -46,11 +46,14 @@ Route::get('proyectos/{proyecto}/enabled', [ProyectoController::class, 'enabled'
 Route::post('proyectos/getprojectcount', [ProyectoController::class, 'getprojectcount'])->name('admin.proyectos.getprojectcount');
 Route::post('proyectos/getinfoproyectos', [ProyectoController::class, 'getinfoproyectos'])->name('admin.proyectos.getinfoproyectos');
 Route::get('proyectos/{grupo}/indexgrupo', [ProyectoController::class, 'indexgrupo'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.indexgrupo');
+Route::get('proyecto/indexhistory', [ProyectoController::class, 'indexhistory'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.indexhistory');
+Route::get('proyectos/{grupo}/indexgrupohistory', [ProyectoController::class, 'indexgrupohistory'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.indexgrupohistory');
 Route::get('proyecto/getproject', [ProyectoController::class, 'getproject'])->name('admin.proyectos.getproject');
 Route::get('proyecto/getprojectbygroup', [ProyectoController::class, 'getprojectbygroup'])->name('admin.proyectos.getprojectbygroup');
 Route::get('proyectos/{proyecto}/charts', [ProyectoController::class, 'charts'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.charts');
 Route::get('proyecto/setsession', [ProyectoController::class, 'setsession'])->name('proyectos.setsession');
-
+Route::get('proyecto/getprojecthistory', [ProyectoController::class, 'getprojecthistory'])->name('admin.proyectos.getprojecthistory');
+Route::get('proyecto/getprojectbygrouphistory', [ProyectoController::class, 'getprojectbygrouphistory'])->name('admin.proyectos.getprojectbygrouphistory');
 
 Route::resource('estadosproyectos', EstadoProyectoController::class)->names('admin.estadosproyectos');
 Route::get('estadosproyectos/{estadosproyecto}/enabled', [EstadoProyectoController::class, 'enabled'])->middleware('can:admin.estadosproyectos.enabled')->name('admin.estadosproyectos.enabled');

@@ -13,6 +13,7 @@ use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Collection;
 
 class TareaController extends Controller
 {
@@ -29,9 +30,13 @@ class TareaController extends Controller
 
     public function index()
     {
+        $year = date("Y");
+        $idproyectos = new Collection();
+        $idproyectos = Proyecto::where("year",$year)->get()->pluck("id");
+
         // $tareas = Tarea::where('status',12)->get();
         // $tareas = Tarea::paginate();
-        $tareas = Tarea::all();
+        $tareas = Tarea::whereIn('proyecto_id', $idproyectos)->get();
         return view('admin.tareas.index', compact("tareas"));
     }
 

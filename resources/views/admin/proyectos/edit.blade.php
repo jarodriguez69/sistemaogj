@@ -39,6 +39,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="year">Año</label>
+                    <input type="number" class="form-control" name="year" id="year" aria-describedby="meta" placeholder="Ingrese Año" value={{old('year', $proyecto->year)}}>
+                    @error('year')
+                        <small id="yearHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="indicador">Indicador</label>
                     <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value={{old('indicador', $proyecto->indicador)}}>
                     @error('indicador')
@@ -152,6 +160,17 @@
                     @enderror
                 </div>
                 
+                <div class="form-group">
+                    <label for="satisfactorio">¿Es Satisfactoria?</label>
+                    <select class="form-control" name="satisfactorio" id="satisfactorio">
+                        <option value="0" {{!$proyecto->satisfactorio ? "selected" : ""}}>No</option>
+                        <option value="1" {{$proyecto->satisfactorio ? "selected" : ""}}>Si</option>
+                    </select> 
+                    @error('satisfactorio')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="user_id">Lider del Proyecto</label>
                     <select class="form-control" name="user_id">

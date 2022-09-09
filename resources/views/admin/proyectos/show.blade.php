@@ -74,7 +74,12 @@
                 </div>
                 <div class="form-group">
                     <label for="measuring">¿Tiene Medici&oacute;n?</label>
-                    <input type="text" class="form-control" name="objetivo_id" aria-describedby="objetivo_id" value="{{$proyecto->measuring ? "Si" : "No"}}" readonly>
+                    <input type="text" class="form-control" name="measuring" aria-describedby="measuring" value="{{$proyecto->measuring ? "Si" : "No"}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="satisfactorio">¿Es Satisfactoria?</label>
+                    <input type="text" class="form-control" name="satisfactorio" aria-describedby="satisfactorio" value="{{$proyecto->satisfactorio ? "Si" : "No"}}" readonly>
                 </div>
 
                 <div class="form-group">

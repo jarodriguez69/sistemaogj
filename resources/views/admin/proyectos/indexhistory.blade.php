@@ -1,16 +1,12 @@
 {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
 
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Proyectos')
+@section('title', 'Oficina de Gestión Judicial | Histórico de Proyectos')
 @section('plugins.Datatables', true)
 
 @section('content_header')
-<div class="form-group">
-    <a href="{{route('admin.proyectos.indexhistory')}}" class="btn btn-primary float-right">Hist&oacute;rico</a>    
     <a href="{{route('admin.proyectos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-</div>
-    
-    <h1>Proyectos</h1>
+    <h1>Hist&oacute;rico de Proyectos</h1>
 @endsection
 
 @section('content')
@@ -66,7 +62,7 @@
         $('#proyectos').DataTable( {
         "processing": true,
         "serverSide": true,
-        "ajax": "{{route('admin.proyectos.getproject')}}",
+        "ajax": "{{route('admin.proyectos.getprojecthistory')}}",
         "dataType": 'json',
         // "search": {
         //     "search": searchaux,

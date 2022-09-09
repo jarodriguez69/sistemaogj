@@ -30,7 +30,9 @@ class CreateProyectosTable extends Migration
             $table->unsignedBigInteger('estadoproyecto_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('objetivo_id')->nullable();
+            $table->unsignedBigInteger('year')->nullable();;
             $table->boolean('measuring');
+            $table->boolean('satisfactorio');
             $table->timestamps();
 
             $table->foreign('grupo_id')->references('id')->on('grupos');//->onDelete("cascade");
