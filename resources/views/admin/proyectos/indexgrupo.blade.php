@@ -5,6 +5,7 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
+    <a href="{{route('admin.proyectos.indexgrupohistory', $grupo)}}" class="btn btn-primary float-right">Hist&oacute;rico</a>
     <a href="{{route('admin.proyectos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
     <h1>Proyectos en el Grupo: {{$grupo->name}}</h1>
 @endsection
