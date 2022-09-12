@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label for="indicador">Indicador</label>
-                    <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value={{old('indicador', $proyecto->indicador)}}>
+                    <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value="{{old('indicador', $proyecto->indicador)}}">
                     @error('indicador')
                         <small id="indicadorHelp" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
@@ -56,7 +56,7 @@
     
                 <div class="form-group">
                     <label for="meta">Meta</label>
-                    <input type="text" class="form-control" name="meta" id="meta" aria-describedby="meta" placeholder="Ingrese Meta" value={{old('meta', $proyecto->meta)}}>
+                    <input type="text" class="form-control" name="meta" id="meta" aria-describedby="meta" placeholder="Ingrese Meta" value="{{old('meta', $proyecto->meta)}}">
                     @error('meta')
                         <small id="metaHelp" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
