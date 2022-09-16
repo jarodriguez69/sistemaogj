@@ -68,25 +68,30 @@ class HomeController extends Controller
         ];
 
 
-
-        $proyectosvencidos = Proyecto::where("estadoproyecto_id", 1)
-                                        ->where("end", "<=", date('Y-m-d'))
-                                        ->get();
         
-        $porcentajevencidos =  $proyectosvencidos->count() * 100 / $totalproyectos;
-        $porcentajenovencidos = 100 - $porcentajevencidos;
+        $year = date("Y");
+        $proyectostotalbyyear = Proyecto::where("year",$year)->get()->count();
+        $proyectosconmedicion = Proyecto::where("measuring", 1)->where("year",$year)->get();
+        $proyectossatisfactorios = Proyecto::where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->get()->count();
+        $proyectosnosatisfactorios = $proyectosconmedicion->count() - $proyectossatisfactorios;
+        
+        $porcentajesatisfactorio =  $proyectossatisfactorios * 100 / $proyectosconmedicion->count();
+        $porcentajenosatisfactorio = 100 - $porcentajesatisfactorio;
 
         $proyectosvencidoschart[] = [
-            'name'         => "Vencidos",
-            'y'      => $porcentajevencidos
+            'name'         => "Satisfactorio",
+            'y'      => $porcentajesatisfactorio
         ];
 
         $proyectosvencidoschart[] = [
-            'name'         => "No Vencidos",
-            'y'      => $porcentajenovencidos
+            'name'         => "No Satisfactorio",
+            'y'      => $porcentajenosatisfactorio
         ];
          
-        return view('admin.index', compact('proyectos', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosvencidos','proyectosvencidoschart'));
+        return view('admin.index', compact('proyectos', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios'));
+
+        
+
     }
 
     public function calendar()

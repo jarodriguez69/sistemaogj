@@ -106,56 +106,96 @@
 
     </div>
 
-
+    <div class="card">
+        <h5 class="card-header d-flex">Gr&aacute;ficos</h5>
+        <div id="container2"></div>
+        {{-- <div id="container3"></div> --}}
+        <div id="container"></div>
+        <div id="container4"></div>
+    </div>
     
-    <div id="container2"></div>
-    {{-- <div id="container3"></div> --}}
-    <div id="container"></div>
-    <div id="container4"></div>
+   
 
-    <h1>Proyectos Vencidos</h1>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
+    <div class="card">
+        <h5 class="card-header d-flex">Medici&oacute;n de Proyectos</h5>
+        <div class="row">
+            <div class="col-sm-3">
                 <div class="card-body">
-                    <table class="table table-striped" id="proyectosvencidos"> 
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Descripci&oacute;n</th>
-                                    <th>Fecha Vencimiento</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($proyectosvencidos as $proyectovencido)
-                                    <tr>
-                                        <td>{{$proyectovencido->id}}</td>
-                                        <td>{{$proyectovencido->name}}</td>
-                                        <td>{{$proyectovencido->description}}</td>
-                                        <td>{{$proyectovencido->end}}</td>
-                                        <td>
-                                            <a href="{{route('admin.proyectos.show', $proyectovencido)}}" class="btn btn-sm btn-warning" title="Ver"><i class="fas fa-eye"></i></a> 
-                                            <a href="{{route('admin.proyectos.edit', $proyectovencido->id)}}" class="btn btn-sm btn-info" title="Editar"><i class="fas fa-edit"></i></a>
-                                            <a href="{{route('admin.tareas.indexproyecto', $proyectovencido->id)}}" class="btn btn-sm btn-dark" title="Tareas"><i class="fas fa-tasks"></i></a>
-                                            <a href="{{route('admin.proyectos.charts', $proyectovencido->id)}}" class="btn btn-sm btn-primary" title="Graficos"><i class="fas fa-chart-bar"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                    </table>   
-                </div>
+                    <h5 class="card-title" style="text-align: center; float: none; font-size: 2.1rem;">{{$proyectostotalbyyear}}</h5>
+                    <p class="card-text" style="text-align: center;">Total Año</p>
+                    {{-- <a href="#" class="btn btn-primary"></a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #00acfc; text-align: center; float: none; font-size: 2.1rem;">{{$proyectosconmedicion->count()}}</h5>
+                    <p class="card-text" style="text-align: center;">Total Con Medici&oacute;n</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #5cd694;  text-align: center; float: none; font-size: 2.1rem;">{{$proyectossatisfactorios}}</h5>
+                    <p class="card-text" style="text-align: center;">Total Satisfactorios</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #ff4800;  text-align: center; float: none; font-size: 2.1rem;">{{$proyectosnosatisfactorios}}</h5>
+                    <p class="card-text" style="text-align: center;">Total No Satisfactorios</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div id="container5"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped" id="proyectosvencidos"> 
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Medición</th>
+                                        <th>Porcentaje</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($proyectosconmedicion as $proyecto)
+                                        <tr>
+                                            <td>{{$proyecto->id}}</td>
+                                            <td>{{$proyecto->name}}</td>
+                                            <td>{{$proyecto->satisfactorio ? "Satisfactorio" : "No Satisfactorio"}}</td>
+                                            <td>{{$proyecto->satisfactorio ? round(100/$proyectossatisfactorios) . "%" : round(100/$proyectosnosatisfactorios) . "%"}}</td>
+                                            <td>
+                                                <a href="{{route('admin.proyectos.show', $proyecto)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                                <a href="{{route('admin.tareas.indexproyecto', $proyecto->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                                                <a href="{{route('admin.proyectos.charts', $proyecto->id)}}" class="btn btn-sm btn-primary" title="Graficos" target='_blank'><i class="fas fa-chart-bar"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                        </table>   
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="container5"></div>
+            </div>
         </div>
+
     </div>
 
 
     
+    
+
+
+ 
     
 @stop
 
@@ -438,99 +478,99 @@ Highcharts.chart('container2', {
 
 
 
-Highcharts.chart('container3', {
+// Highcharts.chart('container3', {
 
-chart: {
-    type: 'column'
-},
+// chart: {
+//     type: 'column'
+// },
 
-title: {
-    text: 'Total fruit consumption, grouped by gender'
-},
+// title: {
+//     text: 'Total fruit consumption, grouped by gender'
+// },
 
-xAxis: {
-    categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-},
+// xAxis: {
+//     categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+// },
 
-yAxis: {
-    allowDecimals: false,
-    min: 0,
-    title: {
-        text: 'Number of fruits'
-    }
-},
+// yAxis: {
+//     allowDecimals: false,
+//     min: 0,
+//     title: {
+//         text: 'Number of fruits'
+//     }
+// },
 
-tooltip: {
-    formatter: function () {
-        return '<b>' + this.x + '</b><br/>' +
-            this.series.name + ': ' + this.y + '<br/>' +
-            'Total: ' + this.point.stackTotal;
-    }
-},
+// tooltip: {
+//     formatter: function () {
+//         return '<b>' + this.x + '</b><br/>' +
+//             this.series.name + ': ' + this.y + '<br/>' +
+//             'Total: ' + this.point.stackTotal;
+//     }
+// },
 
-plotOptions: {
-    column: {
-        stacking: 'normal'
-    }
-},
+// plotOptions: {
+//     column: {
+//         stacking: 'normal'
+//     }
+// },
 
-series: [{
-    name: 'John',
-    data: [5, 3, 4, 7, 2],
-    stack: 'male'
-}, {
-    name: 'Joe',
-    data: [3, 4, 4, 2, 5],
-    stack: 'male'
-}, {
-    name: 'Jane',
-    data: [2, 5, 6, 2, 1],
-    stack: 'female'
-}, {
-    name: 'Janet',
-    data: [3, 0, 4, 4, 3],
-    stack: 'female'
-}]
-});
+// series: [{
+//     name: 'John',
+//     data: [5, 3, 4, 7, 2],
+//     stack: 'male'
+// }, {
+//     name: 'Joe',
+//     data: [3, 4, 4, 2, 5],
+//     stack: 'male'
+// }, {
+//     name: 'Jane',
+//     data: [2, 5, 6, 2, 1],
+//     stack: 'female'
+// }, {
+//     name: 'Janet',
+//     data: [3, 0, 4, 4, 3],
+//     stack: 'female'
+// }]
+// });
 
 
 
-Highcharts.chart('container4', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Cantidad de Tareas en Proceso'
-    },
-    subtitle: {
-        text: 'Fuente: Sistema OGJ'
-    },
-    xAxis: {
-        categories: proyectosiso,
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Cantidad'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: dataproyectosiso 
-});
+// Highcharts.chart('container4', {
+//     chart: {
+//         type: 'column'
+//     },
+//     title: {
+//         text: 'Cantidad de Tareas en Proceso'
+//     },
+//     subtitle: {
+//         text: 'Fuente: Sistema OGJ'
+//     },
+//     xAxis: {
+//         categories: proyectosiso,
+//         crosshair: true
+//     },
+//     yAxis: {
+//         min: 0,
+//         title: {
+//             text: 'Cantidad'
+//         }
+//     },
+//     tooltip: {
+//         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+//         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//             '<td style="padding:0"><b>{point.y}</b></td></tr>',
+//         footerFormat: '</table>',
+//         shared: true,
+//         useHTML: true
+//     },
+//     plotOptions: {
+//         column: {
+//             pointPadding: 0.2,
+//             borderWidth: 0
+//         }
+//     },
+//     series: dataproyectosiso 
+// });
 
 
 
@@ -542,7 +582,7 @@ Highcharts.chart('container5', {
         type: 'pie'
     },
     title: {
-        text: 'Proyectos Vencidos y No Vencidos'
+        text: 'Medición de Proyectos'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -565,7 +605,7 @@ Highcharts.chart('container5', {
     series: [{
         name: 'Porcentaje',
         colorByPoint: true,
-        data: proyectosvencidoschart
+        data:  proyectosvencidoschart
     }]
 });
 
