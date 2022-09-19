@@ -7,16 +7,49 @@ use Illuminate\Http\Request;
 use App\Models\Proyecto;
 use App\Models\Eje;
 use App\Models\Grupo;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $proyectos = Proyecto::select(\DB::raw("COUNT(*) as count"))
+        $proyectos = new Collection();
+        $proyectosAux = Proyecto::select(\DB::raw("Month(created_at) as month, COUNT(*) as count"))
                     ->whereYear('created_at', date('Y'))
                     ->groupBy(\DB::raw("Month(created_at)"))
-                    ->pluck('count');
+                    ->pluck('count', 'month');
+                    
+        
+        for($i=1;$i<=12; $i++)
+        {
+            $val = $proyectosAux[$i] ?? null;
+            
+            if ($val != null){
+                $proyectos->push($val);
+            }
+            else{
+                $proyectos->push(0);
+            }
+        }
+        
+        $proyectosend = new Collection();
+        $proyectosendAux = Proyecto::select(\DB::raw("Month(`real`) as a, COUNT(*) as count"))
+                            ->whereYear('real', date('Y'))
+                            ->groupBy(\DB::raw("Month(`real`)"))
+                            ->pluck('count', 'a');
 
+
+        for($i=1;$i<=12; $i++)
+        {
+            $val = $proyectosendAux[$i] ?? null;
+            
+            if ($val != null){
+                $proyectosend->push($val);
+            }
+            else{
+                $proyectosend->push(0);
+            }
+        }
 
 
         $ejes = Eje::all();
@@ -70,9 +103,9 @@ class HomeController extends Controller
 
         
         $year = date("Y");
-        $proyectostotalbyyear = Proyecto::where("year",$year)->get()->count();
-        $proyectosconmedicion = Proyecto::where("measuring", 1)->where("year",$year)->get();
-        $proyectossatisfactorios = Proyecto::where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->get()->count();
+        $proyectostotalbyyear = Proyecto::whereNotIn("estadoproyecto_id",[3,4])->where("year",$year)->get()->count();
+        $proyectosconmedicion = Proyecto::whereNotIn("estadoproyecto_id",[3,4])->where("measuring", 1)->where("year",$year)->get();
+        $proyectossatisfactorios = Proyecto::whereNotIn("estadoproyecto_id",[3,4])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->get()->count();
         $proyectosnosatisfactorios = $proyectosconmedicion->count() - $proyectossatisfactorios;
         
         $porcentajesatisfactorio =  $proyectossatisfactorios * 100 / $proyectosconmedicion->count();
@@ -88,7 +121,7 @@ class HomeController extends Controller
             'y'      => $porcentajenosatisfactorio
         ];
          
-        return view('admin.index', compact('proyectos', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios'));
+        return view('admin.index', compact('proyectos', 'proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios'));
 
         
 

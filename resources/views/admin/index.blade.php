@@ -351,6 +351,7 @@
 <script type="text/javascript">
     
     var proyectos =  <?php echo json_encode($proyectos) ?>;
+    var proyectosend =  <?php echo json_encode($proyectosend) ?>;
     var proyectosiso =  <?php echo json_encode($proyectosiso) ?>;
     var proyectosporejeData = <?php echo json_encode($data)?>;
     var dataproyectosiso = <?php echo json_encode($dataproyectosiso)?>;
@@ -384,7 +385,11 @@
         series: [{
             name: 'Proyectos Nuevos',
             data: proyectos
-        }],
+        },{
+        name: 'Proyectos Terminados',
+        data:     proyectosend
+    }
+    ],
         responsive: {
             rules: [{
                 condition: {
