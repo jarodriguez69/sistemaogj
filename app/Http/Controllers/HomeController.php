@@ -47,4 +47,9 @@ class HomeController extends Controller
         return view('formulario', compact('formularios'));
     }
 
+    public function mapa()
+    {
+        $formularios = Formulario::all();
+        return view('mapa');
+    }
 }
