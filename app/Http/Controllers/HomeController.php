@@ -49,7 +49,6 @@ class HomeController extends Controller
 
     public function mapa()
     {
-        $formularios = Formulario::all();
         return view('mapa');
     }
 }
