@@ -18,6 +18,8 @@ class CreateObjetivosTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('ajuste')->nullable();
+            $table->text('replanificacion')->nullable();
             $table->text('tracing');
             $table->timestamp('begin')->nullable();
             $table->timestamp('end')->nullable();

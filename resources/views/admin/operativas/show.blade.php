@@ -24,7 +24,16 @@
                     <label for="end">Planificaci&oacute;n Estrat&eacute;gica</label>
                     <input type="text" class="form-control" name="estrategica" aria-describedby="estrategica"  value="{{App\Models\Estrategica::find($operativa->estrategica_id) != null ? App\Models\Estrategica::find($operativa->estrategica_id)->name : ""}}" readonly>
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="ajuste">Ajustes</label>
+                    <textarea name="ajuste" class="form-control" cols="30" rows="10" readonly>{{$operativa->ajuste}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="replanificacion">Replanificaci&oacute;n</label>
+                    <textarea name="replanificacion" class="form-control" cols="30" rows="10" readonly>{{$operativa->replanificacion}}</textarea>
+                </div>
+
                 <div class="form-group">
                     <a href="{{route('admin.operativas.edit', $operativa)}}" class="btn btn-primary">Editar</a>
                     <a href="{{route('admin.operativas.index')}}" class="btn btn-danger">Volver</a>

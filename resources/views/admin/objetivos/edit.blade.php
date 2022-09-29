@@ -124,7 +124,21 @@
                     </select>
                 </div>
 
-                
+                <div class="form-group">
+                    <label for="ajuste">Ajustes</label>
+                    <textarea name="ajuste" class="form-control" cols="30" rows="10" placeholder="Ingrese Ajustes">{{old('ajuste',$objetivo->ajuste)}}</textarea>
+                    @error('ajuste')
+                        <small id="ajusteId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="replanificacion">Replanificaci&oacute;n</label>
+                    <textarea name="replanificacion" class="form-control" cols="30" rows="10" placeholder="Ingrese Replanificación">{{old('replanificacion',$objetivo->replanificacion)}}</textarea>
+                    @error('replanificacion')
+                        <small id="replanificacionId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="desarrollos">ODS</label>
                         @foreach ($odses as $ods)

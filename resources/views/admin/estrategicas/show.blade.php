@@ -18,9 +18,18 @@
                     <textarea name="description" class="form-control" cols="30" rows="10" readonly>{{$estrategica->description}}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="ajuste">Ajustes</label>
+                    <textarea name="ajuste" class="form-control" cols="30" rows="10" readonly>{{$estrategica->ajuste}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="replanificacion">Replanificaci&oacute;n</label>
+                    <textarea name="replanificacion" class="form-control" cols="30" rows="10" readonly>{{$estrategica->replanificacion}}</textarea>
+                </div>
+                <div class="form-group">
                     <a href="{{route('admin.estrategicas.edit', $estrategica)}}" class="btn btn-primary">Editar</a>
                     <a href="{{route('admin.estrategicas.index')}}" class="btn btn-danger">Volver</a>
                 </div>
+                
                 {{-- <form action="{{route('admin.estrategicas.destroy', $estrategica)}}" method="POST">
                     @csrf
                     @method("delete")

@@ -55,7 +55,14 @@
                     <label for="user">Responsable</label>
                     <input type="text" class="form-control" name="user" aria-describedby="user" value="{{App\Models\User::find($objetivo->user_id) != null ? App\Models\User::find($objetivo->user_id)->name : ""}}" readonly>
                 </div>
-
+                <div class="form-group">
+                    <label for="ajuste">Ajustes</label>
+                    <textarea name="ajuste" class="form-control" cols="30" rows="10" readonly>{{$objetivo->ajuste}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="replanificacion">Replanificaci&oacute;n</label>
+                    <textarea name="replanificacion" class="form-control" cols="30" rows="10" readonly>{{$objetivo->replanificacion}}</textarea>
+                </div>
                 <div class="form-group">
                     <label for="desarrollos">ODS</label>
                         @foreach ($odses as $ods)

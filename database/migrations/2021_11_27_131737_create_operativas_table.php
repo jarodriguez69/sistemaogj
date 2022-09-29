@@ -17,6 +17,8 @@ class CreateOperativasTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('ajuste')->nullable();
+            $table->text('replanificacion')->nullable();
             $table->boolean('enabled');
             $table->unsignedBigInteger('estrategica_id');
             $table->timestamps();
