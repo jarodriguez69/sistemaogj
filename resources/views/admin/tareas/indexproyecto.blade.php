@@ -6,7 +6,7 @@
 
 @section('content_header')
     <a href="{{route('admin.tareas.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-    <h1>Tareas - {{$proyecto->name}} ({{$proyecto->id}}) </h1>
+    <h1>Tareas Planificadas- {{$proyecto->name}} ({{$proyecto->id}}) </h1>
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
+                        <th>Tarea Planificada</th>
                         <th>Proyecto</th>
                         <th>Inicio</th>
                         <th>Fin</th>

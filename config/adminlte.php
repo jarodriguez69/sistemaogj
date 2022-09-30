@@ -322,7 +322,7 @@ return [
 		'active' => ['admin/proyectos*']
         ],
         [
-            'text'        => 'Tareas',
+            'text'        => 'Tareas Planificadas',
             'url'         => 'admin/tareas',
             'icon'        => 'fas fa-fw fa-tasks',
             //'label'       => 10,
