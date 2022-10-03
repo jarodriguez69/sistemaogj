@@ -40,7 +40,7 @@
                                 <td>{{$objetivo->name}}</td>
                                 <td>{{$objetivo->operativas->name}}</td>
                                 <td>{{$objetivo->tipoobjetivo->name}}</td>
-                                <td>{{$objetivo->avance}}</td>
+                                <td>{{$objetivo->actividades->where('estadoactividad_id','!=', 3)->sum('porcentaje')}}%</td>
                                 <td>{{strval($objetivo->meta) . ($objetivo->esporcentaje =='1' ? '%' : '')}}</td>
                                 <td>{{$objetivo->estadoobjetivos->name}}</td>
                                 <td>{{$objetivo->user->name}}</td>
