@@ -23,7 +23,34 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Diagn&oacute;stico</label>
+                    <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
+                    <input type="date" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" placeholder="Fecha de Diagnóstico" value="{{$proyecto->diagnostico != null ? date('d-m-Y', strtotime($proyecto->diagnostico)) : ""}}">
+                    
+                    @error('diagnostico')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                <label for="description">Diagn&oacute;stico</label> <a href="#" data-toggle="popover" title="Ejemplos" data-content="EJEMPLO 1
+Proyecto: Diseño e Implementación del SGC_Dirección de Recursos Humanos_2022
+Diagnóstico: Se realiza el diagnóstico con el fin de obtener información que nos permita determinar si la Dirección de Recursos Humanos cuenta con un sistema de gestión de calidad y si fuera así, en qué grado cumple con los requisitos de la Norma ISO 9001:2015.
+A tal fin, desde el  14/02/22 al 18/02/22 se realizaron reuniones y entrevistas con la Directora de la Unidad: Lic. Teresita Comolli y con parte de su equipo a los fines de recolectar evidencias de la existencia del SGC y de su grado de cumplimiento con los requisitos de la norma mencionada.
+Se pudo determinar que cuentan con una Misión, Visión, Valores Manual de Procedimientos en una versión obsoleta, sitio web que permite la comunicación con sus usuarios, registro de indicadores.
+Se concluye que la unidad no cuenta con un SGC, aunque si cuenta con una organización y documentos que evidencian su trabajo organizado.
+Por ello se resuelve en conjunto iniciar el proceso implementación de la norma ISO 9001:2015 propuesto por la OGJ (incluye desde capacitaciones hasta el acompañamiento en el proceso de Certificación) a partir del 23/02/2022.
+
+EJEMPLO 2
+Proyecto: Plan Operativo_Juzgado Civil y Comercial Común V°_CJCapital_2022
+Diagnóstico: Se realiza el diagnóstico con el fin de obtener información que nos permita determinar el  estado de situación actual de la Unidad en relación al proceso Gestión de Resoluciones (emisión de sentencias).
+A tal fin, el día 27/09/2022 se consulta en el Tablero de Comando de la Dirección de Estadísticas y en el Tablero del SAE de la Unidad los siguientes indicadores:
+•	Total de sentencias definitivas vencidas a la fecha
+•	Promedio mensual de sentencias definitivas dictadas desde el 01/02/2022 hasta el 31/08/2022
+Obteniendo como resultados:
+•	Total de sentencias definitivas vencidas a la fecha del relevamiento: 38
+•	Promedio mensual de sentencias Definitivas dictadas desde el 01/02/2022 hasta el 31/08/2022: 14,42
+
+Se concluye que la unidad requiere de la implementación de POA para mejorar su desempeño."><i class="fas fa-info-circle"></i></a> 
                     <textarea name="description" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('description',$proyecto->description)}}</textarea>
                     @error('description')
                         <small class="form-text text-danger">*{{$message}}</small>    
@@ -220,6 +247,9 @@
 
 <script src="{{asset('vendor/jquery-ui/jquery-ui.min.js')}}"></script>
 <script>
+            $(function () {
+        $('[data-toggle="popover"]').popover()
+        })
 
 $("#poa_id").change(function(){
   

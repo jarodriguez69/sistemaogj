@@ -379,4 +379,26 @@ class ObjetivoController extends Controller
         return $data;
     }
 
+    public function cargas(Request $request)
+    {
+        
+        
+        $term = $request->get('datesearch');
+        $fecha= date('d/m/y', strtotime($term));
+        $querys = Objetivo::where('tracing', 'LIKE', '%'.$fecha.'%')->get();
+
+
+        $data = [];
+
+        foreach($querys as $query)
+        {
+            $data[] = [
+                'id' => $query->id,
+                'label' => $query->name,
+                'poa' => $query->operativas->name
+            ];
+        }
+        return $data;
+    }
+
 }

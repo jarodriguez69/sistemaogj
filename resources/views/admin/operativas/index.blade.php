@@ -72,7 +72,29 @@
         </div>
     </div>
       
-    
+    <div class="card">
+        <h5 class="card-header d-flex">Actualizaci&oacute;n de Objetivos</h5>
+        <div class="card-body">
+                <div class="form-group float-right">
+                    <label for="dateobjetive">Fecha de Inicio</label>
+                    <input type="date" class="form-control" id="dateobjetive" aria-describedby="dateobjetive" placeholder="Fecha">
+                </div>
+                <table id="operativas" class="table table-striped"> 
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Planificaci&oacute;n Operativa</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        
+                    </tbody>
+
+                </table>  
+        </div>
+    </div>
 @endsection
 
 
@@ -85,6 +107,26 @@
 
 <script type="text/javascript"> 
         
+        $("#dateobjetive").change(function(){
+            $.ajax({
+                url: "{{route('admin.objetivos.cargas')}}",
+                datatype: 'json',
+                data: {
+                    datesearch: $("#dateobjetive").val()
+                },
+                success: function(data){
+
+                    $('#tbody').html("");
+                    data.forEach(function(obj, index) {
+                        $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+obj.label+'</td><td>'+obj.poa+'</td></tr>');
+                    });
+                }
+            });
+        });
+
+
+
+
         $('#operativas').DataTable( {
         "language": {
             // "lengthMenu": "Mostrando _MENU_ registros por página",

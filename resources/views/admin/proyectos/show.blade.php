@@ -15,6 +15,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
+                    <input type="text" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" value="{{$proyecto->diagnostico != null ? date('Y-m-d', strtotime($proyecto->diagnostico)):""}}" readonly>
+                </div>
+
+                <div class="form-group">
                     <label for="description">Diagn&oacute;stico</label>
                     <textarea name="description" class="form-control" cols="30" rows="5" readonly>{{$proyecto->description}}</textarea>
                 </div>

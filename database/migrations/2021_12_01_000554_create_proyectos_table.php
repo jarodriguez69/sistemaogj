@@ -18,6 +18,7 @@ class CreateProyectosTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->timestamp('diagnostico')->nullable();
             $table->timestamp('begin')->nullable();
             $table->timestamp('end')->nullable();
             $table->timestamp('real')->nullable();
