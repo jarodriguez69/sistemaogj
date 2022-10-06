@@ -165,16 +165,16 @@ class ProyectoController extends Controller
 
     public function getinfoproyectos()
     {
-
+            $year = date("Y");
             
-            $cantidadproceso = Proyecto::where('estadoproyecto_id',1)->get()->count();            
-            $cantidadprocesocontrol = Proyecto::where('estadoproyecto_id',10)->get()->count();            
-            $cantidadterminados = Proyecto::where('estadoproyecto_id',2)->get()->count();
-            $cantidadacumulados = Proyecto::where('estadoproyecto_id',3)->get()->count();            
-            $cantidadsuspendidos = Proyecto::where('estadoproyecto_id',4)->get()->count();            
-            $actividadesposteriores = Proyecto::where('estadoproyecto_id',9)->get()->count();     
-            $cantidadconmedicion = Proyecto::where('measuring',true)->get()->count();     
-            $cantidadtotal = Proyecto::all()->count();
+            $cantidadproceso = Proyecto::where('estadoproyecto_id',1)->where('year', $year)->get()->count();            
+            $cantidadprocesocontrol = Proyecto::where('estadoproyecto_id',10)->where('year', $year)->get()->count();            
+            $cantidadterminados = Proyecto::where('estadoproyecto_id',2)->where('year', $year)->get()->count();
+            $cantidadacumulados = Proyecto::where('estadoproyecto_id',3)->where('year', $year)->get()->count();            
+            $cantidadsuspendidos = Proyecto::where('estadoproyecto_id',4)->where('year', $year)->get()->count();            
+            $actividadesposteriores = Proyecto::where('estadoproyecto_id',9)->where('year', $year)->get()->count();     
+            $cantidadconmedicion = Proyecto::where('measuring',true)->where('year', $year)->get()->count();     
+            $cantidadtotal = Proyecto::where('year', $year)->count();
             return response()->json(['procesos'  => $cantidadproceso, 'terminados' => $cantidadterminados, 'acumulados' => $cantidadacumulados, 'suspendidos' => $cantidadsuspendidos, 'procesoscontrol' => $cantidadprocesocontrol, 'actividadesposteriores' => $actividadesposteriores,  'total' => $cantidadtotal, 'medicion' => $cantidadconmedicion]);
          
     }

@@ -189,19 +189,21 @@ class TareaController extends Controller
 
     public function getinfotareas()
     {
-        
+        $year = date("Y");
+        $idproyectos = new Collection();
+        $idproyectos = Proyecto::where("year",$year)->get()->pluck("id");
 
-        $cantidadnoiniciada = Tarea::where('estadotarea_id',1)->get()->count();
-        $cantidadproceso = Tarea::where('estadotarea_id',2)->get()->count();
-        $cantidadterminados = Tarea::where('estadotarea_id',3)->get()->count();
-        $cantidadrevisado = Tarea::where('estadotarea_id',4)->get()->count();
-        $cantidadverificado = Tarea::where('estadotarea_id',5)->get()->count();
-        $cantidadvalidado = Tarea::where('estadotarea_id',6)->get()->count();
+        $cantidadnoiniciada = Tarea::where('estadotarea_id',1)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $cantidadproceso = Tarea::where('estadotarea_id',2)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $cantidadterminados = Tarea::where('estadotarea_id',3)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $cantidadrevisado = Tarea::where('estadotarea_id',4)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $cantidadverificado = Tarea::where('estadotarea_id',5)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $cantidadvalidado = Tarea::where('estadotarea_id',6)->whereIn('proyecto_id', $idproyectos)->get()->count();
 
 
 
 
-        $cantidadtotal = Tarea::all()->count();
+        $cantidadtotal = Tarea::whereIn('proyecto_id', $idproyectos)->get()->count();
         return response()->json([
                                 'noiniciada' => $cantidadnoiniciada, 
                                 'procesos'  => $cantidadproceso, 
