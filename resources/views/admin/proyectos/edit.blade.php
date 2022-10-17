@@ -24,8 +24,7 @@
 
                 <div class="form-group">
                     <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
-                    <input type="date" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" placeholder="Fecha de Diagnóstico" value="{{$proyecto->diagnostico != null ? date('d-m-Y', strtotime($proyecto->diagnostico)) : ""}}">
-                    
+                    <input type="date" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" placeholder="Fecha de Diagnóstico" value="{{$proyecto->diagnostico != null ? date('Y-m-d', strtotime($proyecto->diagnostico)):""}}">
                     @error('diagnostico')
                         <small class="form-text text-danger">*{{$message}}</small>    
                     @enderror

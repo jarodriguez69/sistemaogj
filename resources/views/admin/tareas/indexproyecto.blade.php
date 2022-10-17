@@ -35,7 +35,7 @@
                     @foreach ($tareas as $tarea)
                         <tr>
                             <td>{{$tarea->id}}</td>
-                            <td>{{$tarea->name}}</td>
+                            <td>{{$tarea->name}} <a href="{{route('admin.tareas.show', $tarea)}}" target='_blank'><i class="fas fa-paperclip" {{App\Models\File::where('tarea_id',$tarea->id)->get()->count() == 0 ? 'style=display:none;' : ''}}></i></a> </td>
                             <td>{{$tarea->proyectos->name}}</td>
                             <td>{{$tarea->begin}}</td>
                             <td>{{$tarea->end}}</td>
