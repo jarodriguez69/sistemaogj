@@ -16,7 +16,41 @@
     <strong>{{session('info')}}</strong>
 </div>
 @endif
-    
+
+    <div class="card">
+        <h5 class="card-header d-flex">Visi&oacute;n General Objetivos </h5>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #7a5cd6; text-align: center; float: none; font-size: 2.1rem;" id="objetivostotal">{{$estrategicosproceso + $estrategicosterminado + $operativosproceso + $operativosterminado + $calidadproceso + $calidadterminado}}</h5>
+                    <p class="card-text" style="text-align: center; font-weight: bold;">Total</p>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #5cd694; text-align: center; float: none; font-size: 2.1rem;" id="objetivosestrategicos">{{$estrategicosproceso + $estrategicosterminado}}</h5>
+                    <p class="card-text" style="text-align: center; font-weight: bold;">Estrat&eacute;gicos</p>
+                    <p class="card-text" style="text-align: center;">En Proceso: {{$estrategicosproceso}} </br> Terminado: {{$estrategicosterminado}}</p>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #ff9100; text-align: center; float: none; font-size: 2.1rem;" id="objetivosoperativos">{{$operativosproceso + $operativosterminado}}</h5>
+                    <p class="card-text" style="text-align: center; font-weight: bold;">Operativos</p>
+                    <p class="card-text" style="text-align: center;">En Proceso: {{$operativosproceso}} </br> Terminado: {{$operativosterminado}}</p>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #00aeff; text-align: center; float: none; font-size: 2.1rem;" id="objetivoscalidad">{{$calidadproceso + $calidadterminado}}</h5>
+                    <p class="card-text" style="text-align: center; font-weight: bold;">De Calidad</p>
+                    <p class="card-text" style="text-align: center;">En Proceso: {{$calidadproceso}} </br> Terminado: {{$calidadterminado}}</p>
+                  </div>
+            </div>
+        </div>
+
+    </div>
+ 
     <div class="card">
         <div class="card-body">
                         <table id="objetivos" class="table table-striped"> 

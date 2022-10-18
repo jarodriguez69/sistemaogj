@@ -33,20 +33,44 @@ class ObjetivoController extends Controller
     public function index()
     {
         
-        // $objetivos = Objetivo::where('status',12)->get(); ->operativas->get()->pluck("id");
+        $estrategicosproceso = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',1)->get()->count();
+        $estrategicosterminado = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',2)->get()->count();
+        $operativosproceso = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',1)->get()->count();
+        $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',2)->get()->count();
+        $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',1)->get()->count();
+        $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',2)->get()->count();
+
         $objetivos = Objetivo::all();
-        return view('admin.objetivos.index', compact("objetivos"));
+        return view('admin.objetivos.index', compact("objetivos", "estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado"));
     }
 
     
 
     public function indexoperativa(Operativa $operativa)
     {
-        return view('admin.objetivos.indexoperativa', compact("operativa"));
+        
+        $estrategicosproceso = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',1)->get()->count();
+        $estrategicosterminado = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',2)->get()->count();
+        $operativosproceso = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',1)->get()->count();
+        $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',2)->get()->count();
+        $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',1)->get()->count();
+        $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',2)->get()->count();
+
+        return view('admin.objetivos.indexoperativa', compact("operativa", "estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado"));
     }
 
     public function indexstatus(int $estrategicaid, int $operativaid, int $estado)
     {
+        $estrategicosproceso = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',1)->get()->count();
+        $estrategicosterminado = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',2)->get()->count();
+        $operativosproceso = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',1)->get()->count();
+        $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',2)->get()->count();
+        $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',1)->get()->count();
+        $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',2)->get()->count();
+
+        
+
+
         if($estrategicaid != 0)
         {
             $idbyestrategicas = new Collection();
@@ -58,7 +82,7 @@ class ObjetivoController extends Controller
             $objetivos = Objetivo::where('estadoobjetivo_id', $estado)->where("operativa_id",$operativaid)->get();
         }
 
-        return view('admin.objetivos.indexstatus', compact("objetivos"));
+        return view('admin.objetivos.indexstatus', compact("objetivos", "estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado"));
     }
 
     public function getprojectcount()
@@ -384,7 +408,7 @@ class ObjetivoController extends Controller
         
         
         $term = $request->get('datesearch');
-        $fecha= date('d/m/y', strtotime($term));
+        $fecha= date('d/m/Y', strtotime($term));
         $querys = Objetivo::where('tracing', 'LIKE', '%'.$fecha.'%')->get();
 
 
