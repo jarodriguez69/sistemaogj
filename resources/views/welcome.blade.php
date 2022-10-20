@@ -5,7 +5,7 @@
     <div class="card mb-3">
         <img class="card-img-top" src="logo-OGJ-2019.jpg" alt="Card image cap">
             {{-- <object data="certificadoesp.pdf" type="application/PDF" width="850px" height="850px" align="right"></object> --}}
-            <a href="certificadoesp.pdf" target="_blank"><img src="logoiso.png" title="IRAM" width="10%" style="position:absolute;z-index: 1;right: 6%;bottom: -2%;"></a>
+            <a href="certificadoesp.pdf" target="_blank"><img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;"></a>
             <a href="certificadoeng.pdf" target="_blank"><img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;"></a>
         {{-- <div class="card-body">
           <h5 class="card-title">Card title</h5>
