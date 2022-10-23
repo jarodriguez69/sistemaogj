@@ -23,7 +23,7 @@ class OperativaController extends Controller
 
     public function index()
     {
-        $operativas = Operativa::all();
+        $operativas = Operativa::where("id","!=",1)->get();
         return view('admin.operativas.index', compact("operativas"));
     }
 

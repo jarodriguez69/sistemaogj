@@ -55,14 +55,14 @@
             <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #5cd694; text-align: center; float: none; font-size: 2.1rem;" id="proyectoscompletos"></h5>
-                    <p class="card-text" style="text-align: center;">Proyectos Completados</p>
+                    <p class="card-text" style="text-align: center;">Proyectos Terminados</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
             <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #ff9100; text-align: center; float: none; font-size: 2.1rem;" id="proyectospendientes"></h5>
-                    <p class="card-text" style="text-align: center;">Proyectos Pendientes</p>
+                    <p class="card-text" style="text-align: center;">Proyectos En Proceso</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
@@ -501,7 +501,7 @@ Highcharts.chart('container2', {
         type: 'pie'
     },
     title: {
-        text: 'Porcentaje de Proyectos por Grupo'
+        text: 'Porcentaje de Proyectos por Eje'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

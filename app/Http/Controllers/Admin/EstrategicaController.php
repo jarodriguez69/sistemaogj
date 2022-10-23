@@ -23,7 +23,7 @@ class EstrategicaController extends Controller
     public function index()
     {
         // $estrategicas = DB::select('select * from estrategicas where enabled = ?', [true]);
-        $estrategicas = Estrategica::paginate();
+        $estrategicas = Estrategica::where("id","!=",1)->paginate();
         
         return view('admin.estrategicas.index', compact("estrategicas"));
         

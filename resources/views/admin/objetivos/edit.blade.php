@@ -71,7 +71,7 @@
                     <select class="form-control" name="tipoobjetivo_id">
                         
                         @foreach ($tipos as $tipo)
-                            <option value="{{$tipo->id}}" {{$objetivo->tipo_id==$tipo->id ? "selected" : ""}}>{{$tipo->name}}</option>
+                            <option value="{{$tipo->id}}" {{$objetivo->tipoobjetivo_id==$tipo->id ? "selected" : ""}}>{{$tipo->name}}</option>
                         @endforeach
                     </select>
                     @error('tipoobjetivo_id')

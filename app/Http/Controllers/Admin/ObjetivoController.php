@@ -40,8 +40,8 @@ class ObjetivoController extends Controller
         $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',1)->get()->count();
         $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',2)->get()->count();
 
-        $objetivos = Objetivo::all();
-        return view('admin.objetivos.index', compact("objetivos", "estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado"));
+        
+        return view('admin.objetivos.index', compact("estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado"));
     }
 
     
@@ -214,7 +214,7 @@ class ObjetivoController extends Controller
         if($request->ajax())
         {
             
-            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->get();
+            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->where("id","!=",1)->get();
             return Datatables::of($objetivos)
                     ->addColumn('actions',function($objetivo){
                         return view('admin.objetivos.action', compact('objetivo'));

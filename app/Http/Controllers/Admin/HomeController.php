@@ -13,6 +13,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $year = date("Y");
+
         $proyectos = new Collection();
         $proyectosAux = Proyecto::select(\DB::raw("Month(created_at) as month, COUNT(*) as count"))
                     ->whereYear('created_at', date('Y'))
@@ -53,24 +55,36 @@ class HomeController extends Controller
 
 
         $ejes = Eje::all();
-        $totalproyectos = Proyecto::all()->count();
+        $totalproyectos = Proyecto::where('year',$year)->count();
         $totalproyectos = $totalproyectos == 0 ? 1 : $totalproyectos;
         $grupos = Grupo::all();
 
         $data = [];
-        foreach ($grupos as $grupo) {
+        foreach ($ejes as $eje) {
 
-            $proyectosporeje = Proyecto::where('grupo_id',$grupo->id)->get()->count();
+            $idgrupos = Grupo::where("eje_id",$eje->id)->get()->pluck("id");
+
+            $proyectosporeje = Proyecto::whereIn('grupo_id',$idgrupos)->where('year', $year)->get()->count();
             
             $porcentaje = ($proyectosporeje * 100) / $totalproyectos;
             $data[]       = [
-                'name'         => $grupo->name,
+                'name'         => $eje->name,
                 'y'      => $porcentaje,
             ];
         }
+        // foreach ($grupos as $grupo) {
+
+        //     $proyectosporeje = Proyecto::where('grupo_id',$grupo->id)->get()->count();
             
-        $proyectosiso = Proyecto::where('grupo_id',12)->pluck('name');
-        $proyectosisototal = Proyecto::where('grupo_id',12)->get();
+        //     $porcentaje = ($proyectosporeje * 100) / $totalproyectos;
+        //     $data[]       = [
+        //         'name'         => $grupo->name,
+        //         'y'      => $porcentaje,
+        //     ];
+        // }
+            
+        $proyectosiso = Proyecto::where('grupo_id',12)->where('year',$year)->pluck('name');
+        $proyectosisototal = Proyecto::where('grupo_id',12)->where('year',$year)->get();
         $i = 0;
         $dataproyectosiso = [];
         
@@ -102,7 +116,7 @@ class HomeController extends Controller
 
 
         
-        $year = date("Y");
+        
         $proyectostotalbyyear = Proyecto::whereNotIn("estadoproyecto_id",[3,4])->where("year",$year)->get()->count();
         $proyectosconmedicion = Proyecto::whereNotIn("estadoproyecto_id",[3,4])->where("measuring", 1)->where("year",$year)->get();
         $proyectossatisfactorios = Proyecto::whereNotIn("estadoproyecto_id",[3,4])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->get()->count();
