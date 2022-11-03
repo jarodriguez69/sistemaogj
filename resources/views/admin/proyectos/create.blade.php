@@ -12,9 +12,6 @@
         <div class="card-body">
            <form action="{{route('admin.proyectos.store')}}" method="POST">
                 @csrf
-                <input type="hidden" class="form-control" name="estadoproyecto_id" id="estadoproyecto_id" aria-describedby="estadoproyecto_id" placeholder="Ingrese Estado" value="1">
-                
-                
                 <div class="form-group">
                     <label for="name">Nombre</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="name" placeholder="Ingrese Nombre" value={{old('name')}}>
@@ -129,6 +126,16 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
+                    <label for="estadoproyecto_id">Estado</label>
+                    <select class="form-control" name="estadoproyecto_id">
+                      
+                        @foreach ($estados as $estado)
+                            <option value="{{$estado->id}}">{{$estado->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="recursos">Recursos y/o Adquisiciones</label>
                     <textarea name="recursos" class="form-control" cols="30" rows="5" placeholder="Ingrese Recursos">{{old('recursos')}}</textarea>
                     @error('recursos')
@@ -178,7 +185,7 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="user_id">Lider del Proyecto</label>
+                    <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">
                       
                         @foreach ($users as $user)
@@ -188,7 +195,7 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
-                    <label for="equipo_id">Equipo de Proyecto</label>
+                    <label for="equipo_id">Equipo Operativo</label>
                         @foreach ($equipos as $equipo)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="flexCheckDefaultPartes{{$equipo->id}}" name="equipos[]" value="{{$equipo->id}}">

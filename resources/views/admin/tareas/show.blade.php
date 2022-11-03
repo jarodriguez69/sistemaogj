@@ -1,8 +1,8 @@
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Tareas')
+@section('title', 'Oficina de Gestión Judicial | Actividades')
 
 @section('content_header')
-    <h1>Tarea - {{$tarea->name}}</h1>
+    <h1>Actividad - {{$tarea->name}}</h1>
 @endsection
 
 @section('content')

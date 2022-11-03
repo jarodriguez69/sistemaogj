@@ -88,11 +88,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="user">Lider del Proyecto</label>
+                    <label for="user">Responsable de Proyecto</label>
                     <input type="text" class="form-control" name="user" aria-describedby="user" value="{{App\Models\User::find($proyecto->user_id) != null ? App\Models\User::find($proyecto->user_id)->name : ""}}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="equipo_id">Equipo de Proyecto</label>
+                    <label for="equipo_id">Equipo Operativo</label>
                         @foreach ($equipos as $equipo)
                                 <div class="form-check">
                                 

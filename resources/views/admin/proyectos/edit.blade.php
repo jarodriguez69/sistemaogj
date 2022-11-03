@@ -198,7 +198,7 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
-                    <label for="user_id">Lider del Proyecto</label>
+                    <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">
                       
                         @foreach ($users as $user)
@@ -208,7 +208,7 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
     
                 <div class="form-group">
-                    <label for="equipo_id">Equipo de Proyecto</label>
+                    <label for="equipo_id">Equipo Operativo</label>
                         @foreach ($equipos as $equipo)
                                 <div class="form-check">
                                 

@@ -67,12 +67,13 @@ class ProyectoController extends Controller
 
     public function create()
     {
+        $estados = EstadoProyecto::where('enabled',true)->get();
         $grupos = Grupo::where('enabled',true)->get();
         $users = User::all();
         $equipos = User::all();
         $partes = Parte::where('enabled',true)->get();
         $poas = Operativa::where('enabled',0)->get();//finalizada=1 Nofinalizada=0
-        return view('admin.proyectos.create', compact('grupos','users','equipos','partes','poas'));
+        return view('admin.proyectos.create', compact('grupos','users','equipos','partes','poas','estados'));
     }
 
     public function store(request $request)

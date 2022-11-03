@@ -1,12 +1,12 @@
 {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
 
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Tareas')
+@section('title', 'Oficina de Gestión Judicial | Actividades')
 @section('plugins.Datatables', true)
 
 @section('content_header')
     <a href="{{route('admin.tareas.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-    <h1>Tareas Planificadas</h1>
+    <h1>Actividades Planificadas</h1>
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tarea Planificada</th>
+                        <th>Actividad Planificada</th>
                         <th>Proyecto</th>
                         <th>Inicio</th>
                         <th>Fin</th>

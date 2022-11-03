@@ -1,11 +1,11 @@
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Tareas')
+@section('title', 'Oficina de Gestión Judicial | Actividades')
 @section('plugins.Datatables', true)
 @section('css')
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui/jquery-ui.min.css')}}">
 @endsection
 @section('content_header')
-    <h1>Crear Tarea</h1>
+    <h1>Crear Actividad</h1>
 @endsection
 
 
