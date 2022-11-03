@@ -88,6 +88,32 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="comment">Descripci&oacute;n</label>
+                    <textarea name="comment" class="form-control" cols="30" rows="5" readonly>{{$proyecto->comment}}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="seguimiento">Riesgos</label>
+                    <a class="form-control" href="{{$proyecto->risk}}" target='_blank'>{{$proyecto->risk}}</a>
+                </div>
+
+                <div class="form-group">
+                    <label for="otherrisk">Otros Riesgos</label>
+                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" readonly>{{$proyecto->otherrisk}}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="chance">Oportunidades de Mejora</label>
+                    <a class="form-control" href="{{$proyecto->chance}}" target='_blank'>{{$proyecto->chance}}</a>
+                </div>
+
+                <div class="form-group">
+                    <label for="otherchance">Otras Oportunidades de Mejora</label>
+                    <textarea name="otherchance" class="form-control" cols="30" rows="5" readonly>{{$proyecto->otherchance}}</textarea>
+                </div>
+
+                
+                <div class="form-group">
                     <label for="user">Responsable de Proyecto</label>
                     <input type="text" class="form-control" name="user" aria-describedby="user" value="{{App\Models\User::find($proyecto->user_id) != null ? App\Models\User::find($proyecto->user_id)->name : ""}}" readonly>
                 </div>

@@ -198,6 +198,46 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
+                    <label for="comment">Descripci&oacute;n</label> 
+                    <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('comment',$proyecto->comment)}}</textarea>
+                    @error('comment')
+                        <small id="commentId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="risk">Riesgos</label> 
+                    <a class="form-control" href="{{$proyecto->risk}}" target='_blank'>{{$proyecto->risk}}</a>
+                    @error('risk')
+                        <small id="riskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherrisk">Otros Riesgos</label> 
+                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" placeholder="Ingrese Otros Riesgos">{{old('otherrisk',$proyecto->otherrisk)}}</textarea>
+                    @error('otherrisk')
+                        <small id="otherriskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="chance">Oportunidades de Mejora</label> 
+                    <a class="form-control" href="{{$proyecto->chance}}" target='_blank'>{{$proyecto->chance}}</a>
+                    @error('chance')
+                        <small id="chanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherchance">Otras Oportunidades de Mejora</label> 
+                    <textarea name="otherchance" class="form-control" cols="30" rows="5" placeholder="Ingrese Otras Oportunidades">{{old('otherchance',$proyecto->otherchance)}}</textarea>
+                    @error('otherchance')
+                        <small id="otherchanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">
                       

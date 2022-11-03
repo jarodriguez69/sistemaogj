@@ -48,7 +48,7 @@ Obteniendo como resultados:
 •	Promedio mensual de sentencias Definitivas dictadas desde el 01/02/2022 hasta el 31/08/2022: 14,42
 
 Se concluye que la unidad requiere de la implementación de POA para mejorar su desempeño."><i class="fas fa-info-circle"></i></a> 
-                    <textarea name="description" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('description')}}</textarea>
+                    <textarea name="description" class="form-control" cols="30" rows="5" placeholder="Ingrese Diagnóstico">{{old('description')}}</textarea>
                     @error('description')
                         <small id="descriptionId" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
@@ -184,6 +184,47 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                         <small class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
+                
+                <div class="form-group">
+                    <label for="comment">Descripci&oacute;n</label> 
+                    <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('comment')}}</textarea>
+                    @error('comment')
+                        <small id="commentId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="risk">Riesgos</label> 
+                    <input type="text" class="form-control" name="risk" id="risk" aria-describedby="risk" placeholder="Ingrese Riesgos" value="{{old('risk')}}">
+                    @error('risk')
+                        <small id="riskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherrisk">Otros Riesgos</label> 
+                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" placeholder="Ingrese Otros Riesgos">{{old('otherrisk')}}</textarea>
+                    @error('otherrisk')
+                        <small id="otherriskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="chance">Oportunidades de Mejora</label> 
+                    <input type="text" class="form-control" name="chance" id="chance" aria-describedby="chance" placeholder="Ingrese Oportunidades" value="{{old('chance')}}">
+                    @error('chance')
+                        <small id="chanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherchance">Otras Oportunidades de Mejora</label> 
+                    <textarea name="otherchance" class="form-control" cols="30" rows="5" placeholder="Ingrese Otras Oportunidades">{{old('otherchance')}}</textarea>
+                    @error('otherchance')
+                        <small id="otherchanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">

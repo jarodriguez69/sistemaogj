@@ -34,6 +34,11 @@ class CreateProyectosTable extends Migration
             $table->unsignedBigInteger('year')->nullable();;
             $table->boolean('measuring');
             $table->boolean('satisfactorio');
+            $table->text('comment');
+            $table->text('risk');
+            $table->text('otherrisk');
+            $table->text('chance');
+            $table->text('otherchance');
             $table->timestamps();
 
             $table->foreign('grupo_id')->references('id')->on('grupos');//->onDelete("cascade");
