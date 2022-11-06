@@ -15,28 +15,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
-                    <input type="text" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" value="{{$proyecto->diagnostico != null ? date('Y-m-d', strtotime($proyecto->diagnostico)):""}}" readonly>
+                    <label for="comment">Descripci&oacute;n</label>
+                    <textarea name="comment" class="form-control" cols="30" rows="5" readonly>{{$proyecto->comment}}</textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Diagn&oacute;stico</label>
-                    <textarea name="description" class="form-control" cols="30" rows="5" readonly>{{$proyecto->description}}</textarea>
+                    <label for="operativa_id">Planificación Operativa</label>
+                    <input type="text" class="form-control" name="operativa_id" aria-describedby="operativa_id" value="{{$proyecto->objetivos2->operativas->name}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivo_id">Objetivo</label>
+                    <input type="text" class="form-control" name="objetivo_id" aria-describedby="objetivo_id" value="{{$proyecto->objetivos2->name}}" readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Objetivos Espec&iacute;ficos</label>
                     <textarea name="description" class="form-control" cols="30" rows="5" readonly>{{$proyecto->objetivos}}</textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="indicador">Indicador</label>
-                    <input type="text" class="form-control" name="indicador" id="indicador" value="{{$proyecto->indicador}}" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="meta">Meta</label>
-                    <input type="text" class="form-control" name="meta" id="meta" value="{{$proyecto->meta}}" readonly>
                 </div>
 
                 <div class="form-group">
@@ -48,48 +43,30 @@
                     <label for="end">Fecha de Finalización</label>
                     <input type="text" class="form-control" name="end" aria-describedby="end" value="{{$proyecto->end != null ? date('Y-m-d', strtotime($proyecto->end)):""}}" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="end">Fin Real</label>
-                    <input type="text" class="form-control" name="real" aria-describedby="real" value="{{$proyecto->real != null ? date('Y-m-d', strtotime($proyecto->real)):""}}" readonly>
-                </div>
+
                 <div class="form-group">
                     <label for="seguimiento">Fecha de Seguimiento</label>
                     <input type="text" class="form-control" name="seguimiento" aria-describedby="seguimiento" value="{{$proyecto->seguimiento != null ? date('Y-m-d', strtotime($proyecto->seguimiento)):""}}" readonly>
                 </div>
+
                 <div class="form-group">
-                    <label for="end">Grupo</label>
-                    <input type="text" class="form-control" name="grupo" aria-describedby="grupo"  value="{{App\Models\Grupo::find($proyecto->grupo_id) != null ? App\Models\Grupo::find($proyecto->grupo_id)->name : ""}}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="end">Estado</label>
-                    <input type="text" class="form-control" name="estado" aria-describedby="estado" value="{{App\Models\EstadoProyecto::find($proyecto->estadoproyecto_id) != null ? App\Models\EstadoProyecto::find($proyecto->estadoproyecto_id)->name : ""}}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="recursos">Recursos y/o Adquisiciones</label>
-                    <textarea name="recursos" class="form-control" cols="30" rows="5" readonly>{{$proyecto->recursos}}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="operativa_id">Planificación Operativa</label>
-                    <input type="text" class="form-control" name="operativa_id" aria-describedby="operativa_id" value="{{$proyecto->objetivos2->operativas->name}}" readonly>
+                    <label for="end">Fin Real</label>
+                    <input type="text" class="form-control" name="real" aria-describedby="real" value="{{$proyecto->real != null ? date('Y-m-d', strtotime($proyecto->real)):""}}" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="objetivo_id">Objetivo</label>
-                    <input type="text" class="form-control" name="objetivo_id" aria-describedby="objetivo_id" value="{{$proyecto->objetivos2->name}}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="measuring">¿Tiene Medici&oacute;n?</label>
-                    <input type="text" class="form-control" name="measuring" aria-describedby="measuring" value="{{$proyecto->measuring ? "Si" : "No"}}" readonly>
+                    <label for="year">Año</label>
+                    <input type="text" class="form-control" name="year" id="year" value="{{$proyecto->year}}" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="satisfactorio">¿Es Satisfactoria?</label>
-                    <input type="text" class="form-control" name="satisfactorio" aria-describedby="satisfactorio" value="{{$proyecto->satisfactorio ? "Si" : "No"}}" readonly>
+                    <label for="indicador">Indicador</label>
+                    <input type="text" class="form-control" name="indicador" id="indicador" value="{{$proyecto->indicador}}" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="comment">Descripci&oacute;n</label>
-                    <textarea name="comment" class="form-control" cols="30" rows="5" readonly>{{$proyecto->comment}}</textarea>
+                    <label for="meta">Meta</label>
+                    <input type="text" class="form-control" name="meta" id="meta" value="{{$proyecto->meta}}" readonly>
                 </div>
 
                 <div class="form-group">
@@ -112,7 +89,39 @@
                     <textarea name="otherchance" class="form-control" cols="30" rows="5" readonly>{{$proyecto->otherchance}}</textarea>
                 </div>
 
+                <div class="form-group">
+                    <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
+                    <input type="text" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" value="{{$proyecto->diagnostico != null ? date('Y-m-d', strtotime($proyecto->diagnostico)):""}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Diagn&oacute;stico</label>
+                    <textarea name="description" class="form-control" cols="30" rows="5" readonly>{{$proyecto->description}}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="end">Grupo</label>
+                    <input type="text" class="form-control" name="grupo" aria-describedby="grupo"  value="{{App\Models\Grupo::find($proyecto->grupo_id) != null ? App\Models\Grupo::find($proyecto->grupo_id)->name : ""}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="end">Estado</label>
+                    <input type="text" class="form-control" name="estado" aria-describedby="estado" value="{{App\Models\EstadoProyecto::find($proyecto->estadoproyecto_id) != null ? App\Models\EstadoProyecto::find($proyecto->estadoproyecto_id)->name : ""}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="recursos">Recursos y/o Adquisiciones</label>
+                    <textarea name="recursos" class="form-control" cols="30" rows="5" readonly>{{$proyecto->recursos}}</textarea>
+                </div>
                 
+                <div class="form-group">
+                    <label for="measuring">¿Tiene Medici&oacute;n?</label>
+                    <input type="text" class="form-control" name="measuring" aria-describedby="measuring" value="{{$proyecto->measuring ? "Si" : "No"}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="satisfactorio">¿Es Satisfactoria?</label>
+                    <input type="text" class="form-control" name="satisfactorio" aria-describedby="satisfactorio" value="{{$proyecto->satisfactorio ? "Si" : "No"}}" readonly>
+                </div>
+
                 <div class="form-group">
                     <label for="user">Responsable de Proyecto</label>
                     <input type="text" class="form-control" name="user" aria-describedby="user" value="{{App\Models\User::find($proyecto->user_id) != null ? App\Models\User::find($proyecto->user_id)->name : ""}}" readonly>

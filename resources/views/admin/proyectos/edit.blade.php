@@ -23,6 +23,134 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="comment">Descripci&oacute;n</label> 
+                    <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('comment',$proyecto->comment)}}</textarea>
+                    @error('comment')
+                        <small id="commentId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="poa_id">Planificación Operativa</label>
+                    <select class="form-control" id="poa_id">
+                        <option value="0">(Seleccione POA)</option>
+                        @foreach ($poas as $poa)
+                            <option value="{{$poa->id}}" {{$proyecto->objetivos2->operativas->id==$poa->id ? "selected":""}}>{{$poa->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivo_id">Objetivo</label>
+                    <select class="form-control" name="objetivo_id" id="objetivo_id">
+                        <option value="0">(Seleccione Objetivo)</option>
+                        @foreach ($objetivosdelpoa as $objetivodelpoa)
+                            <option value="{{$objetivodelpoa->id}}" {{$proyecto->objetivos2->id==$objetivodelpoa->id ? "selected":""}}>{{$objetivodelpoa->name}}</option>
+                        @endforeach
+                    </select> 
+                    @error('objetivo_id')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivos">Objetivos Espec&iacute;ficos</label>
+                    <textarea name="objetivos" class="form-control" cols="30" rows="5" placeholder="Ingrese Objetivos Especificos">{{old('objetivos', $proyecto->objetivos)}}</textarea>
+                    @error('objetivos')
+                        <small id="objetivosId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="begin">Fecha de Inicio</label>
+                    <input type="text" class="form-control" aria-describedby="begin"  value="{{$proyecto->begin != null ? date('d-m-Y', strtotime($proyecto->begin)) : ""}}" readonly>
+                    
+                    @error('begin')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+    
+                <div class="form-group">
+                    <label for="end">Fecha de Finalizaci&oacute;n</label>
+                    <input type="text" class="form-control" aria-describedby="end" value="{{($proyecto->end != null ? date('d-m-Y', strtotime($proyecto->end)) : "")}}" readonly>
+                    @error('end')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+    
+                <div class="form-group">
+                    <label for="seguimiento">Fecha de Seguimiento</label>
+                    <input type="date" class="form-control" name="seguimiento" aria-describedby="seguimiento" placeholder="Fecha de Seguimiento" value="{{old('seguimiento', $proyecto->seguimiento != null ? date('Y-m-d', strtotime($proyecto->seguimiento)) : "")}}">
+                    @error('seguimiento')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="real">Fin Real</label>
+                    <input type="date" class="form-control" name="real" aria-describedby="real" placeholder="Fecha de Fin Real" value="{{old('real', $proyecto->real != null ? date('Y-m-d', strtotime($proyecto->real)) : "")}}">
+                    @error('end')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Año</label>
+                    <input type="number" class="form-control" name="year" id="year" aria-describedby="meta" placeholder="Ingrese Año" value={{old('year', $proyecto->year)}}>
+                    @error('year')
+                        <small id="yearHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="indicador">Indicador</label>
+                    <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value="{{old('indicador', $proyecto->indicador)}}">
+                    @error('indicador')
+                        <small id="indicadorHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+    
+                <div class="form-group">
+                    <label for="meta">Meta</label>
+                    <input type="text" class="form-control" name="meta" id="meta" aria-describedby="meta" placeholder="Ingrese Meta" value="{{old('meta', $proyecto->meta)}}">
+                    @error('meta')
+                        <small id="metaHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="risk">Riesgos</label> 
+                    <a class="form-control" href="{{$proyecto->risk}}" target='_blank'>{{$proyecto->risk}}</a>
+                    @error('risk')
+                        <small id="riskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherrisk">Otros Riesgos</label> 
+                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" placeholder="Ingrese Otros Riesgos">{{old('otherrisk',$proyecto->otherrisk)}}</textarea>
+                    @error('otherrisk')
+                        <small id="otherriskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="chance">Oportunidades de Mejora</label> 
+                    <a class="form-control" href="{{$proyecto->chance}}" target='_blank'>{{$proyecto->chance}}</a>
+                    @error('chance')
+                        <small id="chanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherchance">Otras Oportunidades de Mejora</label> 
+                    <textarea name="otherchance" class="form-control" cols="30" rows="5" placeholder="Ingrese Otras Oportunidades">{{old('otherchance',$proyecto->otherchance)}}</textarea>
+                    @error('otherchance')
+                        <small id="otherchanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
                     <input type="date" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" placeholder="Fecha de Diagnóstico" value="{{$proyecto->diagnostico != null ? date('Y-m-d', strtotime($proyecto->diagnostico)):""}}">
                     @error('diagnostico')
@@ -52,71 +180,6 @@ Obteniendo como resultados:
 Se concluye que la unidad requiere de la implementación de POA para mejorar su desempeño."><i class="fas fa-info-circle"></i></a> 
                     <textarea name="description" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('description',$proyecto->description)}}</textarea>
                     @error('description')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="objetivos">Objetivos Espec&iacute;ficos</label>
-                    <textarea name="objetivos" class="form-control" cols="30" rows="5" placeholder="Ingrese Objetivos Especificos">{{old('objetivos', $proyecto->objetivos)}}</textarea>
-                    @error('objetivos')
-                        <small id="objetivosId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="year">Año</label>
-                    <input type="number" class="form-control" name="year" id="year" aria-describedby="meta" placeholder="Ingrese Año" value={{old('year', $proyecto->year)}}>
-                    @error('year')
-                        <small id="yearHelp" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="indicador">Indicador</label>
-                    <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value="{{old('indicador', $proyecto->indicador)}}">
-                    @error('indicador')
-                        <small id="indicadorHelp" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-    
-                <div class="form-group">
-                    <label for="meta">Meta</label>
-                    <input type="text" class="form-control" name="meta" id="meta" aria-describedby="meta" placeholder="Ingrese Meta" value="{{old('meta', $proyecto->meta)}}">
-                    @error('meta')
-                        <small id="metaHelp" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="begin">Fecha de Inicio</label>
-                    <input type="text" class="form-control" aria-describedby="begin"  value="{{$proyecto->begin != null ? date('d-m-Y', strtotime($proyecto->begin)) : ""}}" readonly>
-                    
-                    @error('begin')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-    
-                <div class="form-group">
-                    <label for="end">Fecha de Finalizaci&oacute;n</label>
-                    <input type="text" class="form-control" aria-describedby="end" value="{{($proyecto->end != null ? date('d-m-Y', strtotime($proyecto->end)) : "")}}" readonly>
-                    @error('end')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-    
-                <div class="form-group">
-                    <label for="real">Fin Real</label>
-                    <input type="date" class="form-control" name="real" aria-describedby="real" placeholder="Fecha de Fin Real" value="{{old('real', $proyecto->real != null ? date('Y-m-d', strtotime($proyecto->real)) : "")}}">
-                    @error('end')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-    
-                <div class="form-group">
-                    <label for="seguimiento">Fecha de Seguimiento</label>
-                    <input type="date" class="form-control" name="seguimiento" aria-describedby="seguimiento" placeholder="Fecha de Seguimiento" value="{{old('seguimiento', $proyecto->seguimiento != null ? date('Y-m-d', strtotime($proyecto->seguimiento)) : "")}}">
-                    @error('seguimiento')
                         <small class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
@@ -153,29 +216,6 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
-                    <label for="poa_id">Planificación Operativa</label>
-                    <select class="form-control" id="poa_id">
-                        <option value="0">(Seleccione POA)</option>
-                        @foreach ($poas as $poa)
-                            <option value="{{$poa->id}}" {{$proyecto->objetivos2->operativas->id==$poa->id ? "selected":""}}>{{$poa->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="objetivo_id">Objetivo</label>
-                    <select class="form-control" name="objetivo_id" id="objetivo_id">
-                        <option value="0">(Seleccione Objetivo)</option>
-                        @foreach ($objetivosdelpoa as $objetivodelpoa)
-                            <option value="{{$objetivodelpoa->id}}" {{$proyecto->objetivos2->id==$objetivodelpoa->id ? "selected":""}}>{{$objetivodelpoa->name}}</option>
-                        @endforeach
-                    </select> 
-                    @error('objetivo_id')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-                
-                <div class="form-group">
                     <label for="measuring">¿Tiene Medici&oacute;n?</label>
                     <select class="form-control" name="measuring" id="measuring">
                         <option value="0" {{!$proyecto->measuring ? "selected" : ""}}>No</option>
@@ -194,46 +234,6 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                     </select> 
                     @error('satisfactorio')
                         <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="comment">Descripci&oacute;n</label> 
-                    <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('comment',$proyecto->comment)}}</textarea>
-                    @error('comment')
-                        <small id="commentId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="risk">Riesgos</label> 
-                    <a class="form-control" href="{{$proyecto->risk}}" target='_blank'>{{$proyecto->risk}}</a>
-                    @error('risk')
-                        <small id="riskId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="otherrisk">Otros Riesgos</label> 
-                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" placeholder="Ingrese Otros Riesgos">{{old('otherrisk',$proyecto->otherrisk)}}</textarea>
-                    @error('otherrisk')
-                        <small id="otherriskId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="chance">Oportunidades de Mejora</label> 
-                    <a class="form-control" href="{{$proyecto->chance}}" target='_blank'>{{$proyecto->chance}}</a>
-                    @error('chance')
-                        <small id="chanceId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="otherchance">Otras Oportunidades de Mejora</label> 
-                    <textarea name="otherchance" class="form-control" cols="30" rows="5" placeholder="Ingrese Otras Oportunidades">{{old('otherchance',$proyecto->otherchance)}}</textarea>
-                    @error('otherchance')
-                        <small id="otherchanceId" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
 

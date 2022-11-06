@@ -19,6 +19,124 @@
                         <small id="emailHelp" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    <label for="comment">Descripci&oacute;n</label> 
+                    <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('comment')}}</textarea>
+                    @error('comment')
+                        <small id="commentId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="poa_id">Planificación Operativa</label>
+                    <select class="form-control" id="poa_id">
+                        <option value="-1">(Seleccione POA)</option>
+                        @foreach ($poas as $poa)
+                            <option value="{{$poa->id}}">{{$poa->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivo_id">Objetivo</label>
+                    <select class="form-control" name="objetivo_id" id="objetivo_id">
+                        <option value="0">(Seleccione Objetivo)</option>
+                    </select> 
+                    @error('objetivo_id')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivos">Objetivos Espec&iacute;ficos</label>
+                    <textarea name="objetivos" class="form-control" cols="30" rows="5" placeholder="Ingrese Objetivos Especificos">{{old('objetivos')}}</textarea>
+                    @error('objetivos')
+                        <small id="objetivosId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="begin">Fecha de Inicio</label>
+                    <input type="date" class="form-control" id="begin" name="begin" aria-describedby="begin" placeholder="Fecha de Inicio" value="{{old('begin')}}">
+                    
+                    @error('begin')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="end">Fecha de Finalizaci&oacute;n</label>
+                    <input type="date" class="form-control" id="end" name="end" aria-describedby="end" placeholder="Fecha de Fin" value="{{old('end')}}">
+                    @error('end')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="seguimiento">Fecha de Seguimiento</label>
+                    <input type="date" class="form-control" id="seguimiento" name="seguimiento" aria-describedby="seguimiento" placeholder="Fecha de Seguimiento" value="{{old('seguimiento')}}">
+                    @error('seguimiento')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Año</label>
+                    <input type="number" class="form-control" name="year" id="year" aria-describedby="meta" placeholder="Ingrese Año" value={{old('year')}}>
+                    @error('year')
+                        <small id="yearHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="indicador">Indicador</label>
+                    <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value={{old('indicador')}}>
+                    @error('indicador')
+                        <small id="indicadorHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="meta">Meta</label>
+                    <input type="text" class="form-control" name="meta" id="meta" aria-describedby="meta" placeholder="Ingrese Meta" value={{old('meta')}}>
+                    @error('meta')
+                        <small id="metaHelp" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="risk">Riesgos</label> 
+                    <input type="text" class="form-control" name="risk" id="risk" aria-describedby="risk" placeholder="Ingrese Riesgos" value="{{old('risk')}}">
+                    @error('risk')
+                        <small id="riskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherrisk">Otros Riesgos</label> 
+                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" placeholder="Ingrese Otros Riesgos">{{old('otherrisk')}}</textarea>
+                    @error('otherrisk')
+                        <small id="otherriskId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="chance">Oportunidades de Mejora</label> 
+                    <input type="text" class="form-control" name="chance" id="chance" aria-describedby="chance" placeholder="Ingrese Oportunidades" value="{{old('chance')}}">
+                    @error('chance')
+                        <small id="chanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="otherchance">Otras Oportunidades de Mejora</label> 
+                    <textarea name="otherchance" class="form-control" cols="30" rows="5" placeholder="Ingrese Otras Oportunidades">{{old('otherchance')}}</textarea>
+                    @error('otherchance')
+                        <small id="otherchanceId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="diagnostico">Fecha de Diagn&oacute;stico</label>
                     <input type="date" class="form-control" id="diagnostico" name="diagnostico" aria-describedby="diagnostico" placeholder="Fecha de Diagnóstico" value="{{old('diagnostico')}}">
@@ -55,64 +173,6 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
                 
                 <div class="form-group">
-                    <label for="objetivos">Objetivos Espec&iacute;ficos</label>
-                    <textarea name="objetivos" class="form-control" cols="30" rows="5" placeholder="Ingrese Objetivos Especificos">{{old('objetivos')}}</textarea>
-                    @error('objetivos')
-                        <small id="objetivosId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="year">Año</label>
-                    <input type="number" class="form-control" name="year" id="year" aria-describedby="meta" placeholder="Ingrese Año" value={{old('year')}}>
-                    @error('year')
-                        <small id="yearHelp" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="indicador">Indicador</label>
-                    <input type="text" class="form-control" name="indicador" id="indicador" aria-describedby="indicador" placeholder="Ingrese Indicador" value={{old('indicador')}}>
-                    @error('indicador')
-                        <small id="indicadorHelp" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="meta">Meta</label>
-                    <input type="text" class="form-control" name="meta" id="meta" aria-describedby="meta" placeholder="Ingrese Meta" value={{old('meta')}}>
-                    @error('meta')
-                        <small id="metaHelp" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="begin">Fecha de Inicio</label>
-                    <input type="date" class="form-control" id="begin" name="begin" aria-describedby="begin" placeholder="Fecha de Inicio" value="{{old('begin')}}">
-                    
-                    @error('begin')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="end">Fecha de Finalizaci&oacute;n</label>
-                    <input type="date" class="form-control" id="end" name="end" aria-describedby="end" placeholder="Fecha de Fin" value="{{old('end')}}">
-                    @error('end')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="seguimiento">Fecha de Seguimiento</label>
-                    <input type="date" class="form-control" id="seguimiento" name="seguimiento" aria-describedby="seguimiento" placeholder="Fecha de Seguimiento" value="{{old('seguimiento')}}">
-                    @error('seguimiento')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                
-                <div class="form-group">
                     <label for="grupo_id">Grupo</label>
                     <select class="form-control" name="grupo_id">
                       
@@ -144,26 +204,6 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
-                    <label for="poa_id">Planificación Operativa</label>
-                    <select class="form-control" id="poa_id">
-                        <option value="-1">(Seleccione POA)</option>
-                        @foreach ($poas as $poa)
-                            <option value="{{$poa->id}}">{{$poa->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="objetivo_id">Objetivo</label>
-                    <select class="form-control" name="objetivo_id" id="objetivo_id">
-                        <option value="0">(Seleccione Objetivo)</option>
-                    </select> 
-                    @error('objetivo_id')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="measuring">¿Tiene Medici&oacute;n?</label>
                     <select class="form-control" name="measuring" id="measuring">
                         <option value="0">No</option>
@@ -182,46 +222,6 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                     </select> 
                     @error('satisfactorio')
                         <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-                
-                <div class="form-group">
-                    <label for="comment">Descripci&oacute;n</label> 
-                    <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Ingrese Descripción">{{old('comment')}}</textarea>
-                    @error('comment')
-                        <small id="commentId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="risk">Riesgos</label> 
-                    <input type="text" class="form-control" name="risk" id="risk" aria-describedby="risk" placeholder="Ingrese Riesgos" value="{{old('risk')}}">
-                    @error('risk')
-                        <small id="riskId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="otherrisk">Otros Riesgos</label> 
-                    <textarea name="otherrisk" class="form-control" cols="30" rows="5" placeholder="Ingrese Otros Riesgos">{{old('otherrisk')}}</textarea>
-                    @error('otherrisk')
-                        <small id="otherriskId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="chance">Oportunidades de Mejora</label> 
-                    <input type="text" class="form-control" name="chance" id="chance" aria-describedby="chance" placeholder="Ingrese Oportunidades" value="{{old('chance')}}">
-                    @error('chance')
-                        <small id="chanceId" class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="otherchance">Otras Oportunidades de Mejora</label> 
-                    <textarea name="otherchance" class="form-control" cols="30" rows="5" placeholder="Ingrese Otras Oportunidades">{{old('otherchance')}}</textarea>
-                    @error('otherchance')
-                        <small id="otherchanceId" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
 
