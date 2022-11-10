@@ -39,9 +39,12 @@ class ObjetivoController extends Controller
         $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',2)->get()->count();
         $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',1)->get()->count();
         $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',2)->get()->count();
+        $estrategicosexcluido = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',3)->get()->count();
+        $operativosexcluido = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',3)->get()->count();
+        $calidadexcluido = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',3)->get()->count();
 
         
-        return view('admin.objetivos.index', compact("estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado"));
+        return view('admin.objetivos.index', compact("estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado", "estrategicosexcluido", "operativosexcluido", "calidadexcluido"));
     }
 
     
