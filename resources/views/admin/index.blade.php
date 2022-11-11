@@ -123,7 +123,7 @@
             <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center; float: none; font-size: 2.1rem;">{{$proyectostotalbyyear}}</h5>
-                    <p class="card-text" style="text-align: center;">Total Año</p>
+                    <p class="card-text" style="text-align: center;">Total Factibles Medici&oacute;n</p>
                     {{-- <a href="#" class="btn btn-primary"></a> --}}
                   </div>
             </div>
