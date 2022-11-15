@@ -41,10 +41,11 @@ class Objetivo extends Model
         return $this->belongsToMany(Desarrollo::class,'objetivo_desarrollo');
     }
 
-    //Relación uno a muchos
+
+    //Relación muchos a muchos
     public function proyectos()
     {
-        return $this->hasMany(Proyecto::class);
+        return $this->belongsToMany(Proyecto::class);
     }
     //Relacion muchos a muchos
     //en el modelo post

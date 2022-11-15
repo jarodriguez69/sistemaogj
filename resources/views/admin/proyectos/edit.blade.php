@@ -35,22 +35,23 @@
                     <select class="form-control" id="poa_id">
                         <option value="0">(Seleccione POA)</option>
                         @foreach ($poas as $poa)
-                            <option value="{{$poa->id}}" {{$proyecto->objetivos2->operativas->id==$poa->id ? "selected":""}}>{{$poa->name}}</option>
+                            <option value="{{$poa->id}}" {{$proyecto->objetivos2->first()->operativas->id==$poa->id ? "selected":""}}>{{$poa->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="objetivo_id">Objetivo</label>
-                    <select class="form-control" name="objetivo_id" id="objetivo_id">
-                        <option value="0">(Seleccione Objetivo)</option>
+                    <label for="objetivos_id">Objetivos</label>
+                    <div id="objetivos_id">
                         @foreach ($objetivosdelpoa as $objetivodelpoa)
-                            <option value="{{$objetivodelpoa->id}}" {{$proyecto->objetivos2->id==$objetivodelpoa->id ? "selected":""}}>{{$objetivodelpoa->name}}</option>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="flexCheckDefaultObjetivos{{$objetivodelpoa->id}}" name="objetivo[]" value="{{$objetivodelpoa->id}}" {{ in_array($objetivodelpoa->id, collect($proyecto->objetivos2)->pluck('id')->toArray()) ? "checked":""}}> 
+                                    <label class="form-check-label" for="flexCheckDefaultObjetivos{{$objetivodelpoa->id}}">
+                                        {{$objetivodelpoa->name}}
+                                    </label>
+                                </div>
                         @endforeach
-                    </select> 
-                    @error('objetivo_id')
-                        <small class="form-text text-danger">*{{$message}}</small>    
-                    @enderror
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -238,6 +239,28 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
+                    <label for="innovation">¿Es Innovaci&oacute;n?</label>
+                    <select class="form-control" name="innovation" id="innovation">
+                        <option value="0" {{!$proyecto->innovation ? "selected" : ""}}>No</option>
+                        <option value="1" {{$proyecto->innovation ? "selected" : ""}}>Si</option>
+                    </select> 
+                    @error('innovation')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="benchmarking">¿Es Benchmarking?</label>
+                    <select class="form-control" name="benchmarking" id="benchmarking">
+                        <option value="0" {{!$proyecto->benchmarking ? "selected" : ""}}>No</option>
+                        <option value="1" {{$proyecto->benchmarking ? "selected" : ""}}>Si</option>
+                    </select> 
+                    @error('benchmarking')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">
                       
@@ -300,11 +323,12 @@ $("#poa_id").change(function(){
       },
       success: function(data){
 
-          $('#objetivo_id').html("");
-          $('#objetivo_id').append('<option value="-1">(Seleccione Objetivo)</option>');
-          data.forEach(function(obj, index) {
-              $('#objetivo_id').append('<option value="' + obj.id + '">'+obj.label+'</option>');
-          });
+        $('#objetivos_id').html("");
+                    data.forEach(function(obj, index) {
+                        $('#objetivos_id').append('<div class="form-check"><input class="form-check-input" type="checkbox" id="flexCheckDefaultObjetivos' + obj.id + '" name="objetivo[]" value="' + obj.id + '"> <label class="form-check-label" for="flexCheckDefaultObjetivos' + obj.id + '">'+obj.label+'</label></div>');
+                    });
+
+
       }
   });
 });

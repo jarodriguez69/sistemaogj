@@ -32,6 +32,12 @@
             
         </div>
 
+        <div class="card-body" style="text-align: center;">
+        <a target="_blank" href="https://sites.google.com/view/odsoficina-de-gestion-judicial/inicio?authuser=1">
+            <img src="ods-circular.jpg" alt="" max-width: 50%;>
+        </a>   
+        </div>
+
         <div class="card-body">
             <h2><strong> NOVEDADES </strong></h2>
             @foreach ($blogs as $blog)

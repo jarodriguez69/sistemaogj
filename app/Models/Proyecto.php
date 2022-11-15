@@ -42,9 +42,16 @@ class Proyecto extends Model
         return $this->belongsToMany(Parte::class);
     }
 
-    public function objetivos2(){
-        return $this->belongsTo(Objetivo::class, 'objetivo_id');
+    // public function objetivos2(){
+    //     return $this->belongsTo(Objetivo::class, 'objetivo_id');
+    // }
+
+    //Relación muchos a muchos
+    public function objetivos2()
+    {
+        return $this->belongsToMany(Objetivo::class);
     }
+
     //Relacion muchos a muchos
     //en el modelo post
     // public function tags(){

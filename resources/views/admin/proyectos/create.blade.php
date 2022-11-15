@@ -38,7 +38,7 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="objetivo_id">Objetivo</label>
                     <select class="form-control" name="objetivo_id" id="objetivo_id">
                         <option value="0">(Seleccione Objetivo)</option>
@@ -46,6 +46,13 @@
                     @error('objetivo_id')
                         <small class="form-text text-danger">*{{$message}}</small>    
                     @enderror
+                </div> -->
+
+                <div class="form-group">
+                    <label for="objetivos_id">Objetivos</label>
+                    <div id="objetivos_id">
+
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -226,6 +233,28 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
+                    <label for="innovation">¿Es Innovaci&oacute;n?</label>
+                    <select class="form-control" name="innovation" id="innovation">
+                        <option value="0">No</option>
+                        <option value="1">Si</option>
+                    </select> 
+                    @error('innovation')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="benchmarking">¿Es Benchmarking?</label>
+                    <select class="form-control" name="benchmarking" id="benchmarking">
+                        <option value="0">No</option>
+                        <option value="1">Si</option>
+                    </select> 
+                    @error('benchmarking')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">
                       
@@ -308,11 +337,16 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 },
                 success: function(data){
 
-                    $('#objetivo_id').html("");
-                    $('#objetivo_id').append('<option value="-1">(Seleccione Objetivo)</option>');
+                    $('#objetivos_id').html("");
                     data.forEach(function(obj, index) {
-                        $('#objetivo_id').append('<option value="' + obj.id + '">'+obj.label+'</option>');
+                        $('#objetivos_id').append('<div class="form-check"><input class="form-check-input" type="checkbox" id="flexCheckDefaultObjetivos' + obj.id + '" name="objetivo[]" value="' + obj.id + '"> <label class="form-check-label" for="flexCheckDefaultObjetivos' + obj.id + '">'+obj.label+'</label></div>');
                     });
+
+                    // $('#objetivo_id').html("");
+                    // $('#objetivo_id').append('<option value="-1">(Seleccione Objetivo)</option>');
+                    // data.forEach(function(obj, index) {
+                    //     $('#objetivo_id').append('<option value="' + obj.id + '">'+obj.label+'</option>');
+                    // });
                 }
             });
         });

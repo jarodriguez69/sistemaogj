@@ -19,7 +19,7 @@ class AgendaController extends Controller
     public function index()
     {
         // $agendas = DB::select('select * from agendas where enabled = ?', [true]);
-        $agendas = Agenda::paginate();
+        $agendas = Agenda::all();
         
         return view('admin.agendas.index', compact("agendas"));
         

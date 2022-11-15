@@ -78,7 +78,6 @@ class ProyectoController extends Controller
 
     public function store(request $request)
     {
-        
         // $proyecto = new proyecto();
 
         // $proyecto->name = $request->name;
@@ -101,6 +100,10 @@ class ProyectoController extends Controller
             $proyecto->partes()->attach($request->partes);
         }
 
+        if($request->objetivo){
+            $proyecto->objetivos2()->attach($request->objetivo);
+        }
+
         //relacion mucho a mucho
         // if($request->eje){
         //     $proyecto->ejes()->attach($request->eje);
@@ -111,13 +114,14 @@ class ProyectoController extends Controller
     
     public function edit(Proyecto $proyecto, request $request)
     {
+        
         $grupos = Grupo::all();
         $estados = EstadoProyecto::where('enabled',true)->get();
         $users = User::all();
         $equipos = User::all();
         $partes = Parte::where('enabled',true)->get();
         $poas = Operativa::where('enabled',0)->get();//finalizada=1 Nofinalizada=0
-        $objetivosdelpoa =  Objetivo::where('operativa_id', $proyecto->objetivos2->operativas->id)->get();
+        $objetivosdelpoa =  Objetivo::where('operativa_id', $proyecto->objetivos2->first()->operativas->id)->get();
         return view('admin.proyectos.edit', compact("proyecto","grupos","estados","users","equipos","partes","poas","objetivosdelpoa"));
     }
 
@@ -129,6 +133,7 @@ class ProyectoController extends Controller
             'grupo_id'=>'required'
         ]);
         $proyecto->partes()->sync($request->partes);
+        $proyecto->objetivos2()->sync($request->objetivo);
         $proyecto->equipos()->sync($request->equipos);
         $proyecto->update($request->all());
 
@@ -145,7 +150,10 @@ class ProyectoController extends Controller
     {
         $partes = Parte::where('enabled',true)->get();
         $equipos = User::all();
-        return view('admin.proyectos.show',compact('proyecto','equipos','partes'));
+        $objetivosdelpoa =  Objetivo::where('operativa_id', $proyecto->objetivos2->first()->operativas->id)->get();
+
+
+        return view('admin.proyectos.show',compact('proyecto','equipos','partes','objetivosdelpoa'));
     }
 
     // public function enabled(proyecto $proyecto)
@@ -185,13 +193,13 @@ class ProyectoController extends Controller
         if($request->ajax())
         {
             $year = date("Y");
-            $proyectos = Proyecto::with('grupos', 'objetivos2', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'objetivo_id','begin', 'end', 'estadoproyecto_id', 'user_id')->where('year', $year)->get();
+            $proyectos = Proyecto::with('grupos', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('year', $year)->get();
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){
                         return view('admin.proyectos.action', compact('proyecto'));
                     })
                     ->addColumn('poa',function($proyecto){
-                        return $proyecto->objetivos2->operativas->name;
+                        return $proyecto->objetivos2->first()->operativas->name;
                     })
                     ->rawColumns(['actions'])
                     ->make(true);
@@ -210,7 +218,7 @@ class ProyectoController extends Controller
                         return view('admin.proyectos.action', compact('proyecto'));
                     })
                     ->addColumn('poa',function($proyecto){
-                        return $proyecto->objetivos2->operativas->name;
+                        return $proyecto->objetivos2->first()->operativas->name;
                     })
                     ->rawColumns(['actions'])
                     ->make(true);
@@ -228,7 +236,7 @@ class ProyectoController extends Controller
                         return view('admin.proyectos.action', compact('proyecto'));
                     })
                     ->addColumn('poa',function($proyecto){
-                        return $proyecto->objetivos2->operativas->name;
+                        return $proyecto->objetivos2->first()->operativas->name;
                     })
                     ->rawColumns(['actions'])
                     ->make(true);
@@ -247,7 +255,7 @@ class ProyectoController extends Controller
                         return view('admin.proyectos.action', compact('proyecto'));
                     })
                     ->addColumn('poa',function($proyecto){
-                        return $proyecto->objetivos2->operativas->name;
+                        return $proyecto->objetivos2->first()->operativas->name;
                     })
                     ->rawColumns(['actions'])
                     ->make(true);

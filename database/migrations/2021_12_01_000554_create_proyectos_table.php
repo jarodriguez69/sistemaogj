@@ -30,10 +30,12 @@ class CreateProyectosTable extends Migration
             $table->unsignedBigInteger('grupo_id');
             $table->unsignedBigInteger('estadoproyecto_id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('objetivo_id')->nullable();
+            //$table->unsignedBigInteger('objetivo_id')->nullable();
             $table->unsignedBigInteger('year')->nullable();;
             $table->boolean('measuring');
             $table->boolean('satisfactorio');
+            $table->boolean('innovation');
+            $table->boolean('benchmarking');
             $table->text('comment');
             $table->text('risk');
             $table->text('otherrisk');
@@ -44,7 +46,7 @@ class CreateProyectosTable extends Migration
             $table->foreign('grupo_id')->references('id')->on('grupos');//->onDelete("cascade");
             $table->foreign('estadoproyecto_id')->references('id')->on('estado_proyectos');
             $table->foreign('user_id')->references('id')->on('users');//->onDelete("cascade");
-            $table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete("cascade");
+            //$table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete("cascade");
         });
     }
 

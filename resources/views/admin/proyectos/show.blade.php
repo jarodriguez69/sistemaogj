@@ -21,13 +21,23 @@
 
                 <div class="form-group">
                     <label for="operativa_id">Planificación Operativa</label>
-                    <input type="text" class="form-control" name="operativa_id" aria-describedby="operativa_id" value="{{$proyecto->objetivos2->operativas->name}}" readonly>
+                    <input type="text" class="form-control" name="operativa_id" aria-describedby="operativa_id" value="{{$proyecto->objetivos2->first()->operativas->name}}" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="objetivo_id">Objetivo</label>
-                    <input type="text" class="form-control" name="objetivo_id" aria-describedby="objetivo_id" value="{{$proyecto->objetivos2->name}}" readonly>
+                    <label for="objetivos_id">Objetivos</label>
+                    <div id="objetivos_id">
+                        @foreach ($objetivosdelpoa as $objetivodelpoa)
+                                <div class="form-check">
+                                    <input disabled class="form-check-input" type="checkbox" id="flexCheckDefaultObjetivos{{$objetivodelpoa->id}}" name="objetivo[]" value="{{$objetivodelpoa->id}}" {{ in_array($objetivodelpoa->id, collect($proyecto->objetivos2)->pluck('id')->toArray()) ? "checked":""}}> 
+                                    <label class="form-check-label" for="flexCheckDefaultObjetivos{{$objetivodelpoa->id}}">
+                                        {{$objetivodelpoa->name}}
+                                    </label>
+                                </div>
+                        @endforeach
+                    </div>
                 </div>
+
 
                 <div class="form-group">
                     <label for="description">Objetivos Espec&iacute;ficos</label>
@@ -114,12 +124,22 @@
                 
                 <div class="form-group">
                     <label for="measuring">¿Tiene Medici&oacute;n?</label>
-                    <input type="text" class="form-control" name="measuring" aria-describedby="measuring" value="{{$proyecto->measuring ? "Si" : "No"}}" readonly>
+                    <input type="text" class="form-control" name="measuring" aria-describedby="measuring" value="{{$proyecto->measuring ? 'Si' : 'No'}}" readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="satisfactorio">¿Es Satisfactoria?</label>
-                    <input type="text" class="form-control" name="satisfactorio" aria-describedby="satisfactorio" value="{{$proyecto->satisfactorio ? "Si" : "No"}}" readonly>
+                    <input type="text" class="form-control" name="satisfactorio" aria-describedby="satisfactorio" value="{{$proyecto->satisfactorio ? 'Si' : 'No'}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="innovation">¿Es Innovaci&oacute;n?</label>
+                    <input type="text" class="form-control" name="innovation" aria-describedby="innovation" value="{{$proyecto->innovation ? 'Si' : 'No'}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="benchmarking">¿Es Benchmarking?</label>
+                    <input type="text" class="form-control" name="benchmarking" aria-describedby="benchmarking" value="{{$proyecto->benchmarking ? 'Si' : 'No'}}" readonly>
                 </div>
 
                 <div class="form-group">
