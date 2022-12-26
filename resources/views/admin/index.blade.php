@@ -375,9 +375,9 @@
                         $("#resumenproyectos").append("En Proceso (Fase Planificación): " + data.procesos + "<br>" + 
                         "En proceso (Fase Control y Ejecución): " + data.procesoscontrol + "<br>" + 
                         "Terminados (Fase Cierre): " + data.terminados + "<br>" + 
+                        "Terminado (Con actividades post.): " + data.actividadesposteriores + "<br>" + 
                         "Acumulados: " + data.acumulados + "<br>" + 
-                        "Suspendidos: " + data.suspendidos + "<br>" + 
-                        "Actividades Posteriores Fin: " + data.actividadesposteriores);
+                        "Suspendidos: " + data.suspendidos);
                         
                         $("#proyectostotal").html("");
                         $("#proyectoscompletos").html("");
@@ -385,7 +385,7 @@
                         $("#proyectosmedicion").html("");
                         
                         $("#proyectostotal").append(data.total);
-                        $("#proyectoscompletos").append(data.terminados);
+                        $("#proyectoscompletos").append(data.terminados + data.actividadesposteriores);
                         $("#proyectospendientes").append(data.procesos + data.procesoscontrol);
                         $("#proyectosmedicion").append(data.medicion);
                     },
