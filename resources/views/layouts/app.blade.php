@@ -66,8 +66,9 @@
                             <a class="dropdown-item" href="https://drive.google.com/drive/folders/13wvfOAfkhFZWMmaWVyVOKxT7LPioFl5d" target="_blank">Resultados 2019</a>
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/626f431b-cf4e-4f7a-b570-73373f211247/page/TB3dB" target="_blank">Resultados 2020</a>
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/140b9e6a-b3d2-4cd7-813e-f761568417da/page/TB3dB" target="_blank">Resultados 2021</a>
+                            <a class="dropdown-item" href="https://datastudio.google.com/reporting/140b9e6a-b3d2-4cd7-813e-f761568417da/page/TB3dB" target="_blank">Resultados 2022</a>
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="http://sistemaogj.info/admin" target="_blank">Resultados Parciales 2022</a>
+                                <!-- <a class="dropdown-item" href="http://sistemaogj.info/admin" target="_blank">Resultados Parciales 2023</a> -->
                             </div>
                         </li>
                     @endcan

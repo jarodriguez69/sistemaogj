@@ -48,7 +48,7 @@
             <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style=" text-align: center; float: none; font-size: 2.1rem;" id="proyectostotal"></h5>
-                    <p class="card-text" style="text-align: center;">Proyectos</p>
+                    <p class="card-text" style="text-align: center;">Proyectos Iniciados</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
@@ -120,31 +120,45 @@
     <div class="card">
         <h5 class="card-header d-flex">Medici&oacute;n de Proyectos</h5>
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center; float: none; font-size: 2.1rem;">{{$proyectostotalbyyear}}</h5>
                     <p class="card-text" style="text-align: center;">Total Factibles Medici&oacute;n</p>
                     {{-- <a href="#" class="btn btn-primary"></a> --}}
                   </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #00acfc; text-align: center; float: none; font-size: 2.1rem;">{{$proyectosconmedicion->count()}}</h5>
                     <p class="card-text" style="text-align: center;">Total Con Medici&oacute;n</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #5cd694;  text-align: center; float: none; font-size: 2.1rem;">{{$proyectossatisfactorios}}</h5>
                     <p class="card-text" style="text-align: center;">Total Satisfactorios</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #ff4800;  text-align: center; float: none; font-size: 2.1rem;">{{$proyectosnosatisfactorios}}</h5>
                     <p class="card-text" style="text-align: center;">Total No Satisfactorios</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #ffa600;  text-align: center; float: none; font-size: 2.1rem;">{{round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2)}}%</h5>
+                    <p class="card-text" style="text-align: center;">% Proyectos Medidos</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #047a4d;  text-align: center; float: none; font-size: 2.1rem;">{{round(($proyectossatisfactorios*100)/$proyectosconmedicion->count(),2)}}%</h5>
+                    <p class="card-text" style="text-align: center;">% Proyectos Satisfactorios</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
