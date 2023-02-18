@@ -43,6 +43,12 @@ class ProyectoController extends Controller
         return view('admin.proyectos.indexhistory');
     }
 
+    public function history(Proyecto $proyecto)
+    {
+        $proyectos = Proyecto::where('name', $proyecto->name)->get();
+        return view('admin.proyectos.history', compact("proyectos"));
+    }
+
     public function indexgrupohistory(Grupo $grupo)
     {
         return view('admin.proyectos.indexgrupohistory', compact("grupo"));

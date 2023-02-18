@@ -54,6 +54,7 @@ Route::get('proyectos/{proyecto}/charts', [ProyectoController::class, 'charts'])
 Route::get('proyecto/setsession', [ProyectoController::class, 'setsession'])->name('proyectos.setsession');
 Route::get('proyecto/getprojecthistory', [ProyectoController::class, 'getprojecthistory'])->name('admin.proyectos.getprojecthistory');
 Route::get('proyecto/getprojectbygrouphistory', [ProyectoController::class, 'getprojectbygrouphistory'])->name('admin.proyectos.getprojectbygrouphistory');
+Route::get('proyecto/{proyecto}/history', [ProyectoController::class, 'history'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.history');
 
 Route::resource('estadosproyectos', EstadoProyectoController::class)->names('admin.estadosproyectos');
 Route::get('estadosproyectos/{estadosproyecto}/enabled', [EstadoProyectoController::class, 'enabled'])->middleware('can:admin.estadosproyectos.enabled')->name('admin.estadosproyectos.enabled');
