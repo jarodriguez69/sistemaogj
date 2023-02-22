@@ -205,7 +205,7 @@ class ProyectoController extends Controller
                         return view('admin.proyectos.action', compact('proyecto'));
                     })
                     ->addColumn('poa',function($proyecto){
-                        return $proyecto->objetivos2->first()->operativas->name;
+                        return $proyecto->objetivos2->first() != null ? $proyecto->objetivos2->first()->operativas->name : "";
                     })
                     ->rawColumns(['actions'])
                     ->make(true);
