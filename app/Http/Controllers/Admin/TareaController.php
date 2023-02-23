@@ -191,7 +191,7 @@ class TareaController extends Controller
     {
         $year = date("Y");
         $idproyectos = new Collection();
-        $idproyectos = Proyecto::where("year",$year)->get()->pluck("id");
+        $idproyectos = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
 
         $cantidadnoiniciada = Tarea::where('estadotarea_id',1)->whereIn('proyecto_id', $idproyectos)->get()->count();
         $cantidadproceso = Tarea::where('estadotarea_id',2)->whereIn('proyecto_id', $idproyectos)->get()->count();
