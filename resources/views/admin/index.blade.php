@@ -453,7 +453,7 @@
 
     Highcharts.chart('container', {
         title: {
-            text: 'Nuevos Proyectos, 2022'
+            text: 'Proyectos en el año'
         },
         subtitle: {
             text: 'Oficina de Gestión Judicial'
