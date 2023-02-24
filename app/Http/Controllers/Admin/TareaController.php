@@ -127,8 +127,9 @@ class TareaController extends Controller
         //relacion mucho a mucho
         if($request->users){
             $tarea->users()->sync($request->users);
-
+            
             $correo = new ContactanosMailable($request->all());
+            
             foreach($request->users as $userid){
                 $useremail = User::where("id", $userid)->first()->email;
                 Mail::to($useremail)->send($correo);

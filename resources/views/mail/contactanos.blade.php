@@ -12,6 +12,8 @@
     
     <p>La tarea <strong> {{$contacto['name']}} </strong>fue asignada a su usuario.</p>
 
+    <p>Proyecto: <strong> {{App\Models\Proyecto::find($contacto['proyecto_id'])->name}} </strong> ({{$contacto['proyecto_id']}}) </p>
+
     <p>Descripci&oacute;n: {{$contacto['description']}}</p>
 </body>
 </html>
