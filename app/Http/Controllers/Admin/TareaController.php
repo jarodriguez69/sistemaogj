@@ -245,7 +245,7 @@ class TareaController extends Controller
         {
             $data[] = [
                 'id' => $query->id,
-                'label' => $query->name
+                'label' => $query->name.' - '.$query->year
             ];
         }
         return $data;

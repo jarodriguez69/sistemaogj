@@ -57,7 +57,7 @@
 
                 <div class="form-group">
                     <label for="proyecto_id">Proyecto</label>
-                    <input type="text"  id="proyecto_name" class="form-control" value="{{old('proyecto_name',$tarea->proyectos->name)}}">
+                    <input type="text"  id="proyecto_name" class="form-control" value="{{old('proyecto_name',$tarea->proyectos->name.' - '.$tarea->proyectos->year)}}">
                     <input type="hidden" name="proyecto_id" id="proyecto_id" value="{{old('proyecto_id',$tarea->proyectos->id)}}">
                 </div>
 

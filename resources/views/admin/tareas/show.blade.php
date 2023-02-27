@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label for="proyecto_id">Proyecto</label>
-                    <input type="text" class="form-control" name="proyecto_id" aria-describedby="proyecto_id" value="{{App\Models\Proyecto::find($tarea->proyecto_id) != null ? App\Models\Proyecto::find($tarea->proyecto_id)->name : ""}}" readonly>
+                    <input type="text" class="form-control" name="proyecto_id" aria-describedby="proyecto_id" value="{{App\Models\Proyecto::find($tarea->proyecto_id) != null ? App\Models\Proyecto::find($tarea->proyecto_id)->name.' - '.(App\Models\Proyecto::find($tarea->proyecto_id)->year) : ""}}" readonly>
                 </div>
 
                 <div class="form-group">
