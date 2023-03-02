@@ -34,27 +34,31 @@
 
         <div class="card-body" style="text-align: center;">
         <a target="_blank" href="https://sites.google.com/view/odsoficina-de-gestion-judicial/inicio?authuser=1">
-            <img src="ods-circular.jpg" alt="" max-width: 50%;>
+            <img src="ods-circular.jpg" alt="" style="max-width: 70%;">
         </a>   
         </div>
 
-        <div class="card-body">
-            <h2><strong> NOVEDADES </strong></h2>
-            @foreach ($blogs as $blog)
-                <div class="card">
-                    <div class="card-header" style="background-color: firebrick; color: white;">
-                        {{$blog->name}}
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0" style="text-align: justify;">
-                        <p>{{$blog->description}}</p>
-                        <footer class="blockquote-footer">Fecha: {{date('d/m/Y', strtotime($blog->created_at))}} <cite title="Source Title"> - OGJ</cite></footer>
-                        </blockquote>
-                    </div>
-                </div> <br>
-            @endforeach
+        @if (Route::has('login'))
+            @auth
+            <div class="card-body">
+                <h2><strong> NOVEDADES </strong></h2>
+                @foreach ($blogs as $blog)
+                    <div class="card">
+                        <div class="card-header" style="background-color: firebrick; color: white;">
+                            {{$blog->name}}
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0" style="text-align: justify;">
+                            <p>{{$blog->description}}</p>
+                            <footer class="blockquote-footer">Fecha: {{date('d/m/Y', strtotime($blog->created_at))}} <cite title="Source Title"> - OGJ</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div> <br>
+                @endforeach
 
-        </div>
+            </div>
+            @endauth
+        @endif
     </div> 
 
 
