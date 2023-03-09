@@ -223,8 +223,8 @@ class ObjetivoController extends Controller
     {
         if($request->ajax())
         {
-            
-            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->where("id","!=",1)->get();
+            $year = date("Y");
+            $objetivos = Objetivo::with('operativas', 'user', 'tipoobjetivo', 'estadoobjetivos')->select('id', 'name', 'operativa_id', 'tipoobjetivo_id', 'meta','estadoobjetivo_id', 'user_id', 'esporcentaje')->where("id","!=",1)->whereYear('begin', '=', $year)->get();
             return Datatables::of($objetivos)
                     ->addColumn('actions',function($objetivo){
                         return view('admin.objetivos.action', compact('objetivo'));
