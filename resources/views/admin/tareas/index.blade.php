@@ -24,6 +24,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Actividad Planificada</th>
+                        <th>Eje</th>
                         <th>Proyecto</th>
                         <th>Inicio</th>
                         <th>Fin</th>
@@ -36,6 +37,7 @@
                         <tr>
                             <td>{{$tarea->id}}</td>
                             <td>{{$tarea->name}} <a href="{{route('admin.tareas.show', $tarea)}}" target='_blank'><i class="fas fa-paperclip" {{App\Models\File::where('tarea_id',$tarea->id)->get()->count() == 0 ? 'style=display:none;' : ''}}></i></a> </td>
+                            <td>{{$tarea->proyectos->grupos->ejes->name}}</td>
                             <td>{{$tarea->proyectos->name}}</td>
                             <td>{{$tarea->begin}}</td>
                             <td>{{$tarea->end}}</td>
