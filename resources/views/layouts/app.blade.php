@@ -53,6 +53,16 @@
                     @endcan
                     @can('admin.home')
                         <li class="nav-item">
+                            <a target="_blank" class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdZKUWHO1bvF0cu_kCOEVi3-WH4-FtsGyKWXbK__LCl5bZpfw/viewform"><strong>No Conformidades</strong></a>
+                        </li>
+                    @endcan
+                    @can('admin.home')
+                        <li class="nav-item">
+                            <a target="_blank" class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScPgF94K0igcsRatIn-4ZNWJ0y5ZOTw60KlFLus8UsmmP3m6Q/viewform"><strong>Propuestas del Equipo</strong></a>
+                        </li>
+                    @endcan
+                    @can('admin.home')
+                        <li class="nav-item">
                             <a class="nav-link" href="{{route('home.formularios')}}">Formularios para Descargar</a>
                         </li>
                     @endcan
