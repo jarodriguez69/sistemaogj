@@ -107,6 +107,67 @@
     </div>
 
     <div class="card">
+        <h5 class="card-header d-flex">Visi&oacute;n General Indicadores 
+            <div class="row ml-auto">
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Fecha Desde" id="begindate">
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Fecha Hasta" id="enddate">
+                </div>
+                <a href="javascript:filtrar();" class="btn btn-primary btn-sm">Filtrar</a>
+            </div>
+        </h5>
+                
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; float: none; font-size: 2.1rem;" id="indicadorproceso">0</h5>
+                    <p class="card-text" style="text-align: center;">Proyectos en Proceso</p>
+                    {{-- <a href="#" class="btn btn-primary"></a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #5cd694; text-align: center; float: none; font-size: 2.1rem;" id="indicadorsuspendido">0</h5>
+                    <p class="card-text" style="text-align: center;">Proyectos Suspendidos</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #ff9100;  text-align: center; float: none; font-size: 2.1rem;" id="indicadoracumulado">0</h5>
+                    <p class="card-text" style="text-align: center;">Proyectos Acumulados</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #ff002f;  text-align: center; float: none; font-size: 2.1rem;" id="indicadorterminado">0</h5>
+                    <p class="card-text" style="text-align: center;">Proyectos Terminados</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #ff00bc;  text-align: center; float: none; font-size: 2.1rem;" id="indicadormedicion">0</h5>
+                    <p class="card-text" style="text-align: center;">Proyectos con Medici&oacute;n</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #1000ff;  text-align: center; float: none; font-size: 2.1rem;" id="indicadorsatisfactorio">0</h5>
+                    <p class="card-text" style="text-align: center;">Proyectos con Medici&oacute;n Satisfactoria</p>
+                    {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
+                  </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card">
         <h5 class="card-header d-flex">Gr&aacute;ficos</h5>
         <div id="container2"></div>
         {{-- <div id="container3"></div> --}}
@@ -884,6 +945,40 @@ Highcharts.chart('container10', {
         data:  proyectosvencidoscharte6
     }]
 });
+
+
+
+function filtrar()
+{
+    $.ajax({
+                url: "{{route('admin.indicadores')}}",
+                datatype: 'json',
+                data: {
+                    begin: $("#begindate").val(),
+                    end: $("#enddate").val()
+                },
+                success: function(data){
+                    console.log(data);
+                    $("#indicadorproceso").html("");
+                    $("#indicadorsuspendido").html("");
+                    $("#indicadoracumulado").html("");
+                    $("#indicadorterminado").html("");
+                    $("#indicadormedicion").html("");
+                    $("#indicadorsatisfactorio").html("");
+                    $("#indicadorproceso").append(data[0].indicadorproceso);
+                    $("#indicadorsuspendido").append(data[0].indicadorsuspendido);
+                    $("#indicadoracumulado").append(data[0].indicadoracumulado);
+                    $("#indicadorterminado").append(data[0].indicadorterminado);
+                    $("#indicadormedicion").append(data[0].indicadormedicion);
+                    $("#indicadorsatisfactorio").append(data[0].indicadorsatisfactorio);
+                    
+                    // data.forEach(function(obj, index) {
+                    //     $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+obj.label+'</td><td>'+obj.poa+'</td></tr>');
+                    // });
+                }
+            });
+}
+
 
 </script>
 

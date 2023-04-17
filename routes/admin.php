@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\AgendaController;
 //->middleware('can:admin.users') para una ruta en particular, por jejemplo el index del home
 Route::get('', [HomeController::class,'index']);
 Route::get('/calendar', [HomeController::class,'calendar']);
+Route::get('/indicadores', [HomeController::class,'indicadores'])->name('admin.indicadores');
+
 
 Route::resource('users', UserController::class)->names('admin.users');
 // Route::resource('users', UserController::class)->only('index','update','edit')->names('admin.users');

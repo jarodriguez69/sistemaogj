@@ -276,4 +276,44 @@ class HomeController extends Controller
         return view('admin.calendar');
     }
 
+    public function indicadores(Request $request)
+    {
+        $year = date("Y");
+        $begin = $request->get('begin');
+        $end = $request->get('end');
+        
+        //Cantidad de proyectos que se encuentran en proceso al último día hábil del mes.
+        $querysindicadorproceso = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->whereIn("estadoproyecto_id",[1,10])->get()->count();
+
+        //Cantidad de proyectos suspendidos al último día hábil del mes.
+        $querysindicadorsuspendido = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->whereIn("estadoproyecto_id",[4])->get()->count();
+        
+        //Cantidad de proyectos acumulados en el mes
+        $querysindicadoracumulado = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->whereIn("estadoproyecto_id",[3])->get()->count();
+        
+        //Cantidad de proyectos terminados en el mes
+        $querysindicadorterminado = Proyecto::where('year', $year)->whereBetween('real', [$begin, $end])->whereIn("estadoproyecto_id",[2,9])->get()->count();
+        
+        //Cantidad de proyectos con medición de satisfacción realizada en el mes
+        $querysindicadormedicion = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->where("measuring",True)->get()->count();
+        
+        //Cantidad de proyectos con medición satisfactoria en el mes
+        $querysindicadorsatisfactorio = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->where("measuring",True)->where("satisfactorio",True)->get()->count();
+
+
+        $data = [];
+
+        $data[] = [
+                //'id' => $query->id,
+                'indicadorproceso'=> $querysindicadorproceso,
+                'indicadorsuspendido'=> $querysindicadorsuspendido,
+                'indicadoracumulado'=> $querysindicadoracumulado,
+                'indicadorterminado'=> $querysindicadorterminado,
+                'indicadormedicion'=> $querysindicadormedicion,
+                'indicadorsatisfactorio'=> $querysindicadorsatisfactorio
+            ];
+        
+        return $data;
+    }
+
 }
