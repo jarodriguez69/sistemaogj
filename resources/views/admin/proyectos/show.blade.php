@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="seguimiento">Fecha de Seguimiento</label>
+                    <label for="seguimiento">Fecha de Cambio de Estado</label>
                     <input type="text" class="form-control" name="seguimiento" aria-describedby="seguimiento" value="{{$proyecto->seguimiento != null ? date('Y-m-d', strtotime($proyecto->seguimiento)):""}}" readonly>
                 </div>
 
@@ -131,7 +131,10 @@
                     <label for="satisfactorio">¿Es Satisfactoria?</label>
                     <input type="text" class="form-control" name="satisfactorio" aria-describedby="satisfactorio" value="{{$proyecto->satisfactorio ? 'Si' : 'No'}}" readonly>
                 </div>
-
+                <div class="form-group">
+                    <label for="medido">Fecha de Medici&oacute;n</label>
+                    <input type="text" class="form-control" name="medido" aria-describedby="medido" value="{{$proyecto->medido != null ? date('Y-m-d', strtotime($proyecto->medido)):""}}" readonly>
+                </div>
                 <div class="form-group">
                     <label for="innovation">¿Es Innovaci&oacute;n?</label>
                     <input type="text" class="form-control" name="innovation" aria-describedby="innovation" value="{{$proyecto->innovation ? 'Si' : 'No'}}" readonly>

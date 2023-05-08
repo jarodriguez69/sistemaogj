@@ -295,10 +295,10 @@ class HomeController extends Controller
         $querysindicadorterminado = Proyecto::where('year', $year)->whereBetween('real', [$begin, $end])->whereIn("estadoproyecto_id",[2,9])->get()->count();
         
         //Cantidad de proyectos con medición de satisfacción realizada en el mes
-        $querysindicadormedicion = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->where("measuring",True)->get()->count();
+        $querysindicadormedicion = Proyecto::where('year', $year)->whereBetween('medido', [$begin, $end])->where("measuring",True)->get()->count();
         
         //Cantidad de proyectos con medición satisfactoria en el mes
-        $querysindicadorsatisfactorio = Proyecto::where('year', $year)->whereBetween('seguimiento', [$begin, $end])->where("measuring",True)->where("satisfactorio",True)->get()->count();
+        $querysindicadorsatisfactorio = Proyecto::where('year', $year)->whereBetween('medido', [$begin, $end])->where("measuring",True)->where("satisfactorio",True)->get()->count();
 
 
         $data = [];

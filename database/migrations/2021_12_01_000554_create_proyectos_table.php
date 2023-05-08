@@ -22,6 +22,7 @@ class CreateProyectosTable extends Migration
             $table->timestamp('begin')->nullable();
             $table->timestamp('end')->nullable();
             $table->timestamp('real')->nullable();
+            $table->timestamp('medido')->nullable();
             $table->timestamp('seguimiento')->nullable();
             $table->string('indicador')->nullable();
             $table->string('meta')->nullable();

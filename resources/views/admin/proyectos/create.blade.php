@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="seguimiento">Fecha de Seguimiento</label>
+                    <label for="seguimiento">Fecha de Cambio de Estado</label>
                     <input type="date" class="form-control" id="seguimiento" name="seguimiento" aria-describedby="seguimiento" placeholder="Fecha de Seguimiento" value="{{old('seguimiento')}}">
                     @error('seguimiento')
                         <small class="form-text text-danger">*{{$message}}</small>    
@@ -228,6 +228,14 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                         <option value="1">Si</option>
                     </select> 
                     @error('satisfactorio')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="medido">Fecha de Medici&oacute;n</label>
+                    <input type="date" class="form-control" id="medido" name="medido" aria-describedby="medido" placeholder="Fecha de Medición" value="{{old('medido')}}">
+                    @error('medido')
                         <small class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
