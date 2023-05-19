@@ -15,7 +15,7 @@
     </div>
 
     <div class="card">
-        <div class="card-body">
+        <div class="card-body" style="text-align: justify;">
             <h2><strong>POLÍTICA DE CALIDAD</strong></h2>
             <p>La Oficina de Gestión Judicial tiene como misión mejorar la gestión de los diversos órganos del Poder Judicial de la Provincia de Tucumán mediante la implementación de políticas judiciales establecidas por la Excma. Corte.</p>
             <p>La Oficina de Gestión Judicial manifiesta su compromiso con la Calidad mediante la implementación de un Sistema de Gestión de Calidad basado en la Norma Internacional ISO 9001:2015 y el cumplimiento de sus requisitos para lograr la mejora continua del mismo, realizando su seguimiento en forma continua y asegurando la disponibilidad de los recursos necesarios para su funcionamiento.</p>
@@ -28,7 +28,16 @@
             
             <h2><strong> OBJETIVOS DE CALIDAD</strong></h2>
             
-            <ol><li>Implementar y mantener el sistema de gestión de calidad ISO 9001:2015.</li><li>Incorporar la medición de la satisfacción de los usuarios en el 70% de los proyectos.</li><li>Lograr la satisfacción de los usuarios en el 70% de los proyectos con medición de satisfacción.</li></ol>
+            <ol>
+                <li>Incorporar la medición de la satisfacción de los usuarios  de los proyectos. </li>
+                <li>Lograr la satisfacción de los usuarios  de los proyectos con medición de satisfacción.</li>
+                <li>Incorporar la medición de la satisfacción de los usuarios  de las Unidades que participan del proceso de Coordinación, asistencia técnica y asesoramiento  para la implementación del SGC conforme a los requisitos de la Norma ISO 9001 vigente en Unidades Judiciales del PJT.</li> 
+                <li>Lograr la satisfacción de los usuarios  de las Unidades que participan del proceso de Coordinación, asistencia técnica y asesoramiento  para la implementación del SGC conforme a los requisitos de la Norma ISO 9001 vigente en Unidades Judiciales del PJT.</li> 
+                <li>Incorporar la medición de la satisfacción de los usuarios que participan del proceso de Implementación de Planes de mejora en Unidades Jurisdiccionales del PJT.</li>
+                <li>Lograr la satisfacción de los usuarios que participan del proceso de Implementación de Planes de mejora en Unidades Jurisdiccionales del PJT.</li>
+                <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial.</li> 
+                <li>Tratar satisfactoriamente las quejas por falta de publicaciones de edictos en el Boletín Oficial Judicial, atribuibles a errores de registración en los Juzgados.</li>
+            </ol>
             
         </div>
 
