@@ -269,6 +269,14 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
+                    <label for="leccion">Lecciones Aprendidas</label> 
+                    <textarea name="leccion" class="form-control" cols="30" rows="5" placeholder="Ingrese Lecciones Aprendidas">{{old('leccion',$proyecto->leccion)}}</textarea>
+                    @error('leccion')
+                        <small id="leccionId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="user_id">Responsable de Proyecto</label>
                     <select class="form-control" name="user_id">
                       

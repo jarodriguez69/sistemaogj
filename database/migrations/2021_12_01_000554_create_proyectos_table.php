@@ -42,6 +42,7 @@ class CreateProyectosTable extends Migration
             $table->text('otherrisk');
             $table->text('chance');
             $table->text('otherchance');
+            $table->text('leccion');
             $table->timestamps();
 
             $table->foreign('grupo_id')->references('id')->on('grupos');//->onDelete("cascade");

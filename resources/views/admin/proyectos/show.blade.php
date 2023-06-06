@@ -144,7 +144,10 @@
                     <label for="benchmarking">¿Es Benchmarking?</label>
                     <input type="text" class="form-control" name="benchmarking" aria-describedby="benchmarking" value="{{$proyecto->benchmarking ? 'Si' : 'No'}}" readonly>
                 </div>
-
+                <div class="form-group">
+                    <label for="leccion">Lecciones Aprendidas</label>
+                    <textarea name="leccion" class="form-control" cols="30" rows="5" readonly>{{$proyecto->leccion}}</textarea>
+                </div>
                 <div class="form-group">
                     <label for="user">Responsable de Proyecto</label>
                     <input type="text" class="form-control" name="user" aria-describedby="user" value="{{App\Models\User::find($proyecto->user_id) != null ? App\Models\User::find($proyecto->user_id)->name : ""}}" readonly>
