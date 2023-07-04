@@ -180,7 +180,20 @@
 
 
     <div class="card">
-        <h5 class="card-header d-flex">Medici&oacute;n de Proyectos</h5>
+        <h5 class="card-header d-flex">Medici&oacute;n de Proyectos 
+        
+            <div class="dropdown ml-auto">
+                <button class="btn btn-primary dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Procesos
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            
+            </h5>
         <div class="row">
             <div class="col-sm-2">
                 <div class="card-body">
