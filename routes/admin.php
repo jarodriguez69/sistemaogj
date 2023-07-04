@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\OperativaController;
 use App\Http\Controllers\Admin\ObjetivoController;
 use App\Http\Controllers\Admin\ActividadController;
 use App\Http\Controllers\Admin\AgendaController;
+use App\Http\Controllers\Admin\ProcesoController;
 
 //->middleware('can:admin.users') para una ruta en particular, por jejemplo el index del home
 Route::get('', [HomeController::class,'index']);
@@ -82,7 +83,8 @@ Route::resource('alertas', AlertaController::class)->names('admin.alertas');
 Route::get('alerta/getalertas', [AlertaController::class, 'getalertas'])->name('admin.alertas.getalertas');
 Route::post('alerta/getinfoalerts', [AlertaController::class, 'getinfoalerts'])->name('admin.alertas.getinfoalerts');
 
-
+Route::resource('procesos', ProcesoController::class)->names('admin.procesos');
+Route::get('procesos/{proceso}/enabled', [ProcesoController::class, 'enabled'])->middleware('can:admin.procesos.enabled')->name('admin.procesos.enabled');
 
 
 #Planificiacion 

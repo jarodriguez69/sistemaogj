@@ -62,6 +62,9 @@ class Proyecto extends Model
     //     return $this->belongsToMany(Post::class);
     // }
 
- 
+     //Relacion uno a muchos inversa
+     public function procesos(){
+        return $this->belongsTo(Proceso::class, 'proceso_id');
+    }
    
 }

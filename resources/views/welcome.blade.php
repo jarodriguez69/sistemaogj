@@ -5,8 +5,8 @@
     <div class="card mb-3">
         <img class="card-img-top" src="logo-OGJ-2019.jpg" alt="Card image cap">
             {{-- <object data="certificadoesp.pdf" type="application/PDF" width="850px" height="850px" align="right"></object> --}}
-            <a href="certificadoesp.pdf" target="_blank"><img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;"></a>
-            <a href="certificadoeng.pdf" target="_blank"><img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;"></a>
+            <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
+            <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">
         {{-- <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -29,7 +29,8 @@
             <h2><strong> OBJETIVOS DE CALIDAD</strong></h2>
             
             <ol>
-                <li>Incorporar la medición de la satisfacción de los usuarios  de los proyectos. </li>
+                <li>Implementar y mantener el sistema de gestión de calidad ISO 9001:2015.</li>
+                <li>Incorporar la medición de la satisfacción de los usuarios  de los proyectos.</li>
                 <li>Lograr la satisfacción de los usuarios  de los proyectos con medición de satisfacción.</li>
                 <li>Incorporar la medición de la satisfacción de los usuarios  de las Unidades que participan del proceso de Coordinación, asistencia técnica y asesoramiento  para la implementación del SGC conforme a los requisitos de la Norma ISO 9001 vigente en Unidades Judiciales del PJT.</li> 
                 <li>Lograr la satisfacción de los usuarios  de las Unidades que participan del proceso de Coordinación, asistencia técnica y asesoramiento  para la implementación del SGC conforme a los requisitos de la Norma ISO 9001 vigente en Unidades Judiciales del PJT.</li> 

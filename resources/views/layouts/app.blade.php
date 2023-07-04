@@ -82,8 +82,21 @@
                             </div>
                         </li>
                     @endcan
-  
-
+                    @can('admin.home')
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Certificados
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="iram-2022.pdf" target="_blank">IRAM - 2022</a>
+                            <a class="dropdown-item" href="iqnet-2022.pdf" target="_blank">IQ Net - 2022 </a>
+                            <a class="dropdown-item" href="certificadoesp.pdf" target="_blank">IRAM - 2021</a>
+                            <a class="dropdown-item" href="certificadoeng.pdf" target="_blank">IQ Net - 2021 </a>
+                            <div class="dropdown-divider"></div>
+                                <!-- <a class="dropdown-item" href="http://sistemaogj.info/admin" target="_blank">Resultados Parciales 2023</a> -->
+                            </div>
+                        </li>
+                    @endcan
 
                     @if (Route::has('login'))
                             @auth

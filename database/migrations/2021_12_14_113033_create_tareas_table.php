@@ -22,9 +22,11 @@ class CreateTareasTable extends Migration
             $table->unsignedBigInteger('proyecto_id');
             $table->unsignedBigInteger('estadotarea_id');
             // $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('proceso_id');
             $table->timestamps();
             $table->text('url')->nullable();
-
+            
+            $table->foreign('proceso_id')->references('id')->on('procesos');//->onDelete("cascade");
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete("cascade");;
             $table->foreign('estadotarea_id')->references('id')->on('estado_tareas');
             // $table->foreign('user_id')->references('id')->on('users');

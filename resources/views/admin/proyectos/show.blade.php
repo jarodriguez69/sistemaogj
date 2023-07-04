@@ -118,6 +118,10 @@
                     <input type="text" class="form-control" name="estado" aria-describedby="estado" value="{{App\Models\EstadoProyecto::find($proyecto->estadoproyecto_id) != null ? App\Models\EstadoProyecto::find($proyecto->estadoproyecto_id)->name : ""}}" readonly>
                 </div>
                 <div class="form-group">
+                    <label for="proceso">Proceso</label>
+                    <input type="text" class="form-control" name="proceso" aria-describedby="proceso"  value="{{App\Models\Proceso::find($proyecto->proceso_id) != null ? App\Models\Proceso::find($proyecto->proceso_id)->name : ""}}" readonly>
+                </div>
+                <div class="form-group">
                     <label for="recursos">Recursos y/o Adquisiciones</label>
                     <textarea name="recursos" class="form-control" cols="30" rows="5" readonly>{{$proyecto->recursos}}</textarea>
                 </div>

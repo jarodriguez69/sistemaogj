@@ -32,4 +32,9 @@ class Tarea extends Model
         return $this->belongsTo(EstadoTarea::class);
     }
     
+    //Relacion uno a muchos inversa
+    public function procesos(){
+        return $this->belongsTo(Proceso::class, 'proceso_id');
+    }
+       
 }

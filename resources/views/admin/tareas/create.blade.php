@@ -73,6 +73,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="proceso_id">Proceso</label>
+                    <select class="form-control" name="proceso_id">
+                      
+                        @foreach ($procesos as $proceso)
+                            <option value="{{$proceso->id}}">{{$proceso->name}}</option>
+                        @endforeach
+                    </select>
+                    @error('proceso_id')
+                        <small id="procesoid" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+                
+                <div class="form-group">
                     <label for="user_id">Responsables</label>
                         @foreach ($users as $user)
                                 <div class="form-check">

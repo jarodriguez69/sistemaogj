@@ -43,15 +43,17 @@ class CreateProyectosTable extends Migration
             $table->text('chance');
             $table->text('otherchance');
             $table->text('leccion');
+            $table->unsignedBigInteger('proceso_id');
             $table->timestamps();
 
             $table->foreign('grupo_id')->references('id')->on('grupos');//->onDelete("cascade");
             $table->foreign('estadoproyecto_id')->references('id')->on('estado_proyectos');
             $table->foreign('user_id')->references('id')->on('users');//->onDelete("cascade");
+            $table->foreign('proceso_id')->references('id')->on('procesos');//->onDelete("cascade");
             //$table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete("cascade");
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

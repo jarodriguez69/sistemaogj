@@ -351,7 +351,13 @@ return [
             //'can'           => 'admin.tareas.index',
 		'active' => ['admin/agendas*']
         ],
-
+        [
+            'text'        => 'Procesos',
+            'url'         => 'admin/procesos',
+            'icon'        => 'fa fa-fw fa-cogs',
+            //'can'           => 'admin.tareas.index',
+		'active' => ['admin/procesos*']
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

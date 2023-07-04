@@ -12,6 +12,7 @@ use App\Models\Operativa;
 use App\Models\Parte;
 use App\Models\User;
 use App\Models\Tarea;
+use App\Models\Proceso;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,11 +76,12 @@ class ProyectoController extends Controller
     {
         $estados = EstadoProyecto::where('enabled',true)->get();
         $grupos = Grupo::where('enabled',true)->get();
+        $procesos = Proceso::where('enabled',true)->get();
         $users = User::all();
         $equipos = User::all();
         $partes = Parte::where('enabled',true)->get();
         $poas = Operativa::where('enabled',0)->get();//finalizada=1 Nofinalizada=0
-        return view('admin.proyectos.create', compact('grupos','users','equipos','partes','poas','estados'));
+        return view('admin.proyectos.create', compact('grupos','users','equipos','partes','poas','estados','procesos'));
     }
 
     public function store(request $request)
@@ -123,12 +125,13 @@ class ProyectoController extends Controller
         
         $grupos = Grupo::all();
         $estados = EstadoProyecto::where('enabled',true)->get();
+        $procesos = Proceso::where('enabled',true)->get();
         $users = User::all();
         $equipos = User::all();
         $partes = Parte::where('enabled',true)->get();
         $poas = Operativa::where('enabled',0)->get();//finalizada=1 Nofinalizada=0
         $objetivosdelpoa =  Objetivo::where('operativa_id', $proyecto->objetivos2->first()->operativas->id)->get();
-        return view('admin.proyectos.edit', compact("proyecto","grupos","estados","users","equipos","partes","poas","objetivosdelpoa"));
+        return view('admin.proyectos.edit', compact("proyecto","grupos","estados","users","equipos","partes","poas","objetivosdelpoa","procesos"));
     }
 
     public function update(Request $request, Proyecto $proyecto)

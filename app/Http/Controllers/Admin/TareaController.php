@@ -10,6 +10,7 @@ use App\Models\Proyecto;
 use App\Models\EstadoTarea;
 use App\Models\User;
 use App\Models\File;
+use App\Models\Proceso;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
@@ -65,9 +66,9 @@ class TareaController extends Controller
 
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::all();
-
+        $procesos = Proceso::where('enabled',false)->get();
         $users = User::all();
-        return view('admin.tareas.create', compact('proyectos', 'estados','users'));
+        return view('admin.tareas.create', compact('proyectos', 'estados','users', 'procesos'));
     }
 
     public function store(request $request)
@@ -109,9 +110,11 @@ class TareaController extends Controller
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::where('enabled',true)->get();
         $users = User::all();
+        $procesos = Proceso::where('enabled',false)->get();
         $files =  File::where('tarea_id',$tarea->id)->get();
         
-        return view('admin.tareas.edit',compact("tarea"), compact("proyectos"))->with(compact("estados"))->with(compact("users"))->with(compact("files"));
+        return view('admin.tareas.edit',compact("tarea","proyectos","estados","users","files","procesos"));
+
     }
 
     public function update(Request $request, Tarea $tarea)

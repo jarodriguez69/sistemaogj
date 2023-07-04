@@ -38,7 +38,10 @@
                     <label for="estadotarea_id">Estado</label>
                     <input type="text" class="form-control" name="estadotarea_id" aria-describedby="estadotarea_id" value="{{App\Models\EstadoTarea::find($tarea->estadotarea_id) != null ? App\Models\EstadoTarea::find($tarea->estadotarea_id)->name : ""}}" readonly>
                 </div>
-
+                <div class="form-group">
+                    <label for="proceso">Proceso</label>
+                    <input type="text" class="form-control" name="proceso" aria-describedby="proceso"  value="{{App\Models\Proceso::find($tarea->proceso_id) != null ? App\Models\Proceso::find($tarea->proceso_id)->name : ""}}" readonly>
+                </div>
                 
                 <div class="form-group">
                     <label for="user_id">Responsables</label>

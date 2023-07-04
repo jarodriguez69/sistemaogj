@@ -209,6 +209,19 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
+                    <label for="proceso_id">Proceso</label>
+                    <select class="form-control" name="proceso_id">
+                        
+                        @foreach ($procesos as $proceso)
+                            <option value="{{$proceso->id}}" {{$proyecto->proceso_id==$proceso->id ? "selected" : ""}}>{{$proceso->name}}</option>
+                        @endforeach
+                    </select>
+                    @error('proceso_id')
+                    <small id="procesoid" class="form-text text-danger">*{{$message}}</small>    
+                @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="recursos">Recursos y/o Adquisiciones</label>
                     <textarea name="recursos" class="form-control" cols="30" rows="5" placeholder="Ingrese Recursos">{{old('recursos',$proyecto->recursos)}}</textarea>
                     @error('recursos')
