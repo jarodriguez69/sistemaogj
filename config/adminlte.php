@@ -352,7 +352,7 @@ return [
 		'active' => ['admin/agendas*']
         ],
         [
-            'text'        => 'Procesos',
+            'text'        => 'Mapa de Procesos',
             'url'         => 'admin/procesos',
             'icon'        => 'fa fa-fw fa-cogs',
             //'can'           => 'admin.tareas.index',
