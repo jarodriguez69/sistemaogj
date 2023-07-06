@@ -183,15 +183,14 @@
         <h5 class="card-header d-flex">Medici&oacute;n de Proyectos 
         
             <div class="dropdown ml-auto">
-                <button class="btn btn-primary dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Procesos
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div>
+                <select class="form-control btn btn-primary btn-sm" name="procesos" id="procesoid">
+                    <option value="0">Todos</option>
+                    @foreach ($procesos as $proceso)
+                        <option value="{{$proceso->id}}">{{$proceso->name}}</option>
+                    @endforeach
+                    
+                </select> 
+            </div>
             
             </h5>
         <div class="row">
@@ -255,7 +254,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="tbodyporproceso">
                                     @foreach ($proyectosconmedicion as $proyecto)
                                         <tr>
                                             <td>{{$proyecto->id}}</td>
@@ -412,6 +411,8 @@
 
         $(document).ready(function() {
 
+           
+
             $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     url: "{{ route('admin.alertas.getinfoalerts') }}",
@@ -502,6 +503,14 @@
                     }
                 });
 
+
+                $("#procesoid").change(function(){
+                    
+                    filtrarporproceso();
+                        
+                });
+
+
         });
 
     </script>
@@ -525,6 +534,10 @@
     var proyectosvencidoscharte4 = <?php echo json_encode($proyectosvencidoscharte4)?>;
     var proyectosvencidoscharte5 = <?php echo json_encode($proyectosvencidoscharte5)?>;
     var proyectosvencidoscharte6 = <?php echo json_encode($proyectosvencidoscharte6)?>;
+
+
+    
+
 
     Highcharts.chart('container', {
         title: {
@@ -993,6 +1006,34 @@ function filtrar()
             });
 }
 
+function filtrarporproceso()
+{
+    
+    $.ajax({
+        url: "{{route('admin.porprocesos')}}",
+        datatype: 'json',
+        data: {
+            datesearch: $("#procesoid").val()
+        },
+        success: function(data){
+            console.log(data[0].jose);
+            $('#tbodyporproceso').html("");
+            
+            data[0].grilla.forEach(function(obj, index) {
+                 $('#tbodyporproceso').append('<tr><td>' + obj.id + '</td><td>'+obj.name+'</td><td>'+obj.eje+'</td><td>'+obj.grupos+'</td><td>'+obj.satisfactorio+'</td><td>'+obj.botones+'</td></tr>');
+
+
+                
+                
+                
+                
+                
+                
+                
+            });
+        }
+    });
+}
 
 </script>
 

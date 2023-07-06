@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\ProcesoController;
 Route::get('', [HomeController::class,'index']);
 Route::get('/calendar', [HomeController::class,'calendar']);
 Route::get('/indicadores', [HomeController::class,'indicadores'])->name('admin.indicadores');
+Route::get('/porprocesos', [HomeController::class, 'porprocesos'])->name('admin.porprocesos');
 
 
 Route::resource('users', UserController::class)->names('admin.users');

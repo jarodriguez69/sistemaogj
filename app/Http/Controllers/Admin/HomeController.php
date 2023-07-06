@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Proyecto;
 use App\Models\Eje;
 use App\Models\Grupo;
+use App\Models\Proceso;
 use Illuminate\Support\Collection;
 
 class HomeController extends Controller
@@ -14,6 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $year = date("Y");
+        $procesos = Proceso::All();
 
         $proyectos = new Collection();
         $proyectosAux = Proyecto::select(\DB::raw("Month(created_at) as month, COUNT(*) as count"))
@@ -265,9 +267,9 @@ class HomeController extends Controller
            'y'      => $porcentajenosatisfactorio6
        ];
 
-       return view('admin.index', compact('proyectos', 'proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios','proyectosvencidoscharte1','proyectosvencidoscharte2','proyectosvencidoscharte3','proyectosvencidoscharte4','proyectosvencidoscharte5','proyectosvencidoscharte6','proyectostotalbyyear1','proyectosconmedicion1','proyectostotalbyyear2','proyectosconmedicion2','proyectostotalbyyear3','proyectosconmedicion3','proyectostotalbyyear4','proyectosconmedicion4','proyectostotalbyyear5','proyectosconmedicion5','proyectostotalbyyear6','proyectosconmedicion6','proyectossinmedicion1','proyectossinmedicion2','proyectossinmedicion3','proyectossinmedicion4','proyectossinmedicion5','proyectossinmedicion6'));
+       return view('admin.index', compact('proyectos', 'procesos','proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios','proyectosvencidoscharte1','proyectosvencidoscharte2','proyectosvencidoscharte3','proyectosvencidoscharte4','proyectosvencidoscharte5','proyectosvencidoscharte6','proyectostotalbyyear1','proyectosconmedicion1','proyectostotalbyyear2','proyectosconmedicion2','proyectostotalbyyear3','proyectosconmedicion3','proyectostotalbyyear4','proyectosconmedicion4','proyectostotalbyyear5','proyectosconmedicion5','proyectostotalbyyear6','proyectosconmedicion6','proyectossinmedicion1','proyectossinmedicion2','proyectossinmedicion3','proyectossinmedicion4','proyectossinmedicion5','proyectossinmedicion6'));
 
-       
+    
 
     }
 
@@ -315,5 +317,49 @@ class HomeController extends Controller
         
         return $data;
     }
+
+
+   
+
+    public function porprocesos(Request $request)
+    {
+        
+        $year = date("Y");
+        $procesoId = $request->get('datesearch');
+        $proyectosconmedicion=[];
+
+        if($procesoId==0)
+        {
+            $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->get();
+        }
+        else
+        {
+            $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->where("proceso_id",$procesoId)->get();
+        }
+        
+        $data = [];
+        $grilla=[];
+        $proyectossatisfactorios=1;
+        $proyectosnosatisfactorios=1;
+        foreach($proyectosconmedicion as $query)
+        {
+            $grilla[] = [
+                'id' => $query->id,
+                'name' => $query->name,
+                'eje' => $query->grupos->ejes->name,
+                'grupos' => $query->grupos->name,
+                'satisfactorio' => $query->satisfactorio ? "Satisfactorio" : "No Satisfactorio",
+                'porcentaje' => $query->satisfactorio ? round(100/$proyectossatisfactorios) . "%" : round(100/$proyectosnosatisfactorios) . "%",
+                'botones' => "aaaa"
+            ];
+        }
+        $data[]=[
+            'grilla' => $grilla,
+            'jose' => "hola jose"
+            
+        ];
+        return $data;
+    }
+
 
 }
