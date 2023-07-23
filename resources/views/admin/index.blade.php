@@ -196,43 +196,43 @@
         <div class="row">
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="text-align: center; float: none; font-size: 2.1rem;">{{$proyectostotalbyyear}}</h5>
+                    <h5 class="card-title" style="text-align: center; float: none; font-size: 2.1rem;" id="proymedibles">{{$proyectostotalbyyear}}</h5>
                     <p class="card-text" style="text-align: center;">Total Factibles Medici&oacute;n</p>
                     {{-- <a href="#" class="btn btn-primary"></a> --}}
                   </div>
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #00acfc; text-align: center; float: none; font-size: 2.1rem;">{{$proyectosconmedicion->count()}}</h5>
+                    <h5 class="card-title" style="color: #00acfc; text-align: center; float: none; font-size: 2.1rem;" id="proyconmed">{{$proyectosconmedicion->count()}}</h5>
                     <p class="card-text" style="text-align: center;">Total Con Medici&oacute;n</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #5cd694;  text-align: center; float: none; font-size: 2.1rem;">{{$proyectossatisfactorios}}</h5>
+                    <h5 class="card-title" style="color: #5cd694;  text-align: center; float: none; font-size: 2.1rem;" id="proysati">{{$proyectossatisfactorios}}</h5>
                     <p class="card-text" style="text-align: center;">Total Satisfactorios</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #ff4800;  text-align: center; float: none; font-size: 2.1rem;">{{$proyectosnosatisfactorios}}</h5>
+                    <h5 class="card-title" style="color: #ff4800;  text-align: center; float: none; font-size: 2.1rem;" id="proynosati">{{$proyectosnosatisfactorios}}</h5>
                     <p class="card-text" style="text-align: center;">Total No Satisfactorios</p>
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #ffa600;  text-align: center; float: none; font-size: 2.1rem;">{{round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2)}}%</h5>
-                    <p class="card-text" style="text-align: center;">% Proyectos Medidos</p>
+                    <h5 class="card-title" style="color: #ffa600;  text-align: center; float: none; font-size: 2.1rem;" id="porcproymedido">{{round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2)}}%</h5>
+                    <p class="card-text" style="text-align: center;">% Proyectos Medidos</p> 
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #047a4d;  text-align: center; float: none; font-size: 2.1rem;">{{round(($proyectossatisfactorios*100)/$proyectosconmedicion->count(),2)}}%</h5>
-                    <p class="card-text" style="text-align: center;">% Proyectos Satisfactorios</p>
+                    <h5 class="card-title" style="color: #047a4d;  text-align: center; float: none; font-size: 2.1rem;" id="porcproysati">{{$porcentajesatisfactorio}}%</h5>
+                    <p class="card-text" style="text-align: center;">% Proyectos Satisfactorios</p> 
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
@@ -275,14 +275,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-6">
-                <div id="container5"></div>
-                <div id="container6"></div>
-                <div id="container7"></div>
-                <div id="container8"></div>
-                <div id="container9"></div>
-                <div id="container10"></div>
-            </div> --}}
         </div>
 
         <div class="row">
@@ -353,12 +345,6 @@
 
     </div>
 
-
-    
-    
-
-
- 
     
 @stop
 
@@ -408,6 +394,8 @@
         
         ]
     });
+
+   
 
         $(document).ready(function() {
 
@@ -627,137 +615,10 @@ Highcharts.chart('container2', {
         name: 'Brands',
         colorByPoint: true,
         data: proyectosporejeData
-        //  [{
-        //     name: 'Chrome',
-        //     y: 61.41,
-        //     sliced: true,
-        //     selected: true
-        // }, {
-        //     name: 'Internet Explorer',
-        //     y: 11.84
-        // }, {
-        //     name: 'Firefox',
-        //     y: 10.85
-        // }, {
-        //     name: 'Edge',
-        //     y: 4.67
-        // }, {
-        //     name: 'Safari',
-        //     y: 4.18
-        // }, {
-        //     name: 'Sogou Explorer',
-        //     y: 1.64
-        // }, {
-        //     name: 'Opera',
-        //     y: 1.6
-        // }, {
-        //     name: 'QQ',
-        //     y: 1.2
-        // }, {
-        //     name: 'Other',
-        //     y: 2.61
-        // }]
+
     }]
 });
 
-
-//-----------------------------------------------
-
-
-
-// Highcharts.chart('container3', {
-
-// chart: {
-//     type: 'column'
-// },
-
-// title: {
-//     text: 'Total fruit consumption, grouped by gender'
-// },
-
-// xAxis: {
-//     categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-// },
-
-// yAxis: {
-//     allowDecimals: false,
-//     min: 0,
-//     title: {
-//         text: 'Number of fruits'
-//     }
-// },
-
-// tooltip: {
-//     formatter: function () {
-//         return '<b>' + this.x + '</b><br/>' +
-//             this.series.name + ': ' + this.y + '<br/>' +
-//             'Total: ' + this.point.stackTotal;
-//     }
-// },
-
-// plotOptions: {
-//     column: {
-//         stacking: 'normal'
-//     }
-// },
-
-// series: [{
-//     name: 'John',
-//     data: [5, 3, 4, 7, 2],
-//     stack: 'male'
-// }, {
-//     name: 'Joe',
-//     data: [3, 4, 4, 2, 5],
-//     stack: 'male'
-// }, {
-//     name: 'Jane',
-//     data: [2, 5, 6, 2, 1],
-//     stack: 'female'
-// }, {
-//     name: 'Janet',
-//     data: [3, 0, 4, 4, 3],
-//     stack: 'female'
-// }]
-// });
-
-
-
-// Highcharts.chart('container4', {
-//     chart: {
-//         type: 'column'
-//     },
-//     title: {
-//         text: 'Cantidad de Tareas en Proceso'
-//     },
-//     subtitle: {
-//         text: 'Fuente: Sistema OGJ'
-//     },
-//     xAxis: {
-//         categories: proyectosiso,
-//         crosshair: true
-//     },
-//     yAxis: {
-//         min: 0,
-//         title: {
-//             text: 'Cantidad'
-//         }
-//     },
-//     tooltip: {
-//         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-//         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-//             '<td style="padding:0"><b>{point.y}</b></td></tr>',
-//         footerFormat: '</table>',
-//         shared: true,
-//         useHTML: true
-//     },
-//     plotOptions: {
-//         column: {
-//             pointPadding: 0.2,
-//             borderWidth: 0
-//         }
-//     },
-//     series: dataproyectosiso 
-// });
 
 
 
@@ -1016,24 +877,27 @@ function filtrarporproceso()
             datesearch: $("#procesoid").val()
         },
         success: function(data){
-            console.log(data[0].jose);
+            
             $('#tbodyporproceso').html("");
+            $('#tbodytareasporproceso').html("");
             
             data[0].grilla.forEach(function(obj, index) {
                  $('#tbodyporproceso').append('<tr><td>' + obj.id + '</td><td>'+obj.name+'</td><td>'+obj.eje+'</td><td>'+obj.grupos+'</td><td>'+obj.satisfactorio+'</td><td>'+obj.botones+'</td></tr>');
-
-
-                
-                
-                
-                
-                
-                
-                
             });
+
+           
+            $('#proymedibles').text(data[0].proymedibles);
+            $('#proyconmed').text(data[0].proyconmed);
+            $('#proysati').text(data[0].proysati);
+            $('#proynosati').text(data[0].proynosati);
+            $('#porcproymedido').text(data[0].porcproymedido+"%");
+            $('#porcproysati').text(data[0].porcproysati+"%");
+
         }
     });
 }
+
+
 
 </script>
 

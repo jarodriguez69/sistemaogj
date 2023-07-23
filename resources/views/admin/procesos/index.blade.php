@@ -40,9 +40,14 @@
                                 <td>{{$proceso->name}}</td>
                                 <td>{{$proceso->description}}</td>
                                 <td>{{$proceso->enabled==true?"SI":"NO"}}</td>
-                                <td><a href="{{route('admin.procesos.show', $proceso)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
-                                    <a href="{{route('admin.procesos.edit', $proceso->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
-                                    <a href="{{route('admin.procesos.enabled', $proceso->id)}}" class="btn btn-sm {{$proceso->enabled==true ?  "btn-danger" : "btn-success"}}" title="Clave/No Clave"><i class="fas fa-tag"></i></a> 
+                                <td>
+                                    @if((Auth::user()->hasRole('Admin')))
+                                        <a href="{{route('admin.procesos.show', $proceso)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                        <a href="{{route('admin.procesos.edit', $proceso->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
+                                        <a href="{{route('admin.procesos.enabled', $proceso->id)}}" class="btn btn-sm {{$proceso->enabled==true ?  "btn-danger" : "btn-success"}}" title="Clave/No Clave"><i class="fas fa-tag"></i></a> 
+                                    @endif 
+                                    <a href="{{route('admin.proyectos.indexproceso', $proceso->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-fw fa-cubes"></i></a>
+                                    <a href="{{route('admin.tareas.indexproceso', $proceso->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
                                     
                             </tr>
                         @endforeach

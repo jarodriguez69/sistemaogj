@@ -26,6 +26,8 @@ Route::get('/indicadores', [HomeController::class,'indicadores'])->name('admin.i
 Route::get('/porprocesos', [HomeController::class, 'porprocesos'])->name('admin.porprocesos');
 
 
+
+
 Route::resource('users', UserController::class)->names('admin.users');
 // Route::resource('users', UserController::class)->only('index','update','edit')->names('admin.users');
 Route::get('admin/users/{user}/enabled', [UserController::class, 'enabled'])->name('admin.users.enabled');
@@ -59,6 +61,8 @@ Route::get('proyecto/setsession', [ProyectoController::class, 'setsession'])->na
 Route::get('proyecto/getprojecthistory', [ProyectoController::class, 'getprojecthistory'])->name('admin.proyectos.getprojecthistory');
 Route::get('proyecto/getprojectbygrouphistory', [ProyectoController::class, 'getprojectbygrouphistory'])->name('admin.proyectos.getprojectbygrouphistory');
 Route::get('proyecto/{proyecto}/history', [ProyectoController::class, 'history'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.history');
+Route::get('proyectos/{proceso}/indexproceso', [ProyectoController::class, 'indexproceso'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.indexproceso');
+
 
 Route::resource('estadosproyectos', EstadoProyectoController::class)->names('admin.estadosproyectos');
 Route::get('estadosproyectos/{estadosproyecto}/enabled', [EstadoProyectoController::class, 'enabled'])->middleware('can:admin.estadosproyectos.enabled')->name('admin.estadosproyectos.enabled');
@@ -74,6 +78,8 @@ Route::get('tareas/{proyecto}/indexproyecto', [TareaController::class, 'indexpro
 Route::get('tarea/gettarea', [TareaController::class, 'gettarea'])->name('admin.tareas.gettarea');
 Route::get('tarea/gettaskbyproject', [TareaController::class, 'gettaskbyproject'])->name('admin.tareas.gettaskbyproject');
 Route::get('tarea/searchProject', [TareaController::class, 'searchProject'])->name('admin.tareas.searchProject');
+Route::get('tareas/{proceso}/indexproceso', [TareaController::class, 'indexproceso'])->middleware('can:admin.tareas.index')->name('admin.tareas.indexproceso');
+
 
 Route::resource('roles', RoleController::class)->names('admin.roles');
 

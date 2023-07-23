@@ -50,6 +50,13 @@ class ProyectoController extends Controller
         return view('admin.proyectos.history', compact("proyectos"));
     }
 
+    public function indexproceso(Proceso $proceso)
+    {
+        $year = date("Y");
+        $proyectos = Proyecto::where('year', $year)->where('proceso_id', $proceso->id)->where("id","!=",99)->get();
+        return view('admin.proyectos.indexproceso', compact("proyectos","proceso"));
+    }
+
     public function indexgrupohistory(Grupo $grupo)
     {
         return view('admin.proyectos.indexgrupohistory', compact("grupo"));

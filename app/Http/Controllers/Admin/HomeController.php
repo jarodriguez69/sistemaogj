@@ -8,7 +8,9 @@ use App\Models\Proyecto;
 use App\Models\Eje;
 use App\Models\Grupo;
 use App\Models\Proceso;
+use App\Models\Tarea;
 use Illuminate\Support\Collection;
+
 
 class HomeController extends Controller
 {
@@ -23,7 +25,9 @@ class HomeController extends Controller
                     ->groupBy(\DB::raw("Month(created_at)"))
                     ->pluck('count', 'month');
                     
-        
+        $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
+        $tareas = Tarea::whereIn("proyecto_id",$proyectosids)->get();
+
         for($i=1;$i<=12; $i++)
         {
             $val = $proyectosAux[$i] ?? null;
@@ -124,7 +128,7 @@ class HomeController extends Controller
         $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("id","!=",99)->get()->count();
         $proyectosnosatisfactorios = $proyectosconmedicion->count() - $proyectossatisfactorios;
         
-        $porcentajesatisfactorio =  $proyectossatisfactorios * 100 / $proyectosconmedicion->count();
+        $porcentajesatisfactorio =  $proyectosconmedicion->count()!= 0 ? $proyectossatisfactorios * 100 / $proyectosconmedicion->count() : $proyectossatisfactorios * 100;
         $porcentajenosatisfactorio = 100 - $porcentajesatisfactorio;
 
         $proyectosvencidoschart[] = [
@@ -267,7 +271,7 @@ class HomeController extends Controller
            'y'      => $porcentajenosatisfactorio6
        ];
 
-       return view('admin.index', compact('proyectos', 'procesos','proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios','proyectosvencidoscharte1','proyectosvencidoscharte2','proyectosvencidoscharte3','proyectosvencidoscharte4','proyectosvencidoscharte5','proyectosvencidoscharte6','proyectostotalbyyear1','proyectosconmedicion1','proyectostotalbyyear2','proyectosconmedicion2','proyectostotalbyyear3','proyectosconmedicion3','proyectostotalbyyear4','proyectosconmedicion4','proyectostotalbyyear5','proyectosconmedicion5','proyectostotalbyyear6','proyectosconmedicion6','proyectossinmedicion1','proyectossinmedicion2','proyectossinmedicion3','proyectossinmedicion4','proyectossinmedicion5','proyectossinmedicion6'));
+       return view('admin.index', compact('proyectos', 'procesos','proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios','proyectosvencidoscharte1','proyectosvencidoscharte2','proyectosvencidoscharte3','proyectosvencidoscharte4','proyectosvencidoscharte5','proyectosvencidoscharte6','proyectostotalbyyear1','proyectosconmedicion1','proyectostotalbyyear2','proyectosconmedicion2','proyectostotalbyyear3','proyectosconmedicion3','proyectostotalbyyear4','proyectosconmedicion4','proyectostotalbyyear5','proyectosconmedicion5','proyectostotalbyyear6','proyectosconmedicion6','proyectossinmedicion1','proyectossinmedicion2','proyectossinmedicion3','proyectossinmedicion4','proyectossinmedicion5','proyectossinmedicion6','porcentajesatisfactorio', 'tareas'));
 
     
 
@@ -321,6 +325,8 @@ class HomeController extends Controller
 
    
 
+    
+
     public function porprocesos(Request $request)
     {
         
@@ -331,16 +337,26 @@ class HomeController extends Controller
         if($procesoId==0)
         {
             $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->get();
+            $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->where("id","!=",99)->get()->count();
+            $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("id","!=",99)->get()->count();
+
+            $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
+            $tareas = Tarea::whereIn("proyecto_id",$proyectosids)->get();
         }
         else
         {
             $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->where("proceso_id",$procesoId)->get();
+            $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
+            $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
+            
+            $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
+            $tareas = Tarea::where("proceso_id",$procesoId)->whereIn("proyecto_id",$proyectosids)->get();
         }
-        
+        $proyectosnosatisfactorios = $proyectosconmedicion->count() - $proyectossatisfactorios;
+        $porcentajesatisfactorio =  $proyectosconmedicion->count()!= 0 ? $proyectossatisfactorios * 100 / $proyectosconmedicion->count() : $proyectossatisfactorios * 100;
+
         $data = [];
         $grilla=[];
-        $proyectossatisfactorios=1;
-        $proyectosnosatisfactorios=1;
         foreach($proyectosconmedicion as $query)
         {
             $grilla[] = [
@@ -349,15 +365,41 @@ class HomeController extends Controller
                 'eje' => $query->grupos->ejes->name,
                 'grupos' => $query->grupos->name,
                 'satisfactorio' => $query->satisfactorio ? "Satisfactorio" : "No Satisfactorio",
-                'porcentaje' => $query->satisfactorio ? round(100/$proyectossatisfactorios) . "%" : round(100/$proyectosnosatisfactorios) . "%",
-                'botones' => "aaaa"
+                'botones' => "<a href='". route('admin.proyectos.show', $query->id) ."' class=\"btn btn-sm btn-warning\" title=\"Ver\" target='_blank'><i class=\"fas fa-eye\"></i></a><a href='". route('admin.tareas.indexproyecto', $query->id) ."' class=\"btn btn-sm btn-dark\" title=\"Tareas\" target='_blank'><i class=\"fas fa-tasks\"></i></a><a href='". route('admin.proyectos.charts', $query->id) ."' class=\"btn btn-sm btn-primary\" title=\"Graficos\" target='_blank'><i class=\"fas fa-chart-bar\"></i></a>"
             ];
         }
+
+        
+        $grillatareas=[];
+        foreach($tareas as $tarea)
+        {
+            $grillatareas[] = [
+                'id' => $tarea->id,
+                'name' => $tarea->name,
+                'proyecto' => $tarea->proyectos->name,
+                'estado' => $tarea->estadotarea->name,
+                'botones' => '<a href="'. route('admin.tareas.show', $tarea->id) .'" class="btn btn-sm btn-warning" title="Ver" target=\'_blank\'><i class="fas fa-eye"></i></a> <a href="'. route('admin.tareas.edit', $tarea->id) .'" class="btn btn-sm btn-info" title="Editar" target=\'_blank\'><i class="fas fa-edit"></i></a> <a href="'. route('admin.tareas.destroy', $tarea->id) .'" class="btn btn-sm btn-danger" title="Eliminar" target=\'_blank\'><i class="fas fa-trash-alt"></i></a>'
+            ];
+
+
+            
+
+
+
+        }
+
         $data[]=[
             'grilla' => $grilla,
-            'jose' => "hola jose"
-            
+            'grillatareas'=> $grillatareas,
+            'proymedibles' => $proyectostotalbyyear,
+            'proyconmed' => $proyectosconmedicion->count(),
+            'proysati' => $proyectossatisfactorios,
+            'proynosati' => $proyectosnosatisfactorios,
+            'porcproymedido' => round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2),
+            'porcproysati' => $porcentajesatisfactorio
         ];
+
+
         return $data;
     }
 
