@@ -23,7 +23,7 @@ class ProcesoController extends Controller
     public function index()
     {
         // $procesos = DB::select('select * from procesos where enabled = ?', [true]);
-        $procesos = Proceso::paginate();
+        $procesos = Proceso::All();
         
         return view('admin.procesos.index', compact("procesos"));
         
