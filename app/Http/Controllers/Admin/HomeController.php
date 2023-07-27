@@ -395,7 +395,7 @@ class HomeController extends Controller
             'proyconmed' => $proyectosconmedicion->count(),
             'proysati' => $proyectossatisfactorios,
             'proynosati' => $proyectosnosatisfactorios,
-            'porcproymedido' => round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2),
+            'porcproymedido' => $proyectostotalbyyear==0 ? round(($proyectosconmedicion->count()*100),2) : round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2),
             'porcproysati' => $porcentajesatisfactorio
         ];
 

@@ -24,8 +24,10 @@ class ProcesoController extends Controller
     {
         // $procesos = DB::select('select * from procesos where enabled = ?', [true]);
         $procesos = Proceso::All();
-        
-        return view('admin.procesos.index', compact("procesos"));
+        $estrategicos = Proceso::where('estrategico',true)->get();
+        $claves = Proceso::where('clave',true)->get();
+        $soportes = Proceso::where('soporte',true)->get();
+        return view('admin.procesos.index', compact("estrategicos","claves","soportes", "procesos"));
         
     }
     
@@ -87,10 +89,33 @@ class ProcesoController extends Controller
     {
         $proceso->enabled=!$proceso->enabled;
         $proceso->save();
-        $procesos = Proceso::paginate();
+        $procesos = Proceso::All();
         return redirect()->route('admin.procesos.index',compact("procesos"))->with('info', 'El Proceso se actualizo con exito');
     }
 
+    public function estrategico(Proceso $proceso)
+    {
+        $proceso->estrategico=!$proceso->estrategico;
+        $proceso->save();
+        $procesos = Proceso::All();
+        return redirect()->route('admin.procesos.index',compact("procesos"))->with('info', 'El Proceso se actualizo con exito');
+    }
+
+    public function clave(Proceso $proceso)
+    {
+        $proceso->clave=!$proceso->clave;
+        $proceso->save();
+        $procesos = Proceso::All();
+        return redirect()->route('admin.procesos.index',compact("procesos"))->with('info', 'El Proceso se actualizo con exito');
+    }
+
+    public function soporte(Proceso $proceso)
+    {
+        $proceso->soporte=!$proceso->soporte;
+        $proceso->save();
+        $procesos = Proceso::All();
+        return redirect()->route('admin.procesos.index',compact("procesos"))->with('info', 'El Proceso se actualizo con exito');
+    }
 
 }
 

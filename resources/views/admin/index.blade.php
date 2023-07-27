@@ -182,7 +182,7 @@
     <div class="card">
         <h5 class="card-header d-flex">Medici&oacute;n de Proyectos 
         
-            <div class="dropdown ml-auto">
+            {{-- <div class="dropdown ml-auto">
                 <select class="form-control btn btn-primary btn-sm" name="procesos" id="procesoid">
                     <option value="0">Todos</option>
                     @foreach ($procesos as $proceso)
@@ -190,7 +190,7 @@
                     @endforeach
                     
                 </select> 
-            </div>
+            </div> --}}
             
             </h5>
         <div class="row">
@@ -224,14 +224,14 @@
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #ffa600;  text-align: center; float: none; font-size: 2.1rem;" id="porcproymedido">{{round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2)}}%</h5>
+                    <h5 class="card-title" style="color: #ffa600;  text-align: center; float: none; font-size: 2.1rem;" id="porcproymedido">{{$proyectostotalbyyear == 0 ? round(($proyectosconmedicion->count()*100),2) : round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2)}}%</h5>
                     <p class="card-text" style="text-align: center;">% Proyectos Medidos</p> 
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
             </div>
             <div class="col-sm-2">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: #047a4d;  text-align: center; float: none; font-size: 2.1rem;" id="porcproysati">{{$porcentajesatisfactorio}}%</h5>
+                    <h5 class="card-title" style="color: #047a4d;  text-align: center; float: none; font-size: 2.1rem;" id="porcproysati">{{round($porcentajesatisfactorio,2)}}%</h5>
                     <p class="card-text" style="text-align: center;">% Proyectos Satisfactorios</p> 
                     {{-- <a href="#" class="btn btn-primary">Ver Todos</a> --}}
                   </div>
