@@ -95,6 +95,12 @@ class ProcesoController extends Controller
 
     public function estrategico(Proceso $proceso)
     {
+        if(!$proceso->estrategico)
+        {
+            $proceso->clave = false;    
+            $proceso->soporte = false;
+        }
+
         $proceso->estrategico=!$proceso->estrategico;
         $proceso->save();
         $procesos = Proceso::All();
@@ -103,6 +109,12 @@ class ProcesoController extends Controller
 
     public function clave(Proceso $proceso)
     {
+        if(!$proceso->clave)
+        {
+            $proceso->soporte = false;    
+            $proceso->estrategico = false;
+        }
+
         $proceso->clave=!$proceso->clave;
         $proceso->save();
         $procesos = Proceso::All();
@@ -111,6 +123,12 @@ class ProcesoController extends Controller
 
     public function soporte(Proceso $proceso)
     {
+        if(!$proceso->soporte)
+        {
+            $proceso->clave = false;    
+            $proceso->estrategico = false;
+        }
+
         $proceso->soporte=!$proceso->soporte;
         $proceso->save();
         $procesos = Proceso::All();

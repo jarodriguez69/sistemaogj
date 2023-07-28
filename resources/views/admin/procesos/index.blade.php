@@ -2,9 +2,6 @@
 @section('title', 'Oficina de Gestión Judicial | Procesos')
 @section('plugins.Datatables', true)
 
-
-
-
 @section('content_header')
     <a href="{{route('admin.procesos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
     <h1>Mapa de Procesos</h1>
@@ -19,101 +16,100 @@
 </div>
 @endif
 
+    <h5 style="text-align: center;">Procesos Estrat&eacute;gicos</h5>
+    <div class="row">
+        @foreach ($estrategicos as $estrategico)
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{$estrategico->description}}</h3>
+                            <p>{{$estrategico->name}}</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
+                        </div>
+                        
+                            <div style="background-color: rgba(0,0,0,.1); display: block; padding: 3px 0; text-decoration: none; z-index: 10; text-align:center">
+                                @if((Auth::user()->hasRole('Admin')))
+                                            <a href="{{route('admin.procesos.show', $estrategico)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                            <a href="{{route('admin.procesos.edit', $estrategico->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
+                                            <a href="{{route('admin.procesos.estrategico', $estrategico->id)}}" class="btn btn-sm {{$estrategico->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
+                                            <a href="{{route('admin.procesos.clave', $estrategico->id)}}" class="btn btn-sm {{$estrategico->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
+                                            <a href="{{route('admin.procesos.soporte', $estrategico->id)}}" class="btn btn-sm {{$estrategico->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
+                                        @endif 
+                                        <a href="{{route('admin.proyectos.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes"></i></a>
+                                        <a href="{{route('admin.tareas.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                            </div>
+                        </div>
+                </div>
+            @endforeach
+        
+    </div>
 
 
 
+    <h5 style="text-align: center;">Procesos Claves</h5>
+    <div class="row">
+        @foreach ($claves as $clave)
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>44</h3>
+                            <p>{{$clave->name}}</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
+                        </div>
+                        
+                            <div style="background-color: rgba(0,0,0,.1); display: block; padding: 3px 0; text-decoration: none; z-index: 10; text-align:center">
+                                @if((Auth::user()->hasRole('Admin')))
+                                            <a href="{{route('admin.procesos.show', $clave)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                            <a href="{{route('admin.procesos.edit', $clave->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
+                                            <a href="{{route('admin.procesos.estrategico', $clave->id)}}" class="btn btn-sm {{$clave->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
+                                            <a href="{{route('admin.procesos.clave', $clave->id)}}" class="btn btn-sm {{$clave->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
+                                            <a href="{{route('admin.procesos.soporte', $clave->id)}}" class="btn btn-sm {{$clave->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
+                                        @endif 
+                                        <a href="{{route('admin.proyectos.indexproceso', $clave->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes"></i></a>
+                                        <a href="{{route('admin.tareas.indexproceso', $clave->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                            </div>
+                        </div>
+                </div>
+            @endforeach
+        
+    </div>
 
-
+    <h5 style="text-align: center;">Procesos de Soporte</h5>
+    <div class="row">
+        @foreach ($soportes as $soporte)
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>44</h3>
+                            <p>{{$soporte->name}}</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="fas fa-arrow-circle-right"></i> --}}
+                        </div>
+                        
+                            <div style="background-color: rgba(0,0,0,.1); display: block; padding: 3px 0; text-decoration: none; z-index: 10; text-align:center">
+                                @if((Auth::user()->hasRole('Admin')))
+                                            <a href="{{route('admin.procesos.show', $soporte)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                            <a href="{{route('admin.procesos.edit', $soporte->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
+                                            <a href="{{route('admin.procesos.estrategico', $soporte->id)}}" class="btn btn-sm {{$soporte->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
+                                            <a href="{{route('admin.procesos.clave', $soporte->id)}}" class="btn btn-sm {{$soporte->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
+                                            <a href="{{route('admin.procesos.soporte', $soporte->id)}}" class="btn btn-sm {{$soporte->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
+                                        @endif 
+                                        <a href="{{route('admin.proyectos.indexproceso', $soporte->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes"></i></a>
+                                        <a href="{{route('admin.tareas.indexproceso', $soporte->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                            </div>
+                        </div>
+                </div>
+            @endforeach
+        
+    </div>
 
     
-    <div class="card">
-        <div class="card-body">
-            <div class="content-header">
-                <div class="container-fluid text-center">
-                        <h1>Procesos Estrat&eacute;gicos</h1>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($estrategicos as $estrategico)
-                <div class="col-sm-3">
-                    <div class="card text-white bg-primary mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg, #ef9d66 0%,#d85f0f 100%) !important;">
-                        <div class="card-header">{{$estrategico->name}}</div>
-                        <div class="card-body">
-                          {{-- <h5 class="card-title">Primary card title</h5> --}}
-                          <p class="card-text" id="resumenproyectos">
-                            @if((Auth::user()->hasRole('Admin')))
-                                <a href="{{route('admin.procesos.show', $estrategico)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
-                                <a href="{{route('admin.procesos.edit', $estrategico->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-fw fa-edit"></i></a>  
-                                <a href="{{route('admin.procesos.estrategico', $estrategico->id)}}" class="btn btn-sm {{$estrategico->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
-                                <a href="{{route('admin.procesos.clave', $estrategico->id)}}" class="btn btn-sm {{$estrategico->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
-                                <a href="{{route('admin.procesos.soporte', $estrategico->id)}}" class="btn btn-sm {{$estrategico->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
-                            @endif 
-                            <a href="{{route('admin.proyectos.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-fw fa-cubes"></i></a>
-                            <a href="{{route('admin.tareas.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-fw fa-tasks"></i></a>
-                          </p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            
-            <div class="content-header">
-                <div class="container-fluid text-center">
-                        <h1>Procesos Claves</h1>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($claves as $clave)
-                <div class="col-sm-3">
-                    <div class="card text-white bg-primary mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg, #a85fda 0%,#631fd8 100%) !important;">
-                        <div class="card-header">{{$clave->name}}</div>
-                        <div class="card-body">
-                          {{-- <h5 class="card-title">Primary card title</h5> --}}
-                          <p class="card-text" id="resumenproyectos">
-                            @if((Auth::user()->hasRole('Admin')))
-                                <a href="{{route('admin.procesos.show', $clave)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
-                                <a href="{{route('admin.procesos.edit', $clave->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-fw fa-edit"></i></a>  
-                                <a href="{{route('admin.procesos.estrategico', $clave->id)}}" class="btn btn-sm {{$clave->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
-                                <a href="{{route('admin.procesos.clave', $clave->id)}}" class="btn btn-sm {{$clave->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
-                                <a href="{{route('admin.procesos.soporte', $clave->id)}}" class="btn btn-sm {{$clave->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
-                            @endif 
-                            <a href="{{route('admin.proyectos.indexproceso', $clave->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-fw fa-cubes"></i></a>
-                            <a href="{{route('admin.tareas.indexproceso', $clave->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-fw fa-tasks"></i></a>
-                          </p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            
-            <div class="content-header">
-                <div class="container-fluid text-center">
-                        <h1>Procesos de Soporte</h1>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($soportes as $soporte)
-                <div class="col-sm-3">
-                    <div class="card text-white bg-primary mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg,  #1591f6 0%,#2452cf 100%) !important;">
-                        <div class="card-header">{{$soporte->name}}</div>
-                        <div class="card-body">
-                          {{-- <h5 class="card-title">Primary card title</h5> --}}
-                          <p class="card-text" id="resumenproyectos">
-                            @if((Auth::user()->hasRole('Admin')))
-                                <a href="{{route('admin.procesos.show', $soporte)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
-                                <a href="{{route('admin.procesos.edit', $soporte->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-fw fa-edit"></i></a>  
-                                <a href="{{route('admin.procesos.estrategico', $soporte->id)}}" class="btn btn-sm {{$soporte->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
-                                <a href="{{route('admin.procesos.clave', $soporte->id)}}" class="btn btn-sm {{$soporte->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
-                                <a href="{{route('admin.procesos.soporte', $soporte->id)}}" class="btn btn-sm {{$soporte->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
-                            @endif 
-                            <a href="{{route('admin.proyectos.indexproceso', $soporte->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-fw fa-cubes"></i></a>
-                            <a href="{{route('admin.tareas.indexproceso', $soporte->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-fw fa-tasks"></i></a>
-                          </p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+    
             {{-- <table class="table table-striped" id="procesos"> 
                     <thead>
                         <tr>
@@ -145,10 +141,13 @@
                             </tr>
                         @endforeach
                     </tbody>
-            </table>    --}}
+            </table>    
         </div>
-    </div>
+    </div>--}}
+
+    
 @endsection
+
 
 
 @section('js')
