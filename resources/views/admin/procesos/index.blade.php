@@ -37,7 +37,7 @@
                                             <a href="{{route('admin.procesos.clave', $estrategico->id)}}" class="btn btn-sm {{$estrategico->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
                                             <a href="{{route('admin.procesos.soporte', $estrategico->id)}}" class="btn btn-sm {{$estrategico->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
                                         @endif 
-                                        <a href="{{route('admin.proyectos.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes"></i></a>
+                                        <a href="{{route('admin.proyectos.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes" target='_blank'></i></a>
                                         <a href="{{route('admin.tareas.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
                             </div>
                         </div>
