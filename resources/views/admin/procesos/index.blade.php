@@ -54,7 +54,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{$clave->description}}</h3>
                             <p>{{$clave->name}}</p>
                         </div>
                         <div class="icon">
@@ -84,7 +84,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{$soporte->description}}</h3>
                             <p>{{$soporte->name}}</p>
                         </div>
                         <div class="icon">

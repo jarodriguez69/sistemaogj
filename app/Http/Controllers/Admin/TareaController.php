@@ -75,7 +75,7 @@ class TareaController extends Controller
 
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::all();
-        $procesos = Proceso::where('enabled',false)->get();
+        $procesos = Proceso::all();
         $users = User::all();
         return view('admin.tareas.create', compact('proyectos', 'estados','users', 'procesos'));
     }
@@ -119,7 +119,8 @@ class TareaController extends Controller
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::where('enabled',true)->get();
         $users = User::all();
-        $procesos = Proceso::where('enabled',false)->get();
+        $procesos = Proceso::all();
+        //$procesos = Proceso::where('enabled',false)->get();
         $files =  File::where('tarea_id',$tarea->id)->get();
         
         return view('admin.tareas.edit',compact("tarea","proyectos","estados","users","files","procesos"));
