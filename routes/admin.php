@@ -95,7 +95,7 @@ Route::get('procesos/{proceso}/enabled', [ProcesoController::class, 'enabled'])-
 Route::get('procesos/{proceso}/estrategico', [ProcesoController::class, 'estrategico'])->middleware('can:admin.procesos.enabled')->name('admin.procesos.estrategico');
 Route::get('procesos/{proceso}/clave', [ProcesoController::class, 'clave'])->middleware('can:admin.procesos.enabled')->name('admin.procesos.clave');
 Route::get('procesos/{proceso}/soporte', [ProcesoController::class, 'soporte'])->middleware('can:admin.procesos.enabled')->name('admin.procesos.soporte');
-
+Route::get('prcesos/resumen', [ProcesoController::class, 'resumen'])->name('admin.procesos.resumen');
 
 #Planificiacion 
 Route::resource('estrategicas', EstrategicaController::class)->names('admin.estrategicas');

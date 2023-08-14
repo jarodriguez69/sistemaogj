@@ -135,5 +135,23 @@ class ProcesoController extends Controller
         return redirect()->route('admin.procesos.index',compact("procesos"))->with('info', 'El Proceso se actualizo con exito');
     }
 
+    public function resumen(Request $request)
+    {
+        $idbyestrategicas = new Collection();
+        $id = $request->get('peid');
+        $idbyestrategicas = Operativa::where("estrategica_id",$id)->get()->pluck("id");
+        $querysProceso = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', 1)->whereIn("operativa_id",$idbyestrategicas)->get()->count();
+        $querysTerminado = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', 2)->whereIn("operativa_id",$idbyestrategicas)->get()->count();
+        $total = $querysProceso + $querysTerminado;
+
+        $data = [
+            ['En Proceso', ($querysProceso / $total) * 100],
+            ['Terminados', ($querysTerminado / $total) * 100]
+        ];
+
+        
+        return $data;
+    }
+
 }
 
