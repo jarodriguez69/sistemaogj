@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Proceso;
+use App\Models\Proyecto;
+use App\Models\Tarea;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProceso;
 
@@ -137,19 +139,35 @@ class ProcesoController extends Controller
 
     public function resumen(Request $request)
     {
-        $idbyestrategicas = new Collection();
-        $id = $request->get('peid');
-        $idbyestrategicas = Operativa::where("estrategica_id",$id)->get()->pluck("id");
-        $querysProceso = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', 1)->whereIn("operativa_id",$idbyestrategicas)->get()->count();
-        $querysTerminado = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', 2)->whereIn("operativa_id",$idbyestrategicas)->get()->count();
-        $total = $querysProceso + $querysTerminado;
-
-        $data = [
-            ['En Proceso', ($querysProceso / $total) * 100],
-            ['Terminados', ($querysTerminado / $total) * 100]
-        ];
+        $year = date("Y");
+        $procesoId = $request->get('peid');
+        $proyectosconmedicion=[];
 
         
+        $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->where("proceso_id",$procesoId)->get();
+        $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
+        $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
+        
+        $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
+        $tareas = Tarea::where("proceso_id",$procesoId)->whereIn("proyecto_id",$proyectosids)->get();
+        
+        $proyectosnosatisfactorios = $proyectosconmedicion->count() - $proyectossatisfactorios;
+        $porcentajesatisfactorio =  $proyectosconmedicion->count()!= 0 ? $proyectossatisfactorios * 100 / $proyectosconmedicion->count() : $proyectossatisfactorios * 100;
+
+        $data = [];
+
+
+        $data[]=[
+            
+            'proymedibles' => $proyectostotalbyyear,
+            'proyconmed' => $proyectosconmedicion->count(),
+            'proysati' => $proyectossatisfactorios,
+            'proynosati' => $proyectosnosatisfactorios,
+            'porcproymedido' => $proyectostotalbyyear==0 ? round(($proyectosconmedicion->count()*100),2) : round(($proyectosconmedicion->count()*100)/$proyectostotalbyyear,2),
+            'porcproysati' => $porcentajesatisfactorio
+        ];
+
+
         return $data;
     }
 
