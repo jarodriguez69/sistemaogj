@@ -403,5 +403,24 @@ class HomeController extends Controller
         return $data;
     }
 
+    public function cronjob()
+    {
+        $year = date("Y");
+        $month = date("m");
+
+        
+        $proyectosnew = Proyecto::whereYear('created_at', '=', $year)->whereMonth('created_at','=',$month)->get()->count();
+
+        $proyectosend = Proyecto::whereYear('real', '=', $year)->whereMonth('real','=',$month)->get()->count();
+        
+        // Proyectos en Proceso
+        // Proyectos Suspendidos
+        // Proyectos Acumulados
+        // Proyectos Terminados
+        // Proyectos con Medici&oacute;n
+        // Proyectos con Medici&oacute;n Satisfactoria
+     
+    }
+
 
 }

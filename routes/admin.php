@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\ObjetivoController;
 use App\Http\Controllers\Admin\ActividadController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ProcesoController;
-
+use App\Models\Alerta;
 //->middleware('can:admin.users') para una ruta en particular, por jejemplo el index del home
 Route::get('', [HomeController::class,'index']);
 Route::get('/calendar', [HomeController::class,'calendar']);
@@ -133,3 +133,16 @@ Route::post('actividades/getinfotareas', [ActividadController::class, 'getinfota
 
 
 Route::resource('agendas', AgendaController::class)->names('admin.agendas');
+
+
+// Route::get('/cron-job', function () {
+//         $alerta = new Alerta();
+
+//         $alerta->name = "prueba";
+//         $alerta->description = "descrpicion prueba";
+//         $alerta->days = 5;
+//         $alerta->save();
+//  });
+
+
+ Route::get('/cron-job', [HomeController::class,'cronjob']);
