@@ -39,6 +39,8 @@
                                         @endif 
                                         <a href="{{route('admin.proyectos.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes" target='_blank'></i></a>
                                         <a href="{{route('admin.tareas.indexproceso', $estrategico->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                                        <a href="javascript:chart({{$estrategico->id}},'{{$estrategico->name}}');" class="btn btn-sm btn-secondary" title="Graficos"><i class="fas fa-chart-bar"></i></a>
+
                             </div>
                         </div>
                 </div>
@@ -71,6 +73,7 @@
                                         @endif 
                                         <a href="{{route('admin.proyectos.indexproceso', $clave->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes"></i></a>
                                         <a href="{{route('admin.tareas.indexproceso', $clave->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                                        <a href="javascript:chart({{$clave->id}},'{{$clave->name}}');" class="btn btn-sm btn-secondary" title="Graficos"><i class="fas fa-chart-bar"></i></a>
                             </div>
                         </div>
                 </div>
@@ -101,6 +104,8 @@
                                         @endif 
                                         <a href="{{route('admin.proyectos.indexproceso', $soporte->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-cubes"></i></a>
                                         <a href="{{route('admin.tareas.indexproceso', $soporte->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
+                                        <a href="javascript:chart({{$soporte->id}},'{{$soporte->name}}');" class="btn btn-sm btn-secondary" title="Graficos"><i class="fas fa-chart-bar"></i></a>
+
                             </div>
                         </div>
                 </div>
@@ -108,42 +113,27 @@
         
     </div>
 
-    
-    
-            {{-- <table class="table table-striped" id="procesos"> 
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Clave</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($procesos as $proceso)
-                            <tr>
-                                <td>{{$proceso->id}}</td>
-                                <td>{{$proceso->name}}</td>
-                                <td>{{$proceso->description}}</td>
-                                <td>{{$proceso->clave==true ? "Clave": ($proceso->soporte==true ? "Soporte" : "Estrategico")}}</td>
-                                <td>
-                                    @if((Auth::user()->hasRole('Admin')))
-                                        <a href="{{route('admin.procesos.show', $proceso)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
-                                        <a href="{{route('admin.procesos.edit', $proceso->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
-                                        <a href="{{route('admin.procesos.estrategico', $proceso->id)}}" class="btn btn-sm {{$proceso->estrategico==true ?  "btn-success":"btn-danger" }}" title="Estrategico">E</a> 
-                                        <a href="{{route('admin.procesos.clave', $proceso->id)}}" class="btn btn-sm {{$proceso->clave==true ?  "btn-success":"btn-danger"}}" title="Clave">C</a> 
-                                        <a href="{{route('admin.procesos.soporte', $proceso->id)}}" class="btn btn-sm {{$proceso->soporte==true ?  "btn-success":"btn-danger"}}" title="Soporte">S</a> 
-                                    @endif 
-                                    <a href="{{route('admin.proyectos.indexproceso', $proceso->id)}}" class="btn btn-sm btn-primary" title="Proyectos"><i class="fas fa-fw fa-cubes"></i></a>
-                                    <a href="{{route('admin.tareas.indexproceso', $proceso->id)}}" class="btn btn-sm btn-dark" title="Tareas" target='_blank'><i class="fas fa-tasks"></i></a>
-                                    
-                            </tr>
-                        @endforeach
-                    </tbody>
-            </table>    
+    <div class="modal fade" id="modal" TO-DO tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Resumen </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <div id="container">TO-DO
+
+                    </div>         
+                </div>
+                <div class="modal-footer"> 
+                    <a id="btnproceso" href="#" class="btn btn-sm btn-dark">En Proceso</a>
+                    <a id="btnterminados" href="#" class="btn btn-sm btn-dark">Terminados</a> 
+                </div>
+            </div>
         </div>
-    </div>--}}
+    </div>
 
     
 @endsection
@@ -190,6 +180,82 @@
         
         ]
     });
+
+
+
+    function chart(id, name)
+    {
+       
+       
+       
+        
+        $("#container"+id).html("");
+        $.ajax({
+            url: "{{route('admin.procesos.resumen')}}",
+            datatype: 'json',
+            data: {
+                peid: id
+            },
+            success: function(data){
+
+                
+                Highcharts.chart('container'+id, {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Objetivos<br>Estratégicos<br>por Estados<br>2022',
+                        align: 'center',
+                        verticalAlign: 'middle',
+                        y: 60
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    accessibility: {
+                        point: {
+                            valueSuffix: '%'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            dataLabels: {
+                                enabled: true,
+                                distance: -50,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: 'white'
+                                }
+                            },
+                            startAngle: -90,
+                            endAngle: 90,
+                            center: ['50%', '75%'],
+                            size: '110%'
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Porcentaje',
+                        innerSize: '50%',
+                        data: data
+                    }]
+                });
+
+                $('#modal'+id).modal('show'); // abrir
+                
+
+            }
+        });
+
+
+
+
+       
+    }
+
+
     </script>
 @stop
 
