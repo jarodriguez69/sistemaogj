@@ -18,11 +18,11 @@ use App\Http\Controllers\Admin\ObjetivoController;
 use App\Http\Controllers\Admin\ActividadController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ProcesoController;
+use App\Http\Controllers\Admin\IndicadorController;
 use App\Models\Alerta;
 //->middleware('can:admin.users') para una ruta en particular, por jejemplo el index del home
 Route::get('', [HomeController::class,'index']);
 Route::get('/calendar', [HomeController::class,'calendar']);
-Route::get('/indicadores', [HomeController::class,'indicadores'])->name('admin.indicadores');
 Route::get('/porprocesos', [HomeController::class, 'porprocesos'])->name('admin.porprocesos');
 
 
@@ -131,6 +131,7 @@ Route::get('actividad/searchProject', [ActividadController::class, 'searchProjec
 Route::get('actividad/searchObjetives', [ActividadController::class, 'searchObjetives'])->name('admin.actividades.searchObjetives');
 Route::post('actividades/getinfotareas', [ActividadController::class, 'getinfotareas'])->name('admin.actividades.getinfotareas');
 
+Route::resource('indicadores', IndicadorController::class)->names('admin.indicadores');
 
 Route::resource('agendas', AgendaController::class)->names('admin.agendas');
 

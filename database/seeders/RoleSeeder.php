@@ -54,7 +54,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=> 'admin.procesos.create','description'=>'Crear Procesos'])->assignRole($role1);
         Permission::create(['name'=> 'admin.procesos.destroy','description'=>'Eliminar Procesos'])->assignRole($role1);
         Permission::create(['name'=> 'admin.procesos.enabled','description'=>'Deshabilitar Procesos'])->assignRole($role1);
-        
+        Permission::create(['name'=> 'admin.indicadores.index','description'=>'Ver Indicador'])->assignRole($role1);
+        Permission::create(['name'=> 'admin.indicadores.update','description'=>'Actualizar Indicador'])->assignRole($role1);
+        Permission::create(['name'=> 'admin.indicadores.edit','description'=>'Editar Indicador'])->assignRole($role1);
+        Permission::create(['name'=> 'admin.indicadores.create','description'=>'Crear Indicador'])->assignRole($role1);
+        Permission::create(['name'=> 'admin.indicadores.destroy','description'=>'Eliminar Indicador'])->assignRole($role1);
 
         // Permisos para Usuarios y Administrador
         Permission::create(['name'=> 'admin.home','description'=>'Inicio Home'])->syncRoles([$role1, $role2]);

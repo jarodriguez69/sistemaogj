@@ -358,6 +358,12 @@ return [
             //'can'           => 'admin.tareas.index',
 		'active' => ['admin/procesos*']
         ],
+        [
+            'text'       => 'Indicadores',
+            'url'        => 'admin/indicadores',
+            'icon'        => 'fas fa-fw fa-chart-line',
+		    'active' => ['admin/indicadores*']
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

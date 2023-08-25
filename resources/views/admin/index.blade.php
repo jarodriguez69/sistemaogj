@@ -832,33 +832,33 @@ Highcharts.chart('container10', {
 
 function filtrar()
 {
-    $.ajax({
-                url: "{{route('admin.indicadores')}}",
-                datatype: 'json',
-                data: {
-                    begin: $("#begindate").val(),
-                    end: $("#enddate").val()
-                },
-                success: function(data){
-                    console.log(data);
-                    $("#indicadorproceso").html("");
-                    $("#indicadorsuspendido").html("");
-                    $("#indicadoracumulado").html("");
-                    $("#indicadorterminado").html("");
-                    $("#indicadormedicion").html("");
-                    $("#indicadorsatisfactorio").html("");
-                    $("#indicadorproceso").append(data[0].indicadorproceso);
-                    $("#indicadorsuspendido").append(data[0].indicadorsuspendido);
-                    $("#indicadoracumulado").append(data[0].indicadoracumulado);
-                    $("#indicadorterminado").append(data[0].indicadorterminado);
-                    $("#indicadormedicion").append(data[0].indicadormedicion);
-                    $("#indicadorsatisfactorio").append(data[0].indicadorsatisfactorio);
+    // $.ajax({
+    //             url: "",
+    //             datatype: 'json',
+    //             data: {
+    //                 begin: $("#begindate").val(),
+    //                 end: $("#enddate").val()
+    //             },
+    //             success: function(data){
+    //                 console.log(data);
+    //                 $("#indicadorproceso").html("");
+    //                 $("#indicadorsuspendido").html("");
+    //                 $("#indicadoracumulado").html("");
+    //                 $("#indicadorterminado").html("");
+    //                 $("#indicadormedicion").html("");
+    //                 $("#indicadorsatisfactorio").html("");
+    //                 $("#indicadorproceso").append(data[0].indicadorproceso);
+    //                 $("#indicadorsuspendido").append(data[0].indicadorsuspendido);
+    //                 $("#indicadoracumulado").append(data[0].indicadoracumulado);
+    //                 $("#indicadorterminado").append(data[0].indicadorterminado);
+    //                 $("#indicadormedicion").append(data[0].indicadormedicion);
+    //                 $("#indicadorsatisfactorio").append(data[0].indicadorsatisfactorio);
                     
-                    // data.forEach(function(obj, index) {
-                    //     $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+obj.label+'</td><td>'+obj.poa+'</td></tr>');
-                    // });
-                }
-            });
+    //                 // data.forEach(function(obj, index) {
+    //                 //     $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+obj.label+'</td><td>'+obj.poa+'</td></tr>');
+    //                 // });
+    //             }
+    //         });
 }
 
 function filtrarporproceso()
