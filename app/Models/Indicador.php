@@ -10,7 +10,7 @@ class Indicador extends Model
     use HasFactory;
     //protected $fillable = ['name', 'description', 'enabled']; //permito que se guarden estos campos
     protected $guarded = []; //ignora los campos indicados
-
+    protected $table = "indicadores";
 
 
 }

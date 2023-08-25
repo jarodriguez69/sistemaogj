@@ -21,10 +21,7 @@ class IndicadorController extends Controller
 
     public function index()
     {
-        return "jos";
-        // $indicadores = DB::select('select * from indicadores where enabled = ?', [true]);
         $indicadores = Indicador::all();
-        
         return view('admin.indicadores.index', compact("indicadores"));
         
     }
