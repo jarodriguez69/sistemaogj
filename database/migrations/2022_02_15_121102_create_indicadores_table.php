@@ -22,7 +22,6 @@ class CreateIndicadoresTable extends Migration
             $table->string('proyectos_terminados');
             $table->string('proyectos_con_medicion');
             $table->string('proyectos_satisfactorio');
-            $table->timestamp('begin');
             $table->timestamps();
         });
     }
