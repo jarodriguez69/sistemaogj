@@ -6,7 +6,6 @@
 
 
 @section('content_header')
-    <a href="{{route('admin.indicadores.create')}}" class="btn btn-secondary float-right">Nuevo</a>
     <h1>Indicadores</h1>
 @endsection
 
