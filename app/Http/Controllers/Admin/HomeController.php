@@ -10,7 +10,7 @@ use App\Models\Grupo;
 use App\Models\Proceso;
 use App\Models\Tarea;
 use Illuminate\Support\Collection;
-
+use App\Enums\ProjectStatusEnum;
 
 class HomeController extends Controller
 {
@@ -78,17 +78,7 @@ class HomeController extends Controller
                 'y'      => $porcentaje,
             ];
         }
-        // foreach ($grupos as $grupo) {
 
-        //     $proyectosporeje = Proyecto::where('grupo_id',$grupo->id)->get()->count();
-            
-        //     $porcentaje = ($proyectosporeje * 100) / $totalproyectos;
-        //     $data[]       = [
-        //         'name'         => $grupo->name,
-        //         'y'      => $porcentaje,
-        //     ];
-        // }
-            
         $proyectosiso = Proyecto::where('grupo_id',12)->where('year',$year)->where("id","!=",99)->pluck('name');
         $proyectosisototal = Proyecto::where('grupo_id',12)->where('year',$year)->where("id","!=",99)->get();
         $i = 0;
@@ -123,9 +113,9 @@ class HomeController extends Controller
 
         
         
-        $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->where("id","!=",99)->get()->count();
-        $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->get();
-        $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("id","!=",99)->get()->count();
+        $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->where("id","!=",99)->get()->count();
+        $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->get();
+        $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("id","!=",99)->get()->count();
         $proyectosnosatisfactorios = $proyectosconmedicion->count() - $proyectossatisfactorios;
         
         $porcentajesatisfactorio =  $proyectosconmedicion->count()!= 0 ? $proyectossatisfactorios * 100 / $proyectosconmedicion->count() : $proyectossatisfactorios * 100;
@@ -147,9 +137,9 @@ class HomeController extends Controller
        // EJE 1
        $idgrupos = new Collection();
        $idgrupos = Grupo::where("eje_id",1)->get()->pluck("id");
-       $proyectostotalbyyear1 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
-       $proyectosconmedicion1 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
-       $proyectossatisfactorios1 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectostotalbyyear1 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectosconmedicion1 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
+       $proyectossatisfactorios1 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosnosatisfactorios1 = $proyectosconmedicion1->count() - $proyectossatisfactorios1;
        $proyectossinmedicion1 = $proyectostotalbyyear1 - $proyectosconmedicion1->count();
        $porcentajesatisfactorio1 =  $proyectosconmedicion1->count() != 0 ? $proyectossatisfactorios1 * 100 / $proyectosconmedicion1->count() : 0;
@@ -169,9 +159,9 @@ class HomeController extends Controller
        // EJE 2
        $idgrupos = new Collection();
        $idgrupos = Grupo::where("eje_id",2)->get()->pluck("id");
-       $proyectostotalbyyear2 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
-       $proyectosconmedicion2 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
-       $proyectossatisfactorios2 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectostotalbyyear2 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectosconmedicion2 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
+       $proyectossatisfactorios2 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosnosatisfactorios2 = $proyectosconmedicion2->count() - $proyectossatisfactorios2;
        $proyectossinmedicion2 = $proyectostotalbyyear2 - $proyectosconmedicion2->count();
        $porcentajesatisfactorio2 =  $proyectosconmedicion2->count() != 0 ? $proyectossatisfactorios2 * 100 / $proyectosconmedicion2->count() : 0;
@@ -190,9 +180,9 @@ class HomeController extends Controller
        // EJE 3
        $idgrupos = new Collection();
        $idgrupos = Grupo::where("eje_id",3)->get()->pluck("id");
-       $proyectostotalbyyear3 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
-       $proyectosconmedicion3 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
-       $proyectossatisfactorios3 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectostotalbyyear3 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectosconmedicion3 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
+       $proyectossatisfactorios3 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosnosatisfactorios3 = $proyectosconmedicion3->count() - $proyectossatisfactorios3;
        $proyectossinmedicion3 = $proyectostotalbyyear3 - $proyectosconmedicion3->count();
        $porcentajesatisfactorio3 =  $proyectosconmedicion3->count() != 0 ? $proyectossatisfactorios3 * 100 / $proyectosconmedicion3->count() : 0;
@@ -211,9 +201,9 @@ class HomeController extends Controller
        // EJE 4
        $idgrupos = new Collection();
        $idgrupos = Grupo::where("eje_id",4)->get()->pluck("id");
-       $proyectostotalbyyear4 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
-       $proyectosconmedicion4 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
-       $proyectossatisfactorios4 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectostotalbyyear4 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectosconmedicion4 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
+       $proyectossatisfactorios4 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosnosatisfactorios4 = $proyectosconmedicion4->count() - $proyectossatisfactorios4;
        $proyectossinmedicion4 = $proyectostotalbyyear4 - $proyectosconmedicion4->count();
        $porcentajesatisfactorio4 =  $proyectosconmedicion4->count() != 0 ? $proyectossatisfactorios4 * 100 / $proyectosconmedicion4->count() : 0;
@@ -232,9 +222,9 @@ class HomeController extends Controller
        // EJE 5
        $idgrupos = new Collection();
        $idgrupos = Grupo::where("eje_id",5)->get()->pluck("id");
-       $proyectostotalbyyear5 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
-       $proyectosconmedicion5 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
-       $proyectossatisfactorios5 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectostotalbyyear5 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectosconmedicion5 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
+       $proyectossatisfactorios5 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosnosatisfactorios5 = $proyectosconmedicion5->count() - $proyectossatisfactorios5;
        $proyectossinmedicion5 = $proyectostotalbyyear5 - $proyectosconmedicion5->count();
        $porcentajesatisfactorio5 =  $proyectosconmedicion5->count() != 0 ? $proyectossatisfactorios5 * 100 / $proyectosconmedicion5->count() : 0;
@@ -253,9 +243,9 @@ class HomeController extends Controller
        // EJE 6
        $idgrupos = new Collection();
        $idgrupos = Grupo::where("eje_id",6)->get()->pluck("id");
-       $proyectostotalbyyear6 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
-       $proyectosconmedicion6 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
-       $proyectossatisfactorios6 = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectostotalbyyear6 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+       $proyectosconmedicion6 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
+       $proyectossatisfactorios6 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosnosatisfactorios6 = $proyectosconmedicion6->count() - $proyectossatisfactorios6;
        $proyectossinmedicion6 = $proyectostotalbyyear6 - $proyectosconmedicion6->count();
        $porcentajesatisfactorio6 =  $proyectosconmedicion6->count() != 0 ? $proyectossatisfactorios6 * 100 / $proyectosconmedicion6->count() : 0;
@@ -297,18 +287,18 @@ class HomeController extends Controller
 
         if($procesoId==0)
         {
-            $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->get();
-            $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->where("id","!=",99)->get()->count();
-            $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("id","!=",99)->get()->count();
+            $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->get();
+            $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->where("id","!=",99)->get()->count();
+            $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("id","!=",99)->get()->count();
 
             $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
             $tareas = Tarea::whereIn("proyecto_id",$proyectosids)->get();
         }
         else
         {
-            $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->where("proceso_id",$procesoId)->get();
-            $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
-            $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[1,2,9,10])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
+            $proyectosconmedicion = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->where("id","!=",99)->where("proceso_id",$procesoId)->get();
+            $proyectostotalbyyear = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
+            $proyectossatisfactorios = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->where("proceso_id",$procesoId)->where("id","!=",99)->get()->count();
             
             $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
             $tareas = Tarea::where("proceso_id",$procesoId)->whereIn("proyecto_id",$proyectosids)->get();
@@ -373,13 +363,7 @@ class HomeController extends Controller
         $proyectosnew = Proyecto::whereYear('created_at', '=', $year)->whereMonth('created_at','=',$month)->get()->count();
 
         $proyectosend = Proyecto::whereYear('real', '=', $year)->whereMonth('real','=',$month)->get()->count();
-        
-        // Proyectos en Proceso
-        // Proyectos Suspendidos
-        // Proyectos Acumulados
-        // Proyectos Terminados
-        // Proyectos con Medici&oacute;n
-        // Proyectos con Medici&oacute;n Satisfactoria
+
      
     }
 
