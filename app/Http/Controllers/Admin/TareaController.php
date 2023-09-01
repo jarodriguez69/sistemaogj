@@ -213,6 +213,7 @@ class TareaController extends Controller
         $cantidadrevisado = Tarea::where('estadotarea_id',4)->whereIn('proyecto_id', $idproyectos)->get()->count();
         $cantidadverificado = Tarea::where('estadotarea_id',5)->whereIn('proyecto_id', $idproyectos)->get()->count();
         $cantidadvalidado = Tarea::where('estadotarea_id',6)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $cantidadrealizado = Tarea::where('estadotarea_id',7)->whereIn('proyecto_id', $idproyectos)->get()->count();
 
 
 
@@ -225,7 +226,9 @@ class TareaController extends Controller
                                 'revisada' => $cantidadrevisado, 
                                 'verificada'  => $cantidadverificado, 
                                 'validada' => $cantidadvalidado, 
-                                'total'  => $cantidadtotal
+                                'total'  => $cantidadtotal,
+                                'realizados'  => $cantidadrealizado
+                                
                             ]);
          
     }

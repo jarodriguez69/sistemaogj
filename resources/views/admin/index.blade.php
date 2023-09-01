@@ -17,7 +17,7 @@
                 <div class="card-header">Cantidad de Proyectos por Estados</div>
                 <div class="card-body">
                   {{-- <h5 class="card-title">Primary card title</h5> --}}
-                  <p class="card-text" id="resumenproyectos"></p>
+                  <p class="card-text" id="resumenproyectos" style="margin-top: -15px !important"></p>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <div class="card-header">Cantidad de Tareas por Estados</div>
                 <div class="card-body">
                   {{-- <h5 class="card-title">Info card title</h5> --}}
-                  <p class="card-text" id="resumentareas"></p>
+                  <p class="card-text" id="resumentareas" style="margin-top: -15px !important"></p>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 <div class="card-header">Alertas de Esta Semana</div>
                 <div class="card-body">
                   {{-- <h5 class="card-title">Secondary card title</h5> --}}
-                  <p class="card-text" id="resumenalertas"></p>
+                  <p class="card-text" id="resumenalertas" style="margin-top: -15px !important"></p>
                 </div>
               </div>
         </div>
@@ -466,9 +466,10 @@
                         "No Iniciadas: " + data.noiniciada + "<br>" + 
                         "En Proceso: " + data.procesos + "<br>" + 
                         "Completadas: " + data.terminados + "<br>" + 
-                        "Revisadas: " + data.revisada + "<br>" + 
-                        "Verificadas: " + data.verificada + "<br>" + 
-                        "Validadas: " + data.validada);
+                        "D. Realizados: " + data.realizados + "<br>" + 
+                        "D. Revisados: " + data.revisada + "<br>" + 
+                        "D. Verificados: " + data.verificada + "<br>" + 
+                        "D. Validados: " + data.validada);
                       
 
                         $("#tareastotal").html("");
