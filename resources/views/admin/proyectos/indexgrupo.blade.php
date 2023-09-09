@@ -29,6 +29,7 @@
                         <th>Fecha Inicio</th>
                         <th>Fecha Fin</th>
                         <th>Estado</th>
+                        <th>Proceso</th>
                         <th>Responsable</th>
                         <th></th>
                     </tr>
@@ -79,6 +80,10 @@
             {
                 data:'estadoproyecto.name',
                 name:'estadoproyecto.name'
+            },
+            {
+                data:'procesos.name',
+                name:'procesos.name'
             },
             {
                 data:'user.name',

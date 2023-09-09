@@ -209,7 +209,7 @@ class ProyectoController extends Controller
         if($request->ajax())
         {
             $year = date("Y");
-            $proyectos = Proyecto::with('grupos', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('year', $year)->get();
+            $proyectos = Proyecto::with('grupos', 'estadoproyecto', 'user', 'procesos')->select('id', 'name', 'grupo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id', 'proceso_id')->where('year', $year)->get();
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){
                         return view('admin.proyectos.action', compact('proyecto'));
@@ -227,7 +227,7 @@ class ProyectoController extends Controller
         if($request->ajax())
         {
             $year = date("Y");
-            $proyectos = Proyecto::with('grupos', 'objetivos2', 'estadoproyecto', 'user')->select('id', 'name', 'grupo_id', 'objetivo_id','begin', 'end', 'estadoproyecto_id', 'user_id')->where('year', '!=' ,$year)->orWhereNull('year')->get();
+            $proyectos = Proyecto::with('grupos', 'objetivos2', 'estadoproyecto', 'user', 'procesos')->select('id', 'name', 'grupo_id', 'objetivo_id','begin', 'end', 'estadoproyecto_id', 'user_id', 'proceso_id')->where('year', '!=' ,$year)->orWhereNull('year')->get();
             
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){
@@ -246,7 +246,7 @@ class ProyectoController extends Controller
         if($request->ajax())
         {
             $year = date("Y");
-            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('grupo_id', $request->grupo)->where('year', $year)->get();
+            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user', 'procesos')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id', 'proceso_id')->where('grupo_id', $request->grupo)->where('year', $year)->get();
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){
                         return view('admin.proyectos.action', compact('proyecto'));
@@ -264,7 +264,7 @@ class ProyectoController extends Controller
         if($request->ajax())
         {
             $year = date("Y");
-            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id')->where('grupo_id', $request->grupo)->where('year', '!=' ,$year)->orWhereNull('year')->get();
+            $proyectos = Proyecto::with('objetivos2','estadoproyecto', 'user', 'procesos')->select('id', 'name', 'objetivo_id', 'begin', 'end', 'estadoproyecto_id', 'user_id', 'proceso_id')->where('grupo_id', $request->grupo)->where('year', '!=' ,$year)->orWhereNull('year')->get();
 
             return Datatables::of($proyectos)
                     ->addColumn('actions',function($proyecto){

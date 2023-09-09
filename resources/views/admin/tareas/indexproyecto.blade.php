@@ -29,6 +29,7 @@
                         <th>Inicio</th>
                         <th>Fin</th>
                         <th>Estado</th>
+                        <th>Proceso</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                             <td>{{$tarea->begin}}</td>
                             <td>{{$tarea->end}}</td>
                             <td>{{$tarea->estadotarea->name}}</td>
+                            <td>{{$tarea->procesos->name}}</td>
                             <td>
                                 <a href="{{route('admin.tareas.show', $tarea)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
                                 <a href="{{route('admin.tareas.edit', $tarea->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
