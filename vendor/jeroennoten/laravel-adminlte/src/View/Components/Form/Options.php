@@ -4,11 +4,12 @@ namespace JeroenNoten\LaravelAdminLte\View\Components\Form;
 
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
+use JeroenNoten\LaravelAdminLte\Helpers\UtilsHelper;
 
 class Options extends Component
 {
     /**
-     * The list of options as key value pairs.
+     * The list of options as 'key => value' pairs.
      *
      * @var array
      */
@@ -65,8 +66,8 @@ class Options extends Component
         $this->selected = Arr::wrap($selected);
         $this->disabled = Arr::wrap($disabled);
         $this->strict = isset($strict);
-        $this->emptyOption = $emptyOption;
-        $this->placeholder = $placeholder;
+        $this->emptyOption = UtilsHelper::applyHtmlEntityDecoder($emptyOption);
+        $this->placeholder = UtilsHelper::applyHtmlEntityDecoder($placeholder);
     }
 
     /**

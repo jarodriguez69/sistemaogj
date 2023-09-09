@@ -13,6 +13,3 @@
         <span class="sr-only">{{ __('adminlte::adminlte.toggle_navigation') }}</span>
     </a>
 </li>
-<li class="nav-item d-none d-sm-inline-block">
-    <!-- <a href="http://www.joserodriguez.com.ar/admin" class="nav-link" target='_blank'>Archivos</a> -->
-</li>
