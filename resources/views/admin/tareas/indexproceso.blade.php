@@ -5,7 +5,12 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-    <a href="{{route('admin.tareas.create')}}" class="btn btn-secondary float-right">Nuevo</a>
+    @if($proceso->id ==9)         
+        <a href="{{route('admin.tareas.createnc')}}" class="btn btn-secondary float-right">Nueva NC</a>     
+    @else
+        <a href="{{route('admin.tareas.create')}}" class="btn btn-secondary float-right">Nuevo</a>       
+    @endif
+
     <h1>Actividades del Proceso {{$proceso->name}}</h1>
 @endsection
 

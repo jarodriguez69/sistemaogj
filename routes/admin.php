@@ -79,7 +79,7 @@ Route::get('tarea/gettarea', [TareaController::class, 'gettarea'])->name('admin.
 Route::get('tarea/gettaskbyproject', [TareaController::class, 'gettaskbyproject'])->name('admin.tareas.gettaskbyproject');
 Route::get('tarea/searchProject', [TareaController::class, 'searchProject'])->name('admin.tareas.searchProject');
 Route::get('tareas/{proceso}/indexproceso', [TareaController::class, 'indexproceso'])->middleware('can:admin.tareas.index')->name('admin.tareas.indexproceso');
-
+Route::get('tarea/createnc', [TareaController::class, 'createnc'])->name('admin.tareas.createnc');
 
 Route::resource('roles', RoleController::class)->names('admin.roles');
 

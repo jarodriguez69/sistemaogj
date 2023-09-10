@@ -11,6 +11,7 @@ use App\Models\EstadoTarea;
 use App\Models\User;
 use App\Models\File;
 use App\Models\Proceso;
+use App\Models\Fuente;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
@@ -78,6 +79,17 @@ class TareaController extends Controller
         $procesos = Proceso::all();
         $users = User::all();
         return view('admin.tareas.create', compact('proyectos', 'estados','users', 'procesos'));
+    }
+
+    public function createnc()
+    {
+
+        $proyectos = Proyecto::all();
+        $estados = EstadoTarea::all();
+        $procesos = Proceso::all();
+        $users = User::all();
+        $fuentes = Fuente::all();
+        return view('admin.tareas.createnc', compact('proyectos', 'estados','users', 'procesos','fuentes'));
     }
 
     public function store(request $request)

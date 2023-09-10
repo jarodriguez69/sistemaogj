@@ -53,7 +53,7 @@
                     @endcan
                     @can('admin.home')
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdZKUWHO1bvF0cu_kCOEVi3-WH4-FtsGyKWXbK__LCl5bZpfw/viewform"><strong>No Conformidades</strong></a>
+                            <a target="_blank" class="nav-link" href="{{route('admin.tareas.createnc')}}"><strong>No Conformidades</strong></a>
                         </li>
                     @endcan
                     @can('admin.home')

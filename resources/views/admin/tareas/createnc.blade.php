@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui/jquery-ui.min.css')}}">
 @endsection
 @section('content_header')
-    <h1>Crear Actividad</h1>
+    <h1>Crear No Conformidad</h1>
 @endsection
 
 
@@ -15,23 +15,44 @@
         <div class="card-body">
            <form action="{{route('admin.tareas.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                
+                {{--  CREAR --}}
                 <div class="form-group">
-                    <label for="name">Nombre</label>
+                    <label for="fuente_id">Origen</label>
+                    <select class="form-control" name="fuente_id">
+                      
+                        @foreach ($fuentes as $fuente)
+                            <option value="{{$fuente->id}}">{{$fuente->name}}</option>
+                        @endforeach
+                    </select>
+                    @error('fuente_id')
+                        <small id="fuenteid" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div> 
+
+                <div class="form-group">
+                    <label for="name">Descripción de no conformidad</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="name" placeholder="Ingrese Nombre" value={{old('name')}}>
                     @error('name')
                         <small id="emailHelp" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="description">Descripci&oacute;n</label>
+                    <label for="description">An&aacute;lisis de Causa</label>
                     <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Ingrese Descripción">{{old('description')}}</textarea>
                     @error('description')
                         <small id="descriptionId" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
+                {{--  CREAR --}}
                 <div class="form-group">
-                    <label for="begin">Inicio</label>
+                    <label for="correccion">Correcci&oacute;n</label>
+                    <textarea name="correccion" class="form-control" cols="30" rows="10" placeholder="Ingrese Corrección">{{old('correccion')}}</textarea>
+                    @error('correccion')
+                        <small id="correccionId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="begin">Fecha de Registro</label>
                     <input type="date" class="form-control" id="begin" name="begin" aria-describedby="begin" placeholder="Fecha de Inicio" value="{{ old('begin') }}">
                     
                     @error('begin')
@@ -40,7 +61,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="end">Fin</label>
+                    <label for="end">Fecha de Implementaci&oacute;n</label>
                     <input type="date" class="form-control" name="end" aria-describedby="end" placeholder="Fecha de Fin" value="{{ old('end') }}">
                     @error('end')
                         <small class="form-text text-danger">*{{$message}}</small>    
@@ -84,6 +105,32 @@
                         <small id="procesoid" class="form-text text-danger">*{{$message}}</small>    
                     @enderror
                 </div>
+                {{--  CREAR --}}
+                <div class="form-group">
+                    <label for="otra">NC - Otras Areas</label>
+                    <textarea name="otra" class="form-control" cols="30" rows="10" placeholder="Ingrese NC - Otras Areas">{{old('otra')}}</textarea>
+                    @error('otra')
+                        <small id="otraId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                {{--  CREAR --}}
+                <div class="form-group">
+                    <label for="accioncorrectiva">Acción Correctiva</label>
+                    <textarea name="accioncorrectiva" class="form-control" cols="30" rows="10" placeholder="Ingrese Acción Correctiva">{{old('accioncorrectiva')}}</textarea>
+                    @error('accioncorrectiva')
+                        <small id="accioncorrectivaId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                {{--  CREAR --}}
+                <div class="form-group">
+                    <label for="eficacia">Eficacia</label>
+                    <textarea name="eficacia" class="form-control" cols="30" rows="10" placeholder="Ingrese Eficacia">{{old('eficacia')}}</textarea>
+                    @error('eficacia')
+                        <small id="eficaciaId" class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
                 
                 <div class="form-group">
                     <label for="user_id">Responsables</label>
@@ -96,6 +143,10 @@
                                 </div>
                         @endforeach
                 </div>
+
+              
+
+
                 <div class="form-group">
                     <label for="url">Adjuntar Enlace</label>
                     <textarea name="url" class="form-control" cols="30" rows="5" placeholder="Ingrese Enlace">{{old('url')}}</textarea>
