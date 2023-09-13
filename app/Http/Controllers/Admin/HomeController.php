@@ -42,11 +42,13 @@ class HomeController extends Controller
         
         $proyectosend = new Collection();
         $proyectosendAux = Proyecto::select(\DB::raw("Month(`real`) as a, COUNT(*) as count"))
-                            ->whereYear('real', date('Y'))
+                            ->where('year', date('Y'))
+                            ->whereIn('estadoproyecto_id', [ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value])
                             ->groupBy(\DB::raw("Month(`real`)"))
                             ->pluck('count', 'a');
 
 
+        return  $proyectosendAux;
         for($i=1;$i<=12; $i++)
         {
             $val = $proyectosendAux[$i] ?? null;
