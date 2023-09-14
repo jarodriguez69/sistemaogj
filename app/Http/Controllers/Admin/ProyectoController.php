@@ -132,7 +132,7 @@ class ProyectoController extends Controller
         
         $grupos = Grupo::all();
         $estados = EstadoProyecto::where('enabled',true)->get();
-        $procesos = Proceso::where('enabled',true)->get();
+        $procesos = Proceso::where('clave',true)->get();
         $users = User::all();
         $equipos = User::all();
         $partes = Parte::where('enabled',true)->get();

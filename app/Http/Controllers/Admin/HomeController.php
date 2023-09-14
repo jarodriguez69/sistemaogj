@@ -48,7 +48,6 @@ class HomeController extends Controller
                             ->pluck('count', 'a');
 
 
-        return  $proyectosendAux;
         for($i=1;$i<=12; $i++)
         {
             $val = $proyectosendAux[$i] ?? null;
