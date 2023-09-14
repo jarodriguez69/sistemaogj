@@ -29,15 +29,15 @@
             <h2><strong> OBJETIVOS DE CALIDAD</strong></h2>
             
             <ol>
-                <li>Implementar y mantener el sistema de gestión de calidad ISO 9001:2015.</li>
+                
                 <li>Incorporar la medición de la satisfacción de los usuarios  de los proyectos.</li>
                 <li>Lograr la satisfacción de los usuarios  de los proyectos con medición de satisfacción.</li>
-                <li>Incorporar la medición de la satisfacción de los usuarios  de las Unidades que participan del proceso de Coordinación, asistencia técnica y asesoramiento  para la implementación del SGC conforme a los requisitos de la Norma ISO 9001 vigente en Unidades Judiciales del PJT.</li> 
-                <li>Lograr la satisfacción de los usuarios  de las Unidades que participan del proceso de Coordinación, asistencia técnica y asesoramiento  para la implementación del SGC conforme a los requisitos de la Norma ISO 9001 vigente en Unidades Judiciales del PJT.</li> 
-                <li>Incorporar la medición de la satisfacción de los usuarios que participan del proceso de Implementación de Planes de mejora en Unidades Jurisdiccionales del PJT.</li>
-                <li>Lograr la satisfacción de los usuarios que participan del proceso de Implementación de Planes de mejora en Unidades Jurisdiccionales del PJT.</li>
-                <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial.</li> 
-                <li>Tratar satisfactoriamente las quejas por falta de publicaciones de edictos en el Boletín Oficial Judicial, atribuibles a errores de registración en los Juzgados.</li>
+                <li>Lograr la aprobación del SGC de las Unidades Judiciales del PJT  que participan de la implementación de la Norma ISO 9001:2015 bajo la oordinación, asistencia técnica y asesoramiento  de la OGJ.</li>
+                <li>Implementar planes de mejora en unidades no penales del PJT  - *se consideran las unidades que acepten la implementación del PO.</li>
+                <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial conforme a los plazos definidos.</li>
+                <li>Medir el clima laboral e implementar los planes de acción dentro de los plazos establecidos.</li>
+                <li>Planificar y realizar las auditorías internas a las Unidades Judiciales del PJT que cumplan los requisitos dentro de los plazos establecidos.</li>
+
             </ol>
             
         </div>
