@@ -42,27 +42,55 @@
 
         </div>
     </div>
+
+
+    <div class="card">
+        <h5 class="card-header d-flex">Seguimiento de Proyectos</h5>
+        <div class="card-body">
+                <div class="form-group float-right">
+                    <label for="dateobjetive">Fecha de Inicio</label>
+                    <input type="date" class="form-control" id="dateproject" aria-describedby="dateobjetive" placeholder="Fecha">
+                </div>
+                <table id="seguimientos" class="table table-striped"> 
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Responsable Proyecto</th>
+                            <th>Responsable Tarea</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyseguimientos">
+                        
+                    </tbody>
+
+                </table>  
+        </div>
+    </div>
+
 @endsection
 
 
 @section('js')
     <script>
-        // var searchaux="";
+  
+        $("#dateproject").change(function(){
+            $.ajax({
+                url: "{{route('admin.proyectos.cargas')}}",
+                datatype: 'json',
+                data: {
+                    datesearch: $("#dateproject").val()
+                },
+                success: function(data){
 
-        // $(document).ready(function(){ 
-        //     searchaux = {{session('search')}};
-        //     $('input[type="search"]').keyup(function(){
-        //             $.ajax({ 
-        //                 url: "{{ route('proyectos.setsession') }}",
-        //                 data: {'str': $('input[type="search"]').val()},
-        //                 type: 'get',
-        //                 success: function(response){
-                            
-        //                 }
-        //             });
-        //         });
-                
-        // });
+                    $('#tbodyseguimientos').html("");
+                    data.forEach(function(obj, index) {
+                        $('#tbodyseguimientos').append('<tr><td>' + obj.id + '</td><td>'+obj.label+'</td><td>'+obj.responsable+'</td><td>'+obj.responsabletarea +'</td><td>'+obj.description+'</td></tr>');
+                    });
+                }
+            });
+        });
 
         $('#proyectos').DataTable( {
         "processing": true,

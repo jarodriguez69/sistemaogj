@@ -62,7 +62,7 @@ Route::get('proyecto/getprojecthistory', [ProyectoController::class, 'getproject
 Route::get('proyecto/getprojectbygrouphistory', [ProyectoController::class, 'getprojectbygrouphistory'])->name('admin.proyectos.getprojectbygrouphistory');
 Route::get('proyecto/{proyecto}/history', [ProyectoController::class, 'history'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.history');
 Route::get('proyectos/{proceso}/indexproceso', [ProyectoController::class, 'indexproceso'])->middleware('can:admin.proyectos.index')->name('admin.proyectos.indexproceso');
-
+Route::get('proyecto/cargas', [ProyectoController::class, 'cargas'])->name('admin.proyectos.cargas');
 
 Route::resource('estadosproyectos', EstadoProyectoController::class)->names('admin.estadosproyectos');
 Route::get('estadosproyectos/{estadosproyecto}/enabled', [EstadoProyectoController::class, 'enabled'])->middleware('can:admin.estadosproyectos.enabled')->name('admin.estadosproyectos.enabled');

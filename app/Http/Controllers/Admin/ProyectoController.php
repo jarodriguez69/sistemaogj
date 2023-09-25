@@ -53,7 +53,7 @@ class ProyectoController extends Controller
     public function indexproceso(Proceso $proceso)
     {
         $year = date("Y");
-        $proyectos = Proyecto::where('year', $year)->where('proceso_id', $proceso->id)->where("id","!=",99)->get();
+        $proyectos = Proyecto::where('year', $year)->where('proceso_id', $proceso->id)->get();
         return view('admin.proyectos.indexproceso', compact("proyectos","proceso"));
     }
 
@@ -220,6 +220,41 @@ class ProyectoController extends Controller
                     ->rawColumns(['actions'])
                     ->make(true);
         }
+    }
+
+    public function cargas(Request $request)
+    {
+        
+        $year = date("Y");
+        $term = $request->get('datesearch');
+        $fecha= date('d/m/Y', strtotime($term));
+        $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
+        $querys = Tarea::whereIn("proyecto_id",$proyectosids)->where('description', 'LIKE', '%'.$fecha.'%')->get();
+
+
+        $data = [];
+
+        foreach($querys as $query)
+        {
+            $username="";
+            
+            foreach($query->users as $userid){
+                $username .= $userid->name;
+            }
+            
+            $texto = $query->description;
+            $trozos = explode($fecha, $texto);
+
+            $data[] = [
+                'id' => $query->proyectos->id,
+                'label' => $query->proyectos->name,
+                'responsable' => $query->proyectos->user->name,
+                'responsabletarea' => $username,
+                'description' => $trozos[1]
+
+            ];
+        }
+        return $data;
     }
 
     public function getprojecthistory(Request $request)

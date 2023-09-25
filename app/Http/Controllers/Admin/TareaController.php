@@ -51,7 +51,7 @@ class TareaController extends Controller
     public function indexproceso(Proceso $proceso)
     {
         $year = date("Y");
-        $proyectosids = Proyecto::where("year",$year)->where("id","!=",99)->get()->pluck("id");
+        $proyectosids = Proyecto::where("year",$year)->get()->pluck("id");
         $tareas = Tarea::where("proceso_id",$proceso->id)->whereIn("proyecto_id",$proyectosids)->get();
         
         return view('admin.tareas.indexproceso', compact("tareas","proceso"));
