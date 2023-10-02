@@ -132,10 +132,10 @@ class TareaController extends Controller
         $estados = EstadoTarea::where('enabled',true)->get();
         $users = User::all();
         $procesos = Proceso::all();
-        //$procesos = Proceso::where('enabled',false)->get();
+        $fuentes = Fuente::all();
         $files =  File::where('tarea_id',$tarea->id)->get();
         
-        return view('admin.tareas.edit',compact("tarea","proyectos","estados","users","files","procesos"));
+        return view('admin.tareas.edit',compact("tarea","proyectos","estados","users","files","procesos", "fuentes"));
 
     }
 
