@@ -9,6 +9,7 @@ use App\Models\Eje;
 use App\Models\Grupo;
 use App\Models\Proceso;
 use App\Models\Tarea;
+use App\Models\Norma;
 use Illuminate\Support\Collection;
 use App\Enums\ProjectStatusEnum;
 
@@ -262,7 +263,108 @@ class HomeController extends Controller
            'y'      => $porcentajenosatisfactorio6
        ];
 
-       return view('admin.index', compact('proyectos', 'procesos','proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios','proyectosvencidoscharte1','proyectosvencidoscharte2','proyectosvencidoscharte3','proyectosvencidoscharte4','proyectosvencidoscharte5','proyectosvencidoscharte6','proyectostotalbyyear1','proyectosconmedicion1','proyectostotalbyyear2','proyectosconmedicion2','proyectostotalbyyear3','proyectosconmedicion3','proyectostotalbyyear4','proyectosconmedicion4','proyectostotalbyyear5','proyectosconmedicion5','proyectostotalbyyear6','proyectosconmedicion6','proyectossinmedicion1','proyectossinmedicion2','proyectossinmedicion3','proyectossinmedicion4','proyectossinmedicion5','proyectossinmedicion6','porcentajesatisfactorio', 'tareas'));
+
+        $totaljuri = Norma::where("jurisdiccional",1)->where("year",$year)->get()->sum('total');
+        $certificadojuri= Norma::where("jurisdiccional",1)->sum('certificadas');
+        $totalnojuri= Norma::where("jurisdiccional",0)->where("year",$year)->get()->sum('total');
+        $certificadonojuri= Norma::where("jurisdiccional", 0)->sum('certificadas');
+
+       $tortajuri[] = [
+            'name'         => "Certificadas",
+            'y'      => round(($certificadojuri*100)/$totaljuri,2)
+        ];
+        $tortajuri[] = [
+            'name'         => "No Certificadas",
+            'y'      => 100-round(($certificadojuri*100)/$totaljuri,2)
+        ];
+        $tortanojuri[] = [
+            'name'         => "Certificadas",
+            'y'      => round(($certificadonojuri*100)/$totalnojuri,2)
+        ];
+        $tortanojuri[] = [
+            'name'         => "No Certificadas",
+            'y'      => 100-round(($certificadonojuri*100)/$totalnojuri,2)
+        ];
+        $tortatotal[] = [
+            'name'         => "Certificadas",
+            'y'      => round((($certificadojuri+$certificadonojuri)*100)/($totaljuri + $totalnojuri),2)
+        ];
+        $tortatotal[] = [
+            'name'         => "No Certificadas",
+            'y'      => 100-round((($certificadojuri+$certificadonojuri)*100)/($totaljuri + $totalnojuri),2)
+        ];
+         
+
+
+
+
+
+
+
+
+
+
+    
+        $normas = Norma::all();
+        
+        $cantidadañosjuri = [];
+        $cantidadañosnojuri = [];
+        $cantidadañostotal = [];
+        $añosjuri = [];
+        $añosnojuri = [];
+        $añostotal = [];
+        $cantidadjuri = [];
+        $cantidadnojuri = [];
+        $cantidadtotal = [];
+
+        foreach($normas as $item)
+        {
+
+            if($item->jurisdiccional==1)
+            {
+                $añosjuri[] = $item->year;
+                $cantidadañosjuri[] = $item->certificadas;
+            }
+            else
+            {
+                $añosnojuri[] = $item->year;
+                $cantidadañosnojuri[] =$item->certificadas;
+            }
+            
+            
+        }
+            
+        $cantidadjuri[] =  [
+            'name'=> 'Certificadas',
+            'data' => $cantidadañosjuri
+        ];
+
+        $cantidadnojuri[] =  [
+            'name'=> 'Certificadas',
+            'data' => $cantidadañosnojuri
+        ];
+
+        $totalcantiso = new Collection();
+        $totalcantiso = Norma::select(\DB::raw("sum(certificadas) as cant, year as a"))
+                    ->groupBy(\DB::raw("year"))
+                    ->pluck('cant', 'a');
+
+
+        
+        foreach($totalcantiso as $key => $value)
+        {
+            $añostotal[] = $key;
+            $cantidadañostotal[] =(int)$value;
+        }
+
+
+        $cantidadtotal[] =  [
+            'name'=> 'Certificadas',
+            'data' => $cantidadañostotal
+        ];
+        
+
+       return view('admin.index', compact('proyectos', 'procesos','proyectosend', 'data', 'proyectosiso', 'dataproyectosiso', 'proyectosconmedicion','proyectosvencidoschart','proyectostotalbyyear','proyectosconmedicion','proyectossatisfactorios','proyectosnosatisfactorios','proyectosvencidoscharte1','proyectosvencidoscharte2','proyectosvencidoscharte3','proyectosvencidoscharte4','proyectosvencidoscharte5','proyectosvencidoscharte6','proyectostotalbyyear1','proyectosconmedicion1','proyectostotalbyyear2','proyectosconmedicion2','proyectostotalbyyear3','proyectosconmedicion3','proyectostotalbyyear4','proyectosconmedicion4','proyectostotalbyyear5','proyectosconmedicion5','proyectostotalbyyear6','proyectosconmedicion6','proyectossinmedicion1','proyectossinmedicion2','proyectossinmedicion3','proyectossinmedicion4','proyectossinmedicion5','proyectossinmedicion6','porcentajesatisfactorio', 'tareas', 'tortajuri', 'tortanojuri','tortatotal','añosjuri','añosnojuri','añostotal','cantidadjuri','cantidadnojuri','cantidadtotal'));
 
     
 
@@ -332,12 +434,6 @@ class HomeController extends Controller
                 'estado' => $tarea->estadotarea->name,
                 'botones' => '<a href="'. route('admin.tareas.show', $tarea->id) .'" class="btn btn-sm btn-warning" title="Ver" target=\'_blank\'><i class="fas fa-eye"></i></a> <a href="'. route('admin.tareas.edit', $tarea->id) .'" class="btn btn-sm btn-info" title="Editar" target=\'_blank\'><i class="fas fa-edit"></i></a> <a href="'. route('admin.tareas.destroy', $tarea->id) .'" class="btn btn-sm btn-danger" title="Eliminar" target=\'_blank\'><i class="fas fa-trash-alt"></i></a>'
             ];
-
-
-            
-
-
-
         }
 
         $data[]=[

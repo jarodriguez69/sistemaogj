@@ -170,7 +170,35 @@
         <div id="container4"></div>
     </div>
     
-   
+    <div class="card">
+        <h5 class="card-header d-flex">Avance Institucional ISO 9001:2015  </h5>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div id="barrajuri"></div>
+            </div>
+            <div class="col-md-4">
+                <div id="barranojuri"></div>
+            </div>
+            <div class="col-md-4">
+                <div id="barratotal"></div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div id="tortajuri"></div>
+            </div>
+            <div class="col-md-4">
+                <div id="tortanojuri"></div>
+            </div>
+            <div class="col-md-4">
+                <div id="tortatotal"></div>
+            </div>
+        </div>
+
+    </div>
+
 
 
     <div class="card">
@@ -517,9 +545,17 @@
     var proyectosvencidoscharte4 = <?php echo json_encode($proyectosvencidoscharte4)?>;
     var proyectosvencidoscharte5 = <?php echo json_encode($proyectosvencidoscharte5)?>;
     var proyectosvencidoscharte6 = <?php echo json_encode($proyectosvencidoscharte6)?>;
-
-
+    var isotortajuri = <?php echo json_encode($tortajuri)?>;
+    var isotortanojuri = <?php echo json_encode($tortanojuri)?>;
+    var isotortatotal = <?php echo json_encode($tortatotal)?>;
     
+    var isobarraañojuri = <?php echo json_encode($añosjuri)?>;
+    var isobarranoañojuri = <?php echo json_encode($añosnojuri)?>;
+    var isobarraañototal = <?php echo json_encode($añostotal)?>;
+    var isobarrajuri = <?php echo json_encode($cantidadjuri)?>;
+    var isobarranojuri = <?php echo json_encode($cantidadnojuri)?>;
+    var isobarratotal = <?php echo json_encode($cantidadtotal)?>;
+
 
 
     Highcharts.chart('container', {
@@ -829,6 +865,212 @@ Highcharts.chart('container10', {
     }]
 });
 
+Highcharts.chart('tortajuri', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Unidades Jurisdiccionales'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Porcentaje',
+        colorByPoint: true,
+        data:  isotortajuri
+
+    }]
+});
+
+Highcharts.chart('tortanojuri', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Unidades No Jurisdiccionales'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Porcentaje',
+        colorByPoint: true,
+        data:      isotortanojuri
+    
+    }]
+});
+
+Highcharts.chart('tortatotal', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Totalizador'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Porcentaje',
+        colorByPoint: true,
+        data:  isotortatotal
+    }]
+});
+
+
+    
+
+
+Highcharts.chart('barrajuri', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Unidades Jurisdiccionales Certificadas por año',
+        align: 'left'
+    },
+    xAxis: {
+        categories: isobarraañojuri,
+        crosshair: true,
+        accessibility: {
+            description: 'Años'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Cantidad'
+        }
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: isobarrajuri
+});
+
+
+Highcharts.chart('barranojuri', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Unidades No Jurisdiccionales Certificadas por año',
+        align: 'left'
+    },
+    xAxis: {
+        categories: isobarranoañojuri,
+        crosshair: true,
+        accessibility: {
+            description: 'Años'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Cantidad'
+        }
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series:isobarranojuri
+});
+
+
+    
+    
+    
+
+Highcharts.chart('barratotal', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Total Unidades Certificadas por año',
+        align: 'left'
+    },
+    xAxis: {
+        categories: isobarraañototal,
+        crosshair: true,
+        accessibility: {
+            description: 'Años'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Cantidad'
+        }
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: isobarratotal
+});
 
 
 function filtrar()
