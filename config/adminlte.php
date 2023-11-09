@@ -359,11 +359,25 @@ return [
 		'active' => ['admin/procesos*']
         ],
         [
-            'text'       => 'Indicadores',
-            'url'        => 'admin/indicadores',
+            'text'    => 'Indicadores',
             'icon'        => 'fas fa-fw fa-chart-line',
-		    'active' => ['admin/indicadores*']
+            'submenu' => [
+                [
+                    'text' => 'Estadística',
+                    'icon_color' => 'cyan',
+                    'url'  => 'admin/indicadores',
+                    'active' => ['admin/indicadores*']
+                ],
+                [
+                    'text' => 'Eje 3',
+                    'icon_color' => 'green',
+                    'url'  => 'admin/eje3',
+			        'active' => ['admin/eje3*']
+                ],
+            ],
         ],
+
+       
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

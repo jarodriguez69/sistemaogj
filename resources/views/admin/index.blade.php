@@ -170,36 +170,6 @@
         <div id="container4"></div>
     </div>
     
-    <div class="card">
-        <h5 class="card-header d-flex">Avance Institucional ISO 9001:2015  </h5>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div id="barrajuri"></div>
-            </div>
-            <div class="col-md-4">
-                <div id="barranojuri"></div>
-            </div>
-            <div class="col-md-4">
-                <div id="barratotal"></div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div id="tortajuri"></div>
-            </div>
-            <div class="col-md-4">
-                <div id="tortanojuri"></div>
-            </div>
-            <div class="col-md-4">
-                <div id="tortatotal"></div>
-            </div>
-        </div>
-
-    </div>
-
-
 
     <div class="card">
         <h5 class="card-header d-flex">Medici&oacute;n de Proyectos 
@@ -365,6 +335,104 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="card">
+        <h5 class="card-header d-flex">Historico de Proyectos por Estado</h5>
+        <div id="proyectosh"></div>
+    </div>
+
+    <div class="card">
+        <h5 class="card-header d-flex">Historico Cumplimiento Objetivos</h5>
+        <div id="objetivosh"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                           
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">O.E. 1.1</th>
+                                <td>OBJETIVO ESTRATÉGICO 1.1 Consolidar la reforma del Código Procesal Civil y Comercial a través del diseño y coordinación de la ejecución de planes de acción</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 1.2</th>
+                                <td>OBJETIVO ESTRATÉGICO 1.2 Promover una mayor inmediación, oralidad, celeridad y digitalización en los procesos judiciales a través de propuestas de reformas normativas.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 2.1</th>
+                                <td>OBJETIVO ESTRATÉGICO 2.1 Promover el desarrollo del expediente digital administrativo a través de su implementación en la totalidad de las Unidades no Jurisdiccionales del PJT</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 2.2</th>
+                                <td>OBJETIVO ESTRATÉGICO 2.2 Avanzar con la conformación del Expediente Digital mediante la implementación del SAE en las unidades pertenecientes a la Justicia de Paz</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 2.3</th>
+                                <td>OBJETIVO ESTRATÉGICO 2.3 Promover acciones que permitan consolidar el vínculo con organismos externos a través del intercambio de herramientas tecnológicas </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">O.E. 2.4</th>
+                                <td>OBJETIVO ESTRATÉGICO 2.4 Gestionar un servicio de internet adecuado a las necesidades laborales de todos los integrantes de OGJ</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 3.1</th>
+                                <td>OBJETIVO ESTRATÉGICO 3.1 Acompañar en la implementación de los requisitos de la 
+Norma ISO 9001:2015 a las unidades judiciales del PJT</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 3.2</th>
+                                <td>OBJETIVO ESTRATÉGICO 3.2 Alcanzar los Objetivos de Calidad de la OGJ</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 4.1</th>
+                                <td>OBJETIVO ESTRATÉGICO 4.1 Proponer Planes de Mejora por Procesos del fuero penal</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 4.2</th>
+                                <td>OBJETIVO ESTRATÉGICO 4.2 Proponer Planes de Mejora por Procesos del fuero no penal</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 4.3</th>
+                                <td>OBJETIVO ESTRATÉGICO 4.3 Identificar buenas prácticas de disminución de retrasos en procesos claves</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">O.E. 4.4</th>
+                                <td>OBJETIVO ESTRATÉGICO 4.4 impulsar el análisis de la información reflejada en los tableros de control, con la valoración e identificación de información prioritaria sobre el comportamiento y desempeño de las unidades jurisdiccionales y no jurisdiccionales</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 5.1</th>
+                                <td>OBJETIVO ESTRATÉGICO 5.1 Promover el uso responsable de los recursos mediante la presentación de proyectos para la reducción, reutilización y reciclado de residuos generados por el P.J.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 6.1</th>
+                                <td>OBJETIVO ESTRATÉGICO 6.1: Fomentar la interacción de la OGJ con otras oficinas del PJT mediante la presentación de proyectos en conjunto para mejorar el servicio de justicia. </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O.E. 6.2</th>
+                                <td>OBJETIVO ESTRATÉGICO 6.2: Presentar proyectos sobre Gobierno Abierto</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+  
     </div>
 
     
@@ -545,16 +613,7 @@
     var proyectosvencidoscharte4 = <?php echo json_encode($proyectosvencidoscharte4)?>;
     var proyectosvencidoscharte5 = <?php echo json_encode($proyectosvencidoscharte5)?>;
     var proyectosvencidoscharte6 = <?php echo json_encode($proyectosvencidoscharte6)?>;
-    var isotortajuri = <?php echo json_encode($tortajuri)?>;
-    var isotortanojuri = <?php echo json_encode($tortanojuri)?>;
-    var isotortatotal = <?php echo json_encode($tortatotal)?>;
-    
-    var isobarraañojuri = <?php echo json_encode($añosjuri)?>;
-    var isobarranoañojuri = <?php echo json_encode($añosnojuri)?>;
-    var isobarraañototal = <?php echo json_encode($añostotal)?>;
-    var isobarrajuri = <?php echo json_encode($cantidadjuri)?>;
-    var isobarranojuri = <?php echo json_encode($cantidadnojuri)?>;
-    var isobarratotal = <?php echo json_encode($cantidadtotal)?>;
+
 
 
 
@@ -865,213 +924,158 @@ Highcharts.chart('container10', {
     }]
 });
 
-Highcharts.chart('tortajuri', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
+
+Highcharts.chart('proyectosh', {
+
+title: {
+    text: 'Estados de Proyectos',
+},
+
+yAxis: {
     title: {
-        text: 'Unidades Jurisdiccionales'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+        text: 'Cantidad'
+    }
+},
+
+xAxis: {
+    categories: ['2021', '2022', '2023']
+},
+
+legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+},
+
+plotOptions: {
+    series: {
+        label: {
+            connectorAllowed: false
+        },
+        pointStart: 2021
+    }
+},
+
+series: [{
+    name: 'Inicio',
+    data: [110,149,191]
+}, {
+    name: 'En Proceso (Fase Control y Ejecución)',
+    data: [73,18,130]
+}, {
+    name: 'En Proceso (Fase Planificación)',
+    data: [null,null,14]
+}, {
+    name: 'Terminado (Con actividades posteriores a la finalización)',
+    data: [null,null,20]
+}, {
+    name: 'Terminado (Fase Cierre)',
+    data: [18,128,15]
+}, {
+    name: 'Acumulado',
+    data: [4,3,0]
+}, {
+    name: 'Suspendido',
+    data: [15,18,12]
+}],
+
+responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 500
+        },
+        chartOptions: {
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
             }
         }
-    },
-    series: [{
-        name: 'Porcentaje',
-        colorByPoint: true,
-        data:  isotortajuri
-
     }]
-});
+}
 
-Highcharts.chart('tortanojuri', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Unidades No Jurisdiccionales'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
-        }
-    },
-    series: [{
-        name: 'Porcentaje',
-        colorByPoint: true,
-        data:      isotortanojuri
-    
-    }]
-});
-
-Highcharts.chart('tortatotal', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Totalizador'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
-        }
-    },
-    series: [{
-        name: 'Porcentaje',
-        colorByPoint: true,
-        data:  isotortatotal
-    }]
 });
 
 
-    
-
-
-Highcharts.chart('barrajuri', {
+Highcharts.chart('objetivosh', {
     chart: {
         type: 'column'
     },
     title: {
-        text: 'Unidades Jurisdiccionales Certificadas por año',
-        align: 'left'
+        text: 'Cumplimiento Objetivos Historico'
     },
     xAxis: {
-        categories: isobarraañojuri,
-        crosshair: true,
-        accessibility: {
-            description: 'Años'
-        }
+        categories: [
+            'O.E. 1.1',
+            'O.E. 1.2',
+            'O.E. 2.1',
+            'O.E. 2.2',
+            'O.E. 2.3',
+            'O.E. 2.4',
+            'O.E. 3.1',
+            'O.E. 3.2',
+            'O.E. 4.1',
+            'O.E. 4.2',
+            'O.E. 4.3',
+            'O.E. 4.4',
+            'O.E. 5.1',
+            'O.E. 6.1',
+            'O.E. 6.2'
+
+        ]
     },
-    yAxis: {
+    yAxis: [{
         min: 0,
         title: {
             text: 'Cantidad'
         }
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: isobarrajuri
-});
-
-
-Highcharts.chart('barranojuri', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Unidades No Jurisdiccionales Certificadas por año',
-        align: 'left'
-    },
-    xAxis: {
-        categories: isobarranoañojuri,
-        crosshair: true,
-        accessibility: {
-            description: 'Años'
-        }
-    },
-    yAxis: {
-        min: 0,
+    }, {
         title: {
             text: 'Cantidad'
-        }
+        },
+        opposite: true
+    }],
+    legend: {
+        shadow: false
+    },
+    tooltip: {
+        shared: true
     },
     plotOptions: {
         column: {
-            pointPadding: 0.2,
+            grouping: false,
+            shadow: false,
             borderWidth: 0
         }
     },
-    series:isobarranojuri
+    series: [{
+        name: 'Meta 2022',
+        color: 'rgba(165,170,217,1)',
+        data: [1, 8, 0.05, 0.2, 5, 1, 4, 1, 0, 1, 1, 1, 2, 1, 1,1],
+        pointPadding: 0.3,
+        pointPlacement: -0.2
+    }, {
+        name: 'Logro 2022',
+        color: 'rgba(126,86,134,.9)',
+        data: [1, 8, 0.05, 0.2, 5, 1, 7, 1, 0, 1, 1, 1, 3, 4, 3, 3],
+        pointPadding: 0.4,
+        pointPlacement: -0.2
+    }, {
+        name: 'Meta 2023',
+        color: 'rgba(248,161,63,1)',
+        data: [2, 18, 0.35, 0.7, 10, 1, 10, 1, 1, 0, 0, 0, 4, 3, 3, 3],
+        pointPadding: 0.3,
+        pointPlacement: 0.2,
+        yAxis: 1
+    }, {
+        name: 'Logro 2023',
+        color: 'rgba(186,60,61,.9)',
+        data: [2, 18, 0.35,0.7, 10, 1,10, 1, 1,0, 0, 0,4, 3, 3,3],
+        pointPadding: 0.4,
+        pointPlacement: 0.2,
+        yAxis: 1
+    }]
 });
-
-
-    
-    
-    
-
-Highcharts.chart('barratotal', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Total Unidades Certificadas por año',
-        align: 'left'
-    },
-    xAxis: {
-        categories: isobarraañototal,
-        crosshair: true,
-        accessibility: {
-            description: 'Años'
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Cantidad'
-        }
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: isobarratotal
-});
-
 
 function filtrar()
 {

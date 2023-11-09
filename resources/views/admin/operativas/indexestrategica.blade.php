@@ -38,7 +38,9 @@
                             <td>{{$operativa->enabled==true?"SI":"NO"}}</td>
                             <td><a href="{{route('admin.operativas.show', $operativa)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
                                 <a href="{{route('admin.operativas.edit', $operativa->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
-                                <a href="{{route('admin.operativas.enabled', $operativa->id)}}" class="btn btn-sm {{$operativa->enabled==true ?  "btn-success" : "btn-success"}}" title="Finalizada"><i class="fas fa-check"></i></a> 
+                                @if(Auth::user()->hasRole('Admin'))
+                                    <a href="{{route('admin.operativas.enabled', $operativa->id)}}" class="btn btn-sm {{$operativa->enabled==true ?  "btn-success" : "btn-success"}}" title="Finalizada"><i class="fas fa-check"></i></a> 
+                                @endif 
                                 <a href="{{route('admin.objetivos.indexoperativa', $operativa->id)}}" class="btn btn-sm btn-dark" title="Ver Objetivos" target='_blank'><i class="far fa-fw fa-circle text-cyan"></i></a>
                                 <a href="javascript:chart({{$operativa->id}}, '{{$operativa->name}}');" class="btn btn-sm btn-primary" title="Graficos"><i class="far fa-fw fa-chart-bar"></i></a>
                             </td>

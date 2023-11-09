@@ -5,9 +5,9 @@
     <div class="card mb-3">
       <div class="card mb-3">
         <img class="card-img-top" src="logo-OGJ-2019.jpg" alt="Card image cap">
-          <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
-          <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">
-      </div>
+          <!-- <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
+          <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">-->
+      </div> 
         <div class="card-body">
           <h5 class="card-title">Registros</h5>
           <p class="card-text">Instrucciones <br>

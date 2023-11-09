@@ -24,6 +24,7 @@ use App\Models\Alerta;
 Route::get('', [HomeController::class,'index']);
 Route::get('/calendar', [HomeController::class,'calendar']);
 Route::get('/porprocesos', [HomeController::class, 'porprocesos'])->name('admin.porprocesos');
+Route::get('/eje3', [HomeController::class, 'eje3'])->name('admin.eje3');
 
 
 

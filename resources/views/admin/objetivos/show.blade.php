@@ -75,7 +75,10 @@
                         @endforeach
                 </div>
                 <div class="form-group">
+                @if($objetivo->operativas->enabled==false)
                     <a href="{{route('admin.objetivos.edit', $objetivo)}}" class="btn btn-primary">Editar</a>
+                @endif 
+                    
                     <a href="{{route('admin.objetivos.index')}}" class="btn btn-danger">Volver</a>
                 </div>
                 <form action="{{route('admin.objetivos.destroy', $objetivo)}}" method="POST">

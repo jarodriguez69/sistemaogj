@@ -160,27 +160,28 @@ class ObjetivoController extends Controller
 
     public function update(Request $request, Objetivo $objetivo)
     {
-        $request->validate([ //si no se usa este tiene que ser StoreEje (request)
-            'name'=>'required',
-            'description'=>'required',
-            'operativa_id'=>'required',
-            'meta' => 'required'
-               
-        ]);
-        
-        $objetivo->update($request->all());
-
-        if($request->desarrollos){
-            $objetivo->desarrollos()->sync($request->desarrollos);
+        if($objetivo->operativas->enabled==false){ 
+            $request->validate([ //si no se usa este tiene que ser StoreEje (request)
+                'name'=>'required',
+                'description'=>'required',
+                'operativa_id'=>'required',
+                'meta' => 'required'
+                   
+            ]);
+            
+            $objetivo->update($request->all());
+    
+            if($request->desarrollos){
+                $objetivo->desarrollos()->sync($request->desarrollos);
+            }
+    
+            //relacion mucho a mucho
+            // if($request->tags){
+            //     $objetivo->tags()->sync($request->tags);
+            // }
+    
+            return redirect()->route('admin.objetivos.index', $objetivo)->with('info', 'El Objetivo se actualizo con exito'); 
         }
-
-        //relacion mucho a mucho
-        // if($request->tags){
-        //     $objetivo->tags()->sync($request->tags);
-        // }
-
-        return redirect()->route('admin.objetivos.index', $objetivo)->with('info', 'El Objetivo se actualizo con exito'); 
-
     }
 
     public function show(Objetivo $objetivo)

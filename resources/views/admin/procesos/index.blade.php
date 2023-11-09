@@ -20,7 +20,7 @@
     <div class="row">
         @foreach ($estrategicos as $estrategico)
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-success">
+                    <div class="small-box" style="background-color:#7E7E7E; color:white">
                         <div class="inner">
                             <h3>{{$estrategico->description}}</h3>
                             <p>{{$estrategico->name}}</p>
@@ -54,7 +54,7 @@
     <div class="row">
         @foreach ($claves as $clave)
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-warning">
+                    <div class="small-box" style="background-color:#D54B4B; color:white">
                         <div class="inner">
                             <h3>{{$clave->description}}</h3>
                             <p>{{$clave->name}}</p>
@@ -85,7 +85,7 @@
     <div class="row">
         @foreach ($soportes as $soporte)
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
+                    <div class="small-box" style="background-color:#626262; color:white">
                         <div class="inner">
                             <h3>{{$soporte->description}}</h3>
                             <p>{{$soporte->name}}</p>

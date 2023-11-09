@@ -67,7 +67,10 @@
                 </div> --}}
 
                 <div class="form-group">
-                    <a href="{{route('admin.actividades.edit', $actividade)}}" class="btn btn-primary">Editar</a>
+                    
+                    @if($actividade->objetivos->operativas->enabled==false)
+                        <a href="{{route('admin.actividades.edit', $actividade)}}" class="btn btn-primary">Editar</a>
+                    @endif 
                     <a href="{{route('admin.actividades.index')}}" class="btn btn-danger">Volver</a>
                 </div>
                 <form action="{{route('admin.actividades.destroy', $actividade)}}" method="POST">

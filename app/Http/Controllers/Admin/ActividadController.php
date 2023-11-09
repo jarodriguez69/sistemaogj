@@ -113,45 +113,36 @@ class ActividadController extends Controller
 
     public function update(Request $request, Actividad $actividade)
     {
-        $request->validate([ //si no se usa este tiene que ser StoreEje (request)
-            'name'=>'required',
-            'description'=>'required',
-            'objetivo_id'=>'required|numeric|min:1',
-            'porcentaje'=>'required|numeric|min:0|max:100'
-        ]);
+        if($actividade->objetivos->operativas->enabled==false){
 
-        $actividade->update($request->all());
-
-        //relacion mucho a mucho
-        if($request->users){
-            $actividade->users()->sync($request->users);
-
-            $correo = new ContactanosMailable($request->all());
-            foreach($request->users as $userid){
-                $useremail = User::where("id", $userid)->first()->email;
-                Mail::to($useremail)->send($correo);
-
-            }
-        }
-        else{
-            $actividade->users()->sync($request->users);
-        }
-        
-        
-        if($request->file('file') != null){
-            $documentos = $request->file('file')->store('public/documentos');
-            $url = Storage::url($documentos);
-            $name = $request->file('file')->getClientOriginalName();
-    
-            Documento::create([
-                'url' => $url,
-                'name' => $name,
-                'actividad_id' => $actividade->id
+            $request->validate([ //si no se usa este tiene que ser StoreEje (request)
+                'name'=>'required',
+                'description'=>'required',
+                'objetivo_id'=>'required|numeric|min:1',
+                'porcentaje'=>'required|numeric|min:0|max:100'
             ]);
-        } 
-        
-        return redirect()->route('admin.actividades.edit', $actividade)->with('info', 'La actividad se actualizo con exito'); 
 
+            $actividade->update($request->all());
+
+            //relacion mucho a mucho
+            $actividade->users()->sync($request->users);
+            
+            
+            
+            if($request->file('file') != null){
+                $documentos = $request->file('file')->store('public/documentos');
+                $url = Storage::url($documentos);
+                $name = $request->file('file')->getClientOriginalName();
+        
+                Documento::create([
+                    'url' => $url,
+                    'name' => $name,
+                    'actividad_id' => $actividade->id
+                ]);
+            } 
+            
+            return redirect()->route('admin.actividades.edit', $actividade)->with('info', 'La actividad se actualizo con exito'); 
+        }
     }
 
     public function deleteFile(Documento $file)

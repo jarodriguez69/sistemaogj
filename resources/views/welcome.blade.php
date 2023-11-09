@@ -4,9 +4,9 @@
 <div class="container">
     <div class="card mb-3">
         <img class="card-img-top" src="logo-OGJ-2019.jpg" alt="Card image cap">
-            {{-- <object data="certificadoesp.pdf" type="application/PDF" width="850px" height="850px" align="right"></object> --}}
+            <!-- <object data="certificadoesp.pdf" type="application/PDF" width="850px" height="850px" align="right"></object> 
             <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
-            <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">
+            <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">-->
         {{-- <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -29,15 +29,14 @@
             <h2><strong> OBJETIVOS DE CALIDAD</strong></h2>
             
             <ol>
-                
-                <li>Incorporar la medición de la satisfacción de los usuarios  de los proyectos.</li>
-                <li>Lograr la satisfacción de los usuarios  de los proyectos con medición de satisfacción.</li>
-                <li>Lograr la aprobación del SGC de las Unidades Judiciales del PJT  que participan de la implementación de la Norma ISO 9001:2015 bajo la oordinación, asistencia técnica y asesoramiento  de la OGJ.</li>
-                <li>Implementar planes de mejora en unidades no penales del PJT  - *se consideran las unidades que acepten la implementación del PO.</li>
+                <li>Implementar y mantener el sistema de gestión de calidad ISO 9001:2015.</li>
+                <li>Incorporar la medición de la satisfacción de los usuarios de los proyectos.</li>
+                <li>Lograr la satisfacción de los usuarios de los proyectos con medición de satisfacción.</li>
+                <li>Lograr la aprobación del SGC de las Unidades Judiciales del PJT que participan de la implementación de la Norma ISO 9001:2015 bajo la coordinación, asistencia técnica y asesoramiento de la OGJ.</li>
+                <li>Implementar planes de mejora en unidades no penales del PJT - *se consideran las unidades que acepten la implementación del PO.</li>
                 <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial conforme a los plazos definidos.</li>
-                <li>Medir el clima laboral e implementar los planes de acción dentro de los plazos establecidos.</li>
+                <li>Medir el clima laboral e implementar los planes de acción dentro de los plazos establecidos (para las unidades que corresponda)</li>
                 <li>Planificar y realizar las auditorías internas a las Unidades Judiciales del PJT que cumplan los requisitos dentro de los plazos establecidos.</li>
-
             </ol>
             
         </div>
