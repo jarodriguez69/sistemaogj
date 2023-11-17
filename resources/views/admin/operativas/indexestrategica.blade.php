@@ -182,7 +182,7 @@
                         plotShadow: false
                     },
                     title: {
-                        text: 'Objetivos<br>Estratégicos<br>por Estados<br>2022',
+                        text: 'Objetivos<br>Estratégicos<br>por Estados',
                         align: 'center',
                         verticalAlign: 'middle',
                         y: 60
