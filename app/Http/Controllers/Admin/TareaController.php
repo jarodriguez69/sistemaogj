@@ -141,44 +141,55 @@ class TareaController extends Controller
 
     public function update(Request $request, Tarea $tarea)
     {
-        $request->validate([ //si no se usa este tiene que ser StoreEje (request)
-            'name'=>'required',
-            'description'=>'required',
-            'proyecto_id'=>'required'
-        ]);
 
-        $tarea->update($request->all());
-
-        //relacion mucho a mucho
-        if($request->users){
-            $tarea->users()->sync($request->users);
-            
-            $correo = new ContactanosMailable($request->all());
-            
-            foreach($request->users as $userid){
-                $useremail = User::where("id", $userid)->first()->email;
-                Mail::to($useremail)->send($correo);
-
-            }
-        }
-        else{
-            $tarea->users()->sync($request->users);
-        }
-        
-        
-        if($request->file('file') != null){
-            $documentos = $request->file('file')->store('public/documentos');
-            $url = Storage::url($documentos);
-            $name = $request->file('file')->getClientOriginalName();
-    
-            File::create([
-                'url' => $url,
-                'name' => $name,
-                'tarea_id' => $tarea->id
+        if($tarea->proyectos->objetivos2->first()->operativas->enabled==false)
+        {
+            $request->validate([ //si no se usa este tiene que ser StoreEje (request)
+                'name'=>'required',
+                'description'=>'required',
+                'proyecto_id'=>'required'
             ]);
-        } 
+    
+            $tarea->update($request->all());
+    
+            //relacion mucho a mucho
+            if($request->users){
+                $tarea->users()->sync($request->users);
+                
+                $correo = new ContactanosMailable($request->all());
+                
+                foreach($request->users as $userid){
+                    $useremail = User::where("id", $userid)->first()->email;
+                    Mail::to($useremail)->send($correo);
+    
+                }
+            }
+            else{
+                $tarea->users()->sync($request->users);
+            }
+            
+            
+            if($request->file('file') != null){
+                $documentos = $request->file('file')->store('public/documentos');
+                $url = Storage::url($documentos);
+                $name = $request->file('file')->getClientOriginalName();
         
-        return redirect()->route('admin.tareas.edit', $tarea)->with('info', 'La tarea se actualizo con exito'); 
+                File::create([
+                    'url' => $url,
+                    'name' => $name,
+                    'tarea_id' => $tarea->id
+                ]);
+            } 
+            
+            return redirect()->route('admin.tareas.edit', $tarea)->with('info', 'La tarea se actualizo con exito'); 
+        }
+        else
+        {
+            return redirect()->route('admin.tareas.edit', $tarea)->with('info', 'La tarea no se actualizo. POA Finalizado');
+        }
+
+
+       
 
     }
 

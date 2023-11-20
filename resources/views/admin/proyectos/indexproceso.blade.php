@@ -42,7 +42,9 @@
                             <td>{{$proyecto->estadoproyecto->name}}</td>
                             <td>
                                 <a href="{{route('admin.proyectos.show', $proyecto)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
+                                @if($proyecto->objetivos2->first()->operativas->enabled==false)
                                 <a href="{{route('admin.proyectos.edit', $proyecto->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
+                                @endif 
                                 <a href="{{route('admin.proyectos.destroy', $proyecto->id)}}" class="btn btn-sm btn-danger" title="Eliminar" target='_blank'><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>

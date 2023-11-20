@@ -143,23 +143,30 @@ class ProyectoController extends Controller
 
     public function update(Request $request, Proyecto $proyecto)
     {
-        $request->validate([ //si no se usa este tiene que ser StoreEje (request)
-            'name'=>'required',
-            'description'=>'required',
-            'grupo_id'=>'required'
-        ]);
-        $proyecto->partes()->sync($request->partes);
-        $proyecto->objetivos2()->sync($request->objetivo);
-        $proyecto->equipos()->sync($request->equipos);
-        $proyecto->update($request->all());
 
-        //relacion mucho a mucho
-        // if($request->tags){
-        //     $proyecto->tags()->sync($request->tags);
-        // }
+        if($proyecto->objetivos2->first()->operativas->enabled==false)
+        {
+            $request->validate([ //si no se usa este tiene que ser StoreEje (request)
+                'name'=>'required',
+                'description'=>'required',
+                'grupo_id'=>'required'
+            ]);
+            $proyecto->partes()->sync($request->partes);
+            $proyecto->objetivos2()->sync($request->objetivo);
+            $proyecto->equipos()->sync($request->equipos);
+            $proyecto->update($request->all());
 
-        return redirect()->route('admin.proyectos.index', $proyecto)->with('info', 'El Proyecto se actualizo con exito'); 
+            //relacion mucho a mucho
+            // if($request->tags){
+            //     $proyecto->tags()->sync($request->tags);
+            // }
 
+            return redirect()->route('admin.proyectos.index', $proyecto)->with('info', 'El Proyecto se actualizo con exito'); 
+        }
+        else{
+            
+            return redirect()->route('admin.proyectos.index', $proyecto)->with('info', 'El Proyecto No se actualizo. POA Finalizada'); 
+        }
     }
 
     public function show(Proyecto $proyecto)
