@@ -23,6 +23,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('home.welcome');
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 Route::get('/registros', [HomeController::class, 'registros'])->name('home.registros');
 Route::get('/formularios', [HomeController::class, 'formularios'])->name('home.formularios');
+Route::get('/unidadesiso', [HomeController::class, 'unidadesiso'])->name('home.unidadesiso');
 Route::get('/mapa', [HomeController::class, 'mapa'])->name('home.mapa');
 
 Route::get('contactanos', [ContactanosController::class,'index'])->name('contactanos.index');

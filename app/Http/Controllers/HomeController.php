@@ -52,5 +52,9 @@ class HomeController extends Controller
         return view('mapa');
     }
 
+    public function unidadesiso()
+    {
+        return view('unidadesiso');
+    }
     
 }

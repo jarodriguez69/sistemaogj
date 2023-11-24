@@ -5,6 +5,7 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
+    <a href="{{route('admin.tareas.createnc')}}" class="btn btn-primary float-right">Nueva NC</a>     
     <a href="{{route('admin.tareas.create')}}" class="btn btn-secondary float-right">Nuevo</a>
     <h1>Actividades Planificadas</h1>
 @endsection

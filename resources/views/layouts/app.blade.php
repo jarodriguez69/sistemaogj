@@ -126,7 +126,9 @@
                                 @endif
                             @endauth
                     @endif
-
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('home.unidadesiso')}}">Unidades ISO</a>
+                    </li>
               </ul>
              
             </div>
