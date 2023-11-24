@@ -97,7 +97,9 @@
                             </div>
                         </li>
                     @endcan
-
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('home.unidadesiso')}}">Unidades ISO</a>
+                    </li>
                     @if (Route::has('login'))
                             @auth
                                 @can('admin.home')
@@ -126,9 +128,7 @@
                                 @endif
                             @endauth
                     @endif
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{route('home.unidadesiso')}}">Unidades ISO</a>
-                    </li>
+
               </ul>
              
             </div>
