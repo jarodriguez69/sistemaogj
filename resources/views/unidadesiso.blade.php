@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -28,16 +31,29 @@
     <body class="antialiased" style="max-height: 100%;">
 
       <div class="container">
-          <div class="card mb-3">
-            <div class="card mb-3">
-              <img class="card-img-top" src="logo-OGJ-2019.jpg" alt="Card image cap">
-                <!-- <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
-                <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;"> -->
-            </div>
-      </div>
+        
       
-      
-      
+        <div class="row">
+          <div class="col-md-3"><img class="card-img-top" src="logo-corte-2019.png" alt="Card image cap"></div>
+          <div class="col-md-9"><img class="card-img-top" src="cabecera.jpg" alt="Card image cap"></div>
+        </div>
+        <br />
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Unidades Certificadas</th>
+              <th scope="col">Procesos Certificados</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>22</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+
+
           <table class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
