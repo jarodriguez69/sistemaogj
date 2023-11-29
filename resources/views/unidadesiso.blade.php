@@ -35,20 +35,21 @@
       
         <div class="row">
           <div class="col-md-3"><img class="card-img-top" src="logo-corte-2019.png" alt="Card image cap"></div>
-          <div class="col-md-9"><img class="card-img-top" src="cabecera.jpg" alt="Card image cap"></div>
+          <div class="col-md-6"><img class="card-img-top" src="cabecera.jpg" alt="Card image cap"></div>
+          <div class="col-md-3"><img class="card-img-top" src="logo-ogj2.png" alt="Card image cap"></div>
         </div>
         <br />
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Unidades Certificadas</th>
-              <th scope="col">Procesos Certificados</th>
+              <th scope="col" style="text-align:center">Unidades Certificadas</th>
+              <th scope="col" style="text-align:center">Procesos Certificados</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr style="text-align:center">
               <td>22</td>
-              <td>-</td>
+              <td>64</td>
             </tr>
           </tbody>
         </table>
