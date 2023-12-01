@@ -38,7 +38,9 @@
                 <li>Medir el clima laboral e implementar los planes de acción dentro de los plazos establecidos (para las unidades que corresponda)</li>
                 <li>Planificar y realizar las auditorías internas a las Unidades Judiciales del PJT que cumplan los requisitos dentro de los plazos establecidos.</li>
             </ol>
-            
+            <a target="_blank" href="https://docs.google.com/document/d/1brymCVzHZXBDuYOR6p5dPvC2N1k58mmP/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" style="font-size: small; font-weight: bold;">
+            * Minuta de aprobación
+            </a>  
         </div>
 
         <div class="card-body" style="text-align: center;">
