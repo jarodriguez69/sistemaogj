@@ -70,7 +70,7 @@
                       <!-- <th scope="row">1</th> -->
                       <td>Excma. Cámara en Documentos y Locaciones Salas I, II y II </td>
                       <td>Capital</td>
-                      <td>Recepción de expedientes, escritos, oficios, informes y documentación , cédulas, oficios, pagos. </td>
+                      <td>Recepción de expedientes, escritos, oficios entre unidades jurisdiccionales, consultas, pagos, cédulas diligenciadas, dictámenes, informes, oficios provenientes de entidades externas al poder judicial, documentación original y expedientes a la vista.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15585 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15585 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
@@ -82,7 +82,7 @@
                     </tr>
                     <tr>
                       <!-- <th scope="row">3</th> -->
-                      <td>Excma. Cámara en lo Civil en Documentos, Locaciones, Familia y Sucesiones.</td>
+                      <td>Excma. Cámara de Apelaciones en lo Civil en Documentos, Locaciones, Familia y Sucesiones.</td>
                       <td>Concepci&oacute;n</td>
                       <td>Confección de proyectos de providencias simples, decretos, sentencias definitivas e interlocutorias. Asignación para control y firma de proyectos de providencias simples, decretos y sentencias definitivas e interlocutorias. Protocolización y registro de protocolos de sentencias definitivas e interlocutorias.</td>
                       <td style="text-align: center;"><a href="PODER JUDICIAL DE TUCUMÁN 9001-14955 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="PODER JUDICIAL DE TUCUMÁN 9001-14955 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
@@ -91,42 +91,42 @@
                       <!-- <th scope="row">4</th> -->
                       <td>Juzgado Civil en Familia y Sucesiones de la IV Nominación</td>
                       <td>Capital</td>
-                      <td>Confección y control de proyectos de sentencias definitivas e interlocutorias; firma, registro y notificación de dichas sentencias.</td>
+                      <td>Registración de sentencias pendientes. Confección, notificación y control de proyectos de sentencias definitivas e interlocutorias. Firma y registración de protocolo.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15577 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15577 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">5</th> -->
                       <td>Juzgado Civil en Familia y Sucesiones de la V Nominación</td>
                       <td>Capital</td>
-                      <td>Confección, asignación para control y firma de proyectos de providencias simples, decretos.</td>
+                      <td>Recepción y asignación de escritos, oficios y expedientes. Confección, control y firma de proyectos de providencias simples.</td>
                       <td style="text-align: center;"><a href="PODER JUDICIAL DE TUCUÁN 9001-15578 FAMILIA V.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="PODER JUDICIAL DE TUCUÁN 9001-15578 iqnet FAMILIA V.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">6</th> -->
                       <td>Juzgado de Instrucción Conclusional 1</td>
                       <td>Capital</td>
-                      <td>Recepción de expedientes, escritos, oficios, informes y documentación original. Confección y control de proyectos de sentencias definitivas e interlocutorias; firma, registro y notificación de dichas sentencias. Confección, asignación para control y firma de proyectos de providencias simples, decretos.</td>
+                      <td>Tramitación de escritos, expedientes y documentación en general. Dictado de decretos, resoluciones interlocutorias, sentencias y notificación de las mismas. Celebración de comparecencias.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15584 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15584 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">7</th> -->
                       <td>Juzgado de Instrucción Conclusional 2</td>
                       <td>Capital</td>
-                      <td>Recepción de expedientes, escritos, oficios, informes y documentación original. Confección y control de proyectos de sentencias definitivas e interlocutorias; firma, registro y notificación de dichas sentencias. Confección, asignación para control y firma de proyectos de providencias simples, decretos.</td>
+                      <td>Recepción de escritos, expedientes y documentación en general. Realización de audiencias y otras comparecencias. Dictado y notificación de decretos, resoluciones interlocutorias y sentencias.</td>
                       <td style="text-align: center;"><a href="PODER JUDICIAL DE TUCUÁN 9001-15579 iram - CONCLUSIONAL 2.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="PODER JUDICIAL DE TUCUÁN 9001-15579 iqnet CONCLUSIONAL 2 CAPITAL.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">8</th> -->
                       <td>Juzgado Cobros y Apremios II Concepción</td>
                       <td>Concepci&oacute;n</td>
-                      <td>Recepción de expedientes, escritos, oficios, informes y documentación original. Confección y control de proyectos de sentencias definitivas e interlocutorias; firma, registro y notificación de dichas sentencias. Confección y control de proyectos de sentencias definitivas e interlocutorias; firma, registro y notificación de dichas sentencias.</td>
+                      <td>Recepción de expedientes, escritos, oficios, informes y documentación original; planificación y celebración de audiencias; confección y control de proyectos de sentencias definitivas e interlocutorias; firma, registro/ Protocolización y notificación de dichas sentencias; confección, control, firma y notificación de providencias simples.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15586 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15586 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">9</th> -->
                       <td>Juzgado Trabajo I Monteros</td>
                       <td>Monteros</td>
-                      <td>Recepción de expedientes, escritos, oficios, informes y documentación original.</td>
+                      <td>Recepción de escritos, documentación, consultas, expedientes, informes de estadística, notas y contestaciones por mail, oficios entre unidades jurisdiccionales y pagos judiciales; asignación del trámite correspondiente y distribución para su tratamiento. Emisión de providencias simples, sentencias interlocutorias y sentencias definitivas. Planificación y ejecución de audiencias. Remisión de cédulas, oficios, mandamientos, expedientes, notas y demás actuaciones.</td>
                       <td style="text-align: center;"><a href="PODER JUDICIAL 9001 iram TRABAJO MONTEROS.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="PODER JUDICAL 9001 iqnet TRABAJO MONTEROS.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
@@ -161,35 +161,35 @@
                       <!-- <th scope="row">14</th> -->
                       <td>Dirección de Estadísticas</td>
                       <td>Capital</td>
-                      <td>Elaboración de Informes para las Unidades Judiciales, la CSJT y para ser publicados en la sitio web del PJT.  Actividades desarrolladas en conformidad con las políticas dela CSJT</td>
+                      <td>Elaboración de informes cuatrimestrales de actividad judicial en unidades jurisdiccionales del Poder Judicial de Tucumán.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15587 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15587 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">15</th> -->
                       <td>Dirección Técnica Sur</td>
                       <td>Capital</td>
-                      <td>Elaboración de proyectos de obras públicas</td>
-                      <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15641 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15641 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
+                      <td>Recepción de solicitud de proyecto de la Excema Corte Suprema de Justicia y delegado Magistrado encuadrado en la ley de obra pública, elaboración de anteproyecto, proyecto y pliego licitatorio y visado de documentación hasta inicio de obra pública en los centros judiciales Monteros y Concepción.</td>
+                      <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15641 iram (1).pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15641 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">16</th> -->
                       <td>Dirección Técnica</td>
                       <td>Capital</td>
-                      <td>Elaboración de proyectos de obras públicas</td>
+                      <td>Recepción de solicitud de proyecto de la Excma Corte Suprema de Justicia encuadrado en la ley de Obras Públicas, análisis de viabilidad, elaboración de anteproyecto y confección del pliego técnico de obra pública dentro del territorio de la Provincia de Tucumán.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9001-15642 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15642 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">17</th> -->
                       <td>Dirección de Obras Públicas</td>
                       <td>Capital</td>
-                      <td>Elaboración de proyectos de obras públicas</td>
+                      <td>Recepción del pliego técnico. Control y remisión para imputación presupuestaria. Recepción de expediente con imputación, confección de pliegos legales, dictamen jurídico y proyecto de Acordada. Confección del proyecto de Acordada de llamado a Licitación Pública de obra pública.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15644 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15644 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">18</th> -->
                       <td>Dirección de Sistemas</td>
                       <td>Capital</td>
-                      <td>Realización de copias de respaldo de la información generada en el SAE y en el portal del SAE del PJT; recuperación y publicación para su consulta por medio del SAE o cuando sea requerido para otros fines y visualización por medio del portal del SAE Otorgamiento de Firma Digital</td>
+                      <td>Centralización de datos del SAE Jurisdiccional; disposición de los datos para las unidades del Poder Judicial y ciudadanía en general. Emisión de certificados digitales (plataforma de firma digital remota).</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15650 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15650 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
@@ -203,14 +203,14 @@
                       <!-- <th scope="row">20</th> -->
                       <td>Superintendencia de Juzgados de Paz</td>
                       <td>Capital</td>
-                      <td>Recepción de notas, pedidos, licencias, otros y asignación para tramitación. Actividades desarrolladas en conformidad con las políticas dela CSJT</td>
+                      <td>Recepción y asignación para trámite de notas, documentos, mandas judiciales, oficios remitidos por Unidades del Ministerio Público Fiscal, expedientes del Registro Civil, Oficios Ley 22.172, Amparos a la simple tenencia, acordadas de designación, traslados, ascensos y renuncias, tomas de cargo, certificados de examen, certificados de alta médica y pedidos de licencias ingresados por correo electrónico; recepción, tramitación y devolución de actas.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15643 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15643 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
                       <!-- <th scope="row">21</th> -->
                       <td>Sala de Audiencia Multifuero</td>
                       <td>Capital</td>
-                      <td>Coordinación y administración de los recursos para la correcta celebracion de las Audiencias. Implica las siguientes actividades: preparacion de las salas ( orden y mantenmiento) , recepción de las unidades judiciales y los usuarios externos ( abogados, testigos y justiciables, peritos, etc), verificación en el sistema de agendamiento unificado (si dicha audiencia está registrada para  la fecha y hora establecida e indicar la sala asignada), reserva de sala, asistencia tecnica para el uso de la plataforma tecnológica, registro de datos de las audiencias (estado, tiempo de duración y cantidad de participantes) para su publicación en el tablero de control.</td>
+                      <td>Preparación de las salas de audiencias, recepción de las unidades judiciales y usuarios externos, corroborar en el sistema de agendamiento unificado la sala correspondiente e indicar la misma, asistencia técnica para el uso de la plataforma tecnológica y registro de audiencias.</td>
                       <td style="text-align: center;"><a href="Pder. J. Tucumán 9000-15575 iram.pdf" target="_blank"><span style="padding: 10px;" title="IRAM" class="glyphicon glyphicon-file"></span></a><a href="Pder. J. Tucumán 9001-15575 iqnet.pdf" target="_blank"><span style="padding: 10px;" title="IQNET" class="glyphicon glyphicon-certificate"></span></a></td>
                     </tr>
                     <tr>
