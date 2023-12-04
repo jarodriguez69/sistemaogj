@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <label for="estadoactividad_id">Estado</label>
-                    <input type="text" class="form-control" name="estadoactividad_id" aria-describedby="estadoactividad_id" value="{{App\Models\EstadoTarea::find($actividade->estadoactividad_id) != null ? App\Models\EstadoTarea::find($actividade->estadoactividad_id)->name : ""}}" readonly>
+                    <input type="text" class="form-control" name="estadoactividad_id" aria-describedby="estadoactividad_id" value="{{App\Models\EstadoActividad::find($actividade->estadoactividad_id) != null ? App\Models\EstadoActividad::find($actividade->estadoactividad_id)->name : ""}}" readonly>
                 </div>
 
                 <div class="form-group">
