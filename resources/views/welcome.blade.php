@@ -33,7 +33,7 @@
                 <li>Incorporar la medición de la satisfacción de los usuarios de los proyectos.</li>
                 <li>Lograr la satisfacción de los usuarios de los proyectos con medición de satisfacción.</li>
                 <li>Lograr la aprobación del SGC de las Unidades Judiciales del PJT que participan de la implementación de la Norma ISO 9001:2015 bajo la coordinación, asistencia técnica y asesoramiento de la OGJ.</li>
-                <li>Implementar planes de mejora en unidades no penales del PJT - *se consideran las unidades que acepten la implementación del PO.</li>
+                <li>Implementar planes de mejora en unidades no penales del PJT - *se consideran las unidades que acepten la implementación.</li>
                 <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial conforme a los plazos definidos.</li>
                 <li>Medir el clima laboral e implementar los planes de acción dentro de los plazos establecidos (para las unidades que corresponda)</li>
                 <li>Planificar y realizar las auditorías internas a las Unidades Judiciales del PJT que cumplan los requisitos dentro de los plazos establecidos.</li>
