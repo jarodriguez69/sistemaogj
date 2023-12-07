@@ -374,6 +374,12 @@ return [
                     'url'  => 'admin/eje3',
 			        'active' => ['admin/eje3*']
                 ],
+                [
+                    'text' => 'Eje 4',
+                    'icon_color' => 'blue',
+                    'url'  => 'admin/eje4',
+			        'active' => ['admin/eje4*']
+                ],
             ],
         ],
 

@@ -25,6 +25,7 @@ Route::get('', [HomeController::class,'index']);
 Route::get('/calendar', [HomeController::class,'calendar']);
 Route::get('/porprocesos', [HomeController::class, 'porprocesos'])->name('admin.porprocesos');
 Route::get('/eje3', [HomeController::class, 'eje3'])->name('admin.eje3');
+Route::get('/eje4', [HomeController::class, 'eje4'])->name('admin.eje4');
 
 
 

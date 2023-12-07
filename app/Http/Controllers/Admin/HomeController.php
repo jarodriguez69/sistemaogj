@@ -458,4 +458,104 @@ class HomeController extends Controller
     }
 
 
+    public function eje4()
+    {
+        $year = date("Y");
+        $idgrupos = new Collection();
+        $idgrupos = Grupo::where("eje_id",4)->get()->pluck("id");
+        $idproyectos = Proyecto::where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->pluck("id");
+        $proyectostotalbyyear4 = Proyecto::where(\DB::raw('lower(name)'), 'like', 'gestión de mejoras_%')->whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+        $proyectosconmedicion4 = Proyecto::where(\DB::raw('lower(name)'), 'like', 'gestión de mejoras_%')->whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+        $porcentajeconmedicion =  $proyectostotalbyyear4 != 0 ? $proyectosconmedicion4 * 100 / $proyectostotalbyyear4 : 0;
+        $porcentajesinmedicion = 100 - $porcentajeconmedicion;
+        $proyectossatisfactorios4 = Proyecto::where(\DB::raw('lower(name)'), 'like', 'gestión de mejoras_%')->whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
+        $proyectosnosatisfactorios4 = $proyectosconmedicion4 - $proyectossatisfactorios4;
+        $porcentajesatisfactorio4 =  $proyectosconmedicion4  != 0 ? $proyectossatisfactorios4 * 100 / $proyectosconmedicion4: 0;
+        $porcentajenosatisfactorio4 = 100 - $porcentajesatisfactorio4;
+ 
+        $tareasasistenciatotal = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 asistencia realizada%')->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $tareasasistenciaterminada = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 asistencia realizada%')->where("estadotarea_id",3)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $porcentajeasistenciaterminada = $tareasasistenciatotal  != 0 ? $tareasasistenciaterminada * 100 / $tareasasistenciatotal: 0;
+        $porcentajeasistenciaproceso = 100 - $porcentajeasistenciaterminada;
+
+        $tareasinformestotal = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe anual%')->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $tareasinformesterminada = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe anual%')->where("estadotarea_id",3)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $porcentajeinformesterminada = $tareasinformestotal  != 0 ? $tareasinformesterminada * 100 / $tareasinformestotal: 0;
+        $porcentajeinformesproceso = 100 - $porcentajeinformesterminada;
+        
+        $tareasinformescontroltotal = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe control de proceso%')->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $tareasinformescontrolterminada = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe control de proceso%')->where("estadotarea_id",3)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $porcentajeinformescontrolterminada = $tareasinformescontroltotal  != 0 ? $tareasinformescontrolterminada * 100 / $tareasinformescontroltotal: 0;
+        $porcentajeinformescontrolproceso = 100 - $porcentajeinformescontrolterminada;
+        
+
+        $proyectosmedidos[] = [
+            'name'         => "Con Medición",
+            'y'      => $porcentajeconmedicion
+        ];
+ 
+        $proyectosmedidos[] = [
+            'name'         => "Sin Medición",
+            'y'      => $porcentajesinmedicion
+        ];
+ 
+        $proyectosmedicion[] = [
+            'name'         => "Satisfactorio",
+            'y'      => $porcentajesatisfactorio4
+        ];
+ 
+        $proyectosmedicion[] = [
+            'name'         => "No Satisfactorio",
+            'y'      => $porcentajenosatisfactorio4
+        ];
+
+        $asistencias[] = [
+            'name'         => "Asistencia Realizada",
+            'y'      => $porcentajeasistenciaterminada
+        ];
+ 
+        $asistencias[] = [
+            'name'         => "Asistencia No Realizada",
+            'y'      => $porcentajeasistenciaproceso
+        ];
+
+        $informes[] = [
+            'name'         => "Informes Presentados",
+            'y'      => $porcentajeinformesterminada
+        ];
+ 
+        $informes[] = [
+            'name'         => "Informes No Presentados",
+            'y'      => $porcentajeinformesproceso
+        ];
+
+        $informescontrol[] = [
+            'name'         => "Informes de Control Presentados",
+            'y'      => $porcentajeinformesterminada
+        ];
+ 
+        $informescontrol[] = [
+            'name'         => "Informes de Control No Presentados",
+            'y'      => $porcentajeinformesproceso
+        ];
+
+        $planes[] = [
+            'name'         => "Implementan Planes de Mejora",
+            'y'      => $proyectostotalbyyear4
+        ];
+ 
+        $planes[] = [
+            'name'         => "No Implementan Planes de Mejora",
+            'y'      => 0
+        ];
+
+
+       return view('admin.eje4', compact('proyectosmedicion','proyectosmedidos','asistencias', 'informes','informescontrol','planes','proyectostotalbyyear4', 'proyectosconmedicion4', 'proyectossatisfactorios4', 'proyectosnosatisfactorios4', 'tareasasistenciatotal', 'tareasasistenciaterminada',
+       'tareasinformesterminada', 'tareasinformestotal', 'tareasinformescontroltotal', 'tareasinformescontrolterminada'));
+
+    
+
+    }
+
+
 }
