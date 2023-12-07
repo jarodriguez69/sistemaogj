@@ -42,6 +42,15 @@
 
     </div>
 
+    <div class="card">
+        <h5 class="card-header d-flex">Medición de Clima Laboral</h5>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div id="clima"></div>
+            </div>
+        </div>
+    </div>
 
     
 @stop
@@ -103,6 +112,7 @@
     var isobarrajuri = <?php echo json_encode($cantidadjuri)?>;
     var isobarranojuri = <?php echo json_encode($cantidadnojuri)?>;
     var isobarratotal = <?php echo json_encode($cantidadtotal)?>;
+    var climas = <?php echo json_encode($climas)?>;
 
 
 
@@ -316,7 +326,40 @@ Highcharts.chart('barratotal', {
 
 
 
-
+Highcharts.chart('clima', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Medición del Clima Laboral'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Porcentaje',
+        colorByPoint: true,
+        data:  climas
+    }]
+});
 
 </script>
 

@@ -362,6 +362,9 @@ class HomeController extends Controller
     public function eje3()
     {
         $year = date("Y");
+        $idgrupos = new Collection();
+        $idgrupos = Grupo::where("eje_id",3)->get()->pluck("id");
+        $idproyectosclima = Proyecto::where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->pluck("id");
         $totaljuri = Norma::where("jurisdiccional",1)->where("year",$year)->get()->sum('total');
         $certificadojuri= Norma::where("jurisdiccional",1)->sum('certificadas');
         $totalnojuri= Norma::where("jurisdiccional",0)->where("year",$year)->get()->sum('total');
@@ -451,7 +454,23 @@ class HomeController extends Controller
         ];
         
 
-       return view('admin.eje3', compact('tortajuri', 'tortanojuri','tortatotal','añosjuri','añosnojuri','añostotal','cantidadjuri','cantidadnojuri','cantidadtotal'));
+
+        $tareasclimatotal = Tarea::where(\DB::raw('lower(name)'), 'like', 'r 05_05 reunión inicial%')->whereIn('proyecto_id', $idproyectosclima)->get()->count();
+        $tareasclimaterminada = Tarea::where(\DB::raw('lower(name)'), 'like', 'r 05_05 reunión inicial%')->where("estadotarea_id",3)->whereIn('proyecto_id', $idproyectosclima)->get()->count();
+        $porcentajeclimaterminada = $tareasclimatotal  != 0 ? $tareasclimaterminada * 100 / $tareasclimatotal: 0;
+        $porcentajeclimaproceso = 100 - $porcentajeclimaterminada;
+
+        $climas[] = [
+            'name'         => "Con Reunión Inicial",
+            'y'      => $porcentajeclimaterminada
+        ];
+ 
+        $climas[] = [
+            'name'         => "Sin Reunión Inicial",
+            'y'      => $porcentajeclimaproceso
+        ];
+
+       return view('admin.eje3', compact('tortajuri', 'tortanojuri','tortatotal','añosjuri','añosnojuri','añostotal','cantidadjuri','cantidadnojuri','cantidadtotal','climas'));
 
     
 

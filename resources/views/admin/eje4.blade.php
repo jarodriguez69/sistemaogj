@@ -298,7 +298,7 @@ Highcharts.chart('informe', {
         type: 'pie'
     },
     title: {
-        text: 'Asistencias Realizadas'
+        text: 'Informe Anual'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -333,7 +333,7 @@ Highcharts.chart('informecontrol', {
         type: 'pie'
     },
     title: {
-        text: 'Asistencias Realizadas'
+        text: 'Informe de Control'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
