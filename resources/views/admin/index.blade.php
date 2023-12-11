@@ -958,25 +958,25 @@ plotOptions: {
 
 series: [{
     name: 'Inicio',
-    data: [110,149,191]
+    data: [110,149,195]
 }, {
     name: 'En Proceso (Fase Control y Ejecución)',
-    data: [73,18,130]
+    data: [73,18,0]
 }, {
     name: 'En Proceso (Fase Planificación)',
-    data: [null,null,14]
+    data: [null,null,0]
 }, {
     name: 'Terminado (Con actividades posteriores a la finalización)',
-    data: [null,null,20]
+    data: [null,null,118]
 }, {
     name: 'Terminado (Fase Cierre)',
-    data: [18,128,15]
+    data: [18,128,45]
 }, {
     name: 'Acumulado',
-    data: [4,3,0]
+    data: [4,3,4]
 }, {
     name: 'Suspendido',
-    data: [15,18,12]
+    data: [15,18,28]
 }],
 
 responsive: {
