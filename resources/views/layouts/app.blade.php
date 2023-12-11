@@ -37,13 +37,14 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                
-                    <li class="nav-item active">
-                        <a class="nav-link " href="{{route('home.welcome')}}">Novedades <span class="sr-only">(current)</span></a>
-                    </li>
                     @can('admin.home')
                         <li class="nav-item">
                             <a class="nav-link" href="https://sites.google.com/view/gestion-documental-ogj-2019/sgc-4-o" target="_blank">Documentaci&oacute;n del SGC</a>
+                        </li>
+                    @endcan
+                    @can('admin.home')
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://drive.google.com/drive/folders/1BdK5M48GTQzT2DDahx_55JpBDmgJ6vsF?usp=sharing" target="_blank">Instructivos</a>
                         </li>
                     @endcan
                     @can('admin.home')
@@ -77,8 +78,7 @@
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/626f431b-cf4e-4f7a-b570-73373f211247/page/TB3dB" target="_blank">Resultados 2020</a>
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/140b9e6a-b3d2-4cd7-813e-f761568417da/page/TB3dB" target="_blank">Resultados 2021</a>
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/140b9e6a-b3d2-4cd7-813e-f761568417da/page/TB3dB" target="_blank">Resultados 2022</a>
-                            <div class="dropdown-divider"></div>
-                                <!-- <a class="dropdown-item" href="http://sistemaogj.info/admin" target="_blank">Resultados Parciales 2023</a> -->
+                            <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/12GLM81aYsZpSIVNcIwRA2S9Fv1C6Wa-y/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" target="_blank">Resultados 2023</a> 
                             </div>
                         </li>
                     @endcan

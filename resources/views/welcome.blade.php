@@ -26,8 +26,7 @@
             
             
             
-            <h2><strong> OBJETIVOS DE CALIDAD</strong></h2>
-            
+            <h2><strong> OBJETIVOS DE CALIDAD</strong><a target="_blank" href="https://docs.google.com/document/d/1brymCVzHZXBDuYOR6p5dPvC2N1k58mmP/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" style="font-size: small; font-weight: bold;"> (Minuta de aprobación) </a>  </h2>  
             <ol>
                 <li>Implementar y mantener el sistema de gestión de calidad ISO 9001:2015.</li>
                 <li>Incorporar la medición de la satisfacción de los usuarios de los proyectos.</li>
@@ -35,12 +34,11 @@
                 <li>Lograr la aprobación del SGC de las Unidades Judiciales del PJT que participan de la implementación de la Norma ISO 9001:2015 bajo la coordinación, asistencia técnica y asesoramiento de la OGJ.</li>
                 <li>Implementar planes de mejora en unidades no penales del PJT - *Abarca la implementación de PO, Asistencias y Control de Procesos para la mejora de unidades del PJT*.</li>
                 <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial conforme a los plazos definidos.</li>
-                <li>Medir el clima laboral e implementar los planes de acción dentro de los plazos establecidos (para las unidades que corresponda)</li>
+                <li>Medir el clima laboral dentro de los plazos establecidos (para las unidades que corresponda**)</li>
                 <li>Planificar y realizar las auditorías internas a las Unidades Judiciales del PJT que cumplan los requisitos dentro de los plazos establecidos.</li>
             </ol>
-            <a target="_blank" href="https://docs.google.com/document/d/1brymCVzHZXBDuYOR6p5dPvC2N1k58mmP/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" style="font-size: small; font-weight: bold;">
-            * Minuta de aprobación
-            </a>  
+            ** Unidades certificadas que aceptaron la medición de clima laboral.
+           
         </div>
 
         <div class="card-body" style="text-align: center;">
