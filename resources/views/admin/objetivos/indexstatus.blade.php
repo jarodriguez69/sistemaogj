@@ -48,6 +48,17 @@
                   </div>
             </div>
         </div>
+        <div class="row">
+                <div class="col-md-4">
+                    <div id="estrategico"></div>
+                </div>    
+                <div class="col-md-4">
+                    <div id="operativo"></div>
+                </div>
+                <div class="col-md-4">
+                    <div id="calidad"></div>
+                </div>
+        </div>
     </div>
     
     <div class="card">
@@ -96,7 +107,15 @@
 
 
 @section('js')
-    <script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script type="text/javascript">
+        var operativos = <?php echo json_encode($chartoperativos)?>;
+        var estrategicos = <?php echo json_encode($chartestrategicos)?>;
+        var calidad = <?php echo json_encode($chartcalidad)?>;
         
         $('#objetivos').DataTable( {
         language: {            // "lengthMenu": "Mostrando _MENU_ registros por página",
@@ -136,5 +155,117 @@
         
         ]
     });
-    </script>
+
+    Highcharts.chart('calidad', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'De Calidad'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Porcentaje',
+            colorByPoint: true,
+            data:  calidad
+
+        }]
+    });
+
+
+
+    Highcharts.chart('estrategico', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Estratégicos'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Porcentaje',
+            colorByPoint: true,
+            data:  estrategicos
+
+        }]
+    });
+
+
+    Highcharts.chart('operativo', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Operativos'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Porcentaje',
+            colorByPoint: true,
+            data:  operativos
+
+        }]
+    });
+
+</script>
 @stop
