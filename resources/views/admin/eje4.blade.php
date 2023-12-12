@@ -333,7 +333,7 @@ Highcharts.chart('informecontrol', {
         type: 'pie'
     },
     title: {
-        text: 'Informe de Control'
+        text: ' Informe de Control de Proceso'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

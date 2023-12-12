@@ -1021,7 +1021,6 @@ Highcharts.chart('objetivosh', {
             'O.E. 5.1',
             'O.E. 6.1',
             'O.E. 6.2'
-
         ]
     },
     yAxis: [{
@@ -1051,26 +1050,26 @@ Highcharts.chart('objetivosh', {
     series: [{
         name: 'Meta 2022',
         color: 'rgba(165,170,217,1)',
-        data: [1, 8, 0.05, 0.2, 5, 1, 4, 1, 0, 1, 1, 1, 2, 1, 1,1],
+        data: [1, 8, 0.05, 0.2, 5, 0.99, 4, 0.99, 0, 0.99, 0.99, 0.99, 2, 1, 1],
         pointPadding: 0.3,
         pointPlacement: -0.2
     }, {
         name: 'Logro 2022',
         color: 'rgba(126,86,134,.9)',
-        data: [1, 8, 0.05, 0.2, 5, 1, 7, 1, 0, 1, 1, 1, 3, 4, 3, 3],
+        data: [1, 8, 0.05, 0.2, 5, 0.99, 7, 0.99, 0, 0.99, 0.99, 0.99, 3, 4, 3],
         pointPadding: 0.4,
         pointPlacement: -0.2
     }, {
         name: 'Meta 2023',
         color: 'rgba(248,161,63,1)',
-        data: [2, 18, 0.35, 0.7, 10, 1, 10, 1, 1, 0, 0, 0, 4, 3, 3, 3],
+        data: [2, 18, 0.35, 0.7, 10, 1, 10, 1, 1, 1, 1, 1, 4, 3, 3],
         pointPadding: 0.3,
         pointPlacement: 0.2,
         yAxis: 1
     }, {
         name: 'Logro 2023',
         color: 'rgba(186,60,61,.9)',
-        data: [2, 18, 0.35,0.7, 10, 1,10, 1, 1,0, 0, 0,4, 3, 3,3],
+        data: [2, 18, 0.35,0.7, 10, 1,10, 1, 1,0, 0, 0,4, 3, 3],
         pointPadding: 0.4,
         pointPlacement: 0.2,
         yAxis: 1

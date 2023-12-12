@@ -502,8 +502,8 @@ class HomeController extends Controller
         $porcentajeinformesterminada = $tareasinformestotal  != 0 ? $tareasinformesterminada * 100 / $tareasinformestotal: 0;
         $porcentajeinformesproceso = 100 - $porcentajeinformesterminada;
         
-        $tareasinformescontroltotal = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe control de proceso%')->whereIn('proyecto_id', $idproyectos)->get()->count();
-        $tareasinformescontrolterminada = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe control de proceso%')->where("estadotarea_id",3)->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $tareasinformescontroltotal = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe de control de proceso%')->whereIn('proyecto_id', $idproyectos)->get()->count();
+        $tareasinformescontrolterminada = Tarea::where(\DB::raw('lower(name)'), 'like', 'r05_03 informe de control de proceso%')->where("estadotarea_id",3)->whereIn('proyecto_id', $idproyectos)->get()->count();
         $porcentajeinformescontrolterminada = $tareasinformescontroltotal  != 0 ? $tareasinformescontrolterminada * 100 / $tareasinformescontroltotal: 0;
         $porcentajeinformescontrolproceso = 100 - $porcentajeinformescontrolterminada;
         
@@ -550,12 +550,12 @@ class HomeController extends Controller
 
         $informescontrol[] = [
             'name'         => "Informes de Control Presentados",
-            'y'      => $porcentajeinformesterminada
+            'y'      =>  $porcentajeinformescontrolterminada
         ];
  
         $informescontrol[] = [
             'name'         => "Informes de Control No Presentados",
-            'y'      => $porcentajeinformesproceso
+            'y'      => $porcentajeinformescontrolproceso
         ];
 
         $planes[] = [
