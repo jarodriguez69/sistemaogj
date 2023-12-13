@@ -364,7 +364,7 @@ class HomeController extends Controller
         $year = date("Y");
         $idgrupos = new Collection();
         $idgrupos = Grupo::where("eje_id",3)->get()->pluck("id");
-        $idproyectosclima = Proyecto::where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->pluck("id");
+        $idproyectosclima = Proyecto::where("year",$year)->whereIn('grupo_id', $idgrupos)->get()->pluck("id");
         $totaljuri = Norma::where("jurisdiccional",1)->where("year",$year)->get()->sum('total');
         $certificadojuri= Norma::where("jurisdiccional",1)->sum('certificadas');
         $totalnojuri= Norma::where("jurisdiccional",0)->where("year",$year)->get()->sum('total');
