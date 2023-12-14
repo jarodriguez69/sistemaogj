@@ -193,27 +193,45 @@ class ObjetivoController extends Controller
 
     public function indexstatus(int $estrategicaid, int $operativaid, int $estado)
     {
-        $estrategicosproceso = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',1)->get()->count();
-        $estrategicosterminado = Objetivo::where('tipoobjetivo_id',1)->where('estadoobjetivo_id',2)->get()->count();
-        $operativosproceso = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',1)->get()->count();
-        $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where('estadoobjetivo_id',2)->get()->count();
-        $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',1)->get()->count();
-        $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where('estadoobjetivo_id',2)->get()->count();
-        $estrategicosexcluido = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',3)->get()->count();
-        $operativosexcluido = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',3)->get()->count();
-        $calidadexcluido = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',3)->get()->count();
         
-
-
         if($estrategicaid != 0)
         {
             $idbyestrategicas = new Collection();
             $idbyestrategicas = Operativa::where("estrategica_id",$estrategicaid)->get()->pluck("id");
             $objetivos = Objetivo::where('tipoobjetivo_id', 1)->where('estadoobjetivo_id', $estado)->whereIn("operativa_id",$idbyestrategicas)->get();
+
+
+            
+            $years = Operativa::distinct()
+                    ->whereNotNull('created_at')
+                    ->get([\DB::raw('YEAR(created_at) as year')])
+                    ->pluck('year');
+            
+            $estrategicosproceso = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',1)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $estrategicosterminado = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $operativosproceso = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',1)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',1)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $estrategicosexcluido = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $operativosexcluido = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $calidadexcluido = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
         }
         else
         {
             $objetivos = Objetivo::where('estadoobjetivo_id', $estado)->where("operativa_id",$operativaid)->get();
+            
+            $operativa= Operativa::where("id",$operativaid)->get();
+            $year=$operativa->first()->created_at->year;
+            $estrategicosproceso = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',1)->whereYear('begin', '=', $year)->get()->count();
+            $estrategicosterminado = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereYear('begin', '=', $year)->get()->count();
+            $operativosproceso = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',1)->whereYear('begin', '=', $year)->get()->count();
+            $operativosterminado = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereYear('begin', '=', $year)->get()->count();
+            $calidadproceso = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',1)->whereYear('begin', '=', $year)->get()->count();
+            $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereYear('begin', '=', $year)->get()->count();
+            $estrategicosexcluido = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereYear('begin', '=', $year)->get()->count();
+            $operativosexcluido = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereYear('begin', '=', $year)->get()->count();
+            $calidadexcluido = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereYear('begin', '=', $year)->get()->count();
         }
 
         // OBJETIVOS

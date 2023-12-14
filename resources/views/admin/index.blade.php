@@ -340,11 +340,17 @@
     <div class="card">
         <h5 class="card-header d-flex">Historico de Proyectos por Estado</h5>
         <div id="proyectosh"></div>
+        
     </div>
 
     <div class="card">
         <h5 class="card-header d-flex">Historico Cumplimiento Objetivos</h5>
-        <div id="objetivosh"></div>
+        <div id="objetivosh">
+            
+        </div>
+        <p class="card-header d-flex" aria-hidden="true">
+            Nota: Los números enteros representan cantidad. Los números decimales representan porcentajes. Por razones de escala en el grafico, los porcentajes se representan con valores entre el 0 y el 0.99. El valor  de 0.99 implica un cumplimiento del 100%. 
+        </p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -1047,29 +1053,30 @@ Highcharts.chart('objetivosh', {
             borderWidth: 0
         }
     },
+
     series: [{
         name: 'Meta 2022',
         color: 'rgba(165,170,217,1)',
-        data: [1, 8, 0.05, 0.2, 5, 0.99, 4, 0.99, 0, 0.99, 0.99, 0.99, 2, 1, 1],
+        data: [1,8,0.05,0.20,5,0.99,4,0.99,0,0.99,0.99,0.99,2,1,1,1],
         pointPadding: 0.3,
         pointPlacement: -0.2
     }, {
         name: 'Logro 2022',
         color: 'rgba(126,86,134,.9)',
-        data: [1, 8, 0.05, 0.2, 5, 0.99, 7, 0.99, 0, 0.99, 0.99, 0.99, 3, 4, 3],
+        data: [1,8,0.05,0.20,5,0.99,7,0.99,0,0.99,0.99,0.99,3,4,3,3],
         pointPadding: 0.4,
         pointPlacement: -0.2
     }, {
         name: 'Meta 2023',
         color: 'rgba(248,161,63,1)',
-        data: [2, 18, 0.35, 0.7, 10, 1, 10, 1, 1, 1, 1, 1, 4, 3, 3],
+        data: [2,18,0.35,0.70,10,0.99,10,0.99,0.99,0,0,0,4,3,3,3],
         pointPadding: 0.3,
         pointPlacement: 0.2,
         yAxis: 1
     }, {
         name: 'Logro 2023',
         color: 'rgba(186,60,61,.9)',
-        data: [2, 18, 0.35,0.7, 10, 1,10, 1, 1,0, 0, 0,4, 3, 3],
+        data: [2,18,0.35,0.70,10,0.99,10,0.99,0.99,0,0,0,4,3,3,3],
         pointPadding: 0.4,
         pointPlacement: 0.2,
         yAxis: 1

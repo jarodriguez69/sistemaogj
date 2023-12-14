@@ -16,29 +16,57 @@
         </div>
     </div>
 
-  
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">OPCIÓN</th>
-            <th scope="col">DESCRIPCIÓN</th>
-          </tr>
-        </thead>
-        <tbody>
-          <label for="" style="display: none">{{$i=0}}</label>
-          
-            @foreach ($registros as $registro)
-                <tr>
+    <h2>Registros Vigentes</h2>
+    <div class="row">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">OPCIÓN</th>
+              <th scope="col">DESCRIPCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <label for="" style="display: none">{{$i=0}}</label>
+            
+              @foreach ($registros->where("enabled",1) as $registro)
+                  <tr>
 
-                    <th scope="row">{{$i = $i+1}}</th>
-                    <td><a href="{{$registro->url}}" target="_blank">{{$registro->name}}</a></td>
-                    <td>{{$registro->description}}</td>
-                    
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+                      <th scope="row">{{$i = $i+1}}</th>
+                      <td><a href="{{$registro->url}}" target="_blank">{{$registro->name}}</a></td>
+                      <td>{{$registro->description}}</td>
+                  </tr>
+              @endforeach
+          </tbody>
+      </table>
+    </div>
+    
+<h2>Registros Obsoletos</h2>
+    <div class="row">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">OPCIÓN</th>
+              <th scope="col">DESCRIPCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <label for="" style="display: none">{{$i=0}}</label>
+            
+              @foreach ($registros->where("enabled",0) as $registro)
+                  <tr>
+
+                      <th scope="row">{{$i = $i+1}}</th>
+                      <td><a href="{{$registro->url}}" target="_blank">{{$registro->name}}</a></td>
+                      <td>{{$registro->description}}</td>
+                      
+                  </tr>
+              @endforeach
+          </tbody>
+      </table>
+    </div>
+   
     
 </div>
 
