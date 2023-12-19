@@ -241,6 +241,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="finreal">Fin Real</label>
+                    <input type="date" class="form-control" name="finreal" aria-describedby="end" placeholder="Fecha de Fin Real" value="{{old('finreal', $tarea->finreal != null ? date('Y-m-d', strtotime($tarea->finreal)) : "")}}">
+                    @error('finreal')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="proyecto_id">Proyecto</label>
                     <input type="text"  id="proyecto_name" class="form-control" value="{{old('proyecto_name',$tarea->proyectos->name.' - '.$tarea->proyectos->year)}}">
                     <input type="hidden" name="proyecto_id" id="proyecto_id" value="{{old('proyecto_id',$tarea->proyectos->id)}}">

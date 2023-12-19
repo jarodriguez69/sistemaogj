@@ -33,6 +33,7 @@
                         <th>Proyecto</th>
                         <th>Inicio</th>
                         <th>Fin</th>
+                        <th>Real</th>
                         <th>Estado</th>
                         <th></th>
                     </tr>
@@ -46,6 +47,7 @@
                             <td>{{$tarea->proyectos->name}}</td>
                             <td>{{$tarea->begin}}</td>
                             <td>{{$tarea->end}}</td>
+                            <td>{{$tarea->finreal}}</td>
                             <td>{{$tarea->estadotarea->name}}</td>
                             <td>
                                 @if($tarea->proceso_id !=9)         

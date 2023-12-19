@@ -48,6 +48,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="finreal">Fin Real</label>
+                    <input type="date" class="form-control" name="finreal" aria-describedby="end" placeholder="Fecha de Fin Real" value="{{ old('finreal') }}">
+                    @error('finreal')
+                        <small class="form-text text-danger">*{{$message}}</small>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="proyecto_id">Proyecto</label>
                     <input type="text"  id="proyecto_name" class="form-control">
                     <input type="hidden" name="proyecto_id" id="proyecto_id">

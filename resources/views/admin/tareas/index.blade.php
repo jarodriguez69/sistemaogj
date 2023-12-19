@@ -29,6 +29,7 @@
                         <th>Proyecto</th>
                         <th>Inicio</th>
                         <th>Fin</th>
+                        <th>Real</th>
                         <th>Estado</th>
                         <th>Proceso</th>
                         <th></th>
@@ -43,6 +44,7 @@
                             <td>{{$tarea->proyectos->name}}</td>
                             <td>{{$tarea->begin}}</td>
                             <td>{{$tarea->end}}</td>
+                            <td>{{$tarea->finreal}}</td>
                             <td>{{$tarea->estadotarea->name}}</td>
                             <td>{{$tarea->procesos->name}}</td>
                             <td>
