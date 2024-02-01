@@ -1072,14 +1072,12 @@ Highcharts.chart('objetivosh', {
         data: [2,18,0.35,0.70,10,0.99,10,0.99,0.99,0.99,0.99,0.99,4,3,3],
         pointPadding: 0.3,
         pointPlacement: 0.2,
-        yAxis: 1
     }, {
         name: 'Logro 2023',
         color: 'rgba(186,60,61,.9)',
         data: [2,18,0.35,0.70,10,0.99,10,0.99,0.99,0.99,0.99,0.99,4,3,3],
         pointPadding: 0.4,
         pointPlacement: 0.2,
-        yAxis: 1
     }]
 });
 
