@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ActividadController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ProcesoController;
 use App\Http\Controllers\Admin\IndicadorController;
+use App\Http\Controllers\Admin\HistoricoController;
 use App\Models\Alerta;
 //->middleware('can:admin.users') para una ruta en particular, por jejemplo el index del home
 Route::get('', [HomeController::class,'index']);
@@ -149,3 +150,9 @@ Route::resource('agendas', AgendaController::class)->names('admin.agendas');
 
 
  Route::get('/cron-job', [HomeController::class,'cronjob']);
+
+
+Route::get('historicos/{year}', [HistoricoController::class,'index'])->name('admin.historicos.index');;
+Route::get('historicos/porprocesos/{year}', [HistoricoController::class, 'porprocesos'])->name('admin.historicos.porprocesos');
+Route::post('historicos/getinfoproyectos', [HistoricoController::class, 'getinfoproyectos'])->name('admin.historicos.getinfoproyectos');
+Route::post('historicos/getinfotareas', [HistoricoController::class, 'getinfotareas'])->name('admin.historicos.getinfotareas');

@@ -35,6 +35,7 @@
                         <th>Fin</th>
                         <th>Real</th>
                         <th>Estado</th>
+                        <th>Responsable</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -49,6 +50,11 @@
                             <td>{{$tarea->end}}</td>
                             <td>{{$tarea->finreal}}</td>
                             <td>{{$tarea->estadotarea->name}}</td>
+                            <td>
+                                @foreach ($tarea->users as $user)
+                                    {{$user->name}} 
+                                @endforeach
+                            </td>
                             <td>
                                 @if($tarea->proceso_id !=9)         
                                 <a href="{{route('admin.tareas.show', $tarea)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 

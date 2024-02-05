@@ -32,6 +32,7 @@
                         <th>Real</th>
                         <th>Estado</th>
                         <th>Proceso</th>
+                        <th>Responsable</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -47,6 +48,11 @@
                             <td>{{$tarea->finreal}}</td>
                             <td>{{$tarea->estadotarea->name}}</td>
                             <td>{{$tarea->procesos->name}}</td>
+                            <td>
+                                @foreach ($tarea->users as $user)
+                                    {{$user->name}} 
+                                @endforeach
+                            </td>
                             <td>
                                 <a href="{{route('admin.tareas.show', $tarea)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
                                 @if($tarea->proyectos->objetivos2->first()->operativas->enabled==false)

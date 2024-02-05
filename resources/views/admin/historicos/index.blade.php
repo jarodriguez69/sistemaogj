@@ -5,13 +5,12 @@
     <link rel="stylesheet" href="{{asset('vendor/jquery-ui/jquery-ui.min.css')}}">   
 @stop
 @section('content_header')
-    <h1>Tablero</h1>
+    <h1>Tablero - {{$year}}</h1> 
 @stop
 
 @section('content')
     @csrf
-    
-
+<input id="yearId" type="hidden" value="{{$year}}">
     <div class="row">
         <div class="col-sm-4">
             <div class="card text-white bg-primary mb-3" style="height: 14rem; max-width: 20rem; background: linear-gradient(135deg, #66b7ef 0%,#6283e5 100%) !important;">
@@ -129,20 +128,8 @@
             </div>
         </div>
 
-        <div class="row">
-                <div class="card-body">
-                    <label for="historico">Historico</label>
-                    <select id="historico" class="form-control" name="historico">
-                        <option value="{{route('admin.historicos.index', 2024)}}">2024</option>
-                        <option value="{{route('admin.historicos.index', 2023)}}">2023</option>
-                        <option value="{{route('admin.historicos.index', 2022)}}">2022</option>
-                        <option value="{{route('admin.historicos.index', 2021)}}">2021</option>
-                    </select>
-                </div>
-        </div>
-        
-    </div>
 
+    </div>
 
         
     <div class="card">
@@ -357,7 +344,7 @@
         
     </div>
 
-    <div class="card">
+    <!-- <div class="card">
         <h5 class="card-header d-flex">Historico Cumplimiento Objetivos</h5>
         <div id="objetivosh">
             
@@ -447,7 +434,7 @@ Norma ISO 9001:2015 a las unidades judiciales del PJT</td>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -509,42 +496,13 @@ Norma ISO 9001:2015 a las unidades judiciales del PJT</td>
 
         $(document).ready(function() {
 
-           
-
             $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: "{{ route('admin.alertas.getinfoalerts') }}",
+                    url: "{{ route('admin.historicos.getinfoproyectos') }}",
                     //dataType: "json",
-                    // data: {_token:_token, email:email, pswd:pswd,address:address},
+                    data: {year: $("#yearId").val()},
                     method: "POST",
                     success: function(data) {
-                     
-                        
-                        $("#resumenalertas").html("");
-                        $("#resumenalertas").append( data.alertas);
-
-                    },
-                    error: function (data, textStatus, errorThrown) {
-                        console.log(data);
-
-                    }
-                });
-
-
-
-                $.ajax({
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: "{{ route('admin.proyectos.getinfoproyectos') }}",
-                    //dataType: "json",
-                    // data: {_token:_token, email:email, pswd:pswd,address:address},
-                    method: "POST",
-                    success: function(data) {
-                     
-                        
-
-
-
-
                         $("#resumenproyectos").html("");
                         $("#resumenproyectos").append("En Proceso (Fase Planificación): " + data.procesos + "<br>" + 
                         "En proceso (Fase Control y Ejecución): " + data.procesoscontrol + "<br>" + 
@@ -571,9 +529,9 @@ Norma ISO 9001:2015 a las unidades judiciales del PJT</td>
 
                 $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: "{{ route('admin.tareas.getinfotareas') }}",
+                    url: "{{ route('admin.historicos.getinfotareas') }}",
                     //dataType: "json",
-                    // data: {_token:_token, email:email, pswd:pswd,address:address},
+                    data: {year: $("#yearId").val()},
                     method: "POST",
                     success: function(data) {
 
@@ -1155,14 +1113,6 @@ function filtrarporproceso()
         }
     });
 }
-
-
-$("#historico").change(function(){
-    let a= document.createElement('a');
-    a.target= '_blank';
-    a.href= $("#historico").val();
-    a.click();
-});
 
 
 </script>

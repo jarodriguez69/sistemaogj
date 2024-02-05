@@ -50,17 +50,17 @@ class ObjetivoController extends Controller
          $objetivosoperativostotal=$operativosproceso + $operativosterminado + $operativosexcluido;
          $objetivoscalidadtotal=$calidadproceso + $calidadterminado + $calidadexcluido;
  
-         $estrategicosprocesopor = $estrategicosproceso * 100 / $objetivosestrategicostotal;
-         $estrategicosterminadopor = $estrategicosterminado * 100 / $objetivosestrategicostotal;
-         $estrategicosexcluidopor = $estrategicosexcluido * 100 / $objetivosestrategicostotal;
+         $estrategicosprocesopor = $objetivosestrategicostotal != 0 ? $estrategicosproceso * 100 / $objetivosestrategicostotal : 0;
+         $estrategicosterminadopor = $objetivosestrategicostotal != 0 ? $estrategicosterminado * 100 / $objetivosestrategicostotal : 0;
+         $estrategicosexcluidopor = $objetivosestrategicostotal != 0 ? $estrategicosexcluido * 100 / $objetivosestrategicostotal : 0;
  
-         $operativosprocesopor = $operativosproceso * 100 / $objetivosoperativostotal;
-         $operativosterminadopor = $operativosterminado * 100 / $objetivosoperativostotal;
-         $operativosexcluidopor = $operativosexcluido * 100 / $objetivosoperativostotal;
+         $operativosprocesopor = $objetivosoperativostotal != 0 ? $operativosproceso * 100 / $objetivosoperativostotal : 0;
+         $operativosterminadopor =$objetivosoperativostotal != 0 ? $operativosterminado * 100 / $objetivosoperativostotal : 0;
+         $operativosexcluidopor = $objetivosoperativostotal != 0 ? $operativosexcluido * 100 / $objetivosoperativostotal : 0;
  
-         $calidadprocesopor = $calidadproceso * 100 / $objetivoscalidadtotal;
-         $calidadterminadopor = $calidadterminado * 100 / $objetivoscalidadtotal;
-         $calidadexcluidopor = $calidadexcluido * 100 / $objetivoscalidadtotal;
+         $calidadprocesopor = $objetivoscalidadtotal != 0 ? $calidadproceso * 100 / $objetivoscalidadtotal : 0;
+         $calidadterminadopor = $objetivoscalidadtotal != 0 ? $calidadterminado * 100 / $objetivoscalidadtotal : 0;
+         $calidadexcluidopor = $objetivoscalidadtotal != 0 ? $calidadexcluido * 100 / $objetivoscalidadtotal : 0;
  
         $chartoperativos[] = [
             'name'         => "Cumplidos",
@@ -131,17 +131,17 @@ class ObjetivoController extends Controller
         $objetivosoperativostotal=$operativosproceso + $operativosterminado + $operativosexcluido;
         $objetivoscalidadtotal=$calidadproceso + $calidadterminado + $calidadexcluido;
 
-        $estrategicosprocesopor = $estrategicosproceso * 100 / $objetivosestrategicostotal;
-        $estrategicosterminadopor = $estrategicosterminado * 100 / $objetivosestrategicostotal;
-        $estrategicosexcluidopor = $estrategicosexcluido * 100 / $objetivosestrategicostotal;
+        $estrategicosprocesopor = $objetivosestrategicostotal != 0 ? $estrategicosproceso * 100 / $objetivosestrategicostotal : 0;
+        $estrategicosterminadopor = $objetivosestrategicostotal != 0 ? $estrategicosterminado * 100 / $objetivosestrategicostotal : 0;
+        $estrategicosexcluidopor = $objetivosestrategicostotal != 0 ? $estrategicosexcluido * 100 / $objetivosestrategicostotal : 0;
 
-        $operativosprocesopor = $operativosproceso * 100 / $objetivosoperativostotal;
-        $operativosterminadopor = $operativosterminado * 100 / $objetivosoperativostotal;
-        $operativosexcluidopor = $operativosexcluido * 100 / $objetivosoperativostotal;
+        $operativosprocesopor = $objetivosoperativostotal != 0 ? $operativosproceso * 100 / $objetivosoperativostotal : 0;
+        $operativosterminadopor = $objetivosoperativostotal != 0 ? $operativosterminado * 100 / $objetivosoperativostotal : 0;
+        $operativosexcluidopor = $objetivosoperativostotal != 0 ? $operativosexcluido * 100 / $objetivosoperativostotal : 0;
 
-        $calidadprocesopor = $calidadproceso * 100 / $objetivoscalidadtotal;
-        $calidadterminadopor = $calidadterminado * 100 / $objetivoscalidadtotal;
-        $calidadexcluidopor = $calidadexcluido * 100 / $objetivoscalidadtotal;
+        $calidadprocesopor = $objetivoscalidadtotal != 0 ? $calidadproceso * 100 / $objetivoscalidadtotal : 0;
+        $calidadterminadopor = $objetivoscalidadtotal != 0 ? $calidadterminado * 100 / $objetivoscalidadtotal : 0;
+        $calidadexcluidopor = $objetivoscalidadtotal != 0 ? $calidadexcluido * 100 / $objetivoscalidadtotal : 0;
 
        $chartoperativos[] = [
            'name'         => "Cumplidos",
