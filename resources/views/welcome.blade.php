@@ -7,6 +7,7 @@
             <!-- <object data="certificadoesp.pdf" type="application/PDF" width="850px" height="850px" align="right"></object> 
             <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
             <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">-->
+            <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-secondary ml-auto" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">Oficinas de Gestión Asociada</a>
         {{-- <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
