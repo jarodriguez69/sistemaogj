@@ -7,7 +7,7 @@
 @section('content_header')
     <a href="{{route('admin.proyectos.indexgrupohistory', $grupo)}}" class="btn btn-primary float-right">Hist&oacute;rico</a>
     <a href="{{route('admin.proyectos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-    <h1>Proyectos en el Grupo: {{$grupo->name}}</h1>
+    <h1>Proyectos en el Programa: {{$grupo->name}}</h1>
 @endsection
 
 @section('content')

@@ -305,7 +305,7 @@ return [
 		    'active' => ['admin/ejes*']
         ],
         [
-            'text'        => 'Grupos de Proyectos',
+            'text'        => 'Programas',
             'url'         => 'admin/grupos',
             'icon'        => 'far fa-fw fa-object-group',
             'label_color' => 'success',

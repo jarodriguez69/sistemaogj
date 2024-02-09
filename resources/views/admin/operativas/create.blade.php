@@ -57,6 +57,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="user_id">Responsables</label>
+                        @foreach ($users as $user)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault{{$user->id}}" name="users[]" value="{{$user->id}}">
+                                    <label class="form-check-label" for="flexCheckDefault{{$user->id}}">
+                                        {{$user->name}}
+                                    </label>
+                                </div>
+                        @endforeach
+                </div>
+                
+                <div class="form-group">
                     <input type="button" class="btn btn-primary" value="Guardar" onclick="this.disabled=true; this.value='Guardando...'; this.form.submit()" />
                     <a href="{{route('admin.operativas.index')}}" class="btn btn-danger">Cancelar</a>
                 </div>

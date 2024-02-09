@@ -1,8 +1,8 @@
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Grupos')
+@section('title', 'Oficina de Gestión Judicial | Programas')
 
 @section('content_header')
-    <h1>Grupo - {{$grupo->name}}</h1>
+    <h1>Programa - {{$grupo->name}}</h1>
 @endsection
 
 @section('content')
@@ -25,6 +25,19 @@
                     <input type="text" class="form-control" name="eje" aria-describedby="eje"  value="{{App\Models\Eje::find($grupo->eje_id) != null ? App\Models\Eje::find($grupo->eje_id)->name : ""}}" readonly>
                 </div>
                 
+                <div class="form-group">
+                    <label for="user_id">Responsables</label>
+                        @foreach ($users as $user)
+                                <div class="form-check">
+                                    <input disabled class="form-check-input" type="checkbox" id="flexCheckDefault{{$user->id}}" name="users[]" value="{{$user->id}}" {{ in_array($user->id, collect($grupo->users)->pluck('id')->toArray()) ? "checked":""}}>
+                                    <label class="form-check-label" for="flexCheckDefault{{$user->id}}">
+                                        {{$user->name}}
+                                    </label>
+                                </div>
+                        @endforeach
+                </div>
+
+
                 <div class="form-group">
                     <a href="{{route('admin.grupos.edit', $grupo)}}" class="btn btn-primary">Editar</a>
                     <a href="{{route('admin.grupos.index')}}" class="btn btn-danger">Volver</a>

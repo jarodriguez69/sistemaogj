@@ -186,7 +186,7 @@ Se concluye que la unidad requiere de la implementación de POA para mejorar su 
                 </div>
 
                 <div class="form-group">
-                    <label for="grupo_id">Grupo</label>
+                    <label for="grupo_id">Programa</label>
                     <select class="form-control" name="grupo_id">
                         
                         @foreach ($grupos as $grupo)

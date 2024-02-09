@@ -33,6 +33,17 @@
                     <label for="replanificacion">Replanificaci&oacute;n</label>
                     <textarea name="replanificacion" class="form-control" cols="30" rows="10" readonly>{{$operativa->replanificacion}}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="user_id">Responsables</label>
+                        @foreach ($users as $user)
+                                <div class="form-check">
+                                    <input disabled class="form-check-input" type="checkbox" id="flexCheckDefault{{$user->id}}" name="users[]" value="{{$user->id}}" {{ in_array($user->id, collect($operativa->users)->pluck('id')->toArray()) ? "checked":""}}>
+                                    <label class="form-check-label" for="flexCheckDefault{{$user->id}}">
+                                        {{$user->name}}
+                                    </label>
+                                </div>
+                        @endforeach
+                </div>
 
                 <div class="form-group">
                     <a href="{{route('admin.operativas.edit', $operativa)}}" class="btn btn-primary">Editar</a>

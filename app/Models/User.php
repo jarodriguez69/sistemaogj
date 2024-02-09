@@ -68,5 +68,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Proyecto::class, "proyecto_equipo");
     }
+
+    //Relación muchos a muchos
+    public function grupos()
+    {
+        return $this->belongsToMany(Grupo::class);
+    }
     
+    //Relación muchos a muchos
+    public function operativas()
+    {
+        return $this->belongsToMany(Operativa::class);
+    }
 }

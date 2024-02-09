@@ -25,11 +25,11 @@ class ProcesoController extends Controller
     public function index()
     {
         // $procesos = DB::select('select * from procesos where enabled = ?', [true]);
-        $procesos = Proceso::All();
-        $estrategicos = Proceso::where('estrategico',true)->get();
-        $claves = Proceso::where('clave',true)->get();
-        $soportes = Proceso::where('soporte',true)->get();
-        return view('admin.procesos.index', compact("estrategicos","claves","soportes", "procesos"));
+        //$procesos = Proceso::All();
+        $estrategicos = Proceso::where('estrategico',true)->where('enabled',true)->get();
+        $claves = Proceso::where('clave',true)->where('enabled',true)->get();
+        $soportes = Proceso::where('soporte',true)->where('enabled',true)->get();
+        return view('admin.procesos.index', compact("estrategicos","claves","soportes")); 
         
     }
     

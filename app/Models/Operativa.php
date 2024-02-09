@@ -10,7 +10,7 @@ class Operativa extends Model
     use HasFactory;
 
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = ['users'];
     //Relacion uno a muchos inversa
     public function estrategicas(){
         return $this->belongsTo(Estrategica::class, 'estrategica_id');
@@ -22,4 +22,9 @@ class Operativa extends Model
         return $this->hasMany(Objetivo::class);
     }
 
+    //Relación muchos a muchos
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

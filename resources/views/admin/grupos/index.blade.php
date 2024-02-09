@@ -1,12 +1,12 @@
 {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
 
 @extends('adminlte::page')
-@section('title', 'Oficina de Gestión Judicial | Grupos')
+@section('title', 'Oficina de Gestión Judicial | Programas')
 @section('plugins.Datatables', true)
 
 @section('content_header')
     <a href="{{route('admin.grupos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-    <h1>Grupos</h1>
+    <h1>Programas</h1>
 @endsection
 
 @section('content')
@@ -26,6 +26,7 @@
                             <th>Nombre</th>
                             <th>Eje</th>
                             <th>Habilitado</th>
+                            <th>Responsables</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -36,6 +37,11 @@
                             <td>{{$grupo->name}}</td>
                             <td>{{$grupo->ejes->name}}</td>
                             <td>{{$grupo->enabled==true?"SI":"NO"}}</td>
+                            <td>
+                                @foreach ($grupo->users as $user)
+                                    {{$user->name}} 
+                                @endforeach
+                            </td>
                             <td><a href="{{route('admin.grupos.show', $grupo)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
                                 <a href="{{route('admin.grupos.edit', $grupo->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
                                 <a href="{{route('admin.grupos.enabled', $grupo->id)}}" class="btn btn-sm {{$grupo->enabled==true ?  "btn-danger" : "btn-success"}}" title="Habilitar/Deshabilitar"><i class="fas fa-recycle"></i></a> 
@@ -63,12 +69,14 @@
             "infoEmpty": "Sin registros disponibles",
             "infoFiltered": "(filtrados de _MAX_ registros totales)",
             "search": "Buscar:",
+            
             "paginate":{
                 "next": "Siguiente",
                 "previous":"Anterior"
             }
+            
         },
-        
+        order: [[3, 'desc']],
         dom: 'Blfrtip',
         responsive: true,
         autoWidth:false,

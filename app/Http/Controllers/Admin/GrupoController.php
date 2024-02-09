@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Grupo;
 use App\Models\Eje;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class GrupoController extends Controller
     public function create()
     {
         $ejes = Eje::all();
-        return view('admin.grupos.create', compact('ejes'));
+        $users = User::all();
+        return view('admin.grupos.create', compact('ejes','users'));
     }
 
     public function store(request $request)
@@ -49,13 +51,19 @@ class GrupoController extends Controller
         
         $grupo = grupo::create($request->all());
 
+        //relacion mucho a mucho
+        if($request->users){
+            $grupo->users()->attach($request->users);
+        }
+
         return redirect()->route('admin.grupos.index', $grupo)->with('info','El Grupo se guardo con exito');        ;
     }
     
     public function edit(Grupo $grupo)
     {
         $ejes = Eje::all();
-        return view('admin.grupos.edit', compact("grupo"), compact("ejes"));
+        $users = User::all();
+        return view('admin.grupos.edit', compact("grupo"), compact("ejes","users"));
     }
 
     public function update(Request $request, Grupo $grupo)
@@ -68,13 +76,19 @@ class GrupoController extends Controller
         
         $grupo->update($request->all());
 
+        //relacion mucho a mucho
+        if($request->users){
+            $grupo->users()->sync($request->users);
+        }
+
         return redirect()->route('admin.grupos.index', $grupo)->with('info', 'El Grupo se actualizo con exito'); 
 
     }
 
     public function show(Grupo $grupo)
     {
-        return view('admin.grupos.show',compact('grupo'));
+        $users = User::all();
+        return view('admin.grupos.show',compact('grupo','users'));
     }
 
 

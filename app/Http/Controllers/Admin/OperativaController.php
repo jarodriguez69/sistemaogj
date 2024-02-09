@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Operativa;
 use App\Models\Estrategica;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class OperativaController extends Controller
     public function create()
     {
         $estrategicas = Estrategica::all();
-        return view('admin.operativas.create', compact('estrategicas'));
+        $users = User::all();
+        return view('admin.operativas.create', compact('estrategicas','users'));
     }
 
     public function store(request $request)
@@ -49,13 +51,19 @@ class OperativaController extends Controller
         
         $operativa = operativa::create($request->all());
 
+        //relacion mucho a mucho
+        if($request->users){
+            $operativa->users()->attach($request->users);
+        }
+
         return redirect()->route('admin.operativas.index', $operativa)->with('info','La Planificación Operativa se guardo con exito');        ;
     }
     
     public function edit(Operativa $operativa)
     {
         $estrategicas = Estrategica::all();
-        return view('admin.operativas.edit', compact("operativa"), compact("estrategicas"));
+        $users = User::all();
+        return view('admin.operativas.edit', compact("operativa"), compact("estrategicas","users"));
     }
 
     public function update(Request $request, Operativa $operativa)
@@ -67,14 +75,18 @@ class OperativaController extends Controller
         ]);
         
         $operativa->update($request->all());
-
+        //relacion mucho a mucho
+        if($request->users){
+            $operativa->users()->sync($request->users);
+        }
         return redirect()->route('admin.operativas.index', $operativa)->with('info', 'La Planificación Operativa se actualizo con exito'); 
 
     }
 
     public function show(Operativa $operativa)
     {
-        return view('admin.operativas.show',compact('operativa'));
+        $users = User::all();
+        return view('admin.operativas.show',compact('operativa','users'));
     }
 
 

@@ -26,6 +26,7 @@
                             <th>Nombre</th>
                             <th>Planificaci&oacute;n Estrat&eacute;gica</th>
                             <th>Finalizada</th>
+                            <th>Responsables</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -36,6 +37,11 @@
                             <td>{{$operativa->name}}</td>
                             <td>{{$operativa->estrategicas->name}}</td>
                             <td>{{$operativa->enabled==true?"SI":"NO"}}</td>
+                            <td>
+                                @foreach ($operativa->users as $user)
+                                    {{$user->name}} 
+                                @endforeach
+                            </td>
                             <td><a href="{{route('admin.operativas.show', $operativa)}}" class="btn btn-sm btn-warning" title="Ver" target='_blank'><i class="fas fa-eye"></i></a> 
                                 <a href="{{route('admin.operativas.edit', $operativa->id)}}" class="btn btn-sm btn-info" title="Editar" target='_blank'><i class="fas fa-edit"></i></a>  
                                 @if(Auth::user()->hasRole('Admin'))
@@ -136,6 +142,7 @@
                 "previous":"Anterior"
             }
         },
+        order: [[3, 'asc']],
         dom: 'Blfrtip',
         responsive: true,
         autoWidth:false,

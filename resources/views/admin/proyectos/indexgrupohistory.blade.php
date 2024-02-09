@@ -6,7 +6,7 @@
 
 @section('content_header')
     <a href="{{route('admin.proyectos.create')}}" class="btn btn-secondary float-right">Nuevo</a>
-    <h1>Hist&oacute;rico de Proyectos en el Grupo: {{$grupo->name}}</h1>
+    <h1>Hist&oacute;rico de Proyectos en el Programa: {{$grupo->name}}</h1>
 @endsection
 
 @section('content')
