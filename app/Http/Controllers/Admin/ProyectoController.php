@@ -130,7 +130,7 @@ class ProyectoController extends Controller
     public function edit(Proyecto $proyecto, request $request)
     {
         
-        $grupos = Grupo::all();
+        $grupos = Grupo::where('enabled',true)->get();
         $estados = EstadoProyecto::where('enabled',true)->get();
         $procesos = Proceso::where('clave',true)->get();
         $users = User::all();
