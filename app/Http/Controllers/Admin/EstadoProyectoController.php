@@ -26,7 +26,7 @@ class EstadoProyectoController extends Controller
     {
 
   
-        $estadosproyectos = EstadoProyecto::paginate();
+        $estadosproyectos = EstadoProyecto::all();
         return view('admin.estadosproyectos.index', compact('estadosproyectos'));
     }
 
