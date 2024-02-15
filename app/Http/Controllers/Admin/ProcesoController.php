@@ -26,9 +26,9 @@ class ProcesoController extends Controller
     {
         // $procesos = DB::select('select * from procesos where enabled = ?', [true]);
         //$procesos = Proceso::All();
-        $estrategicos = Proceso::where('estrategico',true)->where('enabled',true)->get();
-        $claves = Proceso::where('clave',true)->where('enabled',true)->get();
-        $soportes = Proceso::where('soporte',true)->where('enabled',true)->get();
+        $estrategicos = Proceso::where('estrategico',true)->where('enabled',true)->orderBy('name')->get();
+        $claves = Proceso::where('clave',true)->where('enabled',true)->orderBy('name')->get();
+        $soportes = Proceso::where('soporte',true)->where('enabled',true)->orderBy('name')->get();
         return view('admin.procesos.index', compact("estrategicos","claves","soportes")); 
         
     }
