@@ -4,17 +4,17 @@
 <div class="container">
     <div class="card mb-3">
         <img class="card-img-top" src="logo-OGJ-2019.jpg" alt="Card image cap">
-            <!-- <object data="certificadoesp.pdf" type="application/PDF" width="850px" height="850px" align="right"></object> 
-            <img src="logoiso.png" title="IRAM" width="10%" style=" position: absolute; z-index: 1; right: 7%;bottom: 0%;height: 40%;width: 7%;">
-            <img src="logoisoeng.png" title="IQNET" width="7%" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">-->
-            <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-secondary ml-auto" style="position:absolute; z-index: 1; right: 0px; bottom: 0px;">Oficinas de Gestión Asociada</a>
-        {{-- <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div> --}}
     </div>
 
+    @if (Route::has('login'))
+        @auth
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-primary me-md-2">Oficinas de Gesti&oacute;n Asociada</a>
+            <a href="https://docs.google.com/spreadsheets/d/1vE23HvN8RIjJoaIZKsAYqxswxPxGAxAl/edit?usp=sharing&ouid=107937385033588463714&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">Planificaci&oacute;n de Gesti&oacute;n Asociada</a>
+        </div>
+        @endauth
+    @endif
+    <br>
     <div class="card">
         <div class="card-body" style="text-align: justify;">
             <h2><strong>POLÍTICA DE CALIDAD</strong></h2>
