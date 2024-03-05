@@ -10,7 +10,7 @@
         @auth
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-primary me-md-2">Oficinas de Gesti&oacute;n Asociada</a>
-            <a href="https://docs.google.com/spreadsheets/d/1vE23HvN8RIjJoaIZKsAYqxswxPxGAxAl/edit?usp=sharing&ouid=107937385033588463714&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">Planificaci&oacute;n de Gesti&oacute;n Asociada</a>
+            <a href="https://docs.google.com/spreadsheets/d/1a5P8ij7nPSOJ4sFWunwEMC40wmSraiWt/edit?usp=sharing&ouid=114257433270173120029&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">Planificaci&oacute;n de Gesti&oacute;n Asociada</a>
         </div>
         @endauth
     @endif
