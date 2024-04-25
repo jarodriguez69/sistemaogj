@@ -78,26 +78,26 @@ class ActividadController extends Controller
         $actividad = actividad::create($request->all());
         
         //relacion mucho a mucho
-        if($request->users){
-            $actividad->users()->attach($request->users);
-            $correo = new ContactanosMailable($request->all());
-            foreach($request->users as $userid){
-                $useremail = User::where("id", $userid)->first()->email;
-                Mail::to($useremail)->send($correo);
+        // if($request->users){
+        //     $actividad->users()->attach($request->users);
+        //     $correo = new ContactanosMailable($request->all());
+        //     foreach($request->users as $userid){
+        //         $useremail = User::where("id", $userid)->first()->email;
+        //         Mail::to($useremail)->send($correo);
 
-            }
-        }
+        //     }
+        // }
         
-        if($request->file('file') != null){
-            $documentos = $request->file('file')->store('public/documentos');
-            $url = Storage::url($documentos);
-            $name = $request->file('file')->getClientOriginalName();
-            Documento::create([
-                'url' => $url,
-                'name' => $name,
-                'actividad_id' => $actividad->id
-            ]);
-        }
+        // if($request->file('file') != null){
+        //     $documentos = $request->file('file')->store('public/documentos');
+        //     $url = Storage::url($documentos);
+        //     $name = $request->file('file')->getClientOriginalName();
+        //     Documento::create([
+        //         'url' => $url,
+        //         'name' => $name,
+        //         'actividad_id' => $actividad->id
+        //     ]);
+        // }
         return redirect()->route('admin.actividades.index', $actividad)->with('info','La Actividad se guardo con exito');
     }
     
