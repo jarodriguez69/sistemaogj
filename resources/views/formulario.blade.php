@@ -15,7 +15,7 @@
           <p class="card-text">Instrucciones <br>
             1. Buscar el formulario que necesita en el listado.<br>
             2. Descargar y completar.<br>
-            3. Guardar en su PC o Drive.<br>
+            3. Guardar en su PC o Drive.<br> 
             4. Adjuntar a la Tarea dentro del Proyecto que corresponde.</p>
           <p class="card-text"><small class="text-muted"></small></p>
         </div>
