@@ -11,7 +11,8 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-primary me-md-2">Oficinas de Gesti&oacute;n Asociada</a>
             <a href="https://docs.google.com/spreadsheets/d/1a5P8ij7nPSOJ4sFWunwEMC40wmSraiWt/edit?usp=sharing&ouid=114257433270173120029&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">Planificaci&oacute;n de Gesti&oacute;n Asociada</a>
-            <a href="https://sites.google.com/view/ofijus/etapa-seguimiento" target="_blank" class="btn btn-success me-md-2">OFIJUS SITE</a>
+            <a href="https://sites.google.com/view/ofijus/etapa-seguimiento" target="_blank" class="btn btn-success me-md-2">SITE OGAS</a>
+            <a href="https://drive.google.com/drive/folders/1Sa5YG-P4DBxxVxP72bWu0cgq60nxV2W-?usp=sharing" target="_blank" class="btn btn-info me-md-2">SEGUIMIENTO OGAS</a>
         </div>
         @endauth
     @endif
