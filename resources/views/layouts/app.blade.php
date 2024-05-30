@@ -39,7 +39,7 @@
                 <ul class="navbar-nav mr-auto">
                     @can('admin.home')
                         <li class="nav-item">
-                            <a class="nav-link" href="https://sites.google.com/view/gestion-documental-ogj-2019/sgc-4-o" target="_blank">Documentaci&oacute;n del SGC</a>
+                            <a class="nav-link" href="https://sites.google.com/view/gestion-documental-ogj-2019/sgc-5-o" target="_blank">Documentaci&oacute;n del SGC</a>
                         </li>
                     @endcan
                     @can('admin.home')
