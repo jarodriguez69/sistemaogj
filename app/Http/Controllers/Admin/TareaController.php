@@ -76,7 +76,7 @@ class TareaController extends Controller
 
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::all();
-        $procesos = Proceso::where('enabled',true)->get();
+        $procesos = Proceso::where('enabled',true)->orderBy('name')->get();
         $users = User::all();
         return view('admin.tareas.create', compact('proyectos', 'estados','users', 'procesos'));
     }
@@ -86,7 +86,7 @@ class TareaController extends Controller
 
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::all();
-        $procesos = Proceso::where('enabled',true)->get();
+        $procesos = Proceso::where('enabled',true)->orderBy('name')->get();
         $users = User::all();
         $fuentes = Fuente::all();
         return view('admin.tareas.createnc', compact('proyectos', 'estados','users', 'procesos','fuentes'));
@@ -131,7 +131,7 @@ class TareaController extends Controller
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::where('enabled',true)->get();
         $users = User::all();
-        $procesos = Proceso::where('enabled',true)->get();
+        $procesos = Proceso::where('enabled',true)->orderBy('name')->get();
         $fuentes = Fuente::all();
         $files =  File::where('tarea_id',$tarea->id)->get();
         
@@ -213,8 +213,9 @@ class TareaController extends Controller
         $proyectos = Proyecto::all();
         $estados = EstadoTarea::all();
         $users = User::all();
+        $procesos = Proceso::where('enabled',true)->orderBy('name')->get();
         $files =  File::where('tarea_id',$tarea->id)->get();
-        return view('admin.tareas.show',compact("tarea","proyectos","estados","users","files"));
+        return view('admin.tareas.show',compact("tarea","proyectos","estados","users","files", "procesos"));
     }
 
     public function destroy(Tarea $tarea)
