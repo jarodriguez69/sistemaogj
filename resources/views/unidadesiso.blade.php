@@ -59,11 +59,11 @@
               <thead>
                 <tr>
                   <!-- <th scope="col">#</th> -->
-                  <th scope="col">UNIDAD</th>
-                  <th scope="col">CENTRO JUDICIAL</th>
-                  <th scope="col">POLITICA</th>
-                  <th scope="col">ALCANCE</th>
-                  <th scope="col">CERTIFICADOS</th>
+                  <th scope="col" style="text-align: center;">UNIDAD</th>
+                  <th scope="col" style="text-align: center;">CENTRO JUDICIAL</th>
+                  <th scope="col" style="text-align: center;">POL&Iacute;TICA DE LA CALIDAD</th>
+                  <th scope="col" style="text-align: center;">ALCANCE</th>
+                  <th scope="col" style="text-align: center;">CERTIFICADOS</th>
 
                 </tr>
               </thead>
