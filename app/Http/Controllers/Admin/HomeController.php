@@ -369,7 +369,10 @@ class HomeController extends Controller
         $certificadojuri= Norma::where("jurisdiccional",1)->sum('certificadas');
         $totalnojuri= Norma::where("jurisdiccional",0)->where("year",$year)->get()->sum('total');
         $certificadonojuri= Norma::where("jurisdiccional", 0)->sum('certificadas');
-
+        $totaldiv = ($totaljuri + $totalnojuri) == 0 ? 1: ($totaljuri + $totalnojuri);
+        $totaljuri = $totaljuri == 0 ? 1 : $totaljuri;
+        $totalnojuri = $totalnojuri == 0 ? 1 : $totalnojuri;
+        
        $tortajuri[] = [
             'name'         => "Certificadas",
             'y'      => round(($certificadojuri*100)/$totaljuri,2)
@@ -388,11 +391,11 @@ class HomeController extends Controller
         ];
         $tortatotal[] = [
             'name'         => "Certificadas",
-            'y'      => round((($certificadojuri+$certificadonojuri)*100)/($totaljuri + $totalnojuri),2)
+            'y'      => round((($certificadojuri+$certificadonojuri)*100)/($totaldiv),2)
         ];
         $tortatotal[] = [
             'name'         => "No Certificadas",
-            'y'      => 100-round((($certificadojuri+$certificadonojuri)*100)/($totaljuri + $totalnojuri),2)
+            'y'      => 100-round((($certificadojuri+$certificadonojuri)*100)/($totaldiv),2)
         ];
          
         $normas = Norma::all();
