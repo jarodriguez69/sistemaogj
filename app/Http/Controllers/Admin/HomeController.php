@@ -138,7 +138,7 @@ class HomeController extends Controller
 
        // EJE 1
        $idgrupos = new Collection();
-       $idgrupos = Grupo::where("eje_id",1)->get()->pluck("id");
+       $idgrupos = Grupo::where("eje_id",7)->get()->pluck("id");
        $proyectostotalbyyear1 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosconmedicion1 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
        $proyectossatisfactorios1 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
@@ -160,7 +160,7 @@ class HomeController extends Controller
 
        // EJE 2
        $idgrupos = new Collection();
-       $idgrupos = Grupo::where("eje_id",2)->get()->pluck("id");
+       $idgrupos = Grupo::where("eje_id",8)->get()->pluck("id");
        $proyectostotalbyyear2 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosconmedicion2 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
        $proyectossatisfactorios2 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
@@ -181,7 +181,7 @@ class HomeController extends Controller
 
        // EJE 3
        $idgrupos = new Collection();
-       $idgrupos = Grupo::where("eje_id",3)->get()->pluck("id");
+       $idgrupos = Grupo::where("eje_id",9)->get()->pluck("id");
        $proyectostotalbyyear3 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosconmedicion3 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
        $proyectossatisfactorios3 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
@@ -202,7 +202,7 @@ class HomeController extends Controller
 
        // EJE 4
        $idgrupos = new Collection();
-       $idgrupos = Grupo::where("eje_id",4)->get()->pluck("id");
+       $idgrupos = Grupo::where("eje_id",10)->get()->pluck("id");
        $proyectostotalbyyear4 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();
        $proyectosconmedicion4 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get();
        $proyectossatisfactorios4 = Proyecto::whereIn("estadoproyecto_id",[ProjectStatusEnum::PROCESOPLANIFICACION->value,ProjectStatusEnum::TERMINADOCIERRE->value,ProjectStatusEnum::TERMINADOCONACTIVIDADES->value,ProjectStatusEnum::PROCESOEJECUCION->value])->where("measuring", 1)->where("satisfactorio",1)->where("year",$year)->whereIn('grupo_id', $idgrupos)->where("id","!=",99)->get()->count();

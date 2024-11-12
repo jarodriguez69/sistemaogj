@@ -284,7 +284,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #ffa600; text-align: center; float: none; font-size: 2.1rem;">Eje 1</h5>
                     <p class="card-text" style="text-align: center;">Total: {{$proyectostotalbyyear1}} </br> Con Medición: {{$proyectosconmedicion1->count()}} </br> Sin Medición:{{$proyectossinmedicion1}}</p>
@@ -292,25 +292,25 @@
                     
                   </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #6f00ff; text-align: center; float: none; font-size: 2.1rem;">Eje 2</h5>
                     <p class="card-text" style="text-align: center;">Total: {{$proyectostotalbyyear2}} </br> Con Medición: {{$proyectosconmedicion2->count()}} </br> Sin Medición:{{$proyectossinmedicion2}}</p>
                   </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #0099ff;  text-align: center; float: none; font-size: 2.1rem;">Eje 3</h5>
                     <p class="card-text" style="text-align: center;">Total: {{$proyectostotalbyyear3}} </br> Con Medición: {{$proyectosconmedicion3->count()}} </br> Sin Medición:{{$proyectossinmedicion3}}</p>
                   </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #047a4d;  text-align: center; float: none; font-size: 2.1rem;">Eje 4</h5>
                     <p class="card-text" style="text-align: center;">Total: {{$proyectostotalbyyear4}} </br> Con Medición: {{$proyectosconmedicion4->count()}} </br> Sin Medición:{{$proyectossinmedicion4}}</p>
                   </div>
             </div>
-            <div class="col-sm-2">
+            <!-- <div class="col-sm-2">
                 <div class="card-body">
                     <h5 class="card-title" style="color: #001aff;  text-align: center; float: none; font-size: 2.1rem;">Eje 5</h5>
                     <p class="card-text" style="text-align: center;">Total: {{$proyectostotalbyyear5}} </br> Con Medición: {{$proyectosconmedicion5->count()}} </br> Sin Medición:{{$proyectossinmedicion5}}</p>
@@ -321,7 +321,7 @@
                     <h5 class="card-title" style="color: #ff4800;  text-align: center; float: none; font-size: 2.1rem;">Eje 6</h5>
                     <p class="card-text" style="text-align: center;">Total: {{$proyectostotalbyyear6}} </br> Con Medición: {{$proyectosconmedicion6->count()}} </br> Sin Medición:{{$proyectossinmedicion6}}</p>
                   </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="row">
@@ -341,12 +341,12 @@
             <div class="col-md-4">
                 <div id="container8"></div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div id="container9"></div>
             </div>
             <div class="col-md-4">
                 <div id="container10"></div>
-            </div>
+            </div> -->
         </div>
 
     </div>
