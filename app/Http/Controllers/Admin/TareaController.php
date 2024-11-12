@@ -102,17 +102,6 @@ class TareaController extends Controller
         
         $tarea = tarea::create($request->all());
         
-        //relacion mucho a mucho
-        if($request->users){
-            $tarea->users()->attach($request->users);
-            $correo = new ContactanosMailable($request->all());
-            foreach($request->users as $userid){
-                $useremail = User::where("id", $userid)->first()->email;
-                Mail::to($useremail)->send($correo);
-
-            }
-        }
-        
         if($request->file('file') != null){
             $documentos = $request->file('file')->store('public/documentos');
             $url = Storage::url($documentos);
@@ -123,6 +112,18 @@ class TareaController extends Controller
                 'tarea_id' => $tarea->id
             ]);
         }
+        
+        //relacion mucho a mucho
+        if($request->users){
+            $tarea->users()->attach($request->users);
+            $correo = new ContactanosMailable($request->all());
+            foreach($request->users as $userid){
+                $useremail = User::where("id", $userid)->first()->email;
+                Mail::to($useremail)->send($correo);
+            }
+        }
+        
+       
         return redirect()->route('admin.tareas.index', $tarea)->with('info','La Tarea se guardo con exito');
     }
     
@@ -152,6 +153,18 @@ class TareaController extends Controller
     
             $tarea->update($request->all());
     
+            if($request->file('file') != null){
+                $documentos = $request->file('file')->store('public/documentos');
+                $url = Storage::url($documentos);
+                $name = $request->file('file')->getClientOriginalName();
+        
+                File::create([
+                    'url' => $url,
+                    'name' => $name,
+                    'tarea_id' => $tarea->id
+                ]);
+            } 
+
             //relacion mucho a mucho
             if($request->users){
                 $tarea->users()->sync($request->users);
@@ -169,17 +182,7 @@ class TareaController extends Controller
             }
             
             
-            if($request->file('file') != null){
-                $documentos = $request->file('file')->store('public/documentos');
-                $url = Storage::url($documentos);
-                $name = $request->file('file')->getClientOriginalName();
-        
-                File::create([
-                    'url' => $url,
-                    'name' => $name,
-                    'tarea_id' => $tarea->id
-                ]);
-            } 
+            
             
             return redirect()->route('admin.tareas.edit', $tarea)->with('info', 'La tarea se actualizo con exito'); 
         }
