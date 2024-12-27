@@ -79,6 +79,7 @@
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/140b9e6a-b3d2-4cd7-813e-f761568417da/page/TB3dB" target="_blank">Resultados 2021</a>
                             <a class="dropdown-item" href="https://datastudio.google.com/reporting/140b9e6a-b3d2-4cd7-813e-f761568417da/page/TB3dB" target="_blank">Resultados 2022</a>
                             <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/12GLM81aYsZpSIVNcIwRA2S9Fv1C6Wa-y/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" target="_blank">Resultados 2023</a> 
+                            <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/15jdjy4R1Yhgq-MScQ_AAYFnCJioyGql1/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" target="_blank">Resultados 2024</a> 
                             </div>
                         </li>
                     @endcan
