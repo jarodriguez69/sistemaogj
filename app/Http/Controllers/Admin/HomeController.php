@@ -62,7 +62,7 @@ class HomeController extends Controller
         }
 
 
-        $ejes = Eje::all();
+        $ejes = Eje::where("enabled",1)->get();
         $totalproyectos = Proyecto::where('year',$year)->where("id","!=",99)->count();
         $totalproyectos = $totalproyectos == 0 ? 1 : $totalproyectos;
         $grupos = Grupo::all();
@@ -70,7 +70,7 @@ class HomeController extends Controller
         $data = [];
         foreach ($ejes as $eje) {
 
-            $idgrupos = Grupo::where("eje_id",$eje->id)->get()->pluck("id");
+            $idgrupos = Grupo::where("eje_id",$eje->id)->where("enabled",1)->get()->pluck("id");
 
             $proyectosporeje = Proyecto::whereIn('grupo_id',$idgrupos)->where('year', $year)->where("id","!=",99)->get()->count();
             
