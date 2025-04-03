@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Oficina de Gesti&oacute;n Judicial</title>
-        <link rel="shortcut icon" href="http://sistemaogj.info/favicons/favicon.ico">
+        <link rel="shortcut icon" href="http://sistemaogj.com/favicons/favicon.ico">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -94,7 +94,7 @@
                             <a class="dropdown-item" href="certificadoesp.pdf" target="_blank">IRAM - 2021</a>
                             <a class="dropdown-item" href="certificadoeng.pdf" target="_blank">IQ Net - 2021 </a>
                             <div class="dropdown-divider"></div>
-                                <!-- <a class="dropdown-item" href="http://sistemaogj.info/admin" target="_blank">Resultados Parciales 2023</a> -->
+                                <!-- <a class="dropdown-item" href="http://sistemaogj.com/admin" target="_blank">Resultados Parciales 2023</a> -->
                             </div>
                         </li>
                     @endcan
