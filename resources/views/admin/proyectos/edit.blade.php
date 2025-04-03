@@ -16,7 +16,7 @@
             {{-- <input type="hidden" name="enabled" value="{{$proyecto->enabled}}"> --}}
                 <div class="form-group">
                     <label for="name">Nombre</label>
-                    <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Ingrese Nombre" value="{{old('name',$proyecto->name)}}" readonly>
+                    <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Ingrese Nombre" value="{{old('name',$proyecto->name)}}">
                     @error('name')
                         <small class="form-text text-danger">*{{$message}}</small>    
                     @enderror
