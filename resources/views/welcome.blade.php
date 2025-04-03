@@ -15,7 +15,7 @@
             <a href="https://sites.google.com/view/ofijus/etapa-seguimiento" target="_blank" class="btn btn-success me-md-2">SITE OGAS</a>
             <a href="https://drive.google.com/drive/folders/1Sa5YG-P4DBxxVxP72bWu0cgq60nxV2W-?usp=sharing" target="_blank" class="btn btn-info me-md-2">SEGUIMIENTO OGAS</a>
             <a href="https://drive.google.com/drive/folders/1GxFw5MkKl1FkV3Hlf643oR5p3FqzATvO" target="_blank" class="btn btn-warning me-md-2">PERSONAL OGAS</a>
-            <a href="https://app.powerbi.com/groups/19255cfa-f357-4814-abc3-4264df70355f/reports/4f15daf3-90ef-4576-a0ef-4afdfa79a753/ReportSection?ctid=e8fede14-dcbc-48bd-b305-59e951a39fe6&experience=power-bi" target="_blank" class="btn btn-warning me-md-2">Tableros</a>
+            <a href="https://app.powerbi.com/groups/19255cfa-f357-4814-abc3-4264df70355f/reports/4f15daf3-90ef-4576-a0ef-4afdfa79a753/ReportSection?ctid=e8fede14-dcbc-48bd-b305-59e951a39fe6&experience=power-bi" target="_blank" class="btn btn-danger me-md-2">Tableros</a>
         </div>
         @endauth
     @endif
