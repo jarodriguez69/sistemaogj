@@ -133,6 +133,7 @@
                 <div class="card-body">
                     <label for="historico">Historico</label>
                     <select id="historico" class="form-control" name="historico">
+                        <option value="#">(Seleccione Año)</option>
                         <option value="{{route('admin.historicos.index', 2024)}}">2024</option>
                         <option value="{{route('admin.historicos.index', 2023)}}">2023</option>
                         <option value="{{route('admin.historicos.index', 2022)}}">2022</option>
@@ -1157,7 +1158,7 @@ function filtrarporproceso()
 }
 
 
-$("#historico").change(function(){
+$("#historico_id").change(function(){
     let a= document.createElement('a');
     a.target= '_blank';
     a.href= $("#historico").val();

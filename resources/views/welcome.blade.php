@@ -34,17 +34,16 @@
             
             <h2><strong> OBJETIVOS DE CALIDAD</strong><a target="_blank" href="https://docs.google.com/document/d/1brymCVzHZXBDuYOR6p5dPvC2N1k58mmP/edit?usp=sharing&ouid=115910062807870671157&rtpof=true&sd=true" style="font-size: small; font-weight: bold;"> (Minuta de aprobación) </a>  </h2>  
             <ol>
-            <li>Mantener el sistema de gestión de calidad ISO 9001:2015.</li>
+                <li>Mantener el sistema de gestión de calidad ISO 9001:2015.</li>
                 <li>Incorporar la medición de la satisfacción de los usuarios de los proyectos.</li>
                 <li>Lograr la satisfacción de los usuarios de los proyectos con medición de satisfacción.</li>
                 <li>Lograr la aprobación del SGC de las Unidades Judiciales del PJT que participan de la implementación de la Norma ISO 9001:2015 bajo la coordinación, asistencia técnica y asesoramiento de la OGJ.</li>
-                <li>Implementar planes de mejora en unidades no penales del PJT.</li>
+                <li>Implementar planes de mejora en las unidades no penales del PJT- *Abarca la implementación de PO, Aistencias y Control de procesos para la mejora de unidades del PJT*.Abarca la implementación de planes de mejoras en las Unidades Judiciales.</li>
                 <li>Incorporar el monitoreo y control de los edictos publicados en el Boletín Oficial Judicial conforme a los plazos definidos.</li>
-                <li>Medir el clima laboral dentro de los plazos establecidos (para las unidades que corresponda**).</li>
+                <li>Presentar propuestas de medición de clima laboral a todos las/os Titulares de las unidades que correspondan según lo establecido en el P04_05 Medición de Clima Laboral e implementacíon de Planes de Acción en Unidad del PJT.</li>
                 <li>Planificar y realizar las auditorías internas a las Unidades Judiciales del PJT que cumplan los requisitos dentro de los plazos establecidos.</li>
-                <li>Coordinar el funcionamiento de las Oficinas del PJT dependientes de la OGJ.</li>
-                <li>Lograr el dictado de las providencias conforme a los plazos procesales.</li>
-                <li>Realizar el seguimiento de las unidades certificadas con la Norma ISO 9001:2015 del PJT.</li>
+                <li>Coordinar el funcionamiento de las Oficinas del PJT dependientes de la OGJ</li>
+                <li>Lograr el dictado de las providencias conforme a los plazos procesales</li>
             </ol>
             ** Unidades certificadas que aceptaron la medición de clima laboral.
            
