@@ -11,11 +11,12 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="https://sgp.justucuman.gov.ar" target="_blank" class="btn btn-dark me-md-2">Plan Estrat&eacute;gico CSJT</a>
             <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-primary me-md-2">OGAS</a>
-            <a href="https://docs.google.com/spreadsheets/d/1TmD0Z4sbirdefI-7deqOP7jFINfT-P-o89x4a7gVP5E/edit?gid=1677287769#gid=1677287769" target="_blank" class="btn btn-secondary">Planificaci&oacute;n de Gesti&oacute;n Asociada</a>
+            <a href="https://docs.google.com/spreadsheets/d/1TmD0Z4sbirdefI-7deqOP7jFINfT-P-o89x4a7gVP5E/edit?gid=1677287769#gid=1677287769" target="_blank" class="btn btn-secondary">Planificaci&oacute;n OGAS</a>
             <a href="https://sites.google.com/view/ofijus/etapa-seguimiento" target="_blank" class="btn btn-success me-md-2">SITE OGAS</a>
             <a href="https://drive.google.com/drive/folders/1Sa5YG-P4DBxxVxP72bWu0cgq60nxV2W-?usp=sharing" target="_blank" class="btn btn-info me-md-2">SEGUIMIENTO OGAS</a>
             <a href="https://drive.google.com/drive/folders/1GxFw5MkKl1FkV3Hlf643oR5p3FqzATvO" target="_blank" class="btn btn-warning me-md-2">PERSONAL OGAS</a>
             <a href="https://app.powerbi.com/groups/19255cfa-f357-4814-abc3-4264df70355f/reports/4f15daf3-90ef-4576-a0ef-4afdfa79a753/ReportSection?ctid=e8fede14-dcbc-48bd-b305-59e951a39fe6&experience=power-bi" target="_blank" class="btn btn-danger me-md-2">Tableros</a>
+            <a href="https://drive.google.com/drive/folders/1WbgO2A8KWs-xcBkTCUaO6d7Z8pHXUKIX?usp=sharing" target="_blank" class="btn btn-primary me-md-2">Manuales OGA</a>
         </div>
         @endauth
     @endif
