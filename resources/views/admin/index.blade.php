@@ -130,17 +130,20 @@
         </div>
 
         <div class="row">
-                <div class="card-body">
-                    <label for="historico">Historico</label>
-                    <select id="historico" class="form-control" name="historico">
-                        <option value="#">(Seleccione Año)</option>
-                        <option value="{{route('admin.historicos.index', 2024)}}">2024</option>
-                        <option value="{{route('admin.historicos.index', 2023)}}">2023</option>
-                        <option value="{{route('admin.historicos.index', 2022)}}">2022</option>
-                        <option value="{{route('admin.historicos.index', 2021)}}">2021</option>
-                    </select>
-                </div>
+            <div class="card-body">
+                <label for="historico">Historico</label>
+                <select id="historico_id" class="form-control" name="historico">
+                    <option value="#">(Seleccione Año)</option>
+                    <option value="{{route('admin.historicos.index', 2025)}}">2025</option>
+                    <option value="{{route('admin.historicos.index', 2024)}}">2024</option>
+                    <option value="{{route('admin.historicos.index', 2023)}}">2023</option>
+                    <option value="{{route('admin.historicos.index', 2022)}}">2022</option>
+                    <option value="{{route('admin.historicos.index', 2021)}}">2021</option>
+                </select>
+            </div>
         </div>
+
+
         
     </div>
 
@@ -1158,15 +1161,21 @@ function filtrarporproceso()
 }
 
 
-$("#historico_id").change(function(){
-    let a= document.createElement('a');
-    a.target= '_blank';
-    a.href= $("#historico").val();
-    a.click();
-});
+
+
+
+
 
 
 </script>
 
+<script type="text/javascript">
+    $("#historico_id").change(function(){
+        let url = $(this).val();
+        if(url !== "#"){   // evita abrir si es la opción inicial
+            window.open(url, "_blank");
+        }
+    });
+</script>
 
 @stop
