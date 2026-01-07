@@ -215,7 +215,7 @@ class ObjetivoController extends Controller
             $calidadterminado = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',2)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
             $estrategicosexcluido = Objetivo::where('tipoobjetivo_id',1)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
             $operativosexcluido = Objetivo::where('tipoobjetivo_id',2)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
-            $calidadexcluido = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();
+            $calidadexcluido = Objetivo::where('tipoobjetivo_id',3)->where("id","!=",1)->where('estadoobjetivo_id',3)->whereIn(\DB::raw('YEAR(begin)'), $years)->get()->count();            
         }
         else
         {
@@ -250,6 +250,11 @@ class ObjetivoController extends Controller
         $calidadprocesopor = $calidadproceso * 100 / $objetivoscalidadtotal;
         $calidadterminadopor = $calidadterminado * 100 / $objetivoscalidadtotal;
         $calidadexcluidopor = $calidadexcluido * 100 / $objetivoscalidadtotal;
+
+        $totaloperativoprocesopor = ($operativosproceso + $calidadproceso) * 100 / ($objetivosoperativostotal + $objetivoscalidadtotal);
+        $totaloperativoterminadopor = ($operativosterminado + $calidadterminado) * 100 / ($objetivosoperativostotal + $objetivoscalidadtotal);
+        $totaloperativoexcluidopor = ($operativosexcluido + $calidadexcluido) * 100 / ($objetivosoperativostotal + $objetivoscalidadtotal);
+
 
        $chartoperativos[] = [
            'name'         => "Cumplidos",
@@ -295,8 +300,24 @@ class ObjetivoController extends Controller
             'name'         => "Excluidos",
             'y'      => $calidadexcluidopor
         ];
+        
 
-        return view('admin.objetivos.indexstatus', compact("objetivos", "estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado","estrategicosexcluido","operativosexcluido","calidadexcluido",'chartoperativos', 'chartestrategicos','chartcalidad'));
+        $charttotaloperativos[] = [
+            'name'         => "Cumplidos",
+            'y'      => $totaloperativoterminadopor
+        ];
+
+        $charttotaloperativos[] = [
+            'name'         => "No Cumplidos",
+            'y'      => $totaloperativoprocesopor
+        ];
+
+        $charttotaloperativos[] = [
+            'name'         => "Excluidos",
+            'y'      => $totaloperativoexcluidopor
+        ];
+ 
+        return view('admin.objetivos.indexstatus', compact("objetivos", "estrategicosproceso","estrategicosterminado","operativosproceso","operativosterminado","calidadproceso","calidadterminado","estrategicosexcluido","operativosexcluido","calidadexcluido",'chartoperativos', 'chartestrategicos','chartcalidad','charttotaloperativos'));
     }
 
     public function getprojectcount()
