@@ -50,11 +50,11 @@
         </div>
         <div class="row">
                 <div class="col-md-3">
-                    <div id="estrategico"></div>
-                </div>
-                <div class="col-md-3">
                     <div id="totaloperativos"></div>
-                </div>    
+                </div>           
+                <div class="col-md-3">
+                    <div id="estrategico"></div>
+                </div> 
                 <div class="col-md-3">
                     <div id="operativo"></div>
                 </div>

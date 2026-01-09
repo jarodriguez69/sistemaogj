@@ -50,13 +50,16 @@
         </div>
 
         <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div id="totaloperativos"></div>
+                </div> 
+                <div class="col-md-3">
                     <div id="estrategico"></div>
                 </div>    
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div id="operativo"></div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div id="calidad"></div>
                 </div>
         </div>
@@ -96,7 +99,7 @@
         var operativos = <?php echo json_encode($chartoperativos)?>;
         var estrategicos = <?php echo json_encode($chartestrategicos)?>;
         var calidad = <?php echo json_encode($chartcalidad)?>;
-        
+        var totaloperativos = <?php echo json_encode($charttotaloperativos)?>;
         $('#objetivos').DataTable( {
         "processing": true,
         "serverSide": true,
@@ -298,7 +301,41 @@
         }]
     });
 
+    Highcharts.chart('totaloperativos', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Total Operativos'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Porcentaje',
+            colorByPoint: true,
+            data:  totaloperativos
 
+        }]
+    });
 
 </script>
 @stop

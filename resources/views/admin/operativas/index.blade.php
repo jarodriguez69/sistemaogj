@@ -67,6 +67,7 @@
                                     <div class="modal-footer"> 
                                         <a id="btnproceso" href="{{ url('admin/objetivos/0/'.$operativa->id . '/1/indexstatus') }}" class="btn btn-sm btn-dark">En Proceso</a>
                                         <a id="btnterminados" href="{{ url('admin/objetivos/0/'.$operativa->id . '/2/indexstatus') }}" class="btn btn-sm btn-dark">Terminados</a>
+                                        <a id="btnterminados" href="{{ url('admin/objetivos/0/'.$operativa->id . '/3/indexstatus') }}" class="btn btn-sm btn-dark">Todos</a>
                                     </div>
                                 </div>
                                 </div>
