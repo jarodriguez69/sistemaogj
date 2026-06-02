@@ -112,7 +112,7 @@
                     <a href="https://drive.google.com/drive/folders/1kOWEzEMnqIXt25fCzrMOikPYQ56JRLH3" target="_blank" class="btn btn-custom">OGAS</a>
                     <a href="https://docs.google.com/spreadsheets/d/1TmD0Z4sbirdefI-7deqOP7jFINfT-P-o89x4a7gVP5E/edit?gid=1677287769#gid=1677287769" target="_blank" class="btn btn-custom">Planificación OGAS</a>
                     <a href="https://sites.google.com/view/ofijus/etapa-seguimiento" target="_blank" class="btn btn-custom">Site OGAS</a>
-                    <!-- <a href="https://drive.google.com/drive/folders/1GxFw5MkKl1FkV3Hlf643oR5p3FqzATvO" target="_blank" class="btn btn-custom">Personal OGAS</a> -->
+                    <a href="https://drive.google.com/drive/folders/1Tx5SP4gRngnWa3GvuZ8N7TA3FfPasxmJ?usp=drive_link" target="_blank" class="btn btn-custom">Proyectos Interinstitucionales</a>
                      <a href="https://organigramas.sistemaogj.com/" target="_blank" class="btn btn-custom">Organigramas</a>
                     <a href="https://drive.google.com/drive/folders/1jLJe7-dhnIaTz27p0-oNfEl7FJozlLZ4?usp=sharing" target="_blank" class="btn btn-custom">SGC Integrado CSJT</a>
                     <a href="https://app.powerbi.com/groups/19255cfa-f357-4814-abc3-4264df70355f/reports/4f15daf3-90ef-4576-a0ef-4afdfa79a753/ReportSection" target="_blank" class="btn btn-custom">Tableros</a>
